@@ -1,0 +1,14 @@
+{
+    "name": "mydatamyconsent/mydatamyconsent",
+    "description": "My Data My Consent PHP SDK",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://mydatamyconsent.com",
+    "authors": [
+        {
+            "name": "Balamurali Pandranki",
+            "email": "balamurali@live.com"
+        }
+    ],
+    "require": {}
+}
