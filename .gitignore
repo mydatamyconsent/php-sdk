@@ -12,4 +12,7 @@ composer.phar
 
 # PHPUnit cache
 .phpunit.result.cache
+
+# openapi-generator files
 git_push.sh
+.openapi-generator/
