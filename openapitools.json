@@ -1,0 +1,37 @@
+{
+    "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+    "spaces": 2,
+    "generator-cli": {
+        "version": "5.2.1",
+        "generators": {
+            "php": {
+                "generatorName": "php",
+                "httpUserAgent": "MDMC-PHP-SDK",
+                "apiPackage": "Api",
+                "groupId": "mydatamyconsent",
+                "packageName": "mydatamyconsent",
+                "modelPackage": "Model",
+                "artifactId": "mydatamyconsent-php-sdk",
+                "gitHost": "github.com",
+                "gitRepoId": "php-sdk",
+                "gitUserId": "mydatamyconsent",
+                "inputSpec": "https://api.mydatamyconsent.com/swagger/v1/swagger.json",
+                "removeOperationIdPrefix": true,
+                "additionalProperties": {
+                    "invokerPackage": "MyDataMyConsent",
+                    "developerEmail": "developers@mydatamyconsent.com",
+                    "developerName": "Balamurali Pandranki",
+                    "developerOrganization": "DataConsent, Inc.",
+                    "developerOrganizationUrl": "https://mydatamyconsent.com",
+                    "artifactDescription": "My Data My Consent PHP API SDK",
+                    "artifactUrl": "https://github.com/mydatamyconsent/php-sdk",
+                    "artifactVersion": "v1",
+                    "licenseUrl": "https://mydatamyconsent.com/en-us/legal/terms-of-service",
+                    "licenseName": "DataConsent, Inc. ToS",
+                    "scmUrl": "https://github.com/mydatamyconsent/php-sdk",
+                    "scmDeveloperConnection": "scm:git:git@github.com:mydatamyconsent/php-sdk.git"
+                }
+            }
+        }
+    }
+}

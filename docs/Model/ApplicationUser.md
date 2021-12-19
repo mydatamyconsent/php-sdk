@@ -1,0 +1,39 @@
+# # ApplicationUser
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **string** |  | [optional]
+**user_name** | **string** |  | [optional]
+**normalized_user_name** | **string** |  | [optional]
+**email** | **string** |  | [optional]
+**normalized_email** | **string** |  | [optional]
+**email_confirmed** | **bool** |  | [optional]
+**password_hash** | **string** |  | [optional]
+**security_stamp** | **string** |  | [optional]
+**concurrency_stamp** | **string** |  | [optional]
+**phone_number** | **string** |  | [optional]
+**phone_number_confirmed** | **bool** |  | [optional]
+**two_factor_enabled** | **bool** |  | [optional]
+**lockout_end** | [**\DateTime**](\DateTime.md) |  | [optional]
+**lockout_enabled** | **bool** |  | [optional]
+**access_failed_count** | **int** |  | [optional]
+**first_name** | **string** |  | [optional]
+**last_name** | **string** |  | [optional]
+**full_name** | **string** |  | [optional] [readonly]
+**gender** | [**\MyDataMyConsent\Model\Gender**](Gender.md) |  | [optional]
+**date_of_birth** | [**\DateTime**](\DateTime.md) |  | [optional]
+**country_id** | **string** |  | [optional]
+**post_code** | **string** |  | [optional]
+**referred_by** | **string** |  | [optional]
+**language** | **string** |  | [optional]
+**theme** | [**\MyDataMyConsent\Model\Theme**](Theme.md) |  | [optional]
+**security_pin** | **string** |  | [optional]
+**photo_url** | **string** |  | [optional]
+**referral_code** | **string** |  | [optional]
+**refresh_tokens** | [**\MyDataMyConsent\Model\RefreshToken[]**](RefreshToken.md) |  | [optional]
+**country** | [**\MyDataMyConsent\Model\Country**](Country.md) |  | [optional]
+**referred_by_user** | [**\MyDataMyConsent\Model\ApplicationUser**](ApplicationUser.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
