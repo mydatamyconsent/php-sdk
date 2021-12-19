@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -65,7 +65,14 @@ class OrganizationFinancialAccount implements ModelInterface, ArrayAccess, \Json
         'beneficiary_name' => 'string',
         'account_number' => 'string',
         'routing_number' => 'string',
-        'organization' => '\MyDataMyConsent\Model\Organization'
+        'organization' => '\MyDataMyConsent\Model\Organization',
+        'is_primary' => 'bool',
+        'is_verified' => 'bool',
+        'logo_url' => 'string',
+        'bank_name' => 'string',
+        'bank_account_proof_url' => 'string',
+        'file_type' => '\MyDataMyConsent\Model\FileType',
+        'bank_account_type' => '\MyDataMyConsent\Model\BankAccountType'
     ];
 
     /**
@@ -81,7 +88,14 @@ class OrganizationFinancialAccount implements ModelInterface, ArrayAccess, \Json
         'beneficiary_name' => null,
         'account_number' => null,
         'routing_number' => null,
-        'organization' => null
+        'organization' => null,
+        'is_primary' => null,
+        'is_verified' => null,
+        'logo_url' => null,
+        'bank_name' => null,
+        'bank_account_proof_url' => null,
+        'file_type' => null,
+        'bank_account_type' => null
     ];
 
     /**
@@ -116,7 +130,14 @@ class OrganizationFinancialAccount implements ModelInterface, ArrayAccess, \Json
         'beneficiary_name' => 'beneficiaryName',
         'account_number' => 'accountNumber',
         'routing_number' => 'routingNumber',
-        'organization' => 'organization'
+        'organization' => 'organization',
+        'is_primary' => 'isPrimary',
+        'is_verified' => 'isVerified',
+        'logo_url' => 'logoUrl',
+        'bank_name' => 'bankName',
+        'bank_account_proof_url' => 'bankAccountProofUrl',
+        'file_type' => 'fileType',
+        'bank_account_type' => 'bankAccountType'
     ];
 
     /**
@@ -130,7 +151,14 @@ class OrganizationFinancialAccount implements ModelInterface, ArrayAccess, \Json
         'beneficiary_name' => 'setBeneficiaryName',
         'account_number' => 'setAccountNumber',
         'routing_number' => 'setRoutingNumber',
-        'organization' => 'setOrganization'
+        'organization' => 'setOrganization',
+        'is_primary' => 'setIsPrimary',
+        'is_verified' => 'setIsVerified',
+        'logo_url' => 'setLogoUrl',
+        'bank_name' => 'setBankName',
+        'bank_account_proof_url' => 'setBankAccountProofUrl',
+        'file_type' => 'setFileType',
+        'bank_account_type' => 'setBankAccountType'
     ];
 
     /**
@@ -144,7 +172,14 @@ class OrganizationFinancialAccount implements ModelInterface, ArrayAccess, \Json
         'beneficiary_name' => 'getBeneficiaryName',
         'account_number' => 'getAccountNumber',
         'routing_number' => 'getRoutingNumber',
-        'organization' => 'getOrganization'
+        'organization' => 'getOrganization',
+        'is_primary' => 'getIsPrimary',
+        'is_verified' => 'getIsVerified',
+        'logo_url' => 'getLogoUrl',
+        'bank_name' => 'getBankName',
+        'bank_account_proof_url' => 'getBankAccountProofUrl',
+        'file_type' => 'getFileType',
+        'bank_account_type' => 'getBankAccountType'
     ];
 
     /**
@@ -210,6 +245,13 @@ class OrganizationFinancialAccount implements ModelInterface, ArrayAccess, \Json
         $this->container['account_number'] = $data['account_number'] ?? null;
         $this->container['routing_number'] = $data['routing_number'] ?? null;
         $this->container['organization'] = $data['organization'] ?? null;
+        $this->container['is_primary'] = $data['is_primary'] ?? null;
+        $this->container['is_verified'] = $data['is_verified'] ?? null;
+        $this->container['logo_url'] = $data['logo_url'] ?? null;
+        $this->container['bank_name'] = $data['bank_name'] ?? null;
+        $this->container['bank_account_proof_url'] = $data['bank_account_proof_url'] ?? null;
+        $this->container['file_type'] = $data['file_type'] ?? null;
+        $this->container['bank_account_type'] = $data['bank_account_type'] ?? null;
     }
 
     /**
@@ -376,6 +418,174 @@ class OrganizationFinancialAccount implements ModelInterface, ArrayAccess, \Json
     public function setOrganization($organization)
     {
         $this->container['organization'] = $organization;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_primary
+     *
+     * @return bool|null
+     */
+    public function getIsPrimary()
+    {
+        return $this->container['is_primary'];
+    }
+
+    /**
+     * Sets is_primary
+     *
+     * @param bool|null $is_primary is_primary
+     *
+     * @return self
+     */
+    public function setIsPrimary($is_primary)
+    {
+        $this->container['is_primary'] = $is_primary;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_verified
+     *
+     * @return bool|null
+     */
+    public function getIsVerified()
+    {
+        return $this->container['is_verified'];
+    }
+
+    /**
+     * Sets is_verified
+     *
+     * @param bool|null $is_verified is_verified
+     *
+     * @return self
+     */
+    public function setIsVerified($is_verified)
+    {
+        $this->container['is_verified'] = $is_verified;
+
+        return $this;
+    }
+
+    /**
+     * Gets logo_url
+     *
+     * @return string|null
+     */
+    public function getLogoUrl()
+    {
+        return $this->container['logo_url'];
+    }
+
+    /**
+     * Sets logo_url
+     *
+     * @param string|null $logo_url logo_url
+     *
+     * @return self
+     */
+    public function setLogoUrl($logo_url)
+    {
+        $this->container['logo_url'] = $logo_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank_name
+     *
+     * @return string|null
+     */
+    public function getBankName()
+    {
+        return $this->container['bank_name'];
+    }
+
+    /**
+     * Sets bank_name
+     *
+     * @param string|null $bank_name bank_name
+     *
+     * @return self
+     */
+    public function setBankName($bank_name)
+    {
+        $this->container['bank_name'] = $bank_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank_account_proof_url
+     *
+     * @return string|null
+     */
+    public function getBankAccountProofUrl()
+    {
+        return $this->container['bank_account_proof_url'];
+    }
+
+    /**
+     * Sets bank_account_proof_url
+     *
+     * @param string|null $bank_account_proof_url bank_account_proof_url
+     *
+     * @return self
+     */
+    public function setBankAccountProofUrl($bank_account_proof_url)
+    {
+        $this->container['bank_account_proof_url'] = $bank_account_proof_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets file_type
+     *
+     * @return \MyDataMyConsent\Model\FileType|null
+     */
+    public function getFileType()
+    {
+        return $this->container['file_type'];
+    }
+
+    /**
+     * Sets file_type
+     *
+     * @param \MyDataMyConsent\Model\FileType|null $file_type file_type
+     *
+     * @return self
+     */
+    public function setFileType($file_type)
+    {
+        $this->container['file_type'] = $file_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank_account_type
+     *
+     * @return \MyDataMyConsent\Model\BankAccountType|null
+     */
+    public function getBankAccountType()
+    {
+        return $this->container['bank_account_type'];
+    }
+
+    /**
+     * Sets bank_account_type
+     *
+     * @param \MyDataMyConsent\Model\BankAccountType|null $bank_account_type bank_account_type
+     *
+     * @return self
+     */
+    public function setBankAccountType($bank_account_type)
+    {
+        $this->container['bank_account_type'] = $bank_account_type;
 
         return $this;
     }

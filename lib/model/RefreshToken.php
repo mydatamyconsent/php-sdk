@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -60,7 +60,20 @@ class RefreshToken implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'created_by' => 'string',
+        'created_at_utc' => '\DateTime',
+        'updated_by' => 'string',
+        'updated_at_utc' => '\DateTime',
+        'created_by_user' => '\MyDataMyConsent\Model\ApplicationUser',
+        'updated_by_user' => '\MyDataMyConsent\Model\ApplicationUser',
+        'deleted_by' => 'string',
+        'deleted_at_utc' => '\DateTime',
+        'deleted_by_user' => '\MyDataMyConsent\Model\ApplicationUser',
+        'id' => 'string',
+        'installation_id' => 'string',
         'token' => 'string',
+        'access_token' => 'string',
+        'access_token_expires' => '\DateTime',
         'expires' => '\DateTime',
         'is_expired' => 'bool',
         'created' => '\DateTime',
@@ -78,7 +91,20 @@ class RefreshToken implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'created_by' => 'uuid',
+        'created_at_utc' => 'date-time',
+        'updated_by' => 'uuid',
+        'updated_at_utc' => 'date-time',
+        'created_by_user' => null,
+        'updated_by_user' => null,
+        'deleted_by' => 'uuid',
+        'deleted_at_utc' => 'date-time',
+        'deleted_by_user' => null,
+        'id' => 'uuid',
+        'installation_id' => null,
         'token' => null,
+        'access_token' => null,
+        'access_token_expires' => 'date-time',
         'expires' => 'date-time',
         'is_expired' => null,
         'created' => 'date-time',
@@ -115,7 +141,20 @@ class RefreshToken implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'created_by' => 'createdBy',
+        'created_at_utc' => 'createdAtUtc',
+        'updated_by' => 'updatedBy',
+        'updated_at_utc' => 'updatedAtUtc',
+        'created_by_user' => 'createdByUser',
+        'updated_by_user' => 'updatedByUser',
+        'deleted_by' => 'deletedBy',
+        'deleted_at_utc' => 'deletedAtUtc',
+        'deleted_by_user' => 'deletedByUser',
+        'id' => 'id',
+        'installation_id' => 'installationId',
         'token' => 'token',
+        'access_token' => 'accessToken',
+        'access_token_expires' => 'accessTokenExpires',
         'expires' => 'expires',
         'is_expired' => 'isExpired',
         'created' => 'created',
@@ -131,7 +170,20 @@ class RefreshToken implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'created_by' => 'setCreatedBy',
+        'created_at_utc' => 'setCreatedAtUtc',
+        'updated_by' => 'setUpdatedBy',
+        'updated_at_utc' => 'setUpdatedAtUtc',
+        'created_by_user' => 'setCreatedByUser',
+        'updated_by_user' => 'setUpdatedByUser',
+        'deleted_by' => 'setDeletedBy',
+        'deleted_at_utc' => 'setDeletedAtUtc',
+        'deleted_by_user' => 'setDeletedByUser',
+        'id' => 'setId',
+        'installation_id' => 'setInstallationId',
         'token' => 'setToken',
+        'access_token' => 'setAccessToken',
+        'access_token_expires' => 'setAccessTokenExpires',
         'expires' => 'setExpires',
         'is_expired' => 'setIsExpired',
         'created' => 'setCreated',
@@ -147,7 +199,20 @@ class RefreshToken implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'created_by' => 'getCreatedBy',
+        'created_at_utc' => 'getCreatedAtUtc',
+        'updated_by' => 'getUpdatedBy',
+        'updated_at_utc' => 'getUpdatedAtUtc',
+        'created_by_user' => 'getCreatedByUser',
+        'updated_by_user' => 'getUpdatedByUser',
+        'deleted_by' => 'getDeletedBy',
+        'deleted_at_utc' => 'getDeletedAtUtc',
+        'deleted_by_user' => 'getDeletedByUser',
+        'id' => 'getId',
+        'installation_id' => 'getInstallationId',
         'token' => 'getToken',
+        'access_token' => 'getAccessToken',
+        'access_token_expires' => 'getAccessTokenExpires',
         'expires' => 'getExpires',
         'is_expired' => 'getIsExpired',
         'created' => 'getCreated',
@@ -214,7 +279,20 @@ class RefreshToken implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['created_by'] = $data['created_by'] ?? null;
+        $this->container['created_at_utc'] = $data['created_at_utc'] ?? null;
+        $this->container['updated_by'] = $data['updated_by'] ?? null;
+        $this->container['updated_at_utc'] = $data['updated_at_utc'] ?? null;
+        $this->container['created_by_user'] = $data['created_by_user'] ?? null;
+        $this->container['updated_by_user'] = $data['updated_by_user'] ?? null;
+        $this->container['deleted_by'] = $data['deleted_by'] ?? null;
+        $this->container['deleted_at_utc'] = $data['deleted_at_utc'] ?? null;
+        $this->container['deleted_by_user'] = $data['deleted_by_user'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['installation_id'] = $data['installation_id'] ?? null;
         $this->container['token'] = $data['token'] ?? null;
+        $this->container['access_token'] = $data['access_token'] ?? null;
+        $this->container['access_token_expires'] = $data['access_token_expires'] ?? null;
         $this->container['expires'] = $data['expires'] ?? null;
         $this->container['is_expired'] = $data['is_expired'] ?? null;
         $this->container['created'] = $data['created'] ?? null;
@@ -249,6 +327,270 @@ class RefreshToken implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets created_by
+     *
+     * @return string|null
+     */
+    public function getCreatedBy()
+    {
+        return $this->container['created_by'];
+    }
+
+    /**
+     * Sets created_by
+     *
+     * @param string|null $created_by created_by
+     *
+     * @return self
+     */
+    public function setCreatedBy($created_by)
+    {
+        $this->container['created_by'] = $created_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAtUtc()
+    {
+        return $this->container['created_at_utc'];
+    }
+
+    /**
+     * Sets created_at_utc
+     *
+     * @param \DateTime|null $created_at_utc created_at_utc
+     *
+     * @return self
+     */
+    public function setCreatedAtUtc($created_at_utc)
+    {
+        $this->container['created_at_utc'] = $created_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_by
+     *
+     * @return string|null
+     */
+    public function getUpdatedBy()
+    {
+        return $this->container['updated_by'];
+    }
+
+    /**
+     * Sets updated_by
+     *
+     * @param string|null $updated_by updated_by
+     *
+     * @return self
+     */
+    public function setUpdatedBy($updated_by)
+    {
+        $this->container['updated_by'] = $updated_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAtUtc()
+    {
+        return $this->container['updated_at_utc'];
+    }
+
+    /**
+     * Sets updated_at_utc
+     *
+     * @param \DateTime|null $updated_at_utc updated_at_utc
+     *
+     * @return self
+     */
+    public function setUpdatedAtUtc($updated_at_utc)
+    {
+        $this->container['updated_at_utc'] = $updated_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by_user
+     *
+     * @return \MyDataMyConsent\Model\ApplicationUser|null
+     */
+    public function getCreatedByUser()
+    {
+        return $this->container['created_by_user'];
+    }
+
+    /**
+     * Sets created_by_user
+     *
+     * @param \MyDataMyConsent\Model\ApplicationUser|null $created_by_user created_by_user
+     *
+     * @return self
+     */
+    public function setCreatedByUser($created_by_user)
+    {
+        $this->container['created_by_user'] = $created_by_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_by_user
+     *
+     * @return \MyDataMyConsent\Model\ApplicationUser|null
+     */
+    public function getUpdatedByUser()
+    {
+        return $this->container['updated_by_user'];
+    }
+
+    /**
+     * Sets updated_by_user
+     *
+     * @param \MyDataMyConsent\Model\ApplicationUser|null $updated_by_user updated_by_user
+     *
+     * @return self
+     */
+    public function setUpdatedByUser($updated_by_user)
+    {
+        $this->container['updated_by_user'] = $updated_by_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_by
+     *
+     * @return string|null
+     */
+    public function getDeletedBy()
+    {
+        return $this->container['deleted_by'];
+    }
+
+    /**
+     * Sets deleted_by
+     *
+     * @param string|null $deleted_by deleted_by
+     *
+     * @return self
+     */
+    public function setDeletedBy($deleted_by)
+    {
+        $this->container['deleted_by'] = $deleted_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getDeletedAtUtc()
+    {
+        return $this->container['deleted_at_utc'];
+    }
+
+    /**
+     * Sets deleted_at_utc
+     *
+     * @param \DateTime|null $deleted_at_utc deleted_at_utc
+     *
+     * @return self
+     */
+    public function setDeletedAtUtc($deleted_at_utc)
+    {
+        $this->container['deleted_at_utc'] = $deleted_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_by_user
+     *
+     * @return \MyDataMyConsent\Model\ApplicationUser|null
+     */
+    public function getDeletedByUser()
+    {
+        return $this->container['deleted_by_user'];
+    }
+
+    /**
+     * Sets deleted_by_user
+     *
+     * @param \MyDataMyConsent\Model\ApplicationUser|null $deleted_by_user deleted_by_user
+     *
+     * @return self
+     */
+    public function setDeletedByUser($deleted_by_user)
+    {
+        $this->container['deleted_by_user'] = $deleted_by_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets installation_id
+     *
+     * @return string|null
+     */
+    public function getInstallationId()
+    {
+        return $this->container['installation_id'];
+    }
+
+    /**
+     * Sets installation_id
+     *
+     * @param string|null $installation_id installation_id
+     *
+     * @return self
+     */
+    public function setInstallationId($installation_id)
+    {
+        $this->container['installation_id'] = $installation_id;
+
+        return $this;
+    }
+
+    /**
      * Gets token
      *
      * @return string|null
@@ -268,6 +610,54 @@ class RefreshToken implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setToken($token)
     {
         $this->container['token'] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Gets access_token
+     *
+     * @return string|null
+     */
+    public function getAccessToken()
+    {
+        return $this->container['access_token'];
+    }
+
+    /**
+     * Sets access_token
+     *
+     * @param string|null $access_token access_token
+     *
+     * @return self
+     */
+    public function setAccessToken($access_token)
+    {
+        $this->container['access_token'] = $access_token;
+
+        return $this;
+    }
+
+    /**
+     * Gets access_token_expires
+     *
+     * @return \DateTime|null
+     */
+    public function getAccessTokenExpires()
+    {
+        return $this->container['access_token_expires'];
+    }
+
+    /**
+     * Sets access_token_expires
+     *
+     * @param \DateTime|null $access_token_expires access_token_expires
+     *
+     * @return self
+     */
+    public function setAccessTokenExpires($access_token_expires)
+    {
+        $this->container['access_token_expires'] = $access_token_expires;
 
         return $this;
     }

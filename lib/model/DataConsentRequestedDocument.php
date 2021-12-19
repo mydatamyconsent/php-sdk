@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -60,16 +60,12 @@ class DataConsentRequestedDocument implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'consent_id' => 'string',
         'drn' => 'string',
         'from_datetime' => '\DateTime',
         'to_datetime' => '\DateTime',
         'provider_id' => 'string',
         'document_type_id' => 'string',
-        'document_identifier' => 'string',
-        'data_consent' => '\MyDataMyConsent\Model\DataConsent',
-        'organization' => '\MyDataMyConsent\Model\Organization'
+        'document_identifier' => 'string'
     ];
 
     /**
@@ -80,16 +76,12 @@ class DataConsentRequestedDocument implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'uuid',
-        'consent_id' => 'uuid',
         'drn' => null,
         'from_datetime' => 'date-time',
         'to_datetime' => 'date-time',
         'provider_id' => 'uuid',
         'document_type_id' => null,
-        'document_identifier' => null,
-        'data_consent' => null,
-        'organization' => null
+        'document_identifier' => null
     ];
 
     /**
@@ -119,16 +111,12 @@ class DataConsentRequestedDocument implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'consent_id' => 'consentId',
         'drn' => 'drn',
         'from_datetime' => 'fromDatetime',
         'to_datetime' => 'toDatetime',
         'provider_id' => 'providerId',
         'document_type_id' => 'documentTypeId',
-        'document_identifier' => 'documentIdentifier',
-        'data_consent' => 'dataConsent',
-        'organization' => 'organization'
+        'document_identifier' => 'documentIdentifier'
     ];
 
     /**
@@ -137,16 +125,12 @@ class DataConsentRequestedDocument implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'consent_id' => 'setConsentId',
         'drn' => 'setDrn',
         'from_datetime' => 'setFromDatetime',
         'to_datetime' => 'setToDatetime',
         'provider_id' => 'setProviderId',
         'document_type_id' => 'setDocumentTypeId',
-        'document_identifier' => 'setDocumentIdentifier',
-        'data_consent' => 'setDataConsent',
-        'organization' => 'setOrganization'
+        'document_identifier' => 'setDocumentIdentifier'
     ];
 
     /**
@@ -155,16 +139,12 @@ class DataConsentRequestedDocument implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'consent_id' => 'getConsentId',
         'drn' => 'getDrn',
         'from_datetime' => 'getFromDatetime',
         'to_datetime' => 'getToDatetime',
         'provider_id' => 'getProviderId',
         'document_type_id' => 'getDocumentTypeId',
-        'document_identifier' => 'getDocumentIdentifier',
-        'data_consent' => 'getDataConsent',
-        'organization' => 'getOrganization'
+        'document_identifier' => 'getDocumentIdentifier'
     ];
 
     /**
@@ -224,16 +204,12 @@ class DataConsentRequestedDocument implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['consent_id'] = $data['consent_id'] ?? null;
         $this->container['drn'] = $data['drn'] ?? null;
         $this->container['from_datetime'] = $data['from_datetime'] ?? null;
         $this->container['to_datetime'] = $data['to_datetime'] ?? null;
         $this->container['provider_id'] = $data['provider_id'] ?? null;
         $this->container['document_type_id'] = $data['document_type_id'] ?? null;
         $this->container['document_identifier'] = $data['document_identifier'] ?? null;
-        $this->container['data_consent'] = $data['data_consent'] ?? null;
-        $this->container['organization'] = $data['organization'] ?? null;
     }
 
     /**
@@ -259,54 +235,6 @@ class DataConsentRequestedDocument implements ModelInterface, ArrayAccess, \Json
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets consent_id
-     *
-     * @return string|null
-     */
-    public function getConsentId()
-    {
-        return $this->container['consent_id'];
-    }
-
-    /**
-     * Sets consent_id
-     *
-     * @param string|null $consent_id consent_id
-     *
-     * @return self
-     */
-    public function setConsentId($consent_id)
-    {
-        $this->container['consent_id'] = $consent_id;
-
-        return $this;
-    }
 
     /**
      * Gets drn
@@ -448,54 +376,6 @@ class DataConsentRequestedDocument implements ModelInterface, ArrayAccess, \Json
     public function setDocumentIdentifier($document_identifier)
     {
         $this->container['document_identifier'] = $document_identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_consent
-     *
-     * @return \MyDataMyConsent\Model\DataConsent|null
-     */
-    public function getDataConsent()
-    {
-        return $this->container['data_consent'];
-    }
-
-    /**
-     * Sets data_consent
-     *
-     * @param \MyDataMyConsent\Model\DataConsent|null $data_consent data_consent
-     *
-     * @return self
-     */
-    public function setDataConsent($data_consent)
-    {
-        $this->container['data_consent'] = $data_consent;
-
-        return $this;
-    }
-
-    /**
-     * Gets organization
-     *
-     * @return \MyDataMyConsent\Model\Organization|null
-     */
-    public function getOrganization()
-    {
-        return $this->container['organization'];
-    }
-
-    /**
-     * Sets organization
-     *
-     * @param \MyDataMyConsent\Model\Organization|null $organization organization
-     *
-     * @return self
-     */
-    public function setOrganization($organization)
-    {
-        $this->container['organization'] = $organization;
 
         return $this;
     }

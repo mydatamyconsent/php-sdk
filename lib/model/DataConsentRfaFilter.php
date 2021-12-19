@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -60,12 +60,9 @@ class DataConsentRfaFilter implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'rfa_id' => 'string',
         'filter_type' => '\MyDataMyConsent\Model\FilterType',
         'operator' => '\MyDataMyConsent\Model\Operator',
-        'value' => 'string',
-        'requested_financial_account' => '\MyDataMyConsent\Model\DataConsentRequestedFa'
+        'value' => 'string'
     ];
 
     /**
@@ -76,12 +73,9 @@ class DataConsentRfaFilter implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'uuid',
-        'rfa_id' => 'uuid',
         'filter_type' => null,
         'operator' => null,
-        'value' => null,
-        'requested_financial_account' => null
+        'value' => null
     ];
 
     /**
@@ -111,12 +105,9 @@ class DataConsentRfaFilter implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'rfa_id' => 'rfaId',
         'filter_type' => 'filterType',
         'operator' => 'operator',
-        'value' => 'value',
-        'requested_financial_account' => 'requestedFinancialAccount'
+        'value' => 'value'
     ];
 
     /**
@@ -125,12 +116,9 @@ class DataConsentRfaFilter implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'rfa_id' => 'setRfaId',
         'filter_type' => 'setFilterType',
         'operator' => 'setOperator',
-        'value' => 'setValue',
-        'requested_financial_account' => 'setRequestedFinancialAccount'
+        'value' => 'setValue'
     ];
 
     /**
@@ -139,12 +127,9 @@ class DataConsentRfaFilter implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'rfa_id' => 'getRfaId',
         'filter_type' => 'getFilterType',
         'operator' => 'getOperator',
-        'value' => 'getValue',
-        'requested_financial_account' => 'getRequestedFinancialAccount'
+        'value' => 'getValue'
     ];
 
     /**
@@ -204,12 +189,9 @@ class DataConsentRfaFilter implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['rfa_id'] = $data['rfa_id'] ?? null;
         $this->container['filter_type'] = $data['filter_type'] ?? null;
         $this->container['operator'] = $data['operator'] ?? null;
         $this->container['value'] = $data['value'] ?? null;
-        $this->container['requested_financial_account'] = $data['requested_financial_account'] ?? null;
     }
 
     /**
@@ -235,54 +217,6 @@ class DataConsentRfaFilter implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets rfa_id
-     *
-     * @return string|null
-     */
-    public function getRfaId()
-    {
-        return $this->container['rfa_id'];
-    }
-
-    /**
-     * Sets rfa_id
-     *
-     * @param string|null $rfa_id rfa_id
-     *
-     * @return self
-     */
-    public function setRfaId($rfa_id)
-    {
-        $this->container['rfa_id'] = $rfa_id;
-
-        return $this;
-    }
 
     /**
      * Gets filter_type
@@ -352,30 +286,6 @@ class DataConsentRfaFilter implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setValue($value)
     {
         $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets requested_financial_account
-     *
-     * @return \MyDataMyConsent\Model\DataConsentRequestedFa|null
-     */
-    public function getRequestedFinancialAccount()
-    {
-        return $this->container['requested_financial_account'];
-    }
-
-    /**
-     * Sets requested_financial_account
-     *
-     * @param \MyDataMyConsent\Model\DataConsentRequestedFa|null $requested_financial_account requested_financial_account
-     *
-     * @return self
-     */
-    public function setRequestedFinancialAccount($requested_financial_account)
-    {
-        $this->container['requested_financial_account'] = $requested_financial_account;
 
         return $this;
     }

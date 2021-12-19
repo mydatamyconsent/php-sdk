@@ -12,7 +12,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -116,311 +116,35 @@ class DataConsentRequestsApi
     }
 
     /**
-     * Operation v1DataConsentRequestsConsentIdGet
+     * Operation cancelConsentRequest
      *
-     * @param  string $consent_id consent_id (required)
+     * Cancel a Consent Request by ID.
      *
-     * @throws \MyDataMyConsent\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataConsentDetailsDto|\MyDataMyConsent\Model\ProblemDetails
-     */
-    public function v1DataConsentRequestsConsentIdGet($consent_id)
-    {
-        list($response) = $this->v1DataConsentRequestsConsentIdGetWithHttpInfo($consent_id);
-        return $response;
-    }
-
-    /**
-     * Operation v1DataConsentRequestsConsentIdGetWithHttpInfo
-     *
-     * @param  string $consent_id (required)
-     *
-     * @throws \MyDataMyConsent\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataConsentDetailsDto|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function v1DataConsentRequestsConsentIdGetWithHttpInfo($consent_id)
-    {
-        $request = $this->v1DataConsentRequestsConsentIdGetRequest($consent_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\MyDataMyConsent\Model\DataConsentDetailsDto' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataConsentDetailsDto', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\MyDataMyConsent\Model\DataConsentDetailsDto';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\DataConsentDetailsDto',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation v1DataConsentRequestsConsentIdGetAsync
-     *
-     * @param  string $consent_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function v1DataConsentRequestsConsentIdGetAsync($consent_id)
-    {
-        return $this->v1DataConsentRequestsConsentIdGetAsyncWithHttpInfo($consent_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation v1DataConsentRequestsConsentIdGetAsyncWithHttpInfo
-     *
-     * @param  string $consent_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function v1DataConsentRequestsConsentIdGetAsyncWithHttpInfo($consent_id)
-    {
-        $returnType = '\MyDataMyConsent\Model\DataConsentDetailsDto';
-        $request = $this->v1DataConsentRequestsConsentIdGetRequest($consent_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'v1DataConsentRequestsConsentIdGet'
-     *
-     * @param  string $consent_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function v1DataConsentRequestsConsentIdGetRequest($consent_id)
-    {
-        // verify the required parameter 'consent_id' is set
-        if ($consent_id === null || (is_array($consent_id) && count($consent_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $consent_id when calling v1DataConsentRequestsConsentIdGet'
-            );
-        }
-
-        $resourcePath = '/v1/data-consent-requests/{consentId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($consent_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'consentId' . '}',
-                ObjectSerializer::toPathValue($consent_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation v1DataConsentRequestsIdCancelDelete
-     *
-     * @param  string $id id (required)
+     * @param  string $request_id consent request id. (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function v1DataConsentRequestsIdCancelDelete($id)
+    public function cancelConsentRequest($request_id)
     {
-        $this->v1DataConsentRequestsIdCancelDeleteWithHttpInfo($id);
+        $this->cancelConsentRequestWithHttpInfo($request_id);
     }
 
     /**
-     * Operation v1DataConsentRequestsIdCancelDeleteWithHttpInfo
+     * Operation cancelConsentRequestWithHttpInfo
      *
-     * @param  string $id (required)
+     * Cancel a Consent Request by ID.
+     *
+     * @param  string $request_id consent request id. (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1DataConsentRequestsIdCancelDeleteWithHttpInfo($id)
+    public function cancelConsentRequestWithHttpInfo($request_id)
     {
-        $request = $this->v1DataConsentRequestsIdCancelDeleteRequest($id);
+        $request = $this->cancelConsentRequestRequest($request_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -460,16 +184,18 @@ class DataConsentRequestsApi
     }
 
     /**
-     * Operation v1DataConsentRequestsIdCancelDeleteAsync
+     * Operation cancelConsentRequestAsync
      *
-     * @param  string $id (required)
+     * Cancel a Consent Request by ID.
+     *
+     * @param  string $request_id consent request id. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DataConsentRequestsIdCancelDeleteAsync($id)
+    public function cancelConsentRequestAsync($request_id)
     {
-        return $this->v1DataConsentRequestsIdCancelDeleteAsyncWithHttpInfo($id)
+        return $this->cancelConsentRequestAsyncWithHttpInfo($request_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -478,17 +204,19 @@ class DataConsentRequestsApi
     }
 
     /**
-     * Operation v1DataConsentRequestsIdCancelDeleteAsyncWithHttpInfo
+     * Operation cancelConsentRequestAsyncWithHttpInfo
      *
-     * @param  string $id (required)
+     * Cancel a Consent Request by ID.
+     *
+     * @param  string $request_id consent request id. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DataConsentRequestsIdCancelDeleteAsyncWithHttpInfo($id)
+    public function cancelConsentRequestAsyncWithHttpInfo($request_id)
     {
         $returnType = '';
-        $request = $this->v1DataConsentRequestsIdCancelDeleteRequest($id);
+        $request = $this->cancelConsentRequestRequest($request_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -514,23 +242,23 @@ class DataConsentRequestsApi
     }
 
     /**
-     * Create request for operation 'v1DataConsentRequestsIdCancelDelete'
+     * Create request for operation 'cancelConsentRequest'
      *
-     * @param  string $id (required)
+     * @param  string $request_id consent request id. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function v1DataConsentRequestsIdCancelDeleteRequest($id)
+    public function cancelConsentRequestRequest($request_id)
     {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
+        // verify the required parameter 'request_id' is set
+        if ($request_id === null || (is_array($request_id) && count($request_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling v1DataConsentRequestsIdCancelDelete'
+                'Missing the required parameter $request_id when calling cancelConsentRequest'
             );
         }
 
-        $resourcePath = '/v1/data-consent-requests/{id}/cancel';
+        $resourcePath = '/v1/consent-requests/{requestId}/cancel';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -540,10 +268,10 @@ class DataConsentRequestsApi
 
 
         // path params
-        if ($id !== null) {
+        if ($request_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
+                '{' . 'requestId' . '}',
+                ObjectSerializer::toPathValue($request_id),
                 $resourcePath
             );
         }
@@ -585,10 +313,6 @@ class DataConsentRequestsApi
             }
         }
 
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -611,32 +335,36 @@ class DataConsentRequestsApi
     }
 
     /**
-     * Operation v1DataConsentRequestsPost
+     * Operation createRequest
      *
-     * @param  \MyDataMyConsent\Model\DataConsentRequestModel $data_consent_request_model data_consent_request_model (optional)
+     * Create a consent request.
+     *
+     * @param  \MyDataMyConsent\Model\DataConsentRequestModel $data_consent_request_model MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \MyDataMyConsent\Model\DataConsent|\MyDataMyConsent\Model\ProblemDetails
      */
-    public function v1DataConsentRequestsPost($data_consent_request_model = null)
+    public function createRequest($data_consent_request_model = null)
     {
-        list($response) = $this->v1DataConsentRequestsPostWithHttpInfo($data_consent_request_model);
+        list($response) = $this->createRequestWithHttpInfo($data_consent_request_model);
         return $response;
     }
 
     /**
-     * Operation v1DataConsentRequestsPostWithHttpInfo
+     * Operation createRequestWithHttpInfo
      *
-     * @param  \MyDataMyConsent\Model\DataConsentRequestModel $data_consent_request_model (optional)
+     * Create a consent request.
+     *
+     * @param  \MyDataMyConsent\Model\DataConsentRequestModel $data_consent_request_model MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \MyDataMyConsent\Model\DataConsent|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1DataConsentRequestsPostWithHttpInfo($data_consent_request_model = null)
+    public function createRequestWithHttpInfo($data_consent_request_model = null)
     {
-        $request = $this->v1DataConsentRequestsPostRequest($data_consent_request_model);
+        $request = $this->createRequestRequest($data_consent_request_model);
 
         try {
             $options = $this->createHttpClientOption();
@@ -730,16 +458,18 @@ class DataConsentRequestsApi
     }
 
     /**
-     * Operation v1DataConsentRequestsPostAsync
+     * Operation createRequestAsync
      *
-     * @param  \MyDataMyConsent\Model\DataConsentRequestModel $data_consent_request_model (optional)
+     * Create a consent request.
+     *
+     * @param  \MyDataMyConsent\Model\DataConsentRequestModel $data_consent_request_model MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DataConsentRequestsPostAsync($data_consent_request_model = null)
+    public function createRequestAsync($data_consent_request_model = null)
     {
-        return $this->v1DataConsentRequestsPostAsyncWithHttpInfo($data_consent_request_model)
+        return $this->createRequestAsyncWithHttpInfo($data_consent_request_model)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -748,17 +478,19 @@ class DataConsentRequestsApi
     }
 
     /**
-     * Operation v1DataConsentRequestsPostAsyncWithHttpInfo
+     * Operation createRequestAsyncWithHttpInfo
      *
-     * @param  \MyDataMyConsent\Model\DataConsentRequestModel $data_consent_request_model (optional)
+     * Create a consent request.
+     *
+     * @param  \MyDataMyConsent\Model\DataConsentRequestModel $data_consent_request_model MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DataConsentRequestsPostAsyncWithHttpInfo($data_consent_request_model = null)
+    public function createRequestAsyncWithHttpInfo($data_consent_request_model = null)
     {
         $returnType = '\MyDataMyConsent\Model\DataConsent';
-        $request = $this->v1DataConsentRequestsPostRequest($data_consent_request_model);
+        $request = $this->createRequestRequest($data_consent_request_model);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -794,17 +526,17 @@ class DataConsentRequestsApi
     }
 
     /**
-     * Create request for operation 'v1DataConsentRequestsPost'
+     * Create request for operation 'createRequest'
      *
-     * @param  \MyDataMyConsent\Model\DataConsentRequestModel $data_consent_request_model (optional)
+     * @param  \MyDataMyConsent\Model\DataConsentRequestModel $data_consent_request_model MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function v1DataConsentRequestsPostRequest($data_consent_request_model = null)
+    public function createRequestRequest($data_consent_request_model = null)
     {
 
-        $resourcePath = '/v1/data-consent-requests';
+        $resourcePath = '/v1/consent-requests';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -817,12 +549,12 @@ class DataConsentRequestsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json', 'application/xml']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
+                ['application/json', 'application/xml'],
+                ['application/json', 'application/xml']
             );
         }
 
@@ -857,10 +589,6 @@ class DataConsentRequestsApi
             }
         }
 
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -876,6 +604,571 @@ class DataConsentRequestsApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAllConsentRequests
+     *
+     * Get all Consent Requests.
+     *
+     * @param  \MyDataMyConsent\Model\DataConsentStatus $status status (optional)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return object|\MyDataMyConsent\Model\ProblemDetails
+     */
+    public function getAllConsentRequests($status = null)
+    {
+        list($response) = $this->getAllConsentRequestsWithHttpInfo($status);
+        return $response;
+    }
+
+    /**
+     * Operation getAllConsentRequestsWithHttpInfo
+     *
+     * Get all Consent Requests.
+     *
+     * @param  \MyDataMyConsent\Model\DataConsentStatus $status (optional)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of object|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAllConsentRequestsWithHttpInfo($status = null)
+    {
+        $request = $this->getAllConsentRequestsRequest($status);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = 'object';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAllConsentRequestsAsync
+     *
+     * Get all Consent Requests.
+     *
+     * @param  \MyDataMyConsent\Model\DataConsentStatus $status (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAllConsentRequestsAsync($status = null)
+    {
+        return $this->getAllConsentRequestsAsyncWithHttpInfo($status)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAllConsentRequestsAsyncWithHttpInfo
+     *
+     * Get all Consent Requests.
+     *
+     * @param  \MyDataMyConsent\Model\DataConsentStatus $status (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAllConsentRequestsAsyncWithHttpInfo($status = null)
+    {
+        $returnType = 'object';
+        $request = $this->getAllConsentRequestsRequest($status);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAllConsentRequests'
+     *
+     * @param  \MyDataMyConsent\Model\DataConsentStatus $status (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAllConsentRequestsRequest($status = null)
+    {
+
+        $resourcePath = '/v1/consent-requests';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'application/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'application/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getConsentRequestById
+     *
+     * Get a Consent Request by ID.
+     *
+     * @param  string $request_id request_id (required)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \MyDataMyConsent\Model\DataConsentDetailsDto|\MyDataMyConsent\Model\ProblemDetails
+     */
+    public function getConsentRequestById($request_id)
+    {
+        list($response) = $this->getConsentRequestByIdWithHttpInfo($request_id);
+        return $response;
+    }
+
+    /**
+     * Operation getConsentRequestByIdWithHttpInfo
+     *
+     * Get a Consent Request by ID.
+     *
+     * @param  string $request_id (required)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \MyDataMyConsent\Model\DataConsentDetailsDto|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getConsentRequestByIdWithHttpInfo($request_id)
+    {
+        $request = $this->getConsentRequestByIdRequest($request_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\MyDataMyConsent\Model\DataConsentDetailsDto' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataConsentDetailsDto', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\MyDataMyConsent\Model\DataConsentDetailsDto';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\DataConsentDetailsDto',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getConsentRequestByIdAsync
+     *
+     * Get a Consent Request by ID.
+     *
+     * @param  string $request_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConsentRequestByIdAsync($request_id)
+    {
+        return $this->getConsentRequestByIdAsyncWithHttpInfo($request_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getConsentRequestByIdAsyncWithHttpInfo
+     *
+     * Get a Consent Request by ID.
+     *
+     * @param  string $request_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConsentRequestByIdAsyncWithHttpInfo($request_id)
+    {
+        $returnType = '\MyDataMyConsent\Model\DataConsentDetailsDto';
+        $request = $this->getConsentRequestByIdRequest($request_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getConsentRequestById'
+     *
+     * @param  string $request_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getConsentRequestByIdRequest($request_id)
+    {
+        // verify the required parameter 'request_id' is set
+        if ($request_id === null || (is_array($request_id) && count($request_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request_id when calling getConsentRequestById'
+            );
+        }
+
+        $resourcePath = '/v1/consent-requests/{requestId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($request_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'requestId' . '}',
+                ObjectSerializer::toPathValue($request_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'application/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'application/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

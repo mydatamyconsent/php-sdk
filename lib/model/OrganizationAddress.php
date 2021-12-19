@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -60,19 +60,33 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'created_by' => 'string',
+        'created_at_utc' => '\DateTime',
+        'updated_by' => 'string',
+        'updated_at_utc' => '\DateTime',
+        'created_by_user' => '\MyDataMyConsent\Model\ApplicationUser',
+        'updated_by_user' => '\MyDataMyConsent\Model\ApplicationUser',
+        'deleted_by' => 'string',
+        'deleted_at_utc' => '\DateTime',
+        'deleted_by_user' => '\MyDataMyConsent\Model\ApplicationUser',
         'id' => 'string',
         'organization_id' => 'string',
+        'organization_name' => 'string',
         'type' => '\MyDataMyConsent\Model\OrganizationAddressType',
         'address_line1' => 'string',
         'address_line2' => 'string',
         'land_mark' => 'string',
+        'country_id' => 'string',
+        'state_id' => 'string',
         'city' => 'string',
         'post_code' => 'string',
-        'state_id' => 'string',
-        'proof_document' => 'string',
+        'proof_document_type' => '\MyDataMyConsent\Model\ProofDocumentType',
         'proof_document_url' => 'string',
+        'country' => '\MyDataMyConsent\Model\Country',
         'organization' => '\MyDataMyConsent\Model\Organization',
-        'country_state' => '\MyDataMyConsent\Model\CountryState'
+        'country_state' => '\MyDataMyConsent\Model\CountryState',
+        'is_primary' => 'bool',
+        'is_verified' => 'bool'
     ];
 
     /**
@@ -83,19 +97,33 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'created_by' => 'uuid',
+        'created_at_utc' => 'date-time',
+        'updated_by' => 'uuid',
+        'updated_at_utc' => 'date-time',
+        'created_by_user' => null,
+        'updated_by_user' => null,
+        'deleted_by' => 'uuid',
+        'deleted_at_utc' => 'date-time',
+        'deleted_by_user' => null,
         'id' => 'uuid',
         'organization_id' => 'uuid',
+        'organization_name' => null,
         'type' => null,
         'address_line1' => null,
         'address_line2' => null,
         'land_mark' => null,
+        'country_id' => 'uuid',
+        'state_id' => 'uuid',
         'city' => null,
         'post_code' => null,
-        'state_id' => 'uuid',
-        'proof_document' => null,
+        'proof_document_type' => null,
         'proof_document_url' => null,
+        'country' => null,
         'organization' => null,
-        'country_state' => null
+        'country_state' => null,
+        'is_primary' => null,
+        'is_verified' => null
     ];
 
     /**
@@ -125,19 +153,33 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'created_by' => 'createdBy',
+        'created_at_utc' => 'createdAtUtc',
+        'updated_by' => 'updatedBy',
+        'updated_at_utc' => 'updatedAtUtc',
+        'created_by_user' => 'createdByUser',
+        'updated_by_user' => 'updatedByUser',
+        'deleted_by' => 'deletedBy',
+        'deleted_at_utc' => 'deletedAtUtc',
+        'deleted_by_user' => 'deletedByUser',
         'id' => 'id',
         'organization_id' => 'organizationId',
+        'organization_name' => 'organizationName',
         'type' => 'type',
         'address_line1' => 'addressLine1',
         'address_line2' => 'addressLine2',
         'land_mark' => 'landMark',
+        'country_id' => 'countryId',
+        'state_id' => 'stateId',
         'city' => 'city',
         'post_code' => 'postCode',
-        'state_id' => 'stateId',
-        'proof_document' => 'proofDocument',
+        'proof_document_type' => 'proofDocumentType',
         'proof_document_url' => 'proofDocumentUrl',
+        'country' => 'country',
         'organization' => 'organization',
-        'country_state' => 'countryState'
+        'country_state' => 'countryState',
+        'is_primary' => 'isPrimary',
+        'is_verified' => 'isVerified'
     ];
 
     /**
@@ -146,19 +188,33 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'created_by' => 'setCreatedBy',
+        'created_at_utc' => 'setCreatedAtUtc',
+        'updated_by' => 'setUpdatedBy',
+        'updated_at_utc' => 'setUpdatedAtUtc',
+        'created_by_user' => 'setCreatedByUser',
+        'updated_by_user' => 'setUpdatedByUser',
+        'deleted_by' => 'setDeletedBy',
+        'deleted_at_utc' => 'setDeletedAtUtc',
+        'deleted_by_user' => 'setDeletedByUser',
         'id' => 'setId',
         'organization_id' => 'setOrganizationId',
+        'organization_name' => 'setOrganizationName',
         'type' => 'setType',
         'address_line1' => 'setAddressLine1',
         'address_line2' => 'setAddressLine2',
         'land_mark' => 'setLandMark',
+        'country_id' => 'setCountryId',
+        'state_id' => 'setStateId',
         'city' => 'setCity',
         'post_code' => 'setPostCode',
-        'state_id' => 'setStateId',
-        'proof_document' => 'setProofDocument',
+        'proof_document_type' => 'setProofDocumentType',
         'proof_document_url' => 'setProofDocumentUrl',
+        'country' => 'setCountry',
         'organization' => 'setOrganization',
-        'country_state' => 'setCountryState'
+        'country_state' => 'setCountryState',
+        'is_primary' => 'setIsPrimary',
+        'is_verified' => 'setIsVerified'
     ];
 
     /**
@@ -167,19 +223,33 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'created_by' => 'getCreatedBy',
+        'created_at_utc' => 'getCreatedAtUtc',
+        'updated_by' => 'getUpdatedBy',
+        'updated_at_utc' => 'getUpdatedAtUtc',
+        'created_by_user' => 'getCreatedByUser',
+        'updated_by_user' => 'getUpdatedByUser',
+        'deleted_by' => 'getDeletedBy',
+        'deleted_at_utc' => 'getDeletedAtUtc',
+        'deleted_by_user' => 'getDeletedByUser',
         'id' => 'getId',
         'organization_id' => 'getOrganizationId',
+        'organization_name' => 'getOrganizationName',
         'type' => 'getType',
         'address_line1' => 'getAddressLine1',
         'address_line2' => 'getAddressLine2',
         'land_mark' => 'getLandMark',
+        'country_id' => 'getCountryId',
+        'state_id' => 'getStateId',
         'city' => 'getCity',
         'post_code' => 'getPostCode',
-        'state_id' => 'getStateId',
-        'proof_document' => 'getProofDocument',
+        'proof_document_type' => 'getProofDocumentType',
         'proof_document_url' => 'getProofDocumentUrl',
+        'country' => 'getCountry',
         'organization' => 'getOrganization',
-        'country_state' => 'getCountryState'
+        'country_state' => 'getCountryState',
+        'is_primary' => 'getIsPrimary',
+        'is_verified' => 'getIsVerified'
     ];
 
     /**
@@ -239,19 +309,33 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
+        $this->container['created_by'] = $data['created_by'] ?? null;
+        $this->container['created_at_utc'] = $data['created_at_utc'] ?? null;
+        $this->container['updated_by'] = $data['updated_by'] ?? null;
+        $this->container['updated_at_utc'] = $data['updated_at_utc'] ?? null;
+        $this->container['created_by_user'] = $data['created_by_user'] ?? null;
+        $this->container['updated_by_user'] = $data['updated_by_user'] ?? null;
+        $this->container['deleted_by'] = $data['deleted_by'] ?? null;
+        $this->container['deleted_at_utc'] = $data['deleted_at_utc'] ?? null;
+        $this->container['deleted_by_user'] = $data['deleted_by_user'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['organization_id'] = $data['organization_id'] ?? null;
+        $this->container['organization_name'] = $data['organization_name'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['address_line1'] = $data['address_line1'] ?? null;
         $this->container['address_line2'] = $data['address_line2'] ?? null;
         $this->container['land_mark'] = $data['land_mark'] ?? null;
+        $this->container['country_id'] = $data['country_id'] ?? null;
+        $this->container['state_id'] = $data['state_id'] ?? null;
         $this->container['city'] = $data['city'] ?? null;
         $this->container['post_code'] = $data['post_code'] ?? null;
-        $this->container['state_id'] = $data['state_id'] ?? null;
-        $this->container['proof_document'] = $data['proof_document'] ?? null;
+        $this->container['proof_document_type'] = $data['proof_document_type'] ?? null;
         $this->container['proof_document_url'] = $data['proof_document_url'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
         $this->container['organization'] = $data['organization'] ?? null;
         $this->container['country_state'] = $data['country_state'] ?? null;
+        $this->container['is_primary'] = $data['is_primary'] ?? null;
+        $this->container['is_verified'] = $data['is_verified'] ?? null;
     }
 
     /**
@@ -277,6 +361,222 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets created_by
+     *
+     * @return string|null
+     */
+    public function getCreatedBy()
+    {
+        return $this->container['created_by'];
+    }
+
+    /**
+     * Sets created_by
+     *
+     * @param string|null $created_by created_by
+     *
+     * @return self
+     */
+    public function setCreatedBy($created_by)
+    {
+        $this->container['created_by'] = $created_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAtUtc()
+    {
+        return $this->container['created_at_utc'];
+    }
+
+    /**
+     * Sets created_at_utc
+     *
+     * @param \DateTime|null $created_at_utc created_at_utc
+     *
+     * @return self
+     */
+    public function setCreatedAtUtc($created_at_utc)
+    {
+        $this->container['created_at_utc'] = $created_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_by
+     *
+     * @return string|null
+     */
+    public function getUpdatedBy()
+    {
+        return $this->container['updated_by'];
+    }
+
+    /**
+     * Sets updated_by
+     *
+     * @param string|null $updated_by updated_by
+     *
+     * @return self
+     */
+    public function setUpdatedBy($updated_by)
+    {
+        $this->container['updated_by'] = $updated_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAtUtc()
+    {
+        return $this->container['updated_at_utc'];
+    }
+
+    /**
+     * Sets updated_at_utc
+     *
+     * @param \DateTime|null $updated_at_utc updated_at_utc
+     *
+     * @return self
+     */
+    public function setUpdatedAtUtc($updated_at_utc)
+    {
+        $this->container['updated_at_utc'] = $updated_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by_user
+     *
+     * @return \MyDataMyConsent\Model\ApplicationUser|null
+     */
+    public function getCreatedByUser()
+    {
+        return $this->container['created_by_user'];
+    }
+
+    /**
+     * Sets created_by_user
+     *
+     * @param \MyDataMyConsent\Model\ApplicationUser|null $created_by_user created_by_user
+     *
+     * @return self
+     */
+    public function setCreatedByUser($created_by_user)
+    {
+        $this->container['created_by_user'] = $created_by_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_by_user
+     *
+     * @return \MyDataMyConsent\Model\ApplicationUser|null
+     */
+    public function getUpdatedByUser()
+    {
+        return $this->container['updated_by_user'];
+    }
+
+    /**
+     * Sets updated_by_user
+     *
+     * @param \MyDataMyConsent\Model\ApplicationUser|null $updated_by_user updated_by_user
+     *
+     * @return self
+     */
+    public function setUpdatedByUser($updated_by_user)
+    {
+        $this->container['updated_by_user'] = $updated_by_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_by
+     *
+     * @return string|null
+     */
+    public function getDeletedBy()
+    {
+        return $this->container['deleted_by'];
+    }
+
+    /**
+     * Sets deleted_by
+     *
+     * @param string|null $deleted_by deleted_by
+     *
+     * @return self
+     */
+    public function setDeletedBy($deleted_by)
+    {
+        $this->container['deleted_by'] = $deleted_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getDeletedAtUtc()
+    {
+        return $this->container['deleted_at_utc'];
+    }
+
+    /**
+     * Sets deleted_at_utc
+     *
+     * @param \DateTime|null $deleted_at_utc deleted_at_utc
+     *
+     * @return self
+     */
+    public function setDeletedAtUtc($deleted_at_utc)
+    {
+        $this->container['deleted_at_utc'] = $deleted_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_by_user
+     *
+     * @return \MyDataMyConsent\Model\ApplicationUser|null
+     */
+    public function getDeletedByUser()
+    {
+        return $this->container['deleted_by_user'];
+    }
+
+    /**
+     * Sets deleted_by_user
+     *
+     * @param \MyDataMyConsent\Model\ApplicationUser|null $deleted_by_user deleted_by_user
+     *
+     * @return self
+     */
+    public function setDeletedByUser($deleted_by_user)
+    {
+        $this->container['deleted_by_user'] = $deleted_by_user;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -322,6 +622,30 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setOrganizationId($organization_id)
     {
         $this->container['organization_id'] = $organization_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets organization_name
+     *
+     * @return string|null
+     */
+    public function getOrganizationName()
+    {
+        return $this->container['organization_name'];
+    }
+
+    /**
+     * Sets organization_name
+     *
+     * @param string|null $organization_name organization_name
+     *
+     * @return self
+     */
+    public function setOrganizationName($organization_name)
+    {
+        $this->container['organization_name'] = $organization_name;
 
         return $this;
     }
@@ -423,6 +747,54 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets country_id
+     *
+     * @return string|null
+     */
+    public function getCountryId()
+    {
+        return $this->container['country_id'];
+    }
+
+    /**
+     * Sets country_id
+     *
+     * @param string|null $country_id country_id
+     *
+     * @return self
+     */
+    public function setCountryId($country_id)
+    {
+        $this->container['country_id'] = $country_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets state_id
+     *
+     * @return string|null
+     */
+    public function getStateId()
+    {
+        return $this->container['state_id'];
+    }
+
+    /**
+     * Sets state_id
+     *
+     * @param string|null $state_id state_id
+     *
+     * @return self
+     */
+    public function setStateId($state_id)
+    {
+        $this->container['state_id'] = $state_id;
+
+        return $this;
+    }
+
+    /**
      * Gets city
      *
      * @return string|null
@@ -471,49 +843,25 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets state_id
+     * Gets proof_document_type
      *
-     * @return string|null
+     * @return \MyDataMyConsent\Model\ProofDocumentType|null
      */
-    public function getStateId()
+    public function getProofDocumentType()
     {
-        return $this->container['state_id'];
+        return $this->container['proof_document_type'];
     }
 
     /**
-     * Sets state_id
+     * Sets proof_document_type
      *
-     * @param string|null $state_id state_id
+     * @param \MyDataMyConsent\Model\ProofDocumentType|null $proof_document_type proof_document_type
      *
      * @return self
      */
-    public function setStateId($state_id)
+    public function setProofDocumentType($proof_document_type)
     {
-        $this->container['state_id'] = $state_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets proof_document
-     *
-     * @return string|null
-     */
-    public function getProofDocument()
-    {
-        return $this->container['proof_document'];
-    }
-
-    /**
-     * Sets proof_document
-     *
-     * @param string|null $proof_document proof_document
-     *
-     * @return self
-     */
-    public function setProofDocument($proof_document)
-    {
-        $this->container['proof_document'] = $proof_document;
+        $this->container['proof_document_type'] = $proof_document_type;
 
         return $this;
     }
@@ -538,6 +886,30 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setProofDocumentUrl($proof_document_url)
     {
         $this->container['proof_document_url'] = $proof_document_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets country
+     *
+     * @return \MyDataMyConsent\Model\Country|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param \MyDataMyConsent\Model\Country|null $country country
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        $this->container['country'] = $country;
 
         return $this;
     }
@@ -586,6 +958,54 @@ class OrganizationAddress implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCountryState($country_state)
     {
         $this->container['country_state'] = $country_state;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_primary
+     *
+     * @return bool|null
+     */
+    public function getIsPrimary()
+    {
+        return $this->container['is_primary'];
+    }
+
+    /**
+     * Sets is_primary
+     *
+     * @param bool|null $is_primary is_primary
+     *
+     * @return self
+     */
+    public function setIsPrimary($is_primary)
+    {
+        $this->container['is_primary'] = $is_primary;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_verified
+     *
+     * @return bool|null
+     */
+    public function getIsVerified()
+    {
+        return $this->container['is_verified'];
+    }
+
+    /**
+     * Sets is_verified
+     *
+     * @param bool|null $is_verified is_verified
+     *
+     * @return self
+     */
+    public function setIsVerified($is_verified)
+    {
+        $this->container['is_verified'] = $is_verified;
 
         return $this;
     }

@@ -12,7 +12,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -118,10 +118,10 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsGet
      *
-     * Get All DataProcessingAgreements.
+     * Get all data processing agreements.
      *
-     * @param  int $page_no page_no (optional, default to 1)
-     * @param  int $page_size page_size (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -136,10 +136,10 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsGetWithHttpInfo
      *
-     * Get All DataProcessingAgreements.
+     * Get all data processing agreements.
      *
-     * @param  int $page_no (optional, default to 1)
-     * @param  int $page_size (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -243,10 +243,10 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsGetAsync
      *
-     * Get All DataProcessingAgreements.
+     * Get all data processing agreements.
      *
-     * @param  int $page_no (optional, default to 1)
-     * @param  int $page_size (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -264,10 +264,10 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsGetAsyncWithHttpInfo
      *
-     * Get All DataProcessingAgreements.
+     * Get all data processing agreements.
      *
-     * @param  int $page_no (optional, default to 1)
-     * @param  int $page_size (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -313,8 +313,8 @@ class DataProcessingAgreementsApi
     /**
      * Create request for operation 'v1DataAgreementsGet'
      *
-     * @param  int $page_no (optional, default to 1)
-     * @param  int $page_size (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -391,10 +391,6 @@ class DataProcessingAgreementsApi
             }
         }
 
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -419,6 +415,8 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsIdDelete
      *
+     * Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
+     *
      * @param  string $id id (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
@@ -432,6 +430,8 @@ class DataProcessingAgreementsApi
 
     /**
      * Operation v1DataAgreementsIdDeleteWithHttpInfo
+     *
+     * Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
      *
      * @param  string $id (required)
      *
@@ -499,6 +499,8 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsIdDeleteAsync
      *
+     * Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
+     *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
@@ -516,6 +518,8 @@ class DataProcessingAgreementsApi
 
     /**
      * Operation v1DataAgreementsIdDeleteAsyncWithHttpInfo
+     *
+     * Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
      *
      * @param  string $id (required)
      *
@@ -622,10 +626,6 @@ class DataProcessingAgreementsApi
             }
         }
 
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -650,6 +650,8 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsIdGet
      *
+     * Get data processing agreement by Id.
+     *
      * @param  string $id id (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
@@ -664,6 +666,8 @@ class DataProcessingAgreementsApi
 
     /**
      * Operation v1DataAgreementsIdGetWithHttpInfo
+     *
+     * Get data processing agreement by Id.
      *
      * @param  string $id (required)
      *
@@ -769,6 +773,8 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsIdGetAsync
      *
+     * Get data processing agreement by Id.
+     *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
@@ -786,6 +792,8 @@ class DataProcessingAgreementsApi
 
     /**
      * Operation v1DataAgreementsIdGetAsyncWithHttpInfo
+     *
+     * Get data processing agreement by Id.
      *
      * @param  string $id (required)
      *
@@ -902,10 +910,6 @@ class DataProcessingAgreementsApi
             }
         }
 
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -930,6 +934,8 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsIdPut
      *
+     * Update a data processing agreement.
+     *
      * @param  string $id id (required)
      * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement data_processing_agreement (optional)
      *
@@ -945,6 +951,8 @@ class DataProcessingAgreementsApi
 
     /**
      * Operation v1DataAgreementsIdPutWithHttpInfo
+     *
+     * Update a data processing agreement.
      *
      * @param  string $id (required)
      * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
@@ -1071,6 +1079,8 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsIdPutAsync
      *
+     * Update a data processing agreement.
+     *
      * @param  string $id (required)
      * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
      *
@@ -1089,6 +1099,8 @@ class DataProcessingAgreementsApi
 
     /**
      * Operation v1DataAgreementsIdPutAsyncWithHttpInfo
+     *
+     * Update a data processing agreement.
      *
      * @param  string $id (required)
      * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
@@ -1213,10 +1225,241 @@ class DataProcessingAgreementsApi
             }
         }
 
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation v1DataAgreementsIdTerminatePut
+     *
+     * Terminate a data processing agreement.
+     *
+     * @param  string $id id (required)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function v1DataAgreementsIdTerminatePut($id)
+    {
+        $this->v1DataAgreementsIdTerminatePutWithHttpInfo($id);
+    }
+
+    /**
+     * Operation v1DataAgreementsIdTerminatePutWithHttpInfo
+     *
+     * Terminate a data processing agreement.
+     *
+     * @param  string $id (required)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v1DataAgreementsIdTerminatePutWithHttpInfo($id)
+    {
+        $request = $this->v1DataAgreementsIdTerminatePutRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v1DataAgreementsIdTerminatePutAsync
+     *
+     * Terminate a data processing agreement.
+     *
+     * @param  string $id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v1DataAgreementsIdTerminatePutAsync($id)
+    {
+        return $this->v1DataAgreementsIdTerminatePutAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation v1DataAgreementsIdTerminatePutAsyncWithHttpInfo
+     *
+     * Terminate a data processing agreement.
+     *
+     * @param  string $id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v1DataAgreementsIdTerminatePutAsyncWithHttpInfo($id)
+    {
+        $returnType = '';
+        $request = $this->v1DataAgreementsIdTerminatePutRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'v1DataAgreementsIdTerminatePut'
+     *
+     * @param  string $id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function v1DataAgreementsIdTerminatePutRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling v1DataAgreementsIdTerminatePut'
+            );
+        }
+
+        $resourcePath = '/v1/data-agreements/{id}/terminate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'application/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'application/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1241,6 +1484,8 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsPost
      *
+     * Create a data processing agreement.
+     *
      * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement data_processing_agreement (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
@@ -1255,6 +1500,8 @@ class DataProcessingAgreementsApi
 
     /**
      * Operation v1DataAgreementsPostWithHttpInfo
+     *
+     * Create a data processing agreement.
      *
      * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
      *
@@ -1360,6 +1607,8 @@ class DataProcessingAgreementsApi
     /**
      * Operation v1DataAgreementsPostAsync
      *
+     * Create a data processing agreement.
+     *
      * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
      *
      * @throws \InvalidArgumentException
@@ -1377,6 +1626,8 @@ class DataProcessingAgreementsApi
 
     /**
      * Operation v1DataAgreementsPostAsyncWithHttpInfo
+     *
+     * Create a data processing agreement.
      *
      * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
      *
@@ -1485,10 +1736,6 @@ class DataProcessingAgreementsApi
             }
         }
 
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

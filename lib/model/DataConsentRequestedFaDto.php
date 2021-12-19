@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -64,7 +64,7 @@ class DataConsentRequestedFaDto implements ModelInterface, ArrayAccess, \JsonSer
         'from_datetime' => '\DateTime',
         'to_datetime' => '\DateTime',
         'provider_id' => 'string',
-        'account_type' => '\MyDataMyConsent\Model\FinancialAccountType',
+        'account_type' => '\MyDataMyConsent\Model\FinancialAccountTypes',
         'account_identifier' => 'string',
         'filters' => '\MyDataMyConsent\Model\DataConsentRfaFilterDto[]'
     ];
@@ -341,7 +341,7 @@ class DataConsentRequestedFaDto implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets account_type
      *
-     * @return \MyDataMyConsent\Model\FinancialAccountType|null
+     * @return \MyDataMyConsent\Model\FinancialAccountTypes|null
      */
     public function getAccountType()
     {
@@ -351,7 +351,7 @@ class DataConsentRequestedFaDto implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets account_type
      *
-     * @param \MyDataMyConsent\Model\FinancialAccountType|null $account_type account_type
+     * @param \MyDataMyConsent\Model\FinancialAccountTypes|null $account_type account_type
      *
      * @return self
      */

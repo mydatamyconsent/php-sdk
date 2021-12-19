@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -70,6 +70,7 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'string',
         'purpose_code' => 'string',
         'purpose_link' => 'string',
+        'location' => 'string',
         'agreement_id' => 'string',
         'data_life_unit' => '\MyDataMyConsent\Model\DataLifeUnit',
         'data_life_value' => 'int',
@@ -84,9 +85,9 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
         'organization' => '\MyDataMyConsent\Model\Organization',
         'requested_by_org' => '\MyDataMyConsent\Model\Organization',
         'agreement' => '\MyDataMyConsent\Model\DataProcessingAgreement',
-        'identity_claims' => '\MyDataMyConsent\Model\DataConsentIdentityClaim[]',
+        'identity_claims' => '\MyDataMyConsent\Model\IdentityClaim[]',
         'identifiers' => '\MyDataMyConsent\Model\DataConsentIdentifier[]',
-        'requested_financial_accounts' => '\MyDataMyConsent\Model\DataConsentRequestedFa[]',
+        'requested_financial_accounts' => '\MyDataMyConsent\Model\DataConsentRequestedFinancialAccount[]',
         'requested_documents' => '\MyDataMyConsent\Model\DataConsentRequestedDocument[]'
     ];
 
@@ -108,6 +109,7 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => null,
         'purpose_code' => null,
         'purpose_link' => null,
+        'location' => null,
         'agreement_id' => 'uuid',
         'data_life_unit' => null,
         'data_life_value' => 'int32',
@@ -165,6 +167,7 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'description',
         'purpose_code' => 'purposeCode',
         'purpose_link' => 'purposeLink',
+        'location' => 'location',
         'agreement_id' => 'agreementId',
         'data_life_unit' => 'dataLifeUnit',
         'data_life_value' => 'dataLifeValue',
@@ -201,6 +204,7 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'setDescription',
         'purpose_code' => 'setPurposeCode',
         'purpose_link' => 'setPurposeLink',
+        'location' => 'setLocation',
         'agreement_id' => 'setAgreementId',
         'data_life_unit' => 'setDataLifeUnit',
         'data_life_value' => 'setDataLifeValue',
@@ -237,6 +241,7 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'getDescription',
         'purpose_code' => 'getPurposeCode',
         'purpose_link' => 'getPurposeLink',
+        'location' => 'getLocation',
         'agreement_id' => 'getAgreementId',
         'data_life_unit' => 'getDataLifeUnit',
         'data_life_value' => 'getDataLifeValue',
@@ -324,6 +329,7 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['description'] = $data['description'] ?? null;
         $this->container['purpose_code'] = $data['purpose_code'] ?? null;
         $this->container['purpose_link'] = $data['purpose_link'] ?? null;
+        $this->container['location'] = $data['location'] ?? null;
         $this->container['agreement_id'] = $data['agreement_id'] ?? null;
         $this->container['data_life_unit'] = $data['data_life_unit'] ?? null;
         $this->container['data_life_value'] = $data['data_life_value'] ?? null;
@@ -604,6 +610,30 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPurposeLink($purpose_link)
     {
         $this->container['purpose_link'] = $purpose_link;
+
+        return $this;
+    }
+
+    /**
+     * Gets location
+     *
+     * @return string|null
+     */
+    public function getLocation()
+    {
+        return $this->container['location'];
+    }
+
+    /**
+     * Sets location
+     *
+     * @param string|null $location location
+     *
+     * @return self
+     */
+    public function setLocation($location)
+    {
+        $this->container['location'] = $location;
 
         return $this;
     }
@@ -947,7 +977,7 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets identity_claims
      *
-     * @return \MyDataMyConsent\Model\DataConsentIdentityClaim[]|null
+     * @return \MyDataMyConsent\Model\IdentityClaim[]|null
      */
     public function getIdentityClaims()
     {
@@ -957,7 +987,7 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identity_claims
      *
-     * @param \MyDataMyConsent\Model\DataConsentIdentityClaim[]|null $identity_claims identity_claims
+     * @param \MyDataMyConsent\Model\IdentityClaim[]|null $identity_claims identity_claims
      *
      * @return self
      */
@@ -995,7 +1025,7 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets requested_financial_accounts
      *
-     * @return \MyDataMyConsent\Model\DataConsentRequestedFa[]|null
+     * @return \MyDataMyConsent\Model\DataConsentRequestedFinancialAccount[]|null
      */
     public function getRequestedFinancialAccounts()
     {
@@ -1005,7 +1035,7 @@ class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets requested_financial_accounts
      *
-     * @param \MyDataMyConsent\Model\DataConsentRequestedFa[]|null $requested_financial_accounts requested_financial_accounts
+     * @param \MyDataMyConsent\Model\DataConsentRequestedFinancialAccount[]|null $requested_financial_accounts requested_financial_accounts
      *
      * @return self
      */

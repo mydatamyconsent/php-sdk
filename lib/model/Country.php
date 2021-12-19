@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -66,7 +66,10 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'iso2' => 'string',
         'phone_code' => 'string',
         'capital' => 'string',
-        'flag_url' => 'string'
+        'currency_code' => 'string',
+        'currency_symbol' => 'string',
+        'flag_url' => 'string',
+        'states' => '\MyDataMyConsent\Model\CountryState[]'
     ];
 
     /**
@@ -83,7 +86,10 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'iso2' => null,
         'phone_code' => null,
         'capital' => null,
-        'flag_url' => null
+        'currency_code' => null,
+        'currency_symbol' => null,
+        'flag_url' => null,
+        'states' => null
     ];
 
     /**
@@ -119,7 +125,10 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'iso2' => 'iso2',
         'phone_code' => 'phoneCode',
         'capital' => 'capital',
-        'flag_url' => 'flagUrl'
+        'currency_code' => 'currencyCode',
+        'currency_symbol' => 'currencySymbol',
+        'flag_url' => 'flagUrl',
+        'states' => 'states'
     ];
 
     /**
@@ -134,7 +143,10 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'iso2' => 'setIso2',
         'phone_code' => 'setPhoneCode',
         'capital' => 'setCapital',
-        'flag_url' => 'setFlagUrl'
+        'currency_code' => 'setCurrencyCode',
+        'currency_symbol' => 'setCurrencySymbol',
+        'flag_url' => 'setFlagUrl',
+        'states' => 'setStates'
     ];
 
     /**
@@ -149,7 +161,10 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'iso2' => 'getIso2',
         'phone_code' => 'getPhoneCode',
         'capital' => 'getCapital',
-        'flag_url' => 'getFlagUrl'
+        'currency_code' => 'getCurrencyCode',
+        'currency_symbol' => 'getCurrencySymbol',
+        'flag_url' => 'getFlagUrl',
+        'states' => 'getStates'
     ];
 
     /**
@@ -215,7 +230,10 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['iso2'] = $data['iso2'] ?? null;
         $this->container['phone_code'] = $data['phone_code'] ?? null;
         $this->container['capital'] = $data['capital'] ?? null;
+        $this->container['currency_code'] = $data['currency_code'] ?? null;
+        $this->container['currency_symbol'] = $data['currency_symbol'] ?? null;
         $this->container['flag_url'] = $data['flag_url'] ?? null;
+        $this->container['states'] = $data['states'] ?? null;
     }
 
     /**
@@ -387,6 +405,54 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets currency_code
+     *
+     * @return string|null
+     */
+    public function getCurrencyCode()
+    {
+        return $this->container['currency_code'];
+    }
+
+    /**
+     * Sets currency_code
+     *
+     * @param string|null $currency_code currency_code
+     *
+     * @return self
+     */
+    public function setCurrencyCode($currency_code)
+    {
+        $this->container['currency_code'] = $currency_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency_symbol
+     *
+     * @return string|null
+     */
+    public function getCurrencySymbol()
+    {
+        return $this->container['currency_symbol'];
+    }
+
+    /**
+     * Sets currency_symbol
+     *
+     * @param string|null $currency_symbol currency_symbol
+     *
+     * @return self
+     */
+    public function setCurrencySymbol($currency_symbol)
+    {
+        $this->container['currency_symbol'] = $currency_symbol;
+
+        return $this;
+    }
+
+    /**
      * Gets flag_url
      *
      * @return string|null
@@ -406,6 +472,30 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFlagUrl($flag_url)
     {
         $this->container['flag_url'] = $flag_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets states
+     *
+     * @return \MyDataMyConsent\Model\CountryState[]|null
+     */
+    public function getStates()
+    {
+        return $this->container['states'];
+    }
+
+    /**
+     * Sets states
+     *
+     * @param \MyDataMyConsent\Model\CountryState[]|null $states states
+     *
+     * @return self
+     */
+    public function setStates($states)
+    {
+        $this->container['states'] = $states;
 
         return $this;
     }

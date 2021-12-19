@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -76,6 +76,7 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'lockout_enabled' => 'bool',
         'access_failed_count' => 'int',
         'first_name' => 'string',
+        'middle_name' => 'string',
         'last_name' => 'string',
         'full_name' => 'string',
         'gender' => '\MyDataMyConsent\Model\Gender',
@@ -85,9 +86,14 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'referred_by' => 'string',
         'language' => 'string',
         'theme' => '\MyDataMyConsent\Model\Theme',
+        'designation' => 'string',
+        'is_marked_for_deletion' => 'bool',
+        'hard_delete_date' => '\DateTime',
         'security_pin' => 'string',
         'photo_url' => 'string',
         'referral_code' => 'string',
+        'recovery_token' => 'string',
+        'digi_locker_last_sync_date' => '\DateTime',
         'refresh_tokens' => '\MyDataMyConsent\Model\RefreshToken[]',
         'country' => '\MyDataMyConsent\Model\Country',
         'referred_by_user' => '\MyDataMyConsent\Model\ApplicationUser'
@@ -117,6 +123,7 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'lockout_enabled' => null,
         'access_failed_count' => 'int32',
         'first_name' => null,
+        'middle_name' => null,
         'last_name' => null,
         'full_name' => null,
         'gender' => null,
@@ -126,9 +133,14 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'referred_by' => 'uuid',
         'language' => null,
         'theme' => null,
+        'designation' => null,
+        'is_marked_for_deletion' => null,
+        'hard_delete_date' => 'date-time',
         'security_pin' => null,
         'photo_url' => null,
         'referral_code' => null,
+        'recovery_token' => null,
+        'digi_locker_last_sync_date' => 'date-time',
         'refresh_tokens' => null,
         'country' => null,
         'referred_by_user' => null
@@ -177,6 +189,7 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'lockout_enabled' => 'lockoutEnabled',
         'access_failed_count' => 'accessFailedCount',
         'first_name' => 'firstName',
+        'middle_name' => 'middleName',
         'last_name' => 'lastName',
         'full_name' => 'fullName',
         'gender' => 'gender',
@@ -186,9 +199,14 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'referred_by' => 'referredBy',
         'language' => 'language',
         'theme' => 'theme',
+        'designation' => 'designation',
+        'is_marked_for_deletion' => 'isMarkedForDeletion',
+        'hard_delete_date' => 'hardDeleteDate',
         'security_pin' => 'securityPin',
         'photo_url' => 'photoUrl',
         'referral_code' => 'referralCode',
+        'recovery_token' => 'recoveryToken',
+        'digi_locker_last_sync_date' => 'digiLockerLastSyncDate',
         'refresh_tokens' => 'refreshTokens',
         'country' => 'country',
         'referred_by_user' => 'referredByUser'
@@ -216,6 +234,7 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'lockout_enabled' => 'setLockoutEnabled',
         'access_failed_count' => 'setAccessFailedCount',
         'first_name' => 'setFirstName',
+        'middle_name' => 'setMiddleName',
         'last_name' => 'setLastName',
         'full_name' => 'setFullName',
         'gender' => 'setGender',
@@ -225,9 +244,14 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'referred_by' => 'setReferredBy',
         'language' => 'setLanguage',
         'theme' => 'setTheme',
+        'designation' => 'setDesignation',
+        'is_marked_for_deletion' => 'setIsMarkedForDeletion',
+        'hard_delete_date' => 'setHardDeleteDate',
         'security_pin' => 'setSecurityPin',
         'photo_url' => 'setPhotoUrl',
         'referral_code' => 'setReferralCode',
+        'recovery_token' => 'setRecoveryToken',
+        'digi_locker_last_sync_date' => 'setDigiLockerLastSyncDate',
         'refresh_tokens' => 'setRefreshTokens',
         'country' => 'setCountry',
         'referred_by_user' => 'setReferredByUser'
@@ -255,6 +279,7 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'lockout_enabled' => 'getLockoutEnabled',
         'access_failed_count' => 'getAccessFailedCount',
         'first_name' => 'getFirstName',
+        'middle_name' => 'getMiddleName',
         'last_name' => 'getLastName',
         'full_name' => 'getFullName',
         'gender' => 'getGender',
@@ -264,9 +289,14 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'referred_by' => 'getReferredBy',
         'language' => 'getLanguage',
         'theme' => 'getTheme',
+        'designation' => 'getDesignation',
+        'is_marked_for_deletion' => 'getIsMarkedForDeletion',
+        'hard_delete_date' => 'getHardDeleteDate',
         'security_pin' => 'getSecurityPin',
         'photo_url' => 'getPhotoUrl',
         'referral_code' => 'getReferralCode',
+        'recovery_token' => 'getRecoveryToken',
+        'digi_locker_last_sync_date' => 'getDigiLockerLastSyncDate',
         'refresh_tokens' => 'getRefreshTokens',
         'country' => 'getCountry',
         'referred_by_user' => 'getReferredByUser'
@@ -345,6 +375,7 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['lockout_enabled'] = $data['lockout_enabled'] ?? null;
         $this->container['access_failed_count'] = $data['access_failed_count'] ?? null;
         $this->container['first_name'] = $data['first_name'] ?? null;
+        $this->container['middle_name'] = $data['middle_name'] ?? null;
         $this->container['last_name'] = $data['last_name'] ?? null;
         $this->container['full_name'] = $data['full_name'] ?? null;
         $this->container['gender'] = $data['gender'] ?? null;
@@ -354,9 +385,14 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['referred_by'] = $data['referred_by'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
         $this->container['theme'] = $data['theme'] ?? null;
+        $this->container['designation'] = $data['designation'] ?? null;
+        $this->container['is_marked_for_deletion'] = $data['is_marked_for_deletion'] ?? null;
+        $this->container['hard_delete_date'] = $data['hard_delete_date'] ?? null;
         $this->container['security_pin'] = $data['security_pin'] ?? null;
         $this->container['photo_url'] = $data['photo_url'] ?? null;
         $this->container['referral_code'] = $data['referral_code'] ?? null;
+        $this->container['recovery_token'] = $data['recovery_token'] ?? null;
+        $this->container['digi_locker_last_sync_date'] = $data['digi_locker_last_sync_date'] ?? null;
         $this->container['refresh_tokens'] = $data['refresh_tokens'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
         $this->container['referred_by_user'] = $data['referred_by_user'] ?? null;
@@ -771,6 +807,30 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets middle_name
+     *
+     * @return string|null
+     */
+    public function getMiddleName()
+    {
+        return $this->container['middle_name'];
+    }
+
+    /**
+     * Sets middle_name
+     *
+     * @param string|null $middle_name middle_name
+     *
+     * @return self
+     */
+    public function setMiddleName($middle_name)
+    {
+        $this->container['middle_name'] = $middle_name;
+
+        return $this;
+    }
+
+    /**
      * Gets last_name
      *
      * @return string|null
@@ -987,6 +1047,78 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets designation
+     *
+     * @return string|null
+     */
+    public function getDesignation()
+    {
+        return $this->container['designation'];
+    }
+
+    /**
+     * Sets designation
+     *
+     * @param string|null $designation designation
+     *
+     * @return self
+     */
+    public function setDesignation($designation)
+    {
+        $this->container['designation'] = $designation;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_marked_for_deletion
+     *
+     * @return bool|null
+     */
+    public function getIsMarkedForDeletion()
+    {
+        return $this->container['is_marked_for_deletion'];
+    }
+
+    /**
+     * Sets is_marked_for_deletion
+     *
+     * @param bool|null $is_marked_for_deletion is_marked_for_deletion
+     *
+     * @return self
+     */
+    public function setIsMarkedForDeletion($is_marked_for_deletion)
+    {
+        $this->container['is_marked_for_deletion'] = $is_marked_for_deletion;
+
+        return $this;
+    }
+
+    /**
+     * Gets hard_delete_date
+     *
+     * @return \DateTime|null
+     */
+    public function getHardDeleteDate()
+    {
+        return $this->container['hard_delete_date'];
+    }
+
+    /**
+     * Sets hard_delete_date
+     *
+     * @param \DateTime|null $hard_delete_date hard_delete_date
+     *
+     * @return self
+     */
+    public function setHardDeleteDate($hard_delete_date)
+    {
+        $this->container['hard_delete_date'] = $hard_delete_date;
+
+        return $this;
+    }
+
+    /**
      * Gets security_pin
      *
      * @return string|null
@@ -1054,6 +1186,54 @@ class ApplicationUser implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReferralCode($referral_code)
     {
         $this->container['referral_code'] = $referral_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets recovery_token
+     *
+     * @return string|null
+     */
+    public function getRecoveryToken()
+    {
+        return $this->container['recovery_token'];
+    }
+
+    /**
+     * Sets recovery_token
+     *
+     * @param string|null $recovery_token recovery_token
+     *
+     * @return self
+     */
+    public function setRecoveryToken($recovery_token)
+    {
+        $this->container['recovery_token'] = $recovery_token;
+
+        return $this;
+    }
+
+    /**
+     * Gets digi_locker_last_sync_date
+     *
+     * @return \DateTime|null
+     */
+    public function getDigiLockerLastSyncDate()
+    {
+        return $this->container['digi_locker_last_sync_date'];
+    }
+
+    /**
+     * Sets digi_locker_last_sync_date
+     *
+     * @param \DateTime|null $digi_locker_last_sync_date digi_locker_last_sync_date
+     *
+     * @return self
+     */
+    public function setDigiLockerLastSyncDate($digi_locker_last_sync_date)
+    {
+        $this->container['digi_locker_last_sync_date'] = $digi_locker_last_sync_date;
 
         return $this;
     }

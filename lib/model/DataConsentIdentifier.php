@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -60,11 +60,8 @@ class DataConsentIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'consent_id' => 'string',
         'key' => 'string',
-        'value' => 'string',
-        'data_consent' => '\MyDataMyConsent\Model\DataConsent'
+        'value' => 'string'
     ];
 
     /**
@@ -75,11 +72,8 @@ class DataConsentIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'uuid',
-        'consent_id' => 'uuid',
         'key' => null,
-        'value' => null,
-        'data_consent' => null
+        'value' => null
     ];
 
     /**
@@ -109,11 +103,8 @@ class DataConsentIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'consent_id' => 'consentId',
         'key' => 'key',
-        'value' => 'value',
-        'data_consent' => 'dataConsent'
+        'value' => 'value'
     ];
 
     /**
@@ -122,11 +113,8 @@ class DataConsentIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'consent_id' => 'setConsentId',
         'key' => 'setKey',
-        'value' => 'setValue',
-        'data_consent' => 'setDataConsent'
+        'value' => 'setValue'
     ];
 
     /**
@@ -135,11 +123,8 @@ class DataConsentIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'consent_id' => 'getConsentId',
         'key' => 'getKey',
-        'value' => 'getValue',
-        'data_consent' => 'getDataConsent'
+        'value' => 'getValue'
     ];
 
     /**
@@ -199,11 +184,8 @@ class DataConsentIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['consent_id'] = $data['consent_id'] ?? null;
         $this->container['key'] = $data['key'] ?? null;
         $this->container['value'] = $data['value'] ?? null;
-        $this->container['data_consent'] = $data['data_consent'] ?? null;
     }
 
     /**
@@ -229,54 +211,6 @@ class DataConsentIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets consent_id
-     *
-     * @return string|null
-     */
-    public function getConsentId()
-    {
-        return $this->container['consent_id'];
-    }
-
-    /**
-     * Sets consent_id
-     *
-     * @param string|null $consent_id consent_id
-     *
-     * @return self
-     */
-    public function setConsentId($consent_id)
-    {
-        $this->container['consent_id'] = $consent_id;
-
-        return $this;
-    }
 
     /**
      * Gets key
@@ -322,30 +256,6 @@ class DataConsentIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setValue($value)
     {
         $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_consent
-     *
-     * @return \MyDataMyConsent\Model\DataConsent|null
-     */
-    public function getDataConsent()
-    {
-        return $this->container['data_consent'];
-    }
-
-    /**
-     * Sets data_consent
-     *
-     * @param \MyDataMyConsent\Model\DataConsent|null $data_consent data_consent
-     *
-     * @return self
-     */
-    public function setDataConsent($data_consent)
-    {
-        $this->container['data_consent'] = $data_consent;
 
         return $this;
     }

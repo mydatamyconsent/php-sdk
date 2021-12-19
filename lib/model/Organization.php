@@ -13,7 +13,7 @@
 /**
  * My Data My Consent - Developer API
  *
- * Unleashing the power of data consent
+ * Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.
  *
  * The version of the OpenAPI document: v1
  * Contact: support@mydatamyconsent.com
@@ -73,9 +73,12 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_partner_id' => 'string',
         'type_id' => 'string',
         'category_id' => 'string',
+        'document_provider_category_id' => 'string',
         'name' => 'string',
         'regulator_name' => 'string',
         'brand_name' => 'string',
+        'authorized_personnel_tax_id' => 'string',
+        'authorized_personnel_name' => 'string',
         'registration_id' => 'string',
         'vat_id' => 'string',
         'tax_id' => 'string',
@@ -83,7 +86,9 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'logo_url' => 'string',
         'contact_email' => 'string',
         'phone_number' => 'string',
+        'country_id' => 'string',
         'state_id' => 'string',
+        'status' => '\MyDataMyConsent\Model\OrganizationStatus',
         'company_code' => 'string',
         'privacy_policy_url' => 'string',
         'terms_of_service_url' => 'string',
@@ -97,12 +102,21 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'submitted_at_utc' => '\DateTime',
         'approved_by' => 'string',
         'approved_at_utc' => '\DateTime',
+        'is_digi_locker_organization' => 'bool',
+        'is_mdmc_maintained' => 'bool',
+        'is_bbps' => 'bool',
+        'meta_data' => '\MyDataMyConsent\Model\OrganizationMetaData',
+        'country_code' => 'string',
         'organization_type' => '\MyDataMyConsent\Model\OrganizationType',
         'organization_category' => '\MyDataMyConsent\Model\OrganizationCategory',
-        'organization_address' => '\MyDataMyConsent\Model\OrganizationAddress[]',
-        'organization_financial_account' => '\MyDataMyConsent\Model\OrganizationFinancialAccount[]',
-        'country_state' => '\MyDataMyConsent\Model\CountryState',
-        'approved_by_user' => '\MyDataMyConsent\Model\ApplicationUser'
+        'document_provider_category' => '\MyDataMyConsent\Model\DocumentProviderCategory',
+        'addresses' => '\MyDataMyConsent\Model\OrganizationAddress[]',
+        'financial_accounts' => '\MyDataMyConsent\Model\OrganizationFinancialAccount[]',
+        'country_state' => '\MyDataMyConsent\Model\Country',
+        'approved_by_user' => '\MyDataMyConsent\Model\ApplicationUser',
+        'kyo_documents' => '\MyDataMyConsent\Model\OrganizationKyoDocument[]',
+        'is_delete' => 'bool',
+        'recovery_token' => 'string'
     ];
 
     /**
@@ -126,9 +140,12 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_partner_id' => null,
         'type_id' => 'uuid',
         'category_id' => 'uuid',
+        'document_provider_category_id' => 'uuid',
         'name' => null,
         'regulator_name' => null,
         'brand_name' => null,
+        'authorized_personnel_tax_id' => null,
+        'authorized_personnel_name' => null,
         'registration_id' => null,
         'vat_id' => null,
         'tax_id' => null,
@@ -136,7 +153,9 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'logo_url' => null,
         'contact_email' => null,
         'phone_number' => null,
+        'country_id' => 'uuid',
         'state_id' => 'uuid',
+        'status' => null,
         'company_code' => null,
         'privacy_policy_url' => null,
         'terms_of_service_url' => null,
@@ -150,12 +169,21 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'submitted_at_utc' => 'date-time',
         'approved_by' => 'uuid',
         'approved_at_utc' => 'date-time',
+        'is_digi_locker_organization' => null,
+        'is_mdmc_maintained' => null,
+        'is_bbps' => null,
+        'meta_data' => null,
+        'country_code' => null,
         'organization_type' => null,
         'organization_category' => null,
-        'organization_address' => null,
-        'organization_financial_account' => null,
+        'document_provider_category' => null,
+        'addresses' => null,
+        'financial_accounts' => null,
         'country_state' => null,
-        'approved_by_user' => null
+        'approved_by_user' => null,
+        'kyo_documents' => null,
+        'is_delete' => null,
+        'recovery_token' => 'uuid'
     ];
 
     /**
@@ -198,9 +226,12 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_partner_id' => 'dataPartnerId',
         'type_id' => 'typeId',
         'category_id' => 'categoryId',
+        'document_provider_category_id' => 'documentProviderCategoryId',
         'name' => 'name',
         'regulator_name' => 'regulatorName',
         'brand_name' => 'brandName',
+        'authorized_personnel_tax_id' => 'authorizedPersonnelTaxId',
+        'authorized_personnel_name' => 'authorizedPersonnelName',
         'registration_id' => 'registrationId',
         'vat_id' => 'vatId',
         'tax_id' => 'taxId',
@@ -208,7 +239,9 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'logo_url' => 'logoUrl',
         'contact_email' => 'contactEmail',
         'phone_number' => 'phoneNumber',
+        'country_id' => 'countryId',
         'state_id' => 'stateId',
+        'status' => 'status',
         'company_code' => 'companyCode',
         'privacy_policy_url' => 'privacyPolicyUrl',
         'terms_of_service_url' => 'termsOfServiceUrl',
@@ -222,12 +255,21 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'submitted_at_utc' => 'submittedAtUtc',
         'approved_by' => 'approvedBy',
         'approved_at_utc' => 'approvedAtUtc',
+        'is_digi_locker_organization' => 'isDigiLockerOrganization',
+        'is_mdmc_maintained' => 'isMdmcMaintained',
+        'is_bbps' => 'isBbps',
+        'meta_data' => 'metaData',
+        'country_code' => 'countryCode',
         'organization_type' => 'organizationType',
         'organization_category' => 'organizationCategory',
-        'organization_address' => 'organizationAddress',
-        'organization_financial_account' => 'organizationFinancialAccount',
+        'document_provider_category' => 'documentProviderCategory',
+        'addresses' => 'addresses',
+        'financial_accounts' => 'financialAccounts',
         'country_state' => 'countryState',
-        'approved_by_user' => 'approvedByUser'
+        'approved_by_user' => 'approvedByUser',
+        'kyo_documents' => 'kyoDocuments',
+        'is_delete' => 'isDelete',
+        'recovery_token' => 'recoveryToken'
     ];
 
     /**
@@ -249,9 +291,12 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_partner_id' => 'setDataPartnerId',
         'type_id' => 'setTypeId',
         'category_id' => 'setCategoryId',
+        'document_provider_category_id' => 'setDocumentProviderCategoryId',
         'name' => 'setName',
         'regulator_name' => 'setRegulatorName',
         'brand_name' => 'setBrandName',
+        'authorized_personnel_tax_id' => 'setAuthorizedPersonnelTaxId',
+        'authorized_personnel_name' => 'setAuthorizedPersonnelName',
         'registration_id' => 'setRegistrationId',
         'vat_id' => 'setVatId',
         'tax_id' => 'setTaxId',
@@ -259,7 +304,9 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'logo_url' => 'setLogoUrl',
         'contact_email' => 'setContactEmail',
         'phone_number' => 'setPhoneNumber',
+        'country_id' => 'setCountryId',
         'state_id' => 'setStateId',
+        'status' => 'setStatus',
         'company_code' => 'setCompanyCode',
         'privacy_policy_url' => 'setPrivacyPolicyUrl',
         'terms_of_service_url' => 'setTermsOfServiceUrl',
@@ -273,12 +320,21 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'submitted_at_utc' => 'setSubmittedAtUtc',
         'approved_by' => 'setApprovedBy',
         'approved_at_utc' => 'setApprovedAtUtc',
+        'is_digi_locker_organization' => 'setIsDigiLockerOrganization',
+        'is_mdmc_maintained' => 'setIsMdmcMaintained',
+        'is_bbps' => 'setIsBbps',
+        'meta_data' => 'setMetaData',
+        'country_code' => 'setCountryCode',
         'organization_type' => 'setOrganizationType',
         'organization_category' => 'setOrganizationCategory',
-        'organization_address' => 'setOrganizationAddress',
-        'organization_financial_account' => 'setOrganizationFinancialAccount',
+        'document_provider_category' => 'setDocumentProviderCategory',
+        'addresses' => 'setAddresses',
+        'financial_accounts' => 'setFinancialAccounts',
         'country_state' => 'setCountryState',
-        'approved_by_user' => 'setApprovedByUser'
+        'approved_by_user' => 'setApprovedByUser',
+        'kyo_documents' => 'setKyoDocuments',
+        'is_delete' => 'setIsDelete',
+        'recovery_token' => 'setRecoveryToken'
     ];
 
     /**
@@ -300,9 +356,12 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_partner_id' => 'getDataPartnerId',
         'type_id' => 'getTypeId',
         'category_id' => 'getCategoryId',
+        'document_provider_category_id' => 'getDocumentProviderCategoryId',
         'name' => 'getName',
         'regulator_name' => 'getRegulatorName',
         'brand_name' => 'getBrandName',
+        'authorized_personnel_tax_id' => 'getAuthorizedPersonnelTaxId',
+        'authorized_personnel_name' => 'getAuthorizedPersonnelName',
         'registration_id' => 'getRegistrationId',
         'vat_id' => 'getVatId',
         'tax_id' => 'getTaxId',
@@ -310,7 +369,9 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'logo_url' => 'getLogoUrl',
         'contact_email' => 'getContactEmail',
         'phone_number' => 'getPhoneNumber',
+        'country_id' => 'getCountryId',
         'state_id' => 'getStateId',
+        'status' => 'getStatus',
         'company_code' => 'getCompanyCode',
         'privacy_policy_url' => 'getPrivacyPolicyUrl',
         'terms_of_service_url' => 'getTermsOfServiceUrl',
@@ -324,12 +385,21 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'submitted_at_utc' => 'getSubmittedAtUtc',
         'approved_by' => 'getApprovedBy',
         'approved_at_utc' => 'getApprovedAtUtc',
+        'is_digi_locker_organization' => 'getIsDigiLockerOrganization',
+        'is_mdmc_maintained' => 'getIsMdmcMaintained',
+        'is_bbps' => 'getIsBbps',
+        'meta_data' => 'getMetaData',
+        'country_code' => 'getCountryCode',
         'organization_type' => 'getOrganizationType',
         'organization_category' => 'getOrganizationCategory',
-        'organization_address' => 'getOrganizationAddress',
-        'organization_financial_account' => 'getOrganizationFinancialAccount',
+        'document_provider_category' => 'getDocumentProviderCategory',
+        'addresses' => 'getAddresses',
+        'financial_accounts' => 'getFinancialAccounts',
         'country_state' => 'getCountryState',
-        'approved_by_user' => 'getApprovedByUser'
+        'approved_by_user' => 'getApprovedByUser',
+        'kyo_documents' => 'getKyoDocuments',
+        'is_delete' => 'getIsDelete',
+        'recovery_token' => 'getRecoveryToken'
     ];
 
     /**
@@ -402,9 +472,12 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['data_partner_id'] = $data['data_partner_id'] ?? null;
         $this->container['type_id'] = $data['type_id'] ?? null;
         $this->container['category_id'] = $data['category_id'] ?? null;
+        $this->container['document_provider_category_id'] = $data['document_provider_category_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['regulator_name'] = $data['regulator_name'] ?? null;
         $this->container['brand_name'] = $data['brand_name'] ?? null;
+        $this->container['authorized_personnel_tax_id'] = $data['authorized_personnel_tax_id'] ?? null;
+        $this->container['authorized_personnel_name'] = $data['authorized_personnel_name'] ?? null;
         $this->container['registration_id'] = $data['registration_id'] ?? null;
         $this->container['vat_id'] = $data['vat_id'] ?? null;
         $this->container['tax_id'] = $data['tax_id'] ?? null;
@@ -412,7 +485,9 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['logo_url'] = $data['logo_url'] ?? null;
         $this->container['contact_email'] = $data['contact_email'] ?? null;
         $this->container['phone_number'] = $data['phone_number'] ?? null;
+        $this->container['country_id'] = $data['country_id'] ?? null;
         $this->container['state_id'] = $data['state_id'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['company_code'] = $data['company_code'] ?? null;
         $this->container['privacy_policy_url'] = $data['privacy_policy_url'] ?? null;
         $this->container['terms_of_service_url'] = $data['terms_of_service_url'] ?? null;
@@ -426,12 +501,21 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['submitted_at_utc'] = $data['submitted_at_utc'] ?? null;
         $this->container['approved_by'] = $data['approved_by'] ?? null;
         $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
+        $this->container['is_digi_locker_organization'] = $data['is_digi_locker_organization'] ?? null;
+        $this->container['is_mdmc_maintained'] = $data['is_mdmc_maintained'] ?? null;
+        $this->container['is_bbps'] = $data['is_bbps'] ?? null;
+        $this->container['meta_data'] = $data['meta_data'] ?? null;
+        $this->container['country_code'] = $data['country_code'] ?? null;
         $this->container['organization_type'] = $data['organization_type'] ?? null;
         $this->container['organization_category'] = $data['organization_category'] ?? null;
-        $this->container['organization_address'] = $data['organization_address'] ?? null;
-        $this->container['organization_financial_account'] = $data['organization_financial_account'] ?? null;
+        $this->container['document_provider_category'] = $data['document_provider_category'] ?? null;
+        $this->container['addresses'] = $data['addresses'] ?? null;
+        $this->container['financial_accounts'] = $data['financial_accounts'] ?? null;
         $this->container['country_state'] = $data['country_state'] ?? null;
         $this->container['approved_by_user'] = $data['approved_by_user'] ?? null;
+        $this->container['kyo_documents'] = $data['kyo_documents'] ?? null;
+        $this->container['is_delete'] = $data['is_delete'] ?? null;
+        $this->container['recovery_token'] = $data['recovery_token'] ?? null;
     }
 
     /**
@@ -771,6 +855,30 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets document_provider_category_id
+     *
+     * @return string|null
+     */
+    public function getDocumentProviderCategoryId()
+    {
+        return $this->container['document_provider_category_id'];
+    }
+
+    /**
+     * Sets document_provider_category_id
+     *
+     * @param string|null $document_provider_category_id document_provider_category_id
+     *
+     * @return self
+     */
+    public function setDocumentProviderCategoryId($document_provider_category_id)
+    {
+        $this->container['document_provider_category_id'] = $document_provider_category_id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string|null
@@ -838,6 +946,54 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBrandName($brand_name)
     {
         $this->container['brand_name'] = $brand_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets authorized_personnel_tax_id
+     *
+     * @return string|null
+     */
+    public function getAuthorizedPersonnelTaxId()
+    {
+        return $this->container['authorized_personnel_tax_id'];
+    }
+
+    /**
+     * Sets authorized_personnel_tax_id
+     *
+     * @param string|null $authorized_personnel_tax_id authorized_personnel_tax_id
+     *
+     * @return self
+     */
+    public function setAuthorizedPersonnelTaxId($authorized_personnel_tax_id)
+    {
+        $this->container['authorized_personnel_tax_id'] = $authorized_personnel_tax_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets authorized_personnel_name
+     *
+     * @return string|null
+     */
+    public function getAuthorizedPersonnelName()
+    {
+        return $this->container['authorized_personnel_name'];
+    }
+
+    /**
+     * Sets authorized_personnel_name
+     *
+     * @param string|null $authorized_personnel_name authorized_personnel_name
+     *
+     * @return self
+     */
+    public function setAuthorizedPersonnelName($authorized_personnel_name)
+    {
+        $this->container['authorized_personnel_name'] = $authorized_personnel_name;
 
         return $this;
     }
@@ -1011,6 +1167,30 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets country_id
+     *
+     * @return string|null
+     */
+    public function getCountryId()
+    {
+        return $this->container['country_id'];
+    }
+
+    /**
+     * Sets country_id
+     *
+     * @param string|null $country_id country_id
+     *
+     * @return self
+     */
+    public function setCountryId($country_id)
+    {
+        $this->container['country_id'] = $country_id;
+
+        return $this;
+    }
+
+    /**
      * Gets state_id
      *
      * @return string|null
@@ -1030,6 +1210,30 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStateId($state_id)
     {
         $this->container['state_id'] = $state_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return \MyDataMyConsent\Model\OrganizationStatus|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param \MyDataMyConsent\Model\OrganizationStatus|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
@@ -1347,6 +1551,126 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets is_digi_locker_organization
+     *
+     * @return bool|null
+     */
+    public function getIsDigiLockerOrganization()
+    {
+        return $this->container['is_digi_locker_organization'];
+    }
+
+    /**
+     * Sets is_digi_locker_organization
+     *
+     * @param bool|null $is_digi_locker_organization is_digi_locker_organization
+     *
+     * @return self
+     */
+    public function setIsDigiLockerOrganization($is_digi_locker_organization)
+    {
+        $this->container['is_digi_locker_organization'] = $is_digi_locker_organization;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_mdmc_maintained
+     *
+     * @return bool|null
+     */
+    public function getIsMdmcMaintained()
+    {
+        return $this->container['is_mdmc_maintained'];
+    }
+
+    /**
+     * Sets is_mdmc_maintained
+     *
+     * @param bool|null $is_mdmc_maintained is_mdmc_maintained
+     *
+     * @return self
+     */
+    public function setIsMdmcMaintained($is_mdmc_maintained)
+    {
+        $this->container['is_mdmc_maintained'] = $is_mdmc_maintained;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_bbps
+     *
+     * @return bool|null
+     */
+    public function getIsBbps()
+    {
+        return $this->container['is_bbps'];
+    }
+
+    /**
+     * Sets is_bbps
+     *
+     * @param bool|null $is_bbps is_bbps
+     *
+     * @return self
+     */
+    public function setIsBbps($is_bbps)
+    {
+        $this->container['is_bbps'] = $is_bbps;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta_data
+     *
+     * @return \MyDataMyConsent\Model\OrganizationMetaData|null
+     */
+    public function getMetaData()
+    {
+        return $this->container['meta_data'];
+    }
+
+    /**
+     * Sets meta_data
+     *
+     * @param \MyDataMyConsent\Model\OrganizationMetaData|null $meta_data meta_data
+     *
+     * @return self
+     */
+    public function setMetaData($meta_data)
+    {
+        $this->container['meta_data'] = $meta_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_code
+     *
+     * @return string|null
+     */
+    public function getCountryCode()
+    {
+        return $this->container['country_code'];
+    }
+
+    /**
+     * Sets country_code
+     *
+     * @param string|null $country_code country_code
+     *
+     * @return self
+     */
+    public function setCountryCode($country_code)
+    {
+        $this->container['country_code'] = $country_code;
+
+        return $this;
+    }
+
+    /**
      * Gets organization_type
      *
      * @return \MyDataMyConsent\Model\OrganizationType|null
@@ -1395,49 +1719,73 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets organization_address
+     * Gets document_provider_category
      *
-     * @return \MyDataMyConsent\Model\OrganizationAddress[]|null
+     * @return \MyDataMyConsent\Model\DocumentProviderCategory|null
      */
-    public function getOrganizationAddress()
+    public function getDocumentProviderCategory()
     {
-        return $this->container['organization_address'];
+        return $this->container['document_provider_category'];
     }
 
     /**
-     * Sets organization_address
+     * Sets document_provider_category
      *
-     * @param \MyDataMyConsent\Model\OrganizationAddress[]|null $organization_address organization_address
+     * @param \MyDataMyConsent\Model\DocumentProviderCategory|null $document_provider_category document_provider_category
      *
      * @return self
      */
-    public function setOrganizationAddress($organization_address)
+    public function setDocumentProviderCategory($document_provider_category)
     {
-        $this->container['organization_address'] = $organization_address;
+        $this->container['document_provider_category'] = $document_provider_category;
 
         return $this;
     }
 
     /**
-     * Gets organization_financial_account
+     * Gets addresses
      *
-     * @return \MyDataMyConsent\Model\OrganizationFinancialAccount[]|null
+     * @return \MyDataMyConsent\Model\OrganizationAddress[]|null
      */
-    public function getOrganizationFinancialAccount()
+    public function getAddresses()
     {
-        return $this->container['organization_financial_account'];
+        return $this->container['addresses'];
     }
 
     /**
-     * Sets organization_financial_account
+     * Sets addresses
      *
-     * @param \MyDataMyConsent\Model\OrganizationFinancialAccount[]|null $organization_financial_account organization_financial_account
+     * @param \MyDataMyConsent\Model\OrganizationAddress[]|null $addresses addresses
      *
      * @return self
      */
-    public function setOrganizationFinancialAccount($organization_financial_account)
+    public function setAddresses($addresses)
     {
-        $this->container['organization_financial_account'] = $organization_financial_account;
+        $this->container['addresses'] = $addresses;
+
+        return $this;
+    }
+
+    /**
+     * Gets financial_accounts
+     *
+     * @return \MyDataMyConsent\Model\OrganizationFinancialAccount[]|null
+     */
+    public function getFinancialAccounts()
+    {
+        return $this->container['financial_accounts'];
+    }
+
+    /**
+     * Sets financial_accounts
+     *
+     * @param \MyDataMyConsent\Model\OrganizationFinancialAccount[]|null $financial_accounts financial_accounts
+     *
+     * @return self
+     */
+    public function setFinancialAccounts($financial_accounts)
+    {
+        $this->container['financial_accounts'] = $financial_accounts;
 
         return $this;
     }
@@ -1445,7 +1793,7 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets country_state
      *
-     * @return \MyDataMyConsent\Model\CountryState|null
+     * @return \MyDataMyConsent\Model\Country|null
      */
     public function getCountryState()
     {
@@ -1455,7 +1803,7 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country_state
      *
-     * @param \MyDataMyConsent\Model\CountryState|null $country_state country_state
+     * @param \MyDataMyConsent\Model\Country|null $country_state country_state
      *
      * @return self
      */
@@ -1486,6 +1834,78 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setApprovedByUser($approved_by_user)
     {
         $this->container['approved_by_user'] = $approved_by_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets kyo_documents
+     *
+     * @return \MyDataMyConsent\Model\OrganizationKyoDocument[]|null
+     */
+    public function getKyoDocuments()
+    {
+        return $this->container['kyo_documents'];
+    }
+
+    /**
+     * Sets kyo_documents
+     *
+     * @param \MyDataMyConsent\Model\OrganizationKyoDocument[]|null $kyo_documents kyo_documents
+     *
+     * @return self
+     */
+    public function setKyoDocuments($kyo_documents)
+    {
+        $this->container['kyo_documents'] = $kyo_documents;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_delete
+     *
+     * @return bool|null
+     */
+    public function getIsDelete()
+    {
+        return $this->container['is_delete'];
+    }
+
+    /**
+     * Sets is_delete
+     *
+     * @param bool|null $is_delete is_delete
+     *
+     * @return self
+     */
+    public function setIsDelete($is_delete)
+    {
+        $this->container['is_delete'] = $is_delete;
+
+        return $this;
+    }
+
+    /**
+     * Gets recovery_token
+     *
+     * @return string|null
+     */
+    public function getRecoveryToken()
+    {
+        return $this->container['recovery_token'];
+    }
+
+    /**
+     * Sets recovery_token
+     *
+     * @param string|null $recovery_token recovery_token
+     *
+     * @return self
+     */
+    public function setRecoveryToken($recovery_token)
+    {
+        $this->container['recovery_token'] = $recovery_token;
 
         return $this;
     }
