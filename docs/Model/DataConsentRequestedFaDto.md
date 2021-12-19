@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **from_datetime** | [**\DateTime**](\DateTime.md) |  | [optional]
 **to_datetime** | [**\DateTime**](\DateTime.md) |  | [optional]
 **provider_id** | **string** |  | [optional]
-**account_type** | [**\MyDataMyConsent\Model\FinancialAccountType**](FinancialAccountType.md) |  | [optional]
+**account_type** | [**\MyDataMyConsent\Model\FinancialAccountTypes**](FinancialAccountTypes.md) |  | [optional]
 **account_identifier** | **string** |  | [optional]
 **filters** | [**\MyDataMyConsent\Model\DataConsentRfaFilterDto[]**](DataConsentRfaFilterDto.md) |  | [optional]
 

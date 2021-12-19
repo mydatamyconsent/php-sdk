@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **description** | **string** |  | [optional]
 **purpose_code** | **string** |  | [optional]
 **purpose_link** | **string** |  | [optional]
+**location** | **string** |  | [optional]
 **agreement_id** | **string** |  | [optional]
 **data_life_unit** | [**\MyDataMyConsent\Model\DataLifeUnit**](DataLifeUnit.md) |  | [optional]
 **data_life_value** | **int** |  | [optional]
@@ -28,9 +29,9 @@ Name | Type | Description | Notes
 **organization** | [**\MyDataMyConsent\Model\Organization**](Organization.md) |  | [optional]
 **requested_by_org** | [**\MyDataMyConsent\Model\Organization**](Organization.md) |  | [optional]
 **agreement** | [**\MyDataMyConsent\Model\DataProcessingAgreement**](DataProcessingAgreement.md) |  | [optional]
-**identity_claims** | [**\MyDataMyConsent\Model\DataConsentIdentityClaim[]**](DataConsentIdentityClaim.md) |  | [optional]
+**identity_claims** | [**\MyDataMyConsent\Model\IdentityClaim[]**](IdentityClaim.md) |  | [optional]
 **identifiers** | [**\MyDataMyConsent\Model\DataConsentIdentifier[]**](DataConsentIdentifier.md) |  | [optional]
-**requested_financial_accounts** | [**\MyDataMyConsent\Model\DataConsentRequestedFa[]**](DataConsentRequestedFa.md) |  | [optional]
+**requested_financial_accounts** | [**\MyDataMyConsent\Model\DataConsentRequestedFinancialAccount[]**](DataConsentRequestedFinancialAccount.md) |  | [optional]
 **requested_documents** | [**\MyDataMyConsent\Model\DataConsentRequestedDocument[]**](DataConsentRequestedDocument.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
