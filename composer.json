@@ -1,6 +1,6 @@
 {
     "name": "mydatamyconsent/php-sdk",
-    "version": "v1",
+    "version": "0.0.1",
     "description": "Unleashing the power of data consent by establishing trust. The Platform Core Developer API defines a set of capabilities that can be used to request, issue, manage and update data, documents and credentials by organizations. The API can be used to request, manage and update Decentralised Identifiers, Financial Data, Health Data issue Documents, Credentials directly or using OpenID Connect flows, and verify Messages signed with DIDs and much more.",
     "keywords": [
         "openapitools",
@@ -27,8 +27,8 @@
         "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "9.5.10",
-        "friendsofphp/php-cs-fixer": "3.4.0"
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^2.12"
     },
     "autoload": {
         "psr-4": { "MyDataMyConsent\\" : "lib/" }

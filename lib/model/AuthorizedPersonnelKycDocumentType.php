@@ -1,6 +1,6 @@
 <?php
 /**
- * OrganizationStatus
+ * AuthorizedPersonnelKycDocumentType
  *
  * PHP version 7.3
  *
@@ -31,24 +31,21 @@ namespace MyDataMyConsent\Model;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * OrganizationStatus Class Doc Comment
+ * AuthorizedPersonnelKycDocumentType Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class OrganizationStatus
+class AuthorizedPersonnelKycDocumentType
 {
     /**
      * Possible values of this enum
      */
-    const ORGANIZATION_CREATED = 'OrganizationCreated';
-    const CONTACT_DETAILS_UPDATED = 'ContactDetailsUpdated';
-    const AUTHORIZED_PERSONNEL_UPDATED = 'AuthorizedPersonnelUpdated';
-    const ORGANIZATION_DETAILS_UPDATED = 'OrganizationDetailsUpdated';
-    const ADDRESS_UPDATED = 'AddressUpdated';
-    const SIGN_UP_COMPLETED = 'SignUpCompleted';
+    const AADHAAR_CARD = 'AadhaarCard';
+    const PAN_CARD = 'PanCard';
+    const DRIVING_LICENSE = 'DrivingLicense';
     
     /**
      * Gets allowable values of the enum
@@ -57,12 +54,9 @@ class OrganizationStatus
     public static function getAllowableEnumValues()
     {
         return [
-            self::ORGANIZATION_CREATED,
-            self::CONTACT_DETAILS_UPDATED,
-            self::AUTHORIZED_PERSONNEL_UPDATED,
-            self::ORGANIZATION_DETAILS_UPDATED,
-            self::ADDRESS_UPDATED,
-            self::SIGN_UP_COMPLETED,
+            self::AADHAAR_CARD,
+            self::PAN_CARD,
+            self::DRIVING_LICENSE,
         ];
     }
 }

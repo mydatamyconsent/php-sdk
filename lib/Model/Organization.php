@@ -79,6 +79,7 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_name' => 'string',
         'authorized_personnel_tax_id' => 'string',
         'authorized_personnel_name' => 'string',
+        'authorized_personnel_kyc_document_type' => '\MyDataMyConsent\Model\AuthorizedPersonnelKycDocumentType',
         'registration_id' => 'string',
         'vat_id' => 'string',
         'tax_id' => 'string',
@@ -93,6 +94,8 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'privacy_policy_url' => 'string',
         'terms_of_service_url' => 'string',
         'website_url' => 'string',
+        'help_line_number' => 'string',
+        'support_email' => 'string',
         'is_government_organization' => 'bool',
         'dl_api_key' => 'string',
         'is_kyo_completed' => 'bool',
@@ -146,6 +149,7 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_name' => null,
         'authorized_personnel_tax_id' => null,
         'authorized_personnel_name' => null,
+        'authorized_personnel_kyc_document_type' => null,
         'registration_id' => null,
         'vat_id' => null,
         'tax_id' => null,
@@ -160,6 +164,8 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'privacy_policy_url' => null,
         'terms_of_service_url' => null,
         'website_url' => null,
+        'help_line_number' => null,
+        'support_email' => null,
         'is_government_organization' => null,
         'dl_api_key' => null,
         'is_kyo_completed' => null,
@@ -232,6 +238,7 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_name' => 'brandName',
         'authorized_personnel_tax_id' => 'authorizedPersonnelTaxId',
         'authorized_personnel_name' => 'authorizedPersonnelName',
+        'authorized_personnel_kyc_document_type' => 'authorizedPersonnelKycDocumentType',
         'registration_id' => 'registrationId',
         'vat_id' => 'vatId',
         'tax_id' => 'taxId',
@@ -246,6 +253,8 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'privacy_policy_url' => 'privacyPolicyUrl',
         'terms_of_service_url' => 'termsOfServiceUrl',
         'website_url' => 'websiteUrl',
+        'help_line_number' => 'helpLineNumber',
+        'support_email' => 'supportEmail',
         'is_government_organization' => 'isGovernmentOrganization',
         'dl_api_key' => 'dlApiKey',
         'is_kyo_completed' => 'isKyoCompleted',
@@ -297,6 +306,7 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_name' => 'setBrandName',
         'authorized_personnel_tax_id' => 'setAuthorizedPersonnelTaxId',
         'authorized_personnel_name' => 'setAuthorizedPersonnelName',
+        'authorized_personnel_kyc_document_type' => 'setAuthorizedPersonnelKycDocumentType',
         'registration_id' => 'setRegistrationId',
         'vat_id' => 'setVatId',
         'tax_id' => 'setTaxId',
@@ -311,6 +321,8 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'privacy_policy_url' => 'setPrivacyPolicyUrl',
         'terms_of_service_url' => 'setTermsOfServiceUrl',
         'website_url' => 'setWebsiteUrl',
+        'help_line_number' => 'setHelpLineNumber',
+        'support_email' => 'setSupportEmail',
         'is_government_organization' => 'setIsGovernmentOrganization',
         'dl_api_key' => 'setDlApiKey',
         'is_kyo_completed' => 'setIsKyoCompleted',
@@ -362,6 +374,7 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_name' => 'getBrandName',
         'authorized_personnel_tax_id' => 'getAuthorizedPersonnelTaxId',
         'authorized_personnel_name' => 'getAuthorizedPersonnelName',
+        'authorized_personnel_kyc_document_type' => 'getAuthorizedPersonnelKycDocumentType',
         'registration_id' => 'getRegistrationId',
         'vat_id' => 'getVatId',
         'tax_id' => 'getTaxId',
@@ -376,6 +389,8 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         'privacy_policy_url' => 'getPrivacyPolicyUrl',
         'terms_of_service_url' => 'getTermsOfServiceUrl',
         'website_url' => 'getWebsiteUrl',
+        'help_line_number' => 'getHelpLineNumber',
+        'support_email' => 'getSupportEmail',
         'is_government_organization' => 'getIsGovernmentOrganization',
         'dl_api_key' => 'getDlApiKey',
         'is_kyo_completed' => 'getIsKyoCompleted',
@@ -478,6 +493,7 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['brand_name'] = $data['brand_name'] ?? null;
         $this->container['authorized_personnel_tax_id'] = $data['authorized_personnel_tax_id'] ?? null;
         $this->container['authorized_personnel_name'] = $data['authorized_personnel_name'] ?? null;
+        $this->container['authorized_personnel_kyc_document_type'] = $data['authorized_personnel_kyc_document_type'] ?? null;
         $this->container['registration_id'] = $data['registration_id'] ?? null;
         $this->container['vat_id'] = $data['vat_id'] ?? null;
         $this->container['tax_id'] = $data['tax_id'] ?? null;
@@ -492,6 +508,8 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['privacy_policy_url'] = $data['privacy_policy_url'] ?? null;
         $this->container['terms_of_service_url'] = $data['terms_of_service_url'] ?? null;
         $this->container['website_url'] = $data['website_url'] ?? null;
+        $this->container['help_line_number'] = $data['help_line_number'] ?? null;
+        $this->container['support_email'] = $data['support_email'] ?? null;
         $this->container['is_government_organization'] = $data['is_government_organization'] ?? null;
         $this->container['dl_api_key'] = $data['dl_api_key'] ?? null;
         $this->container['is_kyo_completed'] = $data['is_kyo_completed'] ?? null;
@@ -999,6 +1017,30 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets authorized_personnel_kyc_document_type
+     *
+     * @return \MyDataMyConsent\Model\AuthorizedPersonnelKycDocumentType|null
+     */
+    public function getAuthorizedPersonnelKycDocumentType()
+    {
+        return $this->container['authorized_personnel_kyc_document_type'];
+    }
+
+    /**
+     * Sets authorized_personnel_kyc_document_type
+     *
+     * @param \MyDataMyConsent\Model\AuthorizedPersonnelKycDocumentType|null $authorized_personnel_kyc_document_type authorized_personnel_kyc_document_type
+     *
+     * @return self
+     */
+    public function setAuthorizedPersonnelKycDocumentType($authorized_personnel_kyc_document_type)
+    {
+        $this->container['authorized_personnel_kyc_document_type'] = $authorized_personnel_kyc_document_type;
+
+        return $this;
+    }
+
+    /**
      * Gets registration_id
      *
      * @return string|null
@@ -1330,6 +1372,54 @@ class Organization implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWebsiteUrl($website_url)
     {
         $this->container['website_url'] = $website_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets help_line_number
+     *
+     * @return string|null
+     */
+    public function getHelpLineNumber()
+    {
+        return $this->container['help_line_number'];
+    }
+
+    /**
+     * Sets help_line_number
+     *
+     * @param string|null $help_line_number help_line_number
+     *
+     * @return self
+     */
+    public function setHelpLineNumber($help_line_number)
+    {
+        $this->container['help_line_number'] = $help_line_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets support_email
+     *
+     * @return string|null
+     */
+    public function getSupportEmail()
+    {
+        return $this->container['support_email'];
+    }
+
+    /**
+     * Sets support_email
+     *
+     * @param string|null $support_email support_email
+     *
+     * @return self
+     */
+    public function setSupportEmail($support_email)
+    {
+        $this->container['support_email'] = $support_email;
 
         return $this;
     }
