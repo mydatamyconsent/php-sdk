@@ -15,7 +15,7 @@ Method | HTTP request | Description
 ## `v1DataAgreementsGet()`
 
 ```php
-v1DataAgreementsGet($page_no, $page_size): \MyDataMyConsent\Model\DataProcessingAgreementPaginatedList
+v1DataAgreementsGet($page_no, $page_size): \MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList
 ```
 
 Get all data processing agreements.
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataProcessingAgreementPaginatedList**](../Model/DataProcessingAgreementPaginatedList.md)
+[**\MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList**](../Model/DataProcessingAgreementDtoPaginatedList.md)
 
 ### Authorization
 
@@ -62,7 +62,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`, `application/xml`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -115,7 +115,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`, `application/xml`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -124,7 +124,7 @@ No authorization required
 ## `v1DataAgreementsIdGet()`
 
 ```php
-v1DataAgreementsIdGet($id): \MyDataMyConsent\Model\DataProcessingAgreement
+v1DataAgreementsIdGet($id): \MyDataMyConsent\Model\DataProcessingAgreementDto
 ```
 
 Get data processing agreement by Id.
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataProcessingAgreement**](../Model/DataProcessingAgreement.md)
+[**\MyDataMyConsent\Model\DataProcessingAgreementDto**](../Model/DataProcessingAgreementDto.md)
 
 ### Authorization
 
@@ -169,7 +169,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`, `application/xml`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -178,7 +178,7 @@ No authorization required
 ## `v1DataAgreementsIdPut()`
 
 ```php
-v1DataAgreementsIdPut($id, $data_processing_agreement): \MyDataMyConsent\Model\DataProcessingAgreement
+v1DataAgreementsIdPut($id, $update_data_processing_agreement_request_model): \MyDataMyConsent\Model\DataProcessingAgreementDto
 ```
 
 Update a data processing agreement.
@@ -197,10 +197,10 @@ $apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
     new GuzzleHttp\Client()
 );
 $id = 'id_example'; // string
-$data_processing_agreement = new \MyDataMyConsent\Model\DataProcessingAgreement(); // \MyDataMyConsent\Model\DataProcessingAgreement
+$update_data_processing_agreement_request_model = new \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel(); // \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel
 
 try {
-    $result = $apiInstance->v1DataAgreementsIdPut($id, $data_processing_agreement);
+    $result = $apiInstance->v1DataAgreementsIdPut($id, $update_data_processing_agreement_request_model);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataProcessingAgreementsApi->v1DataAgreementsIdPut: ', $e->getMessage(), PHP_EOL;
@@ -212,11 +212,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**string**](../Model/.md)|  |
- **data_processing_agreement** | [**\MyDataMyConsent\Model\DataProcessingAgreement**](../Model/DataProcessingAgreement.md)|  | [optional]
+ **update_data_processing_agreement_request_model** | [**\MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel**](../Model/UpdateDataProcessingAgreementRequestModel.md)|  | [optional]
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataProcessingAgreement**](../Model/DataProcessingAgreement.md)
+[**\MyDataMyConsent\Model\DataProcessingAgreementDto**](../Model/DataProcessingAgreementDto.md)
 
 ### Authorization
 
@@ -224,8 +224,8 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`, `application/xml`
-- **Accept**: `application/json`, `application/xml`
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -278,7 +278,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`, `application/xml`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -287,7 +287,7 @@ No authorization required
 ## `v1DataAgreementsPost()`
 
 ```php
-v1DataAgreementsPost($data_processing_agreement): \MyDataMyConsent\Model\DataProcessingAgreement
+v1DataAgreementsPost($create_data_processing_agreement_request_model): \MyDataMyConsent\Model\DataProcessingAgreementDto
 ```
 
 Create a data processing agreement.
@@ -305,10 +305,10 @@ $apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$data_processing_agreement = new \MyDataMyConsent\Model\DataProcessingAgreement(); // \MyDataMyConsent\Model\DataProcessingAgreement
+$create_data_processing_agreement_request_model = new \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel(); // \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel
 
 try {
-    $result = $apiInstance->v1DataAgreementsPost($data_processing_agreement);
+    $result = $apiInstance->v1DataAgreementsPost($create_data_processing_agreement_request_model);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataProcessingAgreementsApi->v1DataAgreementsPost: ', $e->getMessage(), PHP_EOL;
@@ -319,11 +319,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data_processing_agreement** | [**\MyDataMyConsent\Model\DataProcessingAgreement**](../Model/DataProcessingAgreement.md)|  | [optional]
+ **create_data_processing_agreement_request_model** | [**\MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel**](../Model/CreateDataProcessingAgreementRequestModel.md)|  | [optional]
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataProcessingAgreement**](../Model/DataProcessingAgreement.md)
+[**\MyDataMyConsent\Model\DataProcessingAgreementDto**](../Model/DataProcessingAgreementDto.md)
 
 ### Authorization
 
@@ -331,8 +331,8 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`, `application/xml`
-- **Accept**: `application/json`, `application/xml`
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

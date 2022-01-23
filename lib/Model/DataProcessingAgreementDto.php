@@ -1,6 +1,6 @@
 <?php
 /**
- * DataConsentRequestModel
+ * DataProcessingAgreementDto
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataConsentRequestModel Class Doc Comment
+ * DataProcessingAgreementDto Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class DataProcessingAgreementDto implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataConsentRequestModel';
+    protected static $openAPIModelName = 'DataProcessingAgreementDto';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'consent_template_id' => 'string',
-        'start_date_time' => '\DateTime',
-        'expiry_date_time' => '\DateTime',
-        'receiver' => '\MyDataMyConsent\Model\Receiver'
+        'id' => 'string',
+        'version' => 'string',
+        'body' => 'string',
+        'attachment_url' => 'string'
     ];
 
     /**
@@ -74,10 +74,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'consent_template_id' => 'uuid',
-        'start_date_time' => 'date-time',
-        'expiry_date_time' => 'date-time',
-        'receiver' => null
+        'id' => 'uuid',
+        'version' => null,
+        'body' => null,
+        'attachment_url' => null
     ];
 
     /**
@@ -107,10 +107,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'consent_template_id' => 'consentTemplateId',
-        'start_date_time' => 'startDateTime',
-        'expiry_date_time' => 'expiryDateTime',
-        'receiver' => 'receiver'
+        'id' => 'id',
+        'version' => 'version',
+        'body' => 'body',
+        'attachment_url' => 'attachmentUrl'
     ];
 
     /**
@@ -119,10 +119,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'consent_template_id' => 'setConsentTemplateId',
-        'start_date_time' => 'setStartDateTime',
-        'expiry_date_time' => 'setExpiryDateTime',
-        'receiver' => 'setReceiver'
+        'id' => 'setId',
+        'version' => 'setVersion',
+        'body' => 'setBody',
+        'attachment_url' => 'setAttachmentUrl'
     ];
 
     /**
@@ -131,10 +131,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'consent_template_id' => 'getConsentTemplateId',
-        'start_date_time' => 'getStartDateTime',
-        'expiry_date_time' => 'getExpiryDateTime',
-        'receiver' => 'getReceiver'
+        'id' => 'getId',
+        'version' => 'getVersion',
+        'body' => 'getBody',
+        'attachment_url' => 'getAttachmentUrl'
     ];
 
     /**
@@ -194,10 +194,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['consent_template_id'] = $data['consent_template_id'] ?? null;
-        $this->container['start_date_time'] = $data['start_date_time'] ?? null;
-        $this->container['expiry_date_time'] = $data['expiry_date_time'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
+        $this->container['body'] = $data['body'] ?? null;
+        $this->container['attachment_url'] = $data['attachment_url'] ?? null;
     }
 
     /**
@@ -209,8 +209,17 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
+        }
+        if ($this->container['body'] === null) {
+            $invalidProperties[] = "'body' can't be null";
+        }
+        if ($this->container['attachment_url'] === null) {
+            $invalidProperties[] = "'attachment_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -228,97 +237,97 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets consent_template_id
+     * Gets id
      *
-     * @return string|null
+     * @return string
      */
-    public function getConsentTemplateId()
+    public function getId()
     {
-        return $this->container['consent_template_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets consent_template_id
+     * Sets id
      *
-     * @param string|null $consent_template_id consent_template_id
+     * @param string $id id
      *
      * @return self
      */
-    public function setConsentTemplateId($consent_template_id)
+    public function setId($id)
     {
-        $this->container['consent_template_id'] = $consent_template_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets start_date_time
+     * Gets version
      *
-     * @return \DateTime|null
+     * @return string
      */
-    public function getStartDateTime()
+    public function getVersion()
     {
-        return $this->container['start_date_time'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets start_date_time
+     * Sets version
      *
-     * @param \DateTime|null $start_date_time start_date_time
+     * @param string $version version
      *
      * @return self
      */
-    public function setStartDateTime($start_date_time)
+    public function setVersion($version)
     {
-        $this->container['start_date_time'] = $start_date_time;
+        $this->container['version'] = $version;
 
         return $this;
     }
 
     /**
-     * Gets expiry_date_time
+     * Gets body
      *
-     * @return \DateTime|null
+     * @return string
      */
-    public function getExpiryDateTime()
+    public function getBody()
     {
-        return $this->container['expiry_date_time'];
+        return $this->container['body'];
     }
 
     /**
-     * Sets expiry_date_time
+     * Sets body
      *
-     * @param \DateTime|null $expiry_date_time expiry_date_time
+     * @param string $body body
      *
      * @return self
      */
-    public function setExpiryDateTime($expiry_date_time)
+    public function setBody($body)
     {
-        $this->container['expiry_date_time'] = $expiry_date_time;
+        $this->container['body'] = $body;
 
         return $this;
     }
 
     /**
-     * Gets receiver
+     * Gets attachment_url
      *
-     * @return \MyDataMyConsent\Model\Receiver
+     * @return string
      */
-    public function getReceiver()
+    public function getAttachmentUrl()
     {
-        return $this->container['receiver'];
+        return $this->container['attachment_url'];
     }
 
     /**
-     * Sets receiver
+     * Sets attachment_url
      *
-     * @param \MyDataMyConsent\Model\Receiver $receiver receiver
+     * @param string $attachment_url attachment_url
      *
      * @return self
      */
-    public function setReceiver($receiver)
+    public function setAttachmentUrl($attachment_url)
     {
-        $this->container['receiver'] = $receiver;
+        $this->container['attachment_url'] = $attachment_url;
 
         return $this;
     }

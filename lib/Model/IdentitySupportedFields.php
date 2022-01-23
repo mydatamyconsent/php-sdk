@@ -1,6 +1,6 @@
 <?php
 /**
- * DataConsentRequestModel
+ * IdentitySupportedFields
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataConsentRequestModel Class Doc Comment
+ * IdentitySupportedFields Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataConsentRequestModel';
+    protected static $openAPIModelName = 'IdentitySupportedFields';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'consent_template_id' => 'string',
-        'start_date_time' => '\DateTime',
-        'expiry_date_time' => '\DateTime',
-        'receiver' => '\MyDataMyConsent\Model\Receiver'
+        'icon' => 'string',
+        'title' => 'string',
+        'description' => 'string',
+        'key' => 'string',
+        'data_type' => 'string'
     ];
 
     /**
@@ -74,10 +75,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'consent_template_id' => 'uuid',
-        'start_date_time' => 'date-time',
-        'expiry_date_time' => 'date-time',
-        'receiver' => null
+        'icon' => null,
+        'title' => null,
+        'description' => null,
+        'key' => null,
+        'data_type' => null
     ];
 
     /**
@@ -107,10 +109,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'consent_template_id' => 'consentTemplateId',
-        'start_date_time' => 'startDateTime',
-        'expiry_date_time' => 'expiryDateTime',
-        'receiver' => 'receiver'
+        'icon' => 'icon',
+        'title' => 'title',
+        'description' => 'description',
+        'key' => 'key',
+        'data_type' => 'dataType'
     ];
 
     /**
@@ -119,10 +122,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'consent_template_id' => 'setConsentTemplateId',
-        'start_date_time' => 'setStartDateTime',
-        'expiry_date_time' => 'setExpiryDateTime',
-        'receiver' => 'setReceiver'
+        'icon' => 'setIcon',
+        'title' => 'setTitle',
+        'description' => 'setDescription',
+        'key' => 'setKey',
+        'data_type' => 'setDataType'
     ];
 
     /**
@@ -131,10 +135,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'consent_template_id' => 'getConsentTemplateId',
-        'start_date_time' => 'getStartDateTime',
-        'expiry_date_time' => 'getExpiryDateTime',
-        'receiver' => 'getReceiver'
+        'icon' => 'getIcon',
+        'title' => 'getTitle',
+        'description' => 'getDescription',
+        'key' => 'getKey',
+        'data_type' => 'getDataType'
     ];
 
     /**
@@ -194,10 +199,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['consent_template_id'] = $data['consent_template_id'] ?? null;
-        $this->container['start_date_time'] = $data['start_date_time'] ?? null;
-        $this->container['expiry_date_time'] = $data['expiry_date_time'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
+        $this->container['icon'] = $data['icon'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['data_type'] = $data['data_type'] ?? null;
     }
 
     /**
@@ -209,9 +215,6 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -228,97 +231,121 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets consent_template_id
+     * Gets icon
      *
      * @return string|null
      */
-    public function getConsentTemplateId()
+    public function getIcon()
     {
-        return $this->container['consent_template_id'];
+        return $this->container['icon'];
     }
 
     /**
-     * Sets consent_template_id
+     * Sets icon
      *
-     * @param string|null $consent_template_id consent_template_id
+     * @param string|null $icon icon
      *
      * @return self
      */
-    public function setConsentTemplateId($consent_template_id)
+    public function setIcon($icon)
     {
-        $this->container['consent_template_id'] = $consent_template_id;
+        $this->container['icon'] = $icon;
 
         return $this;
     }
 
     /**
-     * Gets start_date_time
+     * Gets title
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getStartDateTime()
+    public function getTitle()
     {
-        return $this->container['start_date_time'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets start_date_time
+     * Sets title
      *
-     * @param \DateTime|null $start_date_time start_date_time
+     * @param string|null $title title
      *
      * @return self
      */
-    public function setStartDateTime($start_date_time)
+    public function setTitle($title)
     {
-        $this->container['start_date_time'] = $start_date_time;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets expiry_date_time
+     * Gets description
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getExpiryDateTime()
+    public function getDescription()
     {
-        return $this->container['expiry_date_time'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets expiry_date_time
+     * Sets description
      *
-     * @param \DateTime|null $expiry_date_time expiry_date_time
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setExpiryDateTime($expiry_date_time)
+    public function setDescription($description)
     {
-        $this->container['expiry_date_time'] = $expiry_date_time;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets receiver
+     * Gets key
      *
-     * @return \MyDataMyConsent\Model\Receiver
+     * @return string|null
      */
-    public function getReceiver()
+    public function getKey()
     {
-        return $this->container['receiver'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets receiver
+     * Sets key
      *
-     * @param \MyDataMyConsent\Model\Receiver $receiver receiver
+     * @param string|null $key key
      *
      * @return self
      */
-    public function setReceiver($receiver)
+    public function setKey($key)
     {
-        $this->container['receiver'] = $receiver;
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_type
+     *
+     * @return string|null
+     */
+    public function getDataType()
+    {
+        return $this->container['data_type'];
+    }
+
+    /**
+     * Sets data_type
+     *
+     * @param string|null $data_type data_type
+     *
+     * @return self
+     */
+    public function setDataType($data_type)
+    {
+        $this->container['data_type'] = $data_type;
 
         return $this;
     }

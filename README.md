@@ -56,10 +56,11 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$request_id = 'request_id_example'; // string | consent request id.
+$request_id = 'request_id_example'; // string
 
 try {
-    $apiInstance->cancelConsentRequest($request_id);
+    $result = $apiInstance->cancelConsentRequest($request_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataConsentRequestsApi->cancelConsentRequest: ', $e->getMessage(), PHP_EOL;
 }
@@ -72,7 +73,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DataConsentRequestsApi* | [**cancelConsentRequest**](docs/Api/DataConsentRequestsApi.md#cancelconsentrequest) | **DELETE** /v1/consent-requests/{requestId}/cancel | Cancel a Consent Request by ID.
+*DataConsentRequestsApi* | [**cancelConsentRequest**](docs/Api/DataConsentRequestsApi.md#cancelconsentrequest) | **DELETE** /v1/consent-requests/{requestId}/cancel | Revoke / Cancel the ConsentRequest based on Id
 *DataConsentRequestsApi* | [**createRequest**](docs/Api/DataConsentRequestsApi.md#createrequest) | **POST** /v1/consent-requests | Create a consent request.
 *DataConsentRequestsApi* | [**getAllConsentRequests**](docs/Api/DataConsentRequestsApi.md#getallconsentrequests) | **GET** /v1/consent-requests | Get all Consent Requests.
 *DataConsentRequestsApi* | [**getConsentRequestById**](docs/Api/DataConsentRequestsApi.md#getconsentrequestbyid) | **GET** /v1/consent-requests/{requestId} | Get a Consent Request by ID.
@@ -102,64 +103,37 @@ Class | Method | HTTP request | Description
 
 ## Models
 
-- [ApplicationUser](docs/Model/ApplicationUser.md)
-- [AuthorizedPersonnelKycDocumentType](docs/Model/AuthorizedPersonnelKycDocumentType.md)
-- [BankAccountType](docs/Model/BankAccountType.md)
-- [CategoryIconFontFamily](docs/Model/CategoryIconFontFamily.md)
-- [Country](docs/Model/Country.md)
-- [CountryState](docs/Model/CountryState.md)
-- [DataConsent](docs/Model/DataConsent.md)
+- [CollectibleTypes](docs/Model/CollectibleTypes.md)
+- [ConsentTemplateTypes](docs/Model/ConsentTemplateTypes.md)
+- [CreateDataProcessingAgreementRequestModel](docs/Model/CreateDataProcessingAgreementRequestModel.md)
 - [DataConsentDetailsDto](docs/Model/DataConsentDetailsDto.md)
-- [DataConsentIdentifier](docs/Model/DataConsentIdentifier.md)
 - [DataConsentRequestModel](docs/Model/DataConsentRequestModel.md)
-- [DataConsentRequestedAccountDto](docs/Model/DataConsentRequestedAccountDto.md)
-- [DataConsentRequestedDocument](docs/Model/DataConsentRequestedDocument.md)
-- [DataConsentRequestedDocumentDto](docs/Model/DataConsentRequestedDocumentDto.md)
-- [DataConsentRequestedFaDto](docs/Model/DataConsentRequestedFaDto.md)
-- [DataConsentRequestedFinancialAccount](docs/Model/DataConsentRequestedFinancialAccount.md)
 - [DataConsentRequesterDto](docs/Model/DataConsentRequesterDto.md)
-- [DataConsentRfaFilter](docs/Model/DataConsentRfaFilter.md)
-- [DataConsentRfaFilterDto](docs/Model/DataConsentRfaFilterDto.md)
 - [DataConsentStatus](docs/Model/DataConsentStatus.md)
-- [DataFetchFrequencyUnit](docs/Model/DataFetchFrequencyUnit.md)
-- [DataFetchType](docs/Model/DataFetchType.md)
-- [DataLifeUnit](docs/Model/DataLifeUnit.md)
-- [DataProcessingAgreement](docs/Model/DataProcessingAgreement.md)
-- [DataProcessingAgreementPaginatedList](docs/Model/DataProcessingAgreementPaginatedList.md)
+- [DataProcessingAgreementDto](docs/Model/DataProcessingAgreementDto.md)
+- [DataProcessingAgreementDtoPaginatedList](docs/Model/DataProcessingAgreementDtoPaginatedList.md)
 - [DataProtectionOfficer](docs/Model/DataProtectionOfficer.md)
 - [DataProvider](docs/Model/DataProvider.md)
 - [DataProviderPaginatedList](docs/Model/DataProviderPaginatedList.md)
+- [Document](docs/Model/Document.md)
 - [DocumentIssueRequest](docs/Model/DocumentIssueRequest.md)
-- [DocumentProviderCategory](docs/Model/DocumentProviderCategory.md)
-- [FileType](docs/Model/FileType.md)
-- [FilterType](docs/Model/FilterType.md)
-- [FinancialAccountTypes](docs/Model/FinancialAccountTypes.md)
-- [Gender](docs/Model/Gender.md)
+- [DocumentsRequired](docs/Model/DocumentsRequired.md)
+- [FetchTypes](docs/Model/FetchTypes.md)
+- [Financial](docs/Model/Financial.md)
+- [FinancialAccountDetailsRequired](docs/Model/FinancialAccountDetailsRequired.md)
+- [FinancialAccounts](docs/Model/FinancialAccounts.md)
+- [GetConsentTemplateDetailsDto](docs/Model/GetConsentTemplateDetailsDto.md)
 - [IdentificationStrategy](docs/Model/IdentificationStrategy.md)
 - [Identifier](docs/Model/Identifier.md)
 - [IdentifierStringKeyValuePair](docs/Model/IdentifierStringKeyValuePair.md)
-- [IdentityClaim](docs/Model/IdentityClaim.md)
-- [JsonSchema](docs/Model/JsonSchema.md)
-- [Operator](docs/Model/Operator.md)
-- [Organization](docs/Model/Organization.md)
-- [OrganizationAddress](docs/Model/OrganizationAddress.md)
-- [OrganizationAddressType](docs/Model/OrganizationAddressType.md)
-- [OrganizationCategory](docs/Model/OrganizationCategory.md)
-- [OrganizationFinancialAccount](docs/Model/OrganizationFinancialAccount.md)
-- [OrganizationKyoDocument](docs/Model/OrganizationKyoDocument.md)
-- [OrganizationMetaData](docs/Model/OrganizationMetaData.md)
-- [OrganizationStatus](docs/Model/OrganizationStatus.md)
-- [OrganizationType](docs/Model/OrganizationType.md)
+- [IdentitySupportedFields](docs/Model/IdentitySupportedFields.md)
+- [Life](docs/Model/Life.md)
 - [ProblemDetails](docs/Model/ProblemDetails.md)
-- [ProofDocumentType](docs/Model/ProofDocumentType.md)
 - [PushUriRequest](docs/Model/PushUriRequest.md)
 - [PushUriResponse](docs/Model/PushUriResponse.md)
 - [Receiver](docs/Model/Receiver.md)
 - [ReceiverType](docs/Model/ReceiverType.md)
-- [RefreshToken](docs/Model/RefreshToken.md)
-- [Rejection](docs/Model/Rejection.md)
-- [SuggestedAccountDto](docs/Model/SuggestedAccountDto.md)
-- [Theme](docs/Model/Theme.md)
+- [UpdateDataProcessingAgreementRequestModel](docs/Model/UpdateDataProcessingAgreementRequestModel.md)
 - [UriDetails](docs/Model/UriDetails.md)
 
 ## Authorization

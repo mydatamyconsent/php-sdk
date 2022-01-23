@@ -1,6 +1,6 @@
 <?php
 /**
- * DataConsentRequestModel
+ * Financial
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataConsentRequestModel Class Doc Comment
+ * Financial Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class Financial implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataConsentRequestModel';
+    protected static $openAPIModelName = 'Financial';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'consent_template_id' => 'string',
-        'start_date_time' => '\DateTime',
-        'expiry_date_time' => '\DateTime',
-        'receiver' => '\MyDataMyConsent\Model\Receiver'
+        'account_field' => 'string',
+        'custom_key' => 'string',
+        'accounts' => '\MyDataMyConsent\Model\FinancialAccounts[]',
+        'requirement' => '\MyDataMyConsent\Model\DocumentsRequired'
     ];
 
     /**
@@ -74,10 +74,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'consent_template_id' => 'uuid',
-        'start_date_time' => 'date-time',
-        'expiry_date_time' => 'date-time',
-        'receiver' => null
+        'account_field' => null,
+        'custom_key' => null,
+        'accounts' => null,
+        'requirement' => null
     ];
 
     /**
@@ -107,10 +107,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'consent_template_id' => 'consentTemplateId',
-        'start_date_time' => 'startDateTime',
-        'expiry_date_time' => 'expiryDateTime',
-        'receiver' => 'receiver'
+        'account_field' => 'accountField',
+        'custom_key' => 'customKey',
+        'accounts' => 'accounts',
+        'requirement' => 'requirement'
     ];
 
     /**
@@ -119,10 +119,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'consent_template_id' => 'setConsentTemplateId',
-        'start_date_time' => 'setStartDateTime',
-        'expiry_date_time' => 'setExpiryDateTime',
-        'receiver' => 'setReceiver'
+        'account_field' => 'setAccountField',
+        'custom_key' => 'setCustomKey',
+        'accounts' => 'setAccounts',
+        'requirement' => 'setRequirement'
     ];
 
     /**
@@ -131,10 +131,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'consent_template_id' => 'getConsentTemplateId',
-        'start_date_time' => 'getStartDateTime',
-        'expiry_date_time' => 'getExpiryDateTime',
-        'receiver' => 'getReceiver'
+        'account_field' => 'getAccountField',
+        'custom_key' => 'getCustomKey',
+        'accounts' => 'getAccounts',
+        'requirement' => 'getRequirement'
     ];
 
     /**
@@ -194,10 +194,10 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['consent_template_id'] = $data['consent_template_id'] ?? null;
-        $this->container['start_date_time'] = $data['start_date_time'] ?? null;
-        $this->container['expiry_date_time'] = $data['expiry_date_time'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
+        $this->container['account_field'] = $data['account_field'] ?? null;
+        $this->container['custom_key'] = $data['custom_key'] ?? null;
+        $this->container['accounts'] = $data['accounts'] ?? null;
+        $this->container['requirement'] = $data['requirement'] ?? null;
     }
 
     /**
@@ -209,9 +209,6 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -228,97 +225,97 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets consent_template_id
+     * Gets account_field
      *
      * @return string|null
      */
-    public function getConsentTemplateId()
+    public function getAccountField()
     {
-        return $this->container['consent_template_id'];
+        return $this->container['account_field'];
     }
 
     /**
-     * Sets consent_template_id
+     * Sets account_field
      *
-     * @param string|null $consent_template_id consent_template_id
+     * @param string|null $account_field account_field
      *
      * @return self
      */
-    public function setConsentTemplateId($consent_template_id)
+    public function setAccountField($account_field)
     {
-        $this->container['consent_template_id'] = $consent_template_id;
+        $this->container['account_field'] = $account_field;
 
         return $this;
     }
 
     /**
-     * Gets start_date_time
+     * Gets custom_key
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getStartDateTime()
+    public function getCustomKey()
     {
-        return $this->container['start_date_time'];
+        return $this->container['custom_key'];
     }
 
     /**
-     * Sets start_date_time
+     * Sets custom_key
      *
-     * @param \DateTime|null $start_date_time start_date_time
+     * @param string|null $custom_key custom_key
      *
      * @return self
      */
-    public function setStartDateTime($start_date_time)
+    public function setCustomKey($custom_key)
     {
-        $this->container['start_date_time'] = $start_date_time;
+        $this->container['custom_key'] = $custom_key;
 
         return $this;
     }
 
     /**
-     * Gets expiry_date_time
+     * Gets accounts
      *
-     * @return \DateTime|null
+     * @return \MyDataMyConsent\Model\FinancialAccounts[]|null
      */
-    public function getExpiryDateTime()
+    public function getAccounts()
     {
-        return $this->container['expiry_date_time'];
+        return $this->container['accounts'];
     }
 
     /**
-     * Sets expiry_date_time
+     * Sets accounts
      *
-     * @param \DateTime|null $expiry_date_time expiry_date_time
+     * @param \MyDataMyConsent\Model\FinancialAccounts[]|null $accounts accounts
      *
      * @return self
      */
-    public function setExpiryDateTime($expiry_date_time)
+    public function setAccounts($accounts)
     {
-        $this->container['expiry_date_time'] = $expiry_date_time;
+        $this->container['accounts'] = $accounts;
 
         return $this;
     }
 
     /**
-     * Gets receiver
+     * Gets requirement
      *
-     * @return \MyDataMyConsent\Model\Receiver
+     * @return \MyDataMyConsent\Model\DocumentsRequired|null
      */
-    public function getReceiver()
+    public function getRequirement()
     {
-        return $this->container['receiver'];
+        return $this->container['requirement'];
     }
 
     /**
-     * Sets receiver
+     * Sets requirement
      *
-     * @param \MyDataMyConsent\Model\Receiver $receiver receiver
+     * @param \MyDataMyConsent\Model\DocumentsRequired|null $requirement requirement
      *
      * @return self
      */
-    public function setReceiver($receiver)
+    public function setRequirement($requirement)
     {
-        $this->container['receiver'] = $receiver;
+        $this->container['requirement'] = $requirement;
 
         return $this;
     }

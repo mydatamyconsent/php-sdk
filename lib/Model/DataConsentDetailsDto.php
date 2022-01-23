@@ -61,31 +61,13 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'requester' => '\MyDataMyConsent\Model\DataConsentRequesterDto',
-        'location' => 'string',
-        'personal_info_requested' => 'bool',
-        'documents' => 'int',
-        'financial_accounts' => 'int',
-        'transaction_id' => 'string',
-        'ip_address' => 'string',
-        'description' => 'string',
-        'purpose_code' => 'string',
-        'purpose_link' => 'string',
-        'agreement_id' => 'string',
-        'data_life_unit' => '\MyDataMyConsent\Model\DataLifeUnit',
-        'data_life_value' => 'int',
-        'data_fetch_frequency_unit' => '\MyDataMyConsent\Model\DataFetchFrequencyUnit',
-        'data_fetch_frequency_unit_value' => 'int',
-        'data_fetch_type' => '\MyDataMyConsent\Model\DataFetchType',
         'status' => '\MyDataMyConsent\Model\DataConsentStatus',
         'approved_at_utc' => '\DateTime',
         'rejected_at_utc' => '\DateTime',
         'expires_at_utc' => '\DateTime',
         'requested_at_utc' => '\DateTime',
-        'requested_financial_accounts' => '\MyDataMyConsent\Model\DataConsentRequestedAccountDto[]',
-        'requested_documents' => '\MyDataMyConsent\Model\DataConsentRequestedDocumentDto[]',
-        'requested_health_data' => '\MyDataMyConsent\Model\DataConsentRequestedDocument[]',
-        'requested_identity_details' => '\MyDataMyConsent\Model\JsonSchema'
+        'requester' => '\MyDataMyConsent\Model\DataConsentRequesterDto',
+        'consent_details' => '\MyDataMyConsent\Model\GetConsentTemplateDetailsDto'
     ];
 
     /**
@@ -97,31 +79,13 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'id' => 'uuid',
-        'requester' => null,
-        'location' => null,
-        'personal_info_requested' => null,
-        'documents' => 'int32',
-        'financial_accounts' => 'int32',
-        'transaction_id' => null,
-        'ip_address' => null,
-        'description' => null,
-        'purpose_code' => null,
-        'purpose_link' => null,
-        'agreement_id' => 'uuid',
-        'data_life_unit' => null,
-        'data_life_value' => 'int32',
-        'data_fetch_frequency_unit' => null,
-        'data_fetch_frequency_unit_value' => 'int32',
-        'data_fetch_type' => null,
         'status' => null,
         'approved_at_utc' => 'date-time',
         'rejected_at_utc' => 'date-time',
         'expires_at_utc' => 'date-time',
         'requested_at_utc' => 'date-time',
-        'requested_financial_accounts' => null,
-        'requested_documents' => null,
-        'requested_health_data' => null,
-        'requested_identity_details' => null
+        'requester' => null,
+        'consent_details' => null
     ];
 
     /**
@@ -152,31 +116,13 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'requester' => 'requester',
-        'location' => 'location',
-        'personal_info_requested' => 'personalInfoRequested',
-        'documents' => 'documents',
-        'financial_accounts' => 'financialAccounts',
-        'transaction_id' => 'transactionId',
-        'ip_address' => 'ipAddress',
-        'description' => 'description',
-        'purpose_code' => 'purposeCode',
-        'purpose_link' => 'purposeLink',
-        'agreement_id' => 'agreementId',
-        'data_life_unit' => 'dataLifeUnit',
-        'data_life_value' => 'dataLifeValue',
-        'data_fetch_frequency_unit' => 'dataFetchFrequencyUnit',
-        'data_fetch_frequency_unit_value' => 'dataFetchFrequencyUnitValue',
-        'data_fetch_type' => 'dataFetchType',
         'status' => 'status',
         'approved_at_utc' => 'approvedAtUtc',
         'rejected_at_utc' => 'rejectedAtUtc',
         'expires_at_utc' => 'expiresAtUtc',
         'requested_at_utc' => 'requestedAtUtc',
-        'requested_financial_accounts' => 'requestedFinancialAccounts',
-        'requested_documents' => 'requestedDocuments',
-        'requested_health_data' => 'requestedHealthData',
-        'requested_identity_details' => 'requestedIdentityDetails'
+        'requester' => 'requester',
+        'consent_details' => 'consentDetails'
     ];
 
     /**
@@ -186,31 +132,13 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'id' => 'setId',
-        'requester' => 'setRequester',
-        'location' => 'setLocation',
-        'personal_info_requested' => 'setPersonalInfoRequested',
-        'documents' => 'setDocuments',
-        'financial_accounts' => 'setFinancialAccounts',
-        'transaction_id' => 'setTransactionId',
-        'ip_address' => 'setIpAddress',
-        'description' => 'setDescription',
-        'purpose_code' => 'setPurposeCode',
-        'purpose_link' => 'setPurposeLink',
-        'agreement_id' => 'setAgreementId',
-        'data_life_unit' => 'setDataLifeUnit',
-        'data_life_value' => 'setDataLifeValue',
-        'data_fetch_frequency_unit' => 'setDataFetchFrequencyUnit',
-        'data_fetch_frequency_unit_value' => 'setDataFetchFrequencyUnitValue',
-        'data_fetch_type' => 'setDataFetchType',
         'status' => 'setStatus',
         'approved_at_utc' => 'setApprovedAtUtc',
         'rejected_at_utc' => 'setRejectedAtUtc',
         'expires_at_utc' => 'setExpiresAtUtc',
         'requested_at_utc' => 'setRequestedAtUtc',
-        'requested_financial_accounts' => 'setRequestedFinancialAccounts',
-        'requested_documents' => 'setRequestedDocuments',
-        'requested_health_data' => 'setRequestedHealthData',
-        'requested_identity_details' => 'setRequestedIdentityDetails'
+        'requester' => 'setRequester',
+        'consent_details' => 'setConsentDetails'
     ];
 
     /**
@@ -220,31 +148,13 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'id' => 'getId',
-        'requester' => 'getRequester',
-        'location' => 'getLocation',
-        'personal_info_requested' => 'getPersonalInfoRequested',
-        'documents' => 'getDocuments',
-        'financial_accounts' => 'getFinancialAccounts',
-        'transaction_id' => 'getTransactionId',
-        'ip_address' => 'getIpAddress',
-        'description' => 'getDescription',
-        'purpose_code' => 'getPurposeCode',
-        'purpose_link' => 'getPurposeLink',
-        'agreement_id' => 'getAgreementId',
-        'data_life_unit' => 'getDataLifeUnit',
-        'data_life_value' => 'getDataLifeValue',
-        'data_fetch_frequency_unit' => 'getDataFetchFrequencyUnit',
-        'data_fetch_frequency_unit_value' => 'getDataFetchFrequencyUnitValue',
-        'data_fetch_type' => 'getDataFetchType',
         'status' => 'getStatus',
         'approved_at_utc' => 'getApprovedAtUtc',
         'rejected_at_utc' => 'getRejectedAtUtc',
         'expires_at_utc' => 'getExpiresAtUtc',
         'requested_at_utc' => 'getRequestedAtUtc',
-        'requested_financial_accounts' => 'getRequestedFinancialAccounts',
-        'requested_documents' => 'getRequestedDocuments',
-        'requested_health_data' => 'getRequestedHealthData',
-        'requested_identity_details' => 'getRequestedIdentityDetails'
+        'requester' => 'getRequester',
+        'consent_details' => 'getConsentDetails'
     ];
 
     /**
@@ -305,31 +215,13 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['requester'] = $data['requester'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
-        $this->container['personal_info_requested'] = $data['personal_info_requested'] ?? null;
-        $this->container['documents'] = $data['documents'] ?? null;
-        $this->container['financial_accounts'] = $data['financial_accounts'] ?? null;
-        $this->container['transaction_id'] = $data['transaction_id'] ?? null;
-        $this->container['ip_address'] = $data['ip_address'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['purpose_code'] = $data['purpose_code'] ?? null;
-        $this->container['purpose_link'] = $data['purpose_link'] ?? null;
-        $this->container['agreement_id'] = $data['agreement_id'] ?? null;
-        $this->container['data_life_unit'] = $data['data_life_unit'] ?? null;
-        $this->container['data_life_value'] = $data['data_life_value'] ?? null;
-        $this->container['data_fetch_frequency_unit'] = $data['data_fetch_frequency_unit'] ?? null;
-        $this->container['data_fetch_frequency_unit_value'] = $data['data_fetch_frequency_unit_value'] ?? null;
-        $this->container['data_fetch_type'] = $data['data_fetch_type'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
         $this->container['rejected_at_utc'] = $data['rejected_at_utc'] ?? null;
         $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
         $this->container['requested_at_utc'] = $data['requested_at_utc'] ?? null;
-        $this->container['requested_financial_accounts'] = $data['requested_financial_accounts'] ?? null;
-        $this->container['requested_documents'] = $data['requested_documents'] ?? null;
-        $this->container['requested_health_data'] = $data['requested_health_data'] ?? null;
-        $this->container['requested_identity_details'] = $data['requested_identity_details'] ?? null;
+        $this->container['requester'] = $data['requester'] ?? null;
+        $this->container['consent_details'] = $data['consent_details'] ?? null;
     }
 
     /**
@@ -376,390 +268,6 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets requester
-     *
-     * @return \MyDataMyConsent\Model\DataConsentRequesterDto|null
-     */
-    public function getRequester()
-    {
-        return $this->container['requester'];
-    }
-
-    /**
-     * Sets requester
-     *
-     * @param \MyDataMyConsent\Model\DataConsentRequesterDto|null $requester requester
-     *
-     * @return self
-     */
-    public function setRequester($requester)
-    {
-        $this->container['requester'] = $requester;
-
-        return $this;
-    }
-
-    /**
-     * Gets location
-     *
-     * @return string|null
-     */
-    public function getLocation()
-    {
-        return $this->container['location'];
-    }
-
-    /**
-     * Sets location
-     *
-     * @param string|null $location location
-     *
-     * @return self
-     */
-    public function setLocation($location)
-    {
-        $this->container['location'] = $location;
-
-        return $this;
-    }
-
-    /**
-     * Gets personal_info_requested
-     *
-     * @return bool|null
-     */
-    public function getPersonalInfoRequested()
-    {
-        return $this->container['personal_info_requested'];
-    }
-
-    /**
-     * Sets personal_info_requested
-     *
-     * @param bool|null $personal_info_requested personal_info_requested
-     *
-     * @return self
-     */
-    public function setPersonalInfoRequested($personal_info_requested)
-    {
-        $this->container['personal_info_requested'] = $personal_info_requested;
-
-        return $this;
-    }
-
-    /**
-     * Gets documents
-     *
-     * @return int|null
-     */
-    public function getDocuments()
-    {
-        return $this->container['documents'];
-    }
-
-    /**
-     * Sets documents
-     *
-     * @param int|null $documents documents
-     *
-     * @return self
-     */
-    public function setDocuments($documents)
-    {
-        $this->container['documents'] = $documents;
-
-        return $this;
-    }
-
-    /**
-     * Gets financial_accounts
-     *
-     * @return int|null
-     */
-    public function getFinancialAccounts()
-    {
-        return $this->container['financial_accounts'];
-    }
-
-    /**
-     * Sets financial_accounts
-     *
-     * @param int|null $financial_accounts financial_accounts
-     *
-     * @return self
-     */
-    public function setFinancialAccounts($financial_accounts)
-    {
-        $this->container['financial_accounts'] = $financial_accounts;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_id
-     *
-     * @return string|null
-     */
-    public function getTransactionId()
-    {
-        return $this->container['transaction_id'];
-    }
-
-    /**
-     * Sets transaction_id
-     *
-     * @param string|null $transaction_id transaction_id
-     *
-     * @return self
-     */
-    public function setTransactionId($transaction_id)
-    {
-        $this->container['transaction_id'] = $transaction_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets ip_address
-     *
-     * @return string|null
-     */
-    public function getIpAddress()
-    {
-        return $this->container['ip_address'];
-    }
-
-    /**
-     * Sets ip_address
-     *
-     * @param string|null $ip_address ip_address
-     *
-     * @return self
-     */
-    public function setIpAddress($ip_address)
-    {
-        $this->container['ip_address'] = $ip_address;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets purpose_code
-     *
-     * @return string|null
-     */
-    public function getPurposeCode()
-    {
-        return $this->container['purpose_code'];
-    }
-
-    /**
-     * Sets purpose_code
-     *
-     * @param string|null $purpose_code purpose_code
-     *
-     * @return self
-     */
-    public function setPurposeCode($purpose_code)
-    {
-        $this->container['purpose_code'] = $purpose_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets purpose_link
-     *
-     * @return string|null
-     */
-    public function getPurposeLink()
-    {
-        return $this->container['purpose_link'];
-    }
-
-    /**
-     * Sets purpose_link
-     *
-     * @param string|null $purpose_link purpose_link
-     *
-     * @return self
-     */
-    public function setPurposeLink($purpose_link)
-    {
-        $this->container['purpose_link'] = $purpose_link;
-
-        return $this;
-    }
-
-    /**
-     * Gets agreement_id
-     *
-     * @return string|null
-     */
-    public function getAgreementId()
-    {
-        return $this->container['agreement_id'];
-    }
-
-    /**
-     * Sets agreement_id
-     *
-     * @param string|null $agreement_id agreement_id
-     *
-     * @return self
-     */
-    public function setAgreementId($agreement_id)
-    {
-        $this->container['agreement_id'] = $agreement_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_life_unit
-     *
-     * @return \MyDataMyConsent\Model\DataLifeUnit|null
-     */
-    public function getDataLifeUnit()
-    {
-        return $this->container['data_life_unit'];
-    }
-
-    /**
-     * Sets data_life_unit
-     *
-     * @param \MyDataMyConsent\Model\DataLifeUnit|null $data_life_unit data_life_unit
-     *
-     * @return self
-     */
-    public function setDataLifeUnit($data_life_unit)
-    {
-        $this->container['data_life_unit'] = $data_life_unit;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_life_value
-     *
-     * @return int|null
-     */
-    public function getDataLifeValue()
-    {
-        return $this->container['data_life_value'];
-    }
-
-    /**
-     * Sets data_life_value
-     *
-     * @param int|null $data_life_value data_life_value
-     *
-     * @return self
-     */
-    public function setDataLifeValue($data_life_value)
-    {
-        $this->container['data_life_value'] = $data_life_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_fetch_frequency_unit
-     *
-     * @return \MyDataMyConsent\Model\DataFetchFrequencyUnit|null
-     */
-    public function getDataFetchFrequencyUnit()
-    {
-        return $this->container['data_fetch_frequency_unit'];
-    }
-
-    /**
-     * Sets data_fetch_frequency_unit
-     *
-     * @param \MyDataMyConsent\Model\DataFetchFrequencyUnit|null $data_fetch_frequency_unit data_fetch_frequency_unit
-     *
-     * @return self
-     */
-    public function setDataFetchFrequencyUnit($data_fetch_frequency_unit)
-    {
-        $this->container['data_fetch_frequency_unit'] = $data_fetch_frequency_unit;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_fetch_frequency_unit_value
-     *
-     * @return int|null
-     */
-    public function getDataFetchFrequencyUnitValue()
-    {
-        return $this->container['data_fetch_frequency_unit_value'];
-    }
-
-    /**
-     * Sets data_fetch_frequency_unit_value
-     *
-     * @param int|null $data_fetch_frequency_unit_value data_fetch_frequency_unit_value
-     *
-     * @return self
-     */
-    public function setDataFetchFrequencyUnitValue($data_fetch_frequency_unit_value)
-    {
-        $this->container['data_fetch_frequency_unit_value'] = $data_fetch_frequency_unit_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_fetch_type
-     *
-     * @return \MyDataMyConsent\Model\DataFetchType|null
-     */
-    public function getDataFetchType()
-    {
-        return $this->container['data_fetch_type'];
-    }
-
-    /**
-     * Sets data_fetch_type
-     *
-     * @param \MyDataMyConsent\Model\DataFetchType|null $data_fetch_type data_fetch_type
-     *
-     * @return self
-     */
-    public function setDataFetchType($data_fetch_type)
-    {
-        $this->container['data_fetch_type'] = $data_fetch_type;
 
         return $this;
     }
@@ -885,97 +393,49 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets requested_financial_accounts
+     * Gets requester
      *
-     * @return \MyDataMyConsent\Model\DataConsentRequestedAccountDto[]|null
+     * @return \MyDataMyConsent\Model\DataConsentRequesterDto|null
      */
-    public function getRequestedFinancialAccounts()
+    public function getRequester()
     {
-        return $this->container['requested_financial_accounts'];
+        return $this->container['requester'];
     }
 
     /**
-     * Sets requested_financial_accounts
+     * Sets requester
      *
-     * @param \MyDataMyConsent\Model\DataConsentRequestedAccountDto[]|null $requested_financial_accounts requested_financial_accounts
+     * @param \MyDataMyConsent\Model\DataConsentRequesterDto|null $requester requester
      *
      * @return self
      */
-    public function setRequestedFinancialAccounts($requested_financial_accounts)
+    public function setRequester($requester)
     {
-        $this->container['requested_financial_accounts'] = $requested_financial_accounts;
+        $this->container['requester'] = $requester;
 
         return $this;
     }
 
     /**
-     * Gets requested_documents
+     * Gets consent_details
      *
-     * @return \MyDataMyConsent\Model\DataConsentRequestedDocumentDto[]|null
+     * @return \MyDataMyConsent\Model\GetConsentTemplateDetailsDto|null
      */
-    public function getRequestedDocuments()
+    public function getConsentDetails()
     {
-        return $this->container['requested_documents'];
+        return $this->container['consent_details'];
     }
 
     /**
-     * Sets requested_documents
+     * Sets consent_details
      *
-     * @param \MyDataMyConsent\Model\DataConsentRequestedDocumentDto[]|null $requested_documents requested_documents
+     * @param \MyDataMyConsent\Model\GetConsentTemplateDetailsDto|null $consent_details consent_details
      *
      * @return self
      */
-    public function setRequestedDocuments($requested_documents)
+    public function setConsentDetails($consent_details)
     {
-        $this->container['requested_documents'] = $requested_documents;
-
-        return $this;
-    }
-
-    /**
-     * Gets requested_health_data
-     *
-     * @return \MyDataMyConsent\Model\DataConsentRequestedDocument[]|null
-     */
-    public function getRequestedHealthData()
-    {
-        return $this->container['requested_health_data'];
-    }
-
-    /**
-     * Sets requested_health_data
-     *
-     * @param \MyDataMyConsent\Model\DataConsentRequestedDocument[]|null $requested_health_data requested_health_data
-     *
-     * @return self
-     */
-    public function setRequestedHealthData($requested_health_data)
-    {
-        $this->container['requested_health_data'] = $requested_health_data;
-
-        return $this;
-    }
-
-    /**
-     * Gets requested_identity_details
-     *
-     * @return \MyDataMyConsent\Model\JsonSchema|null
-     */
-    public function getRequestedIdentityDetails()
-    {
-        return $this->container['requested_identity_details'];
-    }
-
-    /**
-     * Sets requested_identity_details
-     *
-     * @param \MyDataMyConsent\Model\JsonSchema|null $requested_identity_details requested_identity_details
-     *
-     * @return self
-     */
-    public function setRequestedIdentityDetails($requested_identity_details)
-    {
-        $this->container['requested_identity_details'] = $requested_identity_details;
+        $this->container['consent_details'] = $consent_details;
 
         return $this;
     }

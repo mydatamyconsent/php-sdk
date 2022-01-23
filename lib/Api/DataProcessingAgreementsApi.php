@@ -125,7 +125,7 @@ class DataProcessingAgreementsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataProcessingAgreementPaginatedList|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList|\MyDataMyConsent\Model\ProblemDetails
      */
     public function v1DataAgreementsGet($page_no = 1, $page_size = 25)
     {
@@ -143,7 +143,7 @@ class DataProcessingAgreementsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataProcessingAgreementPaginatedList|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1DataAgreementsGetWithHttpInfo($page_no = 1, $page_size = 25)
     {
@@ -179,14 +179,14 @@ class DataProcessingAgreementsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\DataProcessingAgreementPaginatedList' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataProcessingAgreementPaginatedList', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -204,7 +204,7 @@ class DataProcessingAgreementsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\DataProcessingAgreementPaginatedList';
+            $returnType = '\MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -222,7 +222,7 @@ class DataProcessingAgreementsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\DataProcessingAgreementPaginatedList',
+                        '\MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -274,7 +274,7 @@ class DataProcessingAgreementsApi
      */
     public function v1DataAgreementsGetAsyncWithHttpInfo($page_no = 1, $page_size = 25)
     {
-        $returnType = '\MyDataMyConsent\Model\DataProcessingAgreementPaginatedList';
+        $returnType = '\MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList';
         $request = $this->v1DataAgreementsGetRequest($page_no, $page_size);
 
         return $this->client
@@ -357,11 +357,11 @@ class DataProcessingAgreementsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/xml']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/xml'],
+                ['application/json'],
                 []
             );
         }
@@ -592,11 +592,11 @@ class DataProcessingAgreementsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/xml']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/xml'],
+                ['application/json'],
                 []
             );
         }
@@ -656,7 +656,7 @@ class DataProcessingAgreementsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataProcessingAgreement|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\DataProcessingAgreementDto|\MyDataMyConsent\Model\ProblemDetails
      */
     public function v1DataAgreementsIdGet($id)
     {
@@ -673,7 +673,7 @@ class DataProcessingAgreementsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataProcessingAgreement|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\DataProcessingAgreementDto|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1DataAgreementsIdGetWithHttpInfo($id)
     {
@@ -709,14 +709,14 @@ class DataProcessingAgreementsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\DataProcessingAgreement' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\DataProcessingAgreementDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataProcessingAgreement', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataProcessingAgreementDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -734,7 +734,7 @@ class DataProcessingAgreementsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\DataProcessingAgreement';
+            $returnType = '\MyDataMyConsent\Model\DataProcessingAgreementDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -752,7 +752,7 @@ class DataProcessingAgreementsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\DataProcessingAgreement',
+                        '\MyDataMyConsent\Model\DataProcessingAgreementDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -802,7 +802,7 @@ class DataProcessingAgreementsApi
      */
     public function v1DataAgreementsIdGetAsyncWithHttpInfo($id)
     {
-        $returnType = '\MyDataMyConsent\Model\DataProcessingAgreement';
+        $returnType = '\MyDataMyConsent\Model\DataProcessingAgreementDto';
         $request = $this->v1DataAgreementsIdGetRequest($id);
 
         return $this->client
@@ -876,11 +876,11 @@ class DataProcessingAgreementsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/xml']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/xml'],
+                ['application/json'],
                 []
             );
         }
@@ -937,15 +937,15 @@ class DataProcessingAgreementsApi
      * Update a data processing agreement.
      *
      * @param  string $id id (required)
-     * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement data_processing_agreement (optional)
+     * @param  \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel $update_data_processing_agreement_request_model update_data_processing_agreement_request_model (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataProcessingAgreement|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\DataProcessingAgreementDto|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails
      */
-    public function v1DataAgreementsIdPut($id, $data_processing_agreement = null)
+    public function v1DataAgreementsIdPut($id, $update_data_processing_agreement_request_model = null)
     {
-        list($response) = $this->v1DataAgreementsIdPutWithHttpInfo($id, $data_processing_agreement);
+        list($response) = $this->v1DataAgreementsIdPutWithHttpInfo($id, $update_data_processing_agreement_request_model);
         return $response;
     }
 
@@ -955,15 +955,15 @@ class DataProcessingAgreementsApi
      * Update a data processing agreement.
      *
      * @param  string $id (required)
-     * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
+     * @param  \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel $update_data_processing_agreement_request_model (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataProcessingAgreement|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\DataProcessingAgreementDto|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1DataAgreementsIdPutWithHttpInfo($id, $data_processing_agreement = null)
+    public function v1DataAgreementsIdPutWithHttpInfo($id, $update_data_processing_agreement_request_model = null)
     {
-        $request = $this->v1DataAgreementsIdPutRequest($id, $data_processing_agreement);
+        $request = $this->v1DataAgreementsIdPutRequest($id, $update_data_processing_agreement_request_model);
 
         try {
             $options = $this->createHttpClientOption();
@@ -995,14 +995,14 @@ class DataProcessingAgreementsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\DataProcessingAgreement' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\DataProcessingAgreementDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataProcessingAgreement', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataProcessingAgreementDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1032,7 +1032,7 @@ class DataProcessingAgreementsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\DataProcessingAgreement';
+            $returnType = '\MyDataMyConsent\Model\DataProcessingAgreementDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1050,7 +1050,7 @@ class DataProcessingAgreementsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\DataProcessingAgreement',
+                        '\MyDataMyConsent\Model\DataProcessingAgreementDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1082,14 +1082,14 @@ class DataProcessingAgreementsApi
      * Update a data processing agreement.
      *
      * @param  string $id (required)
-     * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
+     * @param  \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel $update_data_processing_agreement_request_model (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DataAgreementsIdPutAsync($id, $data_processing_agreement = null)
+    public function v1DataAgreementsIdPutAsync($id, $update_data_processing_agreement_request_model = null)
     {
-        return $this->v1DataAgreementsIdPutAsyncWithHttpInfo($id, $data_processing_agreement)
+        return $this->v1DataAgreementsIdPutAsyncWithHttpInfo($id, $update_data_processing_agreement_request_model)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1103,15 +1103,15 @@ class DataProcessingAgreementsApi
      * Update a data processing agreement.
      *
      * @param  string $id (required)
-     * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
+     * @param  \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel $update_data_processing_agreement_request_model (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DataAgreementsIdPutAsyncWithHttpInfo($id, $data_processing_agreement = null)
+    public function v1DataAgreementsIdPutAsyncWithHttpInfo($id, $update_data_processing_agreement_request_model = null)
     {
-        $returnType = '\MyDataMyConsent\Model\DataProcessingAgreement';
-        $request = $this->v1DataAgreementsIdPutRequest($id, $data_processing_agreement);
+        $returnType = '\MyDataMyConsent\Model\DataProcessingAgreementDto';
+        $request = $this->v1DataAgreementsIdPutRequest($id, $update_data_processing_agreement_request_model);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1150,12 +1150,12 @@ class DataProcessingAgreementsApi
      * Create request for operation 'v1DataAgreementsIdPut'
      *
      * @param  string $id (required)
-     * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
+     * @param  \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel $update_data_processing_agreement_request_model (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function v1DataAgreementsIdPutRequest($id, $data_processing_agreement = null)
+    public function v1DataAgreementsIdPutRequest($id, $update_data_processing_agreement_request_model = null)
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -1185,21 +1185,21 @@ class DataProcessingAgreementsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/xml']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/xml'],
-                ['application/json', 'application/xml']
+                ['application/json'],
+                ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (isset($data_processing_agreement)) {
+        if (isset($update_data_processing_agreement_request_model)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($data_processing_agreement));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($update_data_processing_agreement_request_model));
             } else {
-                $httpBody = $data_processing_agreement;
+                $httpBody = $update_data_processing_agreement_request_model;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1426,11 +1426,11 @@ class DataProcessingAgreementsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/xml']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/xml'],
+                ['application/json'],
                 []
             );
         }
@@ -1486,15 +1486,15 @@ class DataProcessingAgreementsApi
      *
      * Create a data processing agreement.
      *
-     * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement data_processing_agreement (optional)
+     * @param  \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel $create_data_processing_agreement_request_model create_data_processing_agreement_request_model (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataProcessingAgreement|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\DataProcessingAgreementDto|\MyDataMyConsent\Model\ProblemDetails
      */
-    public function v1DataAgreementsPost($data_processing_agreement = null)
+    public function v1DataAgreementsPost($create_data_processing_agreement_request_model = null)
     {
-        list($response) = $this->v1DataAgreementsPostWithHttpInfo($data_processing_agreement);
+        list($response) = $this->v1DataAgreementsPostWithHttpInfo($create_data_processing_agreement_request_model);
         return $response;
     }
 
@@ -1503,15 +1503,15 @@ class DataProcessingAgreementsApi
      *
      * Create a data processing agreement.
      *
-     * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
+     * @param  \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel $create_data_processing_agreement_request_model (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataProcessingAgreement|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\DataProcessingAgreementDto|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1DataAgreementsPostWithHttpInfo($data_processing_agreement = null)
+    public function v1DataAgreementsPostWithHttpInfo($create_data_processing_agreement_request_model = null)
     {
-        $request = $this->v1DataAgreementsPostRequest($data_processing_agreement);
+        $request = $this->v1DataAgreementsPostRequest($create_data_processing_agreement_request_model);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1543,14 +1543,14 @@ class DataProcessingAgreementsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\DataProcessingAgreement' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\DataProcessingAgreementDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataProcessingAgreement', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataProcessingAgreementDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1568,7 +1568,7 @@ class DataProcessingAgreementsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\DataProcessingAgreement';
+            $returnType = '\MyDataMyConsent\Model\DataProcessingAgreementDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1586,7 +1586,7 @@ class DataProcessingAgreementsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\DataProcessingAgreement',
+                        '\MyDataMyConsent\Model\DataProcessingAgreementDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1609,14 +1609,14 @@ class DataProcessingAgreementsApi
      *
      * Create a data processing agreement.
      *
-     * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
+     * @param  \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel $create_data_processing_agreement_request_model (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DataAgreementsPostAsync($data_processing_agreement = null)
+    public function v1DataAgreementsPostAsync($create_data_processing_agreement_request_model = null)
     {
-        return $this->v1DataAgreementsPostAsyncWithHttpInfo($data_processing_agreement)
+        return $this->v1DataAgreementsPostAsyncWithHttpInfo($create_data_processing_agreement_request_model)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1629,15 +1629,15 @@ class DataProcessingAgreementsApi
      *
      * Create a data processing agreement.
      *
-     * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
+     * @param  \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel $create_data_processing_agreement_request_model (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DataAgreementsPostAsyncWithHttpInfo($data_processing_agreement = null)
+    public function v1DataAgreementsPostAsyncWithHttpInfo($create_data_processing_agreement_request_model = null)
     {
-        $returnType = '\MyDataMyConsent\Model\DataProcessingAgreement';
-        $request = $this->v1DataAgreementsPostRequest($data_processing_agreement);
+        $returnType = '\MyDataMyConsent\Model\DataProcessingAgreementDto';
+        $request = $this->v1DataAgreementsPostRequest($create_data_processing_agreement_request_model);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1675,12 +1675,12 @@ class DataProcessingAgreementsApi
     /**
      * Create request for operation 'v1DataAgreementsPost'
      *
-     * @param  \MyDataMyConsent\Model\DataProcessingAgreement $data_processing_agreement (optional)
+     * @param  \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel $create_data_processing_agreement_request_model (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function v1DataAgreementsPostRequest($data_processing_agreement = null)
+    public function v1DataAgreementsPostRequest($create_data_processing_agreement_request_model = null)
     {
 
         $resourcePath = '/v1/data-agreements';
@@ -1696,21 +1696,21 @@ class DataProcessingAgreementsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/xml']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/xml'],
-                ['application/json', 'application/xml']
+                ['application/json'],
+                ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (isset($data_processing_agreement)) {
+        if (isset($create_data_processing_agreement_request_model)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($data_processing_agreement));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_data_processing_agreement_request_model));
             } else {
-                $httpBody = $data_processing_agreement;
+                $httpBody = $create_data_processing_agreement_request_model;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

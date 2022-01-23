@@ -1,6 +1,6 @@
 <?php
 /**
- * DataConsentRequestModel
+ * DataProcessingAgreementDtoPaginatedList
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataConsentRequestModel Class Doc Comment
+ * DataProcessingAgreementDtoPaginatedList Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class DataProcessingAgreementDtoPaginatedList implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataConsentRequestModel';
+    protected static $openAPIModelName = 'DataProcessingAgreementDtoPaginatedList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'consent_template_id' => 'string',
-        'start_date_time' => '\DateTime',
-        'expiry_date_time' => '\DateTime',
-        'receiver' => '\MyDataMyConsent\Model\Receiver'
+        'page_index' => 'int',
+        'page_size' => 'int',
+        'total_pages' => 'int',
+        'total_items' => 'int',
+        'items' => '\MyDataMyConsent\Model\DataProcessingAgreementDto[]'
     ];
 
     /**
@@ -74,10 +75,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'consent_template_id' => 'uuid',
-        'start_date_time' => 'date-time',
-        'expiry_date_time' => 'date-time',
-        'receiver' => null
+        'page_index' => 'int32',
+        'page_size' => 'int32',
+        'total_pages' => 'int32',
+        'total_items' => 'int64',
+        'items' => null
     ];
 
     /**
@@ -107,10 +109,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'consent_template_id' => 'consentTemplateId',
-        'start_date_time' => 'startDateTime',
-        'expiry_date_time' => 'expiryDateTime',
-        'receiver' => 'receiver'
+        'page_index' => 'pageIndex',
+        'page_size' => 'pageSize',
+        'total_pages' => 'totalPages',
+        'total_items' => 'totalItems',
+        'items' => 'items'
     ];
 
     /**
@@ -119,10 +122,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'consent_template_id' => 'setConsentTemplateId',
-        'start_date_time' => 'setStartDateTime',
-        'expiry_date_time' => 'setExpiryDateTime',
-        'receiver' => 'setReceiver'
+        'page_index' => 'setPageIndex',
+        'page_size' => 'setPageSize',
+        'total_pages' => 'setTotalPages',
+        'total_items' => 'setTotalItems',
+        'items' => 'setItems'
     ];
 
     /**
@@ -131,10 +135,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'consent_template_id' => 'getConsentTemplateId',
-        'start_date_time' => 'getStartDateTime',
-        'expiry_date_time' => 'getExpiryDateTime',
-        'receiver' => 'getReceiver'
+        'page_index' => 'getPageIndex',
+        'page_size' => 'getPageSize',
+        'total_pages' => 'getTotalPages',
+        'total_items' => 'getTotalItems',
+        'items' => 'getItems'
     ];
 
     /**
@@ -194,10 +199,11 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['consent_template_id'] = $data['consent_template_id'] ?? null;
-        $this->container['start_date_time'] = $data['start_date_time'] ?? null;
-        $this->container['expiry_date_time'] = $data['expiry_date_time'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
+        $this->container['page_index'] = $data['page_index'] ?? null;
+        $this->container['page_size'] = $data['page_size'] ?? null;
+        $this->container['total_pages'] = $data['total_pages'] ?? null;
+        $this->container['total_items'] = $data['total_items'] ?? null;
+        $this->container['items'] = $data['items'] ?? null;
     }
 
     /**
@@ -209,9 +215,6 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -228,97 +231,121 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets consent_template_id
+     * Gets page_index
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getConsentTemplateId()
+    public function getPageIndex()
     {
-        return $this->container['consent_template_id'];
+        return $this->container['page_index'];
     }
 
     /**
-     * Sets consent_template_id
+     * Sets page_index
      *
-     * @param string|null $consent_template_id consent_template_id
+     * @param int|null $page_index page_index
      *
      * @return self
      */
-    public function setConsentTemplateId($consent_template_id)
+    public function setPageIndex($page_index)
     {
-        $this->container['consent_template_id'] = $consent_template_id;
+        $this->container['page_index'] = $page_index;
 
         return $this;
     }
 
     /**
-     * Gets start_date_time
+     * Gets page_size
      *
-     * @return \DateTime|null
+     * @return int|null
      */
-    public function getStartDateTime()
+    public function getPageSize()
     {
-        return $this->container['start_date_time'];
+        return $this->container['page_size'];
     }
 
     /**
-     * Sets start_date_time
+     * Sets page_size
      *
-     * @param \DateTime|null $start_date_time start_date_time
+     * @param int|null $page_size page_size
      *
      * @return self
      */
-    public function setStartDateTime($start_date_time)
+    public function setPageSize($page_size)
     {
-        $this->container['start_date_time'] = $start_date_time;
+        $this->container['page_size'] = $page_size;
 
         return $this;
     }
 
     /**
-     * Gets expiry_date_time
+     * Gets total_pages
      *
-     * @return \DateTime|null
+     * @return int|null
      */
-    public function getExpiryDateTime()
+    public function getTotalPages()
     {
-        return $this->container['expiry_date_time'];
+        return $this->container['total_pages'];
     }
 
     /**
-     * Sets expiry_date_time
+     * Sets total_pages
      *
-     * @param \DateTime|null $expiry_date_time expiry_date_time
+     * @param int|null $total_pages total_pages
      *
      * @return self
      */
-    public function setExpiryDateTime($expiry_date_time)
+    public function setTotalPages($total_pages)
     {
-        $this->container['expiry_date_time'] = $expiry_date_time;
+        $this->container['total_pages'] = $total_pages;
 
         return $this;
     }
 
     /**
-     * Gets receiver
+     * Gets total_items
      *
-     * @return \MyDataMyConsent\Model\Receiver
+     * @return int|null
      */
-    public function getReceiver()
+    public function getTotalItems()
     {
-        return $this->container['receiver'];
+        return $this->container['total_items'];
     }
 
     /**
-     * Sets receiver
+     * Sets total_items
      *
-     * @param \MyDataMyConsent\Model\Receiver $receiver receiver
+     * @param int|null $total_items total_items
      *
      * @return self
      */
-    public function setReceiver($receiver)
+    public function setTotalItems($total_items)
     {
-        $this->container['receiver'] = $receiver;
+        $this->container['total_items'] = $total_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets items
+     *
+     * @return \MyDataMyConsent\Model\DataProcessingAgreementDto[]|null
+     */
+    public function getItems()
+    {
+        return $this->container['items'];
+    }
+
+    /**
+     * Sets items
+     *
+     * @param \MyDataMyConsent\Model\DataProcessingAgreementDto[]|null $items items
+     *
+     * @return self
+     */
+    public function setItems($items)
+    {
+        $this->container['items'] = $items;
 
         return $this;
     }

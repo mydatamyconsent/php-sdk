@@ -1,6 +1,6 @@
 <?php
 /**
- * DataConsentRequestModel
+ * Life
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataConsentRequestModel Class Doc Comment
+ * Life Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class Life implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataConsentRequestModel';
+    protected static $openAPIModelName = 'Life';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,8 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'consent_template_id' => 'string',
-        'start_date_time' => '\DateTime',
-        'expiry_date_time' => '\DateTime',
-        'receiver' => '\MyDataMyConsent\Model\Receiver'
+        'unit' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -74,10 +72,8 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'consent_template_id' => 'uuid',
-        'start_date_time' => 'date-time',
-        'expiry_date_time' => 'date-time',
-        'receiver' => null
+        'unit' => null,
+        'value' => null
     ];
 
     /**
@@ -107,10 +103,8 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'consent_template_id' => 'consentTemplateId',
-        'start_date_time' => 'startDateTime',
-        'expiry_date_time' => 'expiryDateTime',
-        'receiver' => 'receiver'
+        'unit' => 'unit',
+        'value' => 'value'
     ];
 
     /**
@@ -119,10 +113,8 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'consent_template_id' => 'setConsentTemplateId',
-        'start_date_time' => 'setStartDateTime',
-        'expiry_date_time' => 'setExpiryDateTime',
-        'receiver' => 'setReceiver'
+        'unit' => 'setUnit',
+        'value' => 'setValue'
     ];
 
     /**
@@ -131,10 +123,8 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'consent_template_id' => 'getConsentTemplateId',
-        'start_date_time' => 'getStartDateTime',
-        'expiry_date_time' => 'getExpiryDateTime',
-        'receiver' => 'getReceiver'
+        'unit' => 'getUnit',
+        'value' => 'getValue'
     ];
 
     /**
@@ -194,10 +184,8 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['consent_template_id'] = $data['consent_template_id'] ?? null;
-        $this->container['start_date_time'] = $data['start_date_time'] ?? null;
-        $this->container['expiry_date_time'] = $data['expiry_date_time'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
+        $this->container['unit'] = $data['unit'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -209,9 +197,6 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -228,97 +213,49 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets consent_template_id
+     * Gets unit
      *
      * @return string|null
      */
-    public function getConsentTemplateId()
+    public function getUnit()
     {
-        return $this->container['consent_template_id'];
+        return $this->container['unit'];
     }
 
     /**
-     * Sets consent_template_id
+     * Sets unit
      *
-     * @param string|null $consent_template_id consent_template_id
+     * @param string|null $unit unit
      *
      * @return self
      */
-    public function setConsentTemplateId($consent_template_id)
+    public function setUnit($unit)
     {
-        $this->container['consent_template_id'] = $consent_template_id;
+        $this->container['unit'] = $unit;
 
         return $this;
     }
 
     /**
-     * Gets start_date_time
+     * Gets value
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getStartDateTime()
+    public function getValue()
     {
-        return $this->container['start_date_time'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets start_date_time
+     * Sets value
      *
-     * @param \DateTime|null $start_date_time start_date_time
+     * @param string|null $value value
      *
      * @return self
      */
-    public function setStartDateTime($start_date_time)
+    public function setValue($value)
     {
-        $this->container['start_date_time'] = $start_date_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets expiry_date_time
-     *
-     * @return \DateTime|null
-     */
-    public function getExpiryDateTime()
-    {
-        return $this->container['expiry_date_time'];
-    }
-
-    /**
-     * Sets expiry_date_time
-     *
-     * @param \DateTime|null $expiry_date_time expiry_date_time
-     *
-     * @return self
-     */
-    public function setExpiryDateTime($expiry_date_time)
-    {
-        $this->container['expiry_date_time'] = $expiry_date_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets receiver
-     *
-     * @return \MyDataMyConsent\Model\Receiver
-     */
-    public function getReceiver()
-    {
-        return $this->container['receiver'];
-    }
-
-    /**
-     * Sets receiver
-     *
-     * @param \MyDataMyConsent\Model\Receiver $receiver receiver
-     *
-     * @return self
-     */
-    public function setReceiver($receiver)
-    {
-        $this->container['receiver'] = $receiver;
+        $this->container['value'] = $value;
 
         return $this;
     }

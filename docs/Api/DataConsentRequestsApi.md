@@ -4,7 +4,7 @@ All URIs are relative to http://localhost.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelConsentRequest()**](DataConsentRequestsApi.md#cancelConsentRequest) | **DELETE** /v1/consent-requests/{requestId}/cancel | Cancel a Consent Request by ID.
+[**cancelConsentRequest()**](DataConsentRequestsApi.md#cancelConsentRequest) | **DELETE** /v1/consent-requests/{requestId}/cancel | Revoke / Cancel the ConsentRequest based on Id
 [**createRequest()**](DataConsentRequestsApi.md#createRequest) | **POST** /v1/consent-requests | Create a consent request.
 [**getAllConsentRequests()**](DataConsentRequestsApi.md#getAllConsentRequests) | **GET** /v1/consent-requests | Get all Consent Requests.
 [**getConsentRequestById()**](DataConsentRequestsApi.md#getConsentRequestById) | **GET** /v1/consent-requests/{requestId} | Get a Consent Request by ID.
@@ -13,12 +13,10 @@ Method | HTTP request | Description
 ## `cancelConsentRequest()`
 
 ```php
-cancelConsentRequest($request_id)
+cancelConsentRequest($request_id): bool
 ```
 
-Cancel a Consent Request by ID.
-
-.
+Revoke / Cancel the ConsentRequest based on Id
 
 ### Example
 
@@ -33,10 +31,11 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$request_id = 'request_id_example'; // string | consent request id.
+$request_id = 'request_id_example'; // string
 
 try {
-    $apiInstance->cancelConsentRequest($request_id);
+    $result = $apiInstance->cancelConsentRequest($request_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataConsentRequestsApi->cancelConsentRequest: ', $e->getMessage(), PHP_EOL;
 }
@@ -46,11 +45,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request_id** | [**string**](../Model/.md)| consent request id. |
+ **request_id** | [**string**](../Model/.md)|  |
 
 ### Return type
 
-void (empty response body)
+**bool**
 
 ### Authorization
 
@@ -59,7 +58,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -68,7 +67,7 @@ No authorization required
 ## `createRequest()`
 
 ```php
-createRequest($data_consent_request_model): \MyDataMyConsent\Model\DataConsent
+createRequest($data_consent_request_model): bool
 ```
 
 Create a consent request.
@@ -104,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataConsent**](../Model/DataConsent.md)
+**bool**
 
 ### Authorization
 
@@ -112,8 +111,8 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`, `application/xml`
-- **Accept**: `application/json`, `application/xml`
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -122,7 +121,7 @@ No authorization required
 ## `getAllConsentRequests()`
 
 ```php
-getAllConsentRequests($status): object
+getAllConsentRequests($page_no, $page_size, $status): object
 ```
 
 Get all Consent Requests.
@@ -140,10 +139,12 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$page_no = 56; // int
+$page_size = 56; // int
 $status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus
 
 try {
-    $result = $apiInstance->getAllConsentRequests($status);
+    $result = $apiInstance->getAllConsentRequests($page_no, $page_size, $status);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataConsentRequestsApi->getAllConsentRequests: ', $e->getMessage(), PHP_EOL;
@@ -154,6 +155,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **page_no** | **int**|  | [optional]
+ **page_size** | **int**|  | [optional]
  **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)|  | [optional]
 
 ### Return type
@@ -167,7 +170,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`, `application/xml`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -221,7 +224,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`, `application/xml`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
