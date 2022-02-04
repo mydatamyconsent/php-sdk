@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **fetch_type** | [**\MyDataMyConsent\Model\FetchTypes**](FetchTypes.md) |  | [optional]
 **short_id** | **string** |  | [optional]
 **created_by** | **string** |  | [optional]
-**created_at_utc** | [**\DateTime**](\DateTime.md) |  | [optional]
+**created_at_utc** | **\DateTime** |  | [optional]
 **status** | **string** |  | [optional]
 **template_type** | [**\MyDataMyConsent\Model\ConsentTemplateTypes**](ConsentTemplateTypes.md) |  | [optional]
 **frequency** | [**\MyDataMyConsent\Model\Life**](Life.md) |  | [optional]

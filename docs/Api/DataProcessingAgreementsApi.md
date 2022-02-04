@@ -102,7 +102,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**](../Model/.md)|  |
+ **id** | **string**|  |
 
 ### Return type
 
@@ -156,7 +156,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**](../Model/.md)|  |
+ **id** | **string**|  |
 
 ### Return type
 
@@ -211,7 +211,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**](../Model/.md)|  |
+ **id** | **string**|  |
  **update_data_processing_agreement_request_model** | [**\MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel**](../Model/UpdateDataProcessingAgreementRequestModel.md)|  | [optional]
 
 ### Return type
@@ -265,7 +265,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**](../Model/.md)|  |
+ **id** | **string**|  |
 
 ### Return type
 

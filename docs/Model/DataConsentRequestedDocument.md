@@ -4,10 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**custom_key** | **string** |  | [optional]
 **drn** | **string** |  | [optional]
-**from_datetime** | [**\DateTime**](\DateTime.md) |  | [optional]
-**to_datetime** | [**\DateTime**](\DateTime.md) |  | [optional]
-**provider_id** | **string** |  | [optional]
 **document_type_id** | **string** |  | [optional]
 **document_identifier** | **string** |  | [optional]
 

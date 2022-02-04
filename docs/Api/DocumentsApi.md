@@ -98,7 +98,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **document_id** | [**string**](../Model/.md)| Document id. |
+ **document_id** | **string**| Document id. |
 
 ### Return type
 
@@ -155,7 +155,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **document_type_id** | [**string**](../Model/.md)|  | [optional]
+ **document_type_id** | **string**|  | [optional]
  **from_date_time** | **\DateTime**|  | [optional]
  **to_date_time** | **\DateTime**|  | [optional]
  **page_size** | **int**|  | [optional] [default to 25]
@@ -199,8 +199,8 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$page_size = 56; // int
-$page_no = 56; // int
+$page_size = 25; // int
+$page_no = 1; // int
 
 try {
     $apiInstance->v1DocumentsTypesGet($page_size, $page_no);
@@ -213,8 +213,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page_size** | **int**|  | [optional]
- **page_no** | **int**|  | [optional]
+ **page_size** | **int**|  | [optional] [default to 25]
+ **page_no** | **int**|  | [optional] [default to 1]
 
 ### Return type
 
