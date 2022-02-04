@@ -118,29 +118,30 @@ class DataConsentRequestsApi
     /**
      * Operation cancelConsentRequest
      *
-     * Cancel a Consent Request by ID.
+     * Revoke / Cancel the ConsentRequest based on Id
      *
-     * @param  string $request_id consent request id. (required)
+     * @param  string $request_id request_id (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return bool|\MyDataMyConsent\Model\ProblemDetails
      */
     public function cancelConsentRequest($request_id)
     {
-        $this->cancelConsentRequestWithHttpInfo($request_id);
+        list($response) = $this->cancelConsentRequestWithHttpInfo($request_id);
+        return $response;
     }
 
     /**
      * Operation cancelConsentRequestWithHttpInfo
      *
-     * Cancel a Consent Request by ID.
+     * Revoke / Cancel the ConsentRequest based on Id
      *
-     * @param  string $request_id consent request id. (required)
+     * @param  string $request_id (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of bool|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelConsentRequestWithHttpInfo($request_id)
     {
@@ -174,10 +175,64 @@ class DataConsentRequestsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('bool' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'bool', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = 'bool';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'bool',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -186,9 +241,9 @@ class DataConsentRequestsApi
     /**
      * Operation cancelConsentRequestAsync
      *
-     * Cancel a Consent Request by ID.
+     * Revoke / Cancel the ConsentRequest based on Id
      *
-     * @param  string $request_id consent request id. (required)
+     * @param  string $request_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -206,23 +261,33 @@ class DataConsentRequestsApi
     /**
      * Operation cancelConsentRequestAsyncWithHttpInfo
      *
-     * Cancel a Consent Request by ID.
+     * Revoke / Cancel the ConsentRequest based on Id
      *
-     * @param  string $request_id consent request id. (required)
+     * @param  string $request_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function cancelConsentRequestAsyncWithHttpInfo($request_id)
     {
-        $returnType = '';
+        $returnType = 'bool';
         $request = $this->cancelConsentRequestRequest($request_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -244,7 +309,7 @@ class DataConsentRequestsApi
     /**
      * Create request for operation 'cancelConsentRequest'
      *
-     * @param  string $request_id consent request id. (required)
+     * @param  string $request_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -279,11 +344,11 @@ class DataConsentRequestsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -343,7 +408,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataConsent|\MyDataMyConsent\Model\ProblemDetails
+     * @return bool|\MyDataMyConsent\Model\ProblemDetails
      */
     public function createRequest($data_consent_request_model = null)
     {
@@ -360,7 +425,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataConsent|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of bool|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function createRequestWithHttpInfo($data_consent_request_model = null)
     {
@@ -396,14 +461,14 @@ class DataConsentRequestsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\DataConsent' === '\SplFileObject') {
+                    if ('bool' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataConsent', []),
+                        ObjectSerializer::deserialize($content, 'bool', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -421,7 +486,7 @@ class DataConsentRequestsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\DataConsent';
+            $returnType = 'bool';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -439,7 +504,7 @@ class DataConsentRequestsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\DataConsent',
+                        'bool',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -489,7 +554,7 @@ class DataConsentRequestsApi
      */
     public function createRequestAsyncWithHttpInfo($data_consent_request_model = null)
     {
-        $returnType = '\MyDataMyConsent\Model\DataConsent';
+        $returnType = 'bool';
         $request = $this->createRequestRequest($data_consent_request_model);
 
         return $this->client
@@ -549,12 +614,12 @@ class DataConsentRequestsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/xml']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/xml'],
-                ['application/json', 'application/xml']
+                ['application/json'],
+                ['application/json']
             );
         }
 
@@ -615,15 +680,17 @@ class DataConsentRequestsApi
      *
      * Get all Consent Requests.
      *
+     * @param  int $page_no page_no (optional)
+     * @param  int $page_size page_size (optional)
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status status (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return object|\MyDataMyConsent\Model\ProblemDetails
      */
-    public function getAllConsentRequests($status = null)
+    public function getAllConsentRequests($page_no = null, $page_size = null, $status = null)
     {
-        list($response) = $this->getAllConsentRequestsWithHttpInfo($status);
+        list($response) = $this->getAllConsentRequestsWithHttpInfo($page_no, $page_size, $status);
         return $response;
     }
 
@@ -632,15 +699,17 @@ class DataConsentRequestsApi
      *
      * Get all Consent Requests.
      *
+     * @param  int $page_no (optional)
+     * @param  int $page_size (optional)
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of object|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllConsentRequestsWithHttpInfo($status = null)
+    public function getAllConsentRequestsWithHttpInfo($page_no = null, $page_size = null, $status = null)
     {
-        $request = $this->getAllConsentRequestsRequest($status);
+        $request = $this->getAllConsentRequestsRequest($page_no, $page_size, $status);
 
         try {
             $options = $this->createHttpClientOption();
@@ -738,14 +807,16 @@ class DataConsentRequestsApi
      *
      * Get all Consent Requests.
      *
+     * @param  int $page_no (optional)
+     * @param  int $page_size (optional)
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllConsentRequestsAsync($status = null)
+    public function getAllConsentRequestsAsync($page_no = null, $page_size = null, $status = null)
     {
-        return $this->getAllConsentRequestsAsyncWithHttpInfo($status)
+        return $this->getAllConsentRequestsAsyncWithHttpInfo($page_no, $page_size, $status)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -758,15 +829,17 @@ class DataConsentRequestsApi
      *
      * Get all Consent Requests.
      *
+     * @param  int $page_no (optional)
+     * @param  int $page_size (optional)
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllConsentRequestsAsyncWithHttpInfo($status = null)
+    public function getAllConsentRequestsAsyncWithHttpInfo($page_no = null, $page_size = null, $status = null)
     {
         $returnType = 'object';
-        $request = $this->getAllConsentRequestsRequest($status);
+        $request = $this->getAllConsentRequestsRequest($page_no, $page_size, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -804,12 +877,14 @@ class DataConsentRequestsApi
     /**
      * Create request for operation 'getAllConsentRequests'
      *
+     * @param  int $page_no (optional)
+     * @param  int $page_size (optional)
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllConsentRequestsRequest($status = null)
+    public function getAllConsentRequestsRequest($page_no = null, $page_size = null, $status = null)
     {
 
         $resourcePath = '/v1/consent-requests';
@@ -819,6 +894,28 @@ class DataConsentRequestsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($page_no !== null) {
+            if('form' === 'form' && is_array($page_no)) {
+                foreach($page_no as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['pageNo'] = $page_no;
+            }
+        }
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['pageSize'] = $page_size;
+            }
+        }
         // query params
         if ($status !== null) {
             if('form' === 'form' && is_array($status)) {
@@ -836,11 +933,11 @@ class DataConsentRequestsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/xml']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/xml'],
+                ['application/json'],
                 []
             );
         }
@@ -1120,11 +1217,11 @@ class DataConsentRequestsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/xml']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/xml'],
+                ['application/json'],
                 []
             );
         }
