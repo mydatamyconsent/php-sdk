@@ -60,8 +60,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'document_field' => 'string',
-        'custom_key' => 'string',
+        'field_title' => 'string',
+        'field_slug' => 'string',
         'drn' => 'string[]',
         'requirement' => '\MyDataMyConsent\Model\DocumentsRequired'
     ];
@@ -74,8 +74,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'document_field' => null,
-        'custom_key' => null,
+        'field_title' => null,
+        'field_slug' => null,
         'drn' => null,
         'requirement' => null
     ];
@@ -107,8 +107,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'document_field' => 'documentField',
-        'custom_key' => 'customKey',
+        'field_title' => 'fieldTitle',
+        'field_slug' => 'fieldSlug',
         'drn' => 'drn',
         'requirement' => 'requirement'
     ];
@@ -119,8 +119,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'document_field' => 'setDocumentField',
-        'custom_key' => 'setCustomKey',
+        'field_title' => 'setFieldTitle',
+        'field_slug' => 'setFieldSlug',
         'drn' => 'setDrn',
         'requirement' => 'setRequirement'
     ];
@@ -131,8 +131,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'document_field' => 'getDocumentField',
-        'custom_key' => 'getCustomKey',
+        'field_title' => 'getFieldTitle',
+        'field_slug' => 'getFieldSlug',
         'drn' => 'getDrn',
         'requirement' => 'getRequirement'
     ];
@@ -194,8 +194,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['document_field'] = $data['document_field'] ?? null;
-        $this->container['custom_key'] = $data['custom_key'] ?? null;
+        $this->container['field_title'] = $data['field_title'] ?? null;
+        $this->container['field_slug'] = $data['field_slug'] ?? null;
         $this->container['drn'] = $data['drn'] ?? null;
         $this->container['requirement'] = $data['requirement'] ?? null;
     }
@@ -209,6 +209,18 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['field_title'] === null) {
+            $invalidProperties[] = "'field_title' can't be null";
+        }
+        if ($this->container['field_slug'] === null) {
+            $invalidProperties[] = "'field_slug' can't be null";
+        }
+        if ($this->container['drn'] === null) {
+            $invalidProperties[] = "'drn' can't be null";
+        }
+        if ($this->container['requirement'] === null) {
+            $invalidProperties[] = "'requirement' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -225,49 +237,49 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets document_field
+     * Gets field_title
      *
-     * @return string|null
+     * @return string
      */
-    public function getDocumentField()
+    public function getFieldTitle()
     {
-        return $this->container['document_field'];
+        return $this->container['field_title'];
     }
 
     /**
-     * Sets document_field
+     * Sets field_title
      *
-     * @param string|null $document_field document_field
+     * @param string $field_title field_title
      *
      * @return self
      */
-    public function setDocumentField($document_field)
+    public function setFieldTitle($field_title)
     {
-        $this->container['document_field'] = $document_field;
+        $this->container['field_title'] = $field_title;
 
         return $this;
     }
 
     /**
-     * Gets custom_key
+     * Gets field_slug
      *
-     * @return string|null
+     * @return string
      */
-    public function getCustomKey()
+    public function getFieldSlug()
     {
-        return $this->container['custom_key'];
+        return $this->container['field_slug'];
     }
 
     /**
-     * Sets custom_key
+     * Sets field_slug
      *
-     * @param string|null $custom_key custom_key
+     * @param string $field_slug field_slug
      *
      * @return self
      */
-    public function setCustomKey($custom_key)
+    public function setFieldSlug($field_slug)
     {
-        $this->container['custom_key'] = $custom_key;
+        $this->container['field_slug'] = $field_slug;
 
         return $this;
     }
@@ -275,7 +287,7 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets drn
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getDrn()
     {
@@ -285,7 +297,7 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets drn
      *
-     * @param string[]|null $drn drn
+     * @param string[] $drn drn
      *
      * @return self
      */
@@ -299,7 +311,7 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets requirement
      *
-     * @return \MyDataMyConsent\Model\DocumentsRequired|null
+     * @return \MyDataMyConsent\Model\DocumentsRequired
      */
     public function getRequirement()
     {
@@ -309,7 +321,7 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets requirement
      *
-     * @param \MyDataMyConsent\Model\DocumentsRequired|null $requirement requirement
+     * @param \MyDataMyConsent\Model\DocumentsRequired $requirement requirement
      *
      * @return self
      */
