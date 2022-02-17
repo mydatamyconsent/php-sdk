@@ -43,19 +43,15 @@ class DocumentCategoryType
     /**
      * Possible values of this enum
      */
+    const PERSONAL = 'Personal';
+
+    const EDUCATION = 'Education';
+
     const HEALTH = 'Health';
 
     const FINANCE = 'Finance';
 
-    const EDUCATION = 'Education';
-
-    const BILLS = 'Bills';
-
-    const TAX = 'Tax';
-
     const CERTIFICATES = 'Certificates';
-
-    const INVOICES = 'Invoices';
 
     /**
      * Gets allowable values of the enum
@@ -64,13 +60,11 @@ class DocumentCategoryType
     public static function getAllowableEnumValues()
     {
         return [
+            self::PERSONAL,
+            self::EDUCATION,
             self::HEALTH,
             self::FINANCE,
-            self::EDUCATION,
-            self::BILLS,
-            self::TAX,
-            self::CERTIFICATES,
-            self::INVOICES
+            self::CERTIFICATES
         ];
     }
 }
