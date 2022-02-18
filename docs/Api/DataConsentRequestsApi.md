@@ -69,7 +69,7 @@ No authorization required
 ## `createRequest()`
 
 ```php
-createRequest($data_consent_request_model): bool
+createRequest($data_consent_request_model): \MyDataMyConsent\Model\DataConsentRequest
 ```
 
 Create a consent request.
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bool**
+[**\MyDataMyConsent\Model\DataConsentRequest**](../Model/DataConsentRequest.md)
 
 ### Authorization
 

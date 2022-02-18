@@ -121,6 +121,7 @@ Class | Method | HTTP request | Description
 - [DataConsentDocumentsDto](docs/Model/DataConsentDocumentsDto.md)
 - [DataConsentFinancialsDto](docs/Model/DataConsentFinancialsDto.md)
 - [DataConsentIdentifier](docs/Model/DataConsentIdentifier.md)
+- [DataConsentRequest](docs/Model/DataConsentRequest.md)
 - [DataConsentRequestModel](docs/Model/DataConsentRequestModel.md)
 - [DataConsentRequestedDocument](docs/Model/DataConsentRequestedDocument.md)
 - [DataConsentRequestedFinancialAccount](docs/Model/DataConsentRequestedFinancialAccount.md)

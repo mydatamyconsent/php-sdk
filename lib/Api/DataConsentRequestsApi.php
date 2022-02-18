@@ -416,7 +416,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return bool|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\DataConsentRequest|\MyDataMyConsent\Model\ProblemDetails
      */
     public function createRequest($data_consent_request_model = null)
     {
@@ -433,7 +433,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of bool|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\DataConsentRequest|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function createRequestWithHttpInfo($data_consent_request_model = null)
     {
@@ -476,14 +476,14 @@ class DataConsentRequestsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('bool' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\DataConsentRequest' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'bool', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataConsentRequest', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -501,7 +501,7 @@ class DataConsentRequestsApi
                     ];
             }
 
-            $returnType = 'bool';
+            $returnType = '\MyDataMyConsent\Model\DataConsentRequest';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -519,7 +519,7 @@ class DataConsentRequestsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'bool',
+                        '\MyDataMyConsent\Model\DataConsentRequest',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -569,7 +569,7 @@ class DataConsentRequestsApi
      */
     public function createRequestAsyncWithHttpInfo($data_consent_request_model = null)
     {
-        $returnType = 'bool';
+        $returnType = '\MyDataMyConsent\Model\DataConsentRequest';
         $request = $this->createRequestRequest($data_consent_request_model);
 
         return $this->client

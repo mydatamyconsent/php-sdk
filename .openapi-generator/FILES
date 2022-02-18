@@ -19,6 +19,7 @@ docs/Model/DataConsentDetailsDto.md
 docs/Model/DataConsentDocumentsDto.md
 docs/Model/DataConsentFinancialsDto.md
 docs/Model/DataConsentIdentifier.md
+docs/Model/DataConsentRequest.md
 docs/Model/DataConsentRequestModel.md
 docs/Model/DataConsentRequestedDocument.md
 docs/Model/DataConsentRequestedFinancialAccount.md
@@ -86,6 +87,7 @@ lib/Model/DataConsentDetailsDto.php
 lib/Model/DataConsentDocumentsDto.php
 lib/Model/DataConsentFinancialsDto.php
 lib/Model/DataConsentIdentifier.php
+lib/Model/DataConsentRequest.php
 lib/Model/DataConsentRequestModel.php
 lib/Model/DataConsentRequestedDocument.php
 lib/Model/DataConsentRequestedFinancialAccount.php
@@ -137,3 +139,4 @@ lib/Model/UserDocumentDetailsDto.php
 lib/Model/UserDocumentDownloadDto.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/DataConsentRequestTest.php
