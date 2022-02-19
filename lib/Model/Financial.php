@@ -60,7 +60,7 @@ class Financial implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_field' => 'string',
+        'field_name' => 'string',
         'custom_key' => 'string',
         'accounts' => '\MyDataMyConsent\Model\FinancialAccounts[]',
         'requirement' => '\MyDataMyConsent\Model\DocumentsRequired'
@@ -74,7 +74,7 @@ class Financial implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_field' => null,
+        'field_name' => null,
         'custom_key' => null,
         'accounts' => null,
         'requirement' => null
@@ -107,8 +107,8 @@ class Financial implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_field' => 'accountField',
-        'custom_key' => 'customKey',
+        'field_name' => 'field_name',
+        'custom_key' => 'custom_key',
         'accounts' => 'accounts',
         'requirement' => 'requirement'
     ];
@@ -119,7 +119,7 @@ class Financial implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'account_field' => 'setAccountField',
+        'field_name' => 'setFieldName',
         'custom_key' => 'setCustomKey',
         'accounts' => 'setAccounts',
         'requirement' => 'setRequirement'
@@ -131,7 +131,7 @@ class Financial implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'account_field' => 'getAccountField',
+        'field_name' => 'getFieldName',
         'custom_key' => 'getCustomKey',
         'accounts' => 'getAccounts',
         'requirement' => 'getRequirement'
@@ -194,7 +194,7 @@ class Financial implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['account_field'] = $data['account_field'] ?? null;
+        $this->container['field_name'] = $data['field_name'] ?? null;
         $this->container['custom_key'] = $data['custom_key'] ?? null;
         $this->container['accounts'] = $data['accounts'] ?? null;
         $this->container['requirement'] = $data['requirement'] ?? null;
@@ -225,25 +225,25 @@ class Financial implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets account_field
+     * Gets field_name
      *
      * @return string|null
      */
-    public function getAccountField()
+    public function getFieldName()
     {
-        return $this->container['account_field'];
+        return $this->container['field_name'];
     }
 
     /**
-     * Sets account_field
+     * Sets field_name
      *
-     * @param string|null $account_field account_field
+     * @param string|null $field_name field_name
      *
      * @return self
      */
-    public function setAccountField($account_field)
+    public function setFieldName($field_name)
     {
-        $this->container['account_field'] = $account_field;
+        $this->container['field_name'] = $field_name;
 
         return $this;
     }

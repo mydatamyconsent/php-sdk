@@ -107,7 +107,7 @@ class DataConsentRequestedFinancialAccount implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'custom_key' => 'customKey',
+        'custom_key' => 'custom_key',
         'drn' => 'drn',
         'account_type_id' => 'accountTypeId',
         'account_identifier' => 'accountIdentifier'

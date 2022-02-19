@@ -61,7 +61,7 @@ class FinancialAccounts implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'drn' => 'string',
-        'financial_account_details_required' => '\MyDataMyConsent\Model\FinancialAccountDetailsRequired[]',
+        'required_details' => '\MyDataMyConsent\Model\FinancialAccountDetailsRequired[]',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime'
     ];
@@ -75,7 +75,7 @@ class FinancialAccounts implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPIFormats = [
         'drn' => null,
-        'financial_account_details_required' => null,
+        'required_details' => null,
         'start_date' => 'date-time',
         'end_date' => 'date-time'
     ];
@@ -108,9 +108,9 @@ class FinancialAccounts implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $attributeMap = [
         'drn' => 'drn',
-        'financial_account_details_required' => 'financialAccountDetailsRequired',
-        'start_date' => 'startDate',
-        'end_date' => 'endDate'
+        'required_details' => 'required_details',
+        'start_date' => 'start_date',
+        'end_date' => 'end_date'
     ];
 
     /**
@@ -120,7 +120,7 @@ class FinancialAccounts implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $setters = [
         'drn' => 'setDrn',
-        'financial_account_details_required' => 'setFinancialAccountDetailsRequired',
+        'required_details' => 'setRequiredDetails',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate'
     ];
@@ -132,7 +132,7 @@ class FinancialAccounts implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $getters = [
         'drn' => 'getDrn',
-        'financial_account_details_required' => 'getFinancialAccountDetailsRequired',
+        'required_details' => 'getRequiredDetails',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate'
     ];
@@ -195,7 +195,7 @@ class FinancialAccounts implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function __construct(array $data = null)
     {
         $this->container['drn'] = $data['drn'] ?? null;
-        $this->container['financial_account_details_required'] = $data['financial_account_details_required'] ?? null;
+        $this->container['required_details'] = $data['required_details'] ?? null;
         $this->container['start_date'] = $data['start_date'] ?? null;
         $this->container['end_date'] = $data['end_date'] ?? null;
     }
@@ -249,25 +249,25 @@ class FinancialAccounts implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets financial_account_details_required
+     * Gets required_details
      *
      * @return \MyDataMyConsent\Model\FinancialAccountDetailsRequired[]|null
      */
-    public function getFinancialAccountDetailsRequired()
+    public function getRequiredDetails()
     {
-        return $this->container['financial_account_details_required'];
+        return $this->container['required_details'];
     }
 
     /**
-     * Sets financial_account_details_required
+     * Sets required_details
      *
-     * @param \MyDataMyConsent\Model\FinancialAccountDetailsRequired[]|null $financial_account_details_required financial_account_details_required
+     * @param \MyDataMyConsent\Model\FinancialAccountDetailsRequired[]|null $required_details required_details
      *
      * @return self
      */
-    public function setFinancialAccountDetailsRequired($financial_account_details_required)
+    public function setRequiredDetails($required_details)
     {
-        $this->container['financial_account_details_required'] = $financial_account_details_required;
+        $this->container['required_details'] = $required_details;
 
         return $this;
     }

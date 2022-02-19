@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **document_type_id** | **string** |  |
-**identifier** | **string** |  |
+**document_identifier** | **string** |  |
 **name** | **string** |  |
 **description** | **string** |  |
 **receiver** | [**\MyDataMyConsent\Model\Receiver**](Receiver.md) |  |

@@ -139,4 +139,3 @@ lib/Model/UserDocumentDetailsDto.php
 lib/Model/UserDocumentDownloadDto.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/DataConsentRequestTest.php

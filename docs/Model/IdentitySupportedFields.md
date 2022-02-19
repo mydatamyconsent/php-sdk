@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**icon_code_point** | **int** |  |
+**icon** | **int** |  |
 **title** | **string** |  |
 **description** | **string** |  | [optional]
 **key** | **string** |  |

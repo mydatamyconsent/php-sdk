@@ -107,8 +107,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'field_title' => 'fieldTitle',
-        'field_slug' => 'fieldSlug',
+        'field_title' => 'field_title',
+        'field_slug' => 'field_slug',
         'drn' => 'drn',
         'requirement' => 'requirement'
     ];

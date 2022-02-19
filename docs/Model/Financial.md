@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_field** | **string** |  | [optional]
+**field_name** | **string** |  | [optional]
 **custom_key** | **string** |  | [optional]
 **accounts** | [**\MyDataMyConsent\Model\FinancialAccounts[]**](FinancialAccounts.md) |  | [optional]
 **requirement** | [**\MyDataMyConsent\Model\DocumentsRequired**](DocumentsRequired.md) |  | [optional]

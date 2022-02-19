@@ -60,7 +60,7 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'icon_code_point' => 'int',
+        'icon' => 'int',
         'title' => 'string',
         'description' => 'string',
         'key' => 'string',
@@ -75,7 +75,7 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'icon_code_point' => 'int32',
+        'icon' => 'int32',
         'title' => null,
         'description' => null,
         'key' => null,
@@ -109,7 +109,7 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'icon_code_point' => 'iconCodePoint',
+        'icon' => 'icon',
         'title' => 'title',
         'description' => 'description',
         'key' => 'key',
@@ -122,7 +122,7 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'icon_code_point' => 'setIconCodePoint',
+        'icon' => 'setIcon',
         'title' => 'setTitle',
         'description' => 'setDescription',
         'key' => 'setKey',
@@ -135,7 +135,7 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'icon_code_point' => 'getIconCodePoint',
+        'icon' => 'getIcon',
         'title' => 'getTitle',
         'description' => 'getDescription',
         'key' => 'getKey',
@@ -199,7 +199,7 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['icon_code_point'] = $data['icon_code_point'] ?? null;
+        $this->container['icon'] = $data['icon'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['key'] = $data['key'] ?? null;
@@ -215,8 +215,8 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['icon_code_point'] === null) {
-            $invalidProperties[] = "'icon_code_point' can't be null";
+        if ($this->container['icon'] === null) {
+            $invalidProperties[] = "'icon' can't be null";
         }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
@@ -243,25 +243,25 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets icon_code_point
+     * Gets icon
      *
      * @return int
      */
-    public function getIconCodePoint()
+    public function getIcon()
     {
-        return $this->container['icon_code_point'];
+        return $this->container['icon'];
     }
 
     /**
-     * Sets icon_code_point
+     * Sets icon
      *
-     * @param int $icon_code_point icon_code_point
+     * @param int $icon icon
      *
      * @return self
      */
-    public function setIconCodePoint($icon_code_point)
+    public function setIcon($icon)
     {
-        $this->container['icon_code_point'] = $icon_code_point;
+        $this->container['icon'] = $icon;
 
         return $this;
     }

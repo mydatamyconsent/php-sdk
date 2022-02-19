@@ -61,7 +61,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'document_type_id' => 'string',
-        'identifier' => 'string',
+        'document_identifier' => 'string',
         'name' => 'string',
         'description' => 'string',
         'receiver' => '\MyDataMyConsent\Model\Receiver',
@@ -79,7 +79,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'document_type_id' => null,
-        'identifier' => null,
+        'document_identifier' => null,
         'name' => null,
         'description' => null,
         'receiver' => null,
@@ -116,7 +116,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'document_type_id' => 'documentTypeId',
-        'identifier' => 'identifier',
+        'document_identifier' => 'documentIdentifier',
         'name' => 'name',
         'description' => 'description',
         'receiver' => 'receiver',
@@ -132,7 +132,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'document_type_id' => 'setDocumentTypeId',
-        'identifier' => 'setIdentifier',
+        'document_identifier' => 'setDocumentIdentifier',
         'name' => 'setName',
         'description' => 'setDescription',
         'receiver' => 'setReceiver',
@@ -148,7 +148,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'document_type_id' => 'getDocumentTypeId',
-        'identifier' => 'getIdentifier',
+        'document_identifier' => 'getDocumentIdentifier',
         'name' => 'getName',
         'description' => 'getDescription',
         'receiver' => 'getReceiver',
@@ -215,7 +215,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['document_type_id'] = $data['document_type_id'] ?? null;
-        $this->container['identifier'] = $data['identifier'] ?? null;
+        $this->container['document_identifier'] = $data['document_identifier'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['receiver'] = $data['receiver'] ?? null;
@@ -236,8 +236,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['document_type_id'] === null) {
             $invalidProperties[] = "'document_type_id' can't be null";
         }
-        if ($this->container['identifier'] === null) {
-            $invalidProperties[] = "'identifier' can't be null";
+        if ($this->container['document_identifier'] === null) {
+            $invalidProperties[] = "'document_identifier' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
@@ -291,25 +291,25 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets identifier
+     * Gets document_identifier
      *
      * @return string
      */
-    public function getIdentifier()
+    public function getDocumentIdentifier()
     {
-        return $this->container['identifier'];
+        return $this->container['document_identifier'];
     }
 
     /**
-     * Sets identifier
+     * Sets document_identifier
      *
-     * @param string $identifier identifier
+     * @param string $document_identifier document_identifier
      *
      * @return self
      */
-    public function setIdentifier($identifier)
+    public function setDocumentIdentifier($document_identifier)
     {
-        $this->container['identifier'] = $identifier;
+        $this->container['document_identifier'] = $document_identifier;
 
         return $this;
     }

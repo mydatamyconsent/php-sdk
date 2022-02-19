@@ -107,7 +107,7 @@ class DataConsentRequestedDocument implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'custom_key' => 'customKey',
+        'custom_key' => 'custom_key',
         'drn' => 'drn',
         'document_type_id' => 'documentTypeId',
         'document_identifier' => 'documentIdentifier'
