@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentIssueRequest
+ * OrganizationDataConsentRequestResponse
  *
  * PHP version 7.3
  *
@@ -33,9 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DocumentIssueRequest Class Doc Comment
+ * OrganizationDataConsentRequestResponse Class Doc Comment
  *
  * @category Class
+ * @description Organization Data Consent Request Response.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrganizationDataConsentRequestResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +53,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DocumentIssueRequest';
+    protected static $openAPIModelName = 'OrganizationDataConsentRequestResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,14 +61,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'document_type_id' => 'string',
-        'document_identifier' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'receiver' => '\MyDataMyConsent\Model\Receiver',
-        'expires_at_utc' => '\DateTime',
-        'base64_pdf_document' => 'string',
-        'metadata' => 'mixed'
+        'id' => 'string',
+        'template_id' => 'string',
+        'requested_at_utc' => '\DateTime',
+        'request_expires_at_utc' => '\DateTime',
+        'status' => '\MyDataMyConsent\Model\DataConsentStatus',
+        'transaction_id' => 'string'
     ];
 
     /**
@@ -78,14 +77,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'document_type_id' => null,
-        'document_identifier' => null,
-        'name' => null,
-        'description' => null,
-        'receiver' => null,
-        'expires_at_utc' => 'date-time',
-        'base64_pdf_document' => null,
-        'metadata' => null
+        'id' => 'uuid',
+        'template_id' => 'uuid',
+        'requested_at_utc' => 'date-time',
+        'request_expires_at_utc' => 'date-time',
+        'status' => null,
+        'transaction_id' => null
     ];
 
     /**
@@ -115,14 +112,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'document_type_id' => 'documentTypeId',
-        'document_identifier' => 'documentIdentifier',
-        'name' => 'name',
-        'description' => 'description',
-        'receiver' => 'receiver',
-        'expires_at_utc' => 'expiresAtUtc',
-        'base64_pdf_document' => 'base64PdfDocument',
-        'metadata' => 'metadata'
+        'id' => 'id',
+        'template_id' => 'templateId',
+        'requested_at_utc' => 'requestedAtUtc',
+        'request_expires_at_utc' => 'requestExpiresAtUtc',
+        'status' => 'status',
+        'transaction_id' => 'transactionId'
     ];
 
     /**
@@ -131,14 +126,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'document_type_id' => 'setDocumentTypeId',
-        'document_identifier' => 'setDocumentIdentifier',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'receiver' => 'setReceiver',
-        'expires_at_utc' => 'setExpiresAtUtc',
-        'base64_pdf_document' => 'setBase64PdfDocument',
-        'metadata' => 'setMetadata'
+        'id' => 'setId',
+        'template_id' => 'setTemplateId',
+        'requested_at_utc' => 'setRequestedAtUtc',
+        'request_expires_at_utc' => 'setRequestExpiresAtUtc',
+        'status' => 'setStatus',
+        'transaction_id' => 'setTransactionId'
     ];
 
     /**
@@ -147,14 +140,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'document_type_id' => 'getDocumentTypeId',
-        'document_identifier' => 'getDocumentIdentifier',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'receiver' => 'getReceiver',
-        'expires_at_utc' => 'getExpiresAtUtc',
-        'base64_pdf_document' => 'getBase64PdfDocument',
-        'metadata' => 'getMetadata'
+        'id' => 'getId',
+        'template_id' => 'getTemplateId',
+        'requested_at_utc' => 'getRequestedAtUtc',
+        'request_expires_at_utc' => 'getRequestExpiresAtUtc',
+        'status' => 'getStatus',
+        'transaction_id' => 'getTransactionId'
     ];
 
     /**
@@ -214,14 +205,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['document_type_id'] = $data['document_type_id'] ?? null;
-        $this->container['document_identifier'] = $data['document_identifier'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
-        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
-        $this->container['base64_pdf_document'] = $data['base64_pdf_document'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['template_id'] = $data['template_id'] ?? null;
+        $this->container['requested_at_utc'] = $data['requested_at_utc'] ?? null;
+        $this->container['request_expires_at_utc'] = $data['request_expires_at_utc'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['transaction_id'] = $data['transaction_id'] ?? null;
     }
 
     /**
@@ -233,24 +222,6 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['document_type_id'] === null) {
-            $invalidProperties[] = "'document_type_id' can't be null";
-        }
-        if ($this->container['document_identifier'] === null) {
-            $invalidProperties[] = "'document_identifier' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
-        if ($this->container['base64_pdf_document'] === null) {
-            $invalidProperties[] = "'base64_pdf_document' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -267,193 +238,145 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets document_type_id
+     * Gets id
      *
-     * @return string
+     * @return string|null
      */
-    public function getDocumentTypeId()
+    public function getId()
     {
-        return $this->container['document_type_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets document_type_id
+     * Sets id
      *
-     * @param string $document_type_id document_type_id
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setDocumentTypeId($document_type_id)
+    public function setId($id)
     {
-        $this->container['document_type_id'] = $document_type_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets document_identifier
+     * Gets template_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getDocumentIdentifier()
+    public function getTemplateId()
     {
-        return $this->container['document_identifier'];
+        return $this->container['template_id'];
     }
 
     /**
-     * Sets document_identifier
+     * Sets template_id
      *
-     * @param string $document_identifier document_identifier
+     * @param string|null $template_id template_id
      *
      * @return self
      */
-    public function setDocumentIdentifier($document_identifier)
+    public function setTemplateId($template_id)
     {
-        $this->container['document_identifier'] = $document_identifier;
+        $this->container['template_id'] = $template_id;
 
         return $this;
     }
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets receiver
-     *
-     * @return \MyDataMyConsent\Model\Receiver
-     */
-    public function getReceiver()
-    {
-        return $this->container['receiver'];
-    }
-
-    /**
-     * Sets receiver
-     *
-     * @param \MyDataMyConsent\Model\Receiver $receiver receiver
-     *
-     * @return self
-     */
-    public function setReceiver($receiver)
-    {
-        $this->container['receiver'] = $receiver;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at_utc
+     * Gets requested_at_utc
      *
      * @return \DateTime|null
      */
-    public function getExpiresAtUtc()
+    public function getRequestedAtUtc()
     {
-        return $this->container['expires_at_utc'];
+        return $this->container['requested_at_utc'];
     }
 
     /**
-     * Sets expires_at_utc
+     * Sets requested_at_utc
      *
-     * @param \DateTime|null $expires_at_utc expires_at_utc
+     * @param \DateTime|null $requested_at_utc requested_at_utc
      *
      * @return self
      */
-    public function setExpiresAtUtc($expires_at_utc)
+    public function setRequestedAtUtc($requested_at_utc)
     {
-        $this->container['expires_at_utc'] = $expires_at_utc;
+        $this->container['requested_at_utc'] = $requested_at_utc;
 
         return $this;
     }
 
     /**
-     * Gets base64_pdf_document
+     * Gets request_expires_at_utc
      *
-     * @return string
+     * @return \DateTime|null
      */
-    public function getBase64PdfDocument()
+    public function getRequestExpiresAtUtc()
     {
-        return $this->container['base64_pdf_document'];
+        return $this->container['request_expires_at_utc'];
     }
 
     /**
-     * Sets base64_pdf_document
+     * Sets request_expires_at_utc
      *
-     * @param string $base64_pdf_document base64_pdf_document
+     * @param \DateTime|null $request_expires_at_utc request_expires_at_utc
      *
      * @return self
      */
-    public function setBase64PdfDocument($base64_pdf_document)
+    public function setRequestExpiresAtUtc($request_expires_at_utc)
     {
-        $this->container['base64_pdf_document'] = $base64_pdf_document;
+        $this->container['request_expires_at_utc'] = $request_expires_at_utc;
 
         return $this;
     }
 
     /**
-     * Gets metadata
+     * Gets status
      *
-     * @return mixed|null
+     * @return \MyDataMyConsent\Model\DataConsentStatus|null
      */
-    public function getMetadata()
+    public function getStatus()
     {
-        return $this->container['metadata'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets metadata
+     * Sets status
      *
-     * @param mixed|null $metadata metadata
+     * @param \MyDataMyConsent\Model\DataConsentStatus|null $status status
      *
      * @return self
      */
-    public function setMetadata($metadata)
+    public function setStatus($status)
     {
-        $this->container['metadata'] = $metadata;
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets transaction_id
+     *
+     * @return string|null
+     */
+    public function getTransactionId()
+    {
+        return $this->container['transaction_id'];
+    }
+
+    /**
+     * Sets transaction_id
+     *
+     * @param string|null $transaction_id transaction_id
+     *
+     * @return self
+     */
+    public function setTransactionId($transaction_id)
+    {
+        $this->container['transaction_id'] = $transaction_id;
 
         return $this;
     }

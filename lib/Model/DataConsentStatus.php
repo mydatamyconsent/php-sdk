@@ -53,6 +53,8 @@ class DataConsentStatus
 
     const EXPIRED = 'Expired';
 
+    const CANCELED = 'Canceled';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -64,7 +66,8 @@ class DataConsentStatus
             self::APPROVED,
             self::REJECTED,
             self::REVOKED,
-            self::EXPIRED
+            self::EXPIRED,
+            self::CANCELED
         ];
     }
 }

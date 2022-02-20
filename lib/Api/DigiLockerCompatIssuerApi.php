@@ -117,36 +117,36 @@ class DigiLockerCompatIssuerApi
     }
 
     /**
-     * Operation issuerIssuedoc1XmlPost
+     * Operation digilockerCompatIssueDocument
      *
-     * Digilocker Compatible endpoint to Issue Documents.
+     * Digilocker Compatible endpoint to issue document.
      *
-     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request push_uri_request (optional)
+     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \MyDataMyConsent\Model\PushUriResponse|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails
      */
-    public function issuerIssuedoc1XmlPost($push_uri_request = null)
+    public function digilockerCompatIssueDocument($push_uri_request = null)
     {
-        list($response) = $this->issuerIssuedoc1XmlPostWithHttpInfo($push_uri_request);
+        list($response) = $this->digilockerCompatIssueDocumentWithHttpInfo($push_uri_request);
         return $response;
     }
 
     /**
-     * Operation issuerIssuedoc1XmlPostWithHttpInfo
+     * Operation digilockerCompatIssueDocumentWithHttpInfo
      *
-     * Digilocker Compatible endpoint to Issue Documents.
+     * Digilocker Compatible endpoint to issue document.
      *
-     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request (optional)
+     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \MyDataMyConsent\Model\PushUriResponse|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function issuerIssuedoc1XmlPostWithHttpInfo($push_uri_request = null)
+    public function digilockerCompatIssueDocumentWithHttpInfo($push_uri_request = null)
     {
-        $request = $this->issuerIssuedoc1XmlPostRequest($push_uri_request);
+        $request = $this->digilockerCompatIssueDocumentRequest($push_uri_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -287,18 +287,18 @@ class DigiLockerCompatIssuerApi
     }
 
     /**
-     * Operation issuerIssuedoc1XmlPostAsync
+     * Operation digilockerCompatIssueDocumentAsync
      *
-     * Digilocker Compatible endpoint to Issue Documents.
+     * Digilocker Compatible endpoint to issue document.
      *
-     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request (optional)
+     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function issuerIssuedoc1XmlPostAsync($push_uri_request = null)
+    public function digilockerCompatIssueDocumentAsync($push_uri_request = null)
     {
-        return $this->issuerIssuedoc1XmlPostAsyncWithHttpInfo($push_uri_request)
+        return $this->digilockerCompatIssueDocumentAsyncWithHttpInfo($push_uri_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -307,19 +307,19 @@ class DigiLockerCompatIssuerApi
     }
 
     /**
-     * Operation issuerIssuedoc1XmlPostAsyncWithHttpInfo
+     * Operation digilockerCompatIssueDocumentAsyncWithHttpInfo
      *
-     * Digilocker Compatible endpoint to Issue Documents.
+     * Digilocker Compatible endpoint to issue document.
      *
-     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request (optional)
+     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function issuerIssuedoc1XmlPostAsyncWithHttpInfo($push_uri_request = null)
+    public function digilockerCompatIssueDocumentAsyncWithHttpInfo($push_uri_request = null)
     {
         $returnType = '\MyDataMyConsent\Model\PushUriResponse';
-        $request = $this->issuerIssuedoc1XmlPostRequest($push_uri_request);
+        $request = $this->digilockerCompatIssueDocumentRequest($push_uri_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -355,14 +355,14 @@ class DigiLockerCompatIssuerApi
     }
 
     /**
-     * Create request for operation 'issuerIssuedoc1XmlPost'
+     * Create request for operation 'digilockerCompatIssueDocument'
      *
-     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request (optional)
+     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function issuerIssuedoc1XmlPostRequest($push_uri_request = null)
+    public function digilockerCompatIssueDocumentRequest($push_uri_request = null)
     {
 
         $resourcePath = '/issuer/issuedoc/1/xml';

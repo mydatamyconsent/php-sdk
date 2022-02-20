@@ -4,19 +4,71 @@ All URIs are relative to http://localhost.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1DataProvidersGet()**](DataProviderDiscoveryApi.md#v1DataProvidersGet) | **GET** /v1/data-providers | Discover all data providers in My Data My Consent by country and filters.
-[**v1DataProvidersProviderIdGet()**](DataProviderDiscoveryApi.md#v1DataProvidersProviderIdGet) | **GET** /v1/data-providers/{providerId} | Get a Data Provider details.
+[**getDataProviderById()**](DataProviderDiscoveryApi.md#getDataProviderById) | **GET** /v1/data-providers/{providerId} | Get a Data Provider details based on provider id.
+[**getDataProviders()**](DataProviderDiscoveryApi.md#getDataProviders) | **GET** /v1/data-providers | Discover all data providers in My Data My Consent by country and filters.
 
 
-## `v1DataProvidersGet()`
+## `getDataProviderById()`
 
 ```php
-v1DataProvidersGet($account_type, $document_type, $organization_category, $page_no, $page_size, $country): \MyDataMyConsent\Model\DataProviderPaginatedList
+getDataProviderById($provider_id): \MyDataMyConsent\Model\DataProvider
+```
+
+Get a Data Provider details based on provider id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DataProviderDiscoveryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$provider_id = 'provider_id_example'; // string | Provider id.
+
+try {
+    $result = $apiInstance->getDataProviderById($provider_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DataProviderDiscoveryApi->getDataProviderById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **provider_id** | **string**| Provider id. |
+
+### Return type
+
+[**\MyDataMyConsent\Model\DataProvider**](../Model/DataProvider.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`, `application/xml`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getDataProviders()`
+
+```php
+getDataProviders($account_type, $document_type, $organization_category, $page_no, $page_size, $country): \MyDataMyConsent\Model\DataProviderPaginatedList
 ```
 
 Discover all data providers in My Data My Consent by country and filters.
-
-.
 
 ### Example
 
@@ -39,10 +91,10 @@ $page_size = 25; // int | Page size.
 $country = 'IN'; // string | ISO2 Country code.
 
 try {
-    $result = $apiInstance->v1DataProvidersGet($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
+    $result = $apiInstance->getDataProviders($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DataProviderDiscoveryApi->v1DataProvidersGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DataProviderDiscoveryApi->getDataProviders: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -60,62 +112,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\MyDataMyConsent\Model\DataProviderPaginatedList**](../Model/DataProviderPaginatedList.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`, `application/xml`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `v1DataProvidersProviderIdGet()`
-
-```php
-v1DataProvidersProviderIdGet($provider_id): \MyDataMyConsent\Model\DataProvider
-```
-
-Get a Data Provider details.
-
-.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new MyDataMyConsent\Api\DataProviderDiscoveryApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$provider_id = 'provider_id_example'; // string | Provider Id.
-
-try {
-    $result = $apiInstance->v1DataProvidersProviderIdGet($provider_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DataProviderDiscoveryApi->v1DataProvidersProviderIdGet: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **provider_id** | **string**| Provider Id. |
-
-### Return type
-
-[**\MyDataMyConsent\Model\DataProvider**](../Model/DataProvider.md)
 
 ### Authorization
 

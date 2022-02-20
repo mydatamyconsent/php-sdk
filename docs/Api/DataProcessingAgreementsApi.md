@@ -4,18 +4,179 @@ All URIs are relative to http://localhost.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1DataAgreementsGet()**](DataProcessingAgreementsApi.md#v1DataAgreementsGet) | **GET** /v1/data-agreements | Get all data processing agreements.
-[**v1DataAgreementsIdDelete()**](DataProcessingAgreementsApi.md#v1DataAgreementsIdDelete) | **DELETE** /v1/data-agreements/{id} | Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
-[**v1DataAgreementsIdGet()**](DataProcessingAgreementsApi.md#v1DataAgreementsIdGet) | **GET** /v1/data-agreements/{id} | Get data processing agreement by Id.
-[**v1DataAgreementsIdPut()**](DataProcessingAgreementsApi.md#v1DataAgreementsIdPut) | **PUT** /v1/data-agreements/{id} | Update a data processing agreement.
-[**v1DataAgreementsIdTerminatePut()**](DataProcessingAgreementsApi.md#v1DataAgreementsIdTerminatePut) | **PUT** /v1/data-agreements/{id}/terminate | Terminate a data processing agreement.
-[**v1DataAgreementsPost()**](DataProcessingAgreementsApi.md#v1DataAgreementsPost) | **POST** /v1/data-agreements | Create a data processing agreement.
+[**createDataProcessingAgreement()**](DataProcessingAgreementsApi.md#createDataProcessingAgreement) | **POST** /v1/data-agreements | Create a data processing agreement.
+[**deleteDataProcessingAgreementById()**](DataProcessingAgreementsApi.md#deleteDataProcessingAgreementById) | **DELETE** /v1/data-agreements/{id} | Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
+[**getDataProcessingAgreementById()**](DataProcessingAgreementsApi.md#getDataProcessingAgreementById) | **GET** /v1/data-agreements/{id} | Get data processing agreement by id.
+[**getDataProcessingAgreements()**](DataProcessingAgreementsApi.md#getDataProcessingAgreements) | **GET** /v1/data-agreements | Get all data processing agreements.
+[**terminateDataProcessingAgreementById()**](DataProcessingAgreementsApi.md#terminateDataProcessingAgreementById) | **PUT** /v1/data-agreements/{id}/terminate | Terminate a data processing agreement.
+[**updateDataProcessingAgreement()**](DataProcessingAgreementsApi.md#updateDataProcessingAgreement) | **PUT** /v1/data-agreements/{id} | Update a data processing agreement.
 
 
-## `v1DataAgreementsGet()`
+## `createDataProcessingAgreement()`
 
 ```php
-v1DataAgreementsGet($page_no, $page_size): \MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList
+createDataProcessingAgreement($create_data_processing_agreement_request_model): \MyDataMyConsent\Model\DataProcessingAgreementDto
+```
+
+Create a data processing agreement.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$create_data_processing_agreement_request_model = new \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel(); // \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel | Create data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.CreateDataProcessingAgreementRequestModel.
+
+try {
+    $result = $apiInstance->createDataProcessingAgreement($create_data_processing_agreement_request_model);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DataProcessingAgreementsApi->createDataProcessingAgreement: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_data_processing_agreement_request_model** | [**\MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel**](../Model/CreateDataProcessingAgreementRequestModel.md)| Create data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.CreateDataProcessingAgreementRequestModel. | [optional]
+
+### Return type
+
+[**\MyDataMyConsent\Model\DataProcessingAgreementDto**](../Model/DataProcessingAgreementDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteDataProcessingAgreementById()`
+
+```php
+deleteDataProcessingAgreementById($id)
+```
+
+Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$id = 'id_example'; // string | Agreement id.
+
+try {
+    $apiInstance->deleteDataProcessingAgreementById($id);
+} catch (Exception $e) {
+    echo 'Exception when calling DataProcessingAgreementsApi->deleteDataProcessingAgreementById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Agreement id. |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getDataProcessingAgreementById()`
+
+```php
+getDataProcessingAgreementById($id): \MyDataMyConsent\Model\DataProcessingAgreementDto
+```
+
+Get data processing agreement by id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$id = 'id_example'; // string | Agreement id.
+
+try {
+    $result = $apiInstance->getDataProcessingAgreementById($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DataProcessingAgreementsApi->getDataProcessingAgreementById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Agreement id. |
+
+### Return type
+
+[**\MyDataMyConsent\Model\DataProcessingAgreementDto**](../Model/DataProcessingAgreementDto.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getDataProcessingAgreements()`
+
+```php
+getDataProcessingAgreements($page_no, $page_size): \MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList
 ```
 
 Get all data processing agreements.
@@ -37,10 +198,10 @@ $page_no = 1; // int | Page number.
 $page_size = 25; // int | Number of items to return.
 
 try {
-    $result = $apiInstance->v1DataAgreementsGet($page_no, $page_size);
+    $result = $apiInstance->getDataProcessingAgreements($page_no, $page_size);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DataProcessingAgreementsApi->v1DataAgreementsGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DataProcessingAgreementsApi->getDataProcessingAgreements: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -68,173 +229,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `v1DataAgreementsIdDelete()`
+## `terminateDataProcessingAgreementById()`
 
 ```php
-v1DataAgreementsIdDelete($id)
-```
-
-Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$id = 'id_example'; // string
-
-try {
-    $apiInstance->v1DataAgreementsIdDelete($id);
-} catch (Exception $e) {
-    echo 'Exception when calling DataProcessingAgreementsApi->v1DataAgreementsIdDelete: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**|  |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `v1DataAgreementsIdGet()`
-
-```php
-v1DataAgreementsIdGet($id): \MyDataMyConsent\Model\DataProcessingAgreementDto
-```
-
-Get data processing agreement by Id.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$id = 'id_example'; // string
-
-try {
-    $result = $apiInstance->v1DataAgreementsIdGet($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DataProcessingAgreementsApi->v1DataAgreementsIdGet: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**|  |
-
-### Return type
-
-[**\MyDataMyConsent\Model\DataProcessingAgreementDto**](../Model/DataProcessingAgreementDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `v1DataAgreementsIdPut()`
-
-```php
-v1DataAgreementsIdPut($id, $update_data_processing_agreement_request_model): \MyDataMyConsent\Model\DataProcessingAgreementDto
-```
-
-Update a data processing agreement.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$id = 'id_example'; // string
-$update_data_processing_agreement_request_model = new \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel(); // \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel
-
-try {
-    $result = $apiInstance->v1DataAgreementsIdPut($id, $update_data_processing_agreement_request_model);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DataProcessingAgreementsApi->v1DataAgreementsIdPut: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**|  |
- **update_data_processing_agreement_request_model** | [**\MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel**](../Model/UpdateDataProcessingAgreementRequestModel.md)|  | [optional]
-
-### Return type
-
-[**\MyDataMyConsent\Model\DataProcessingAgreementDto**](../Model/DataProcessingAgreementDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `v1DataAgreementsIdTerminatePut()`
-
-```php
-v1DataAgreementsIdTerminatePut($id)
+terminateDataProcessingAgreementById($id)
 ```
 
 Terminate a data processing agreement.
@@ -252,12 +250,12 @@ $apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 'id_example'; // string
+$id = 'id_example'; // string | Agreement id.
 
 try {
-    $apiInstance->v1DataAgreementsIdTerminatePut($id);
+    $apiInstance->terminateDataProcessingAgreementById($id);
 } catch (Exception $e) {
-    echo 'Exception when calling DataProcessingAgreementsApi->v1DataAgreementsIdTerminatePut: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DataProcessingAgreementsApi->terminateDataProcessingAgreementById: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -265,7 +263,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**|  |
+ **id** | **string**| Agreement id. |
 
 ### Return type
 
@@ -284,13 +282,13 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `v1DataAgreementsPost()`
+## `updateDataProcessingAgreement()`
 
 ```php
-v1DataAgreementsPost($create_data_processing_agreement_request_model): \MyDataMyConsent\Model\DataProcessingAgreementDto
+updateDataProcessingAgreement($id, $update_data_processing_agreement_request_model): \MyDataMyConsent\Model\DataProcessingAgreementDto
 ```
 
-Create a data processing agreement.
+Update a data processing agreement.
 
 ### Example
 
@@ -305,13 +303,14 @@ $apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$create_data_processing_agreement_request_model = new \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel(); // \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel
+$id = 'id_example'; // string | Agreement id.
+$update_data_processing_agreement_request_model = new \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel(); // \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel | Updated data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.UpdateDataProcessingAgreementRequestModel.
 
 try {
-    $result = $apiInstance->v1DataAgreementsPost($create_data_processing_agreement_request_model);
+    $result = $apiInstance->updateDataProcessingAgreement($id, $update_data_processing_agreement_request_model);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DataProcessingAgreementsApi->v1DataAgreementsPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DataProcessingAgreementsApi->updateDataProcessingAgreement: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -319,7 +318,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_data_processing_agreement_request_model** | [**\MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel**](../Model/CreateDataProcessingAgreementRequestModel.md)|  | [optional]
+ **id** | **string**| Agreement id. |
+ **update_data_processing_agreement_request_model** | [**\MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel**](../Model/UpdateDataProcessingAgreementRequestModel.md)| Updated data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.UpdateDataProcessingAgreementRequestModel. | [optional]
 
 ### Return type
 

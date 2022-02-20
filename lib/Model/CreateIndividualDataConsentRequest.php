@@ -1,6 +1,6 @@
 <?php
 /**
- * DataConsentRequest
+ * CreateIndividualDataConsentRequest
  *
  * PHP version 7.3
  *
@@ -33,9 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataConsentRequest Class Doc Comment
+ * CreateIndividualDataConsentRequest Class Doc Comment
  *
  * @category Class
+ * @description Individual Data Consent Request.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateIndividualDataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +53,7 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataConsentRequest';
+    protected static $openAPIModelName = 'CreateIndividualDataConsentRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,11 +61,8 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'template_id' => 'string',
-        'requested_at_utc' => '\DateTime',
-        'request_expired_at_utc' => '\DateTime',
-        'transaction_id' => 'string'
+        'consent_template_id' => 'string',
+        'receiver' => '\MyDataMyConsent\Model\Receiver'
     ];
 
     /**
@@ -75,11 +73,8 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'uuid',
-        'template_id' => 'uuid',
-        'requested_at_utc' => 'date-time',
-        'request_expired_at_utc' => 'date-time',
-        'transaction_id' => null
+        'consent_template_id' => 'uuid',
+        'receiver' => null
     ];
 
     /**
@@ -109,11 +104,8 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'template_id' => 'templateId',
-        'requested_at_utc' => 'requestedAtUtc',
-        'request_expired_at_utc' => 'requestExpiredAtUtc',
-        'transaction_id' => 'transactionId'
+        'consent_template_id' => 'consentTemplateId',
+        'receiver' => 'receiver'
     ];
 
     /**
@@ -122,11 +114,8 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'template_id' => 'setTemplateId',
-        'requested_at_utc' => 'setRequestedAtUtc',
-        'request_expired_at_utc' => 'setRequestExpiredAtUtc',
-        'transaction_id' => 'setTransactionId'
+        'consent_template_id' => 'setConsentTemplateId',
+        'receiver' => 'setReceiver'
     ];
 
     /**
@@ -135,11 +124,8 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'template_id' => 'getTemplateId',
-        'requested_at_utc' => 'getRequestedAtUtc',
-        'request_expired_at_utc' => 'getRequestExpiredAtUtc',
-        'transaction_id' => 'getTransactionId'
+        'consent_template_id' => 'getConsentTemplateId',
+        'receiver' => 'getReceiver'
     ];
 
     /**
@@ -199,11 +185,8 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['template_id'] = $data['template_id'] ?? null;
-        $this->container['requested_at_utc'] = $data['requested_at_utc'] ?? null;
-        $this->container['request_expired_at_utc'] = $data['request_expired_at_utc'] ?? null;
-        $this->container['transaction_id'] = $data['transaction_id'] ?? null;
+        $this->container['consent_template_id'] = $data['consent_template_id'] ?? null;
+        $this->container['receiver'] = $data['receiver'] ?? null;
     }
 
     /**
@@ -215,6 +198,9 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['receiver'] === null) {
+            $invalidProperties[] = "'receiver' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -231,121 +217,49 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets id
+     * Gets consent_template_id
      *
      * @return string|null
      */
-    public function getId()
+    public function getConsentTemplateId()
     {
-        return $this->container['id'];
+        return $this->container['consent_template_id'];
     }
 
     /**
-     * Sets id
+     * Sets consent_template_id
      *
-     * @param string|null $id id
+     * @param string|null $consent_template_id consent_template_id
      *
      * @return self
      */
-    public function setId($id)
+    public function setConsentTemplateId($consent_template_id)
     {
-        $this->container['id'] = $id;
+        $this->container['consent_template_id'] = $consent_template_id;
 
         return $this;
     }
 
     /**
-     * Gets template_id
+     * Gets receiver
      *
-     * @return string|null
+     * @return \MyDataMyConsent\Model\Receiver
      */
-    public function getTemplateId()
+    public function getReceiver()
     {
-        return $this->container['template_id'];
+        return $this->container['receiver'];
     }
 
     /**
-     * Sets template_id
+     * Sets receiver
      *
-     * @param string|null $template_id template_id
+     * @param \MyDataMyConsent\Model\Receiver $receiver receiver
      *
      * @return self
      */
-    public function setTemplateId($template_id)
+    public function setReceiver($receiver)
     {
-        $this->container['template_id'] = $template_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets requested_at_utc
-     *
-     * @return \DateTime|null
-     */
-    public function getRequestedAtUtc()
-    {
-        return $this->container['requested_at_utc'];
-    }
-
-    /**
-     * Sets requested_at_utc
-     *
-     * @param \DateTime|null $requested_at_utc requested_at_utc
-     *
-     * @return self
-     */
-    public function setRequestedAtUtc($requested_at_utc)
-    {
-        $this->container['requested_at_utc'] = $requested_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_expired_at_utc
-     *
-     * @return \DateTime|null
-     */
-    public function getRequestExpiredAtUtc()
-    {
-        return $this->container['request_expired_at_utc'];
-    }
-
-    /**
-     * Sets request_expired_at_utc
-     *
-     * @param \DateTime|null $request_expired_at_utc request_expired_at_utc
-     *
-     * @return self
-     */
-    public function setRequestExpiredAtUtc($request_expired_at_utc)
-    {
-        $this->container['request_expired_at_utc'] = $request_expired_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_id
-     *
-     * @return string|null
-     */
-    public function getTransactionId()
-    {
-        return $this->container['transaction_id'];
-    }
-
-    /**
-     * Sets transaction_id
-     *
-     * @param string|null $transaction_id transaction_id
-     *
-     * @return self
-     */
-    public function setTransactionId($transaction_id)
-    {
-        $this->container['transaction_id'] = $transaction_id;
+        $this->container['receiver'] = $receiver;
 
         return $this;
     }

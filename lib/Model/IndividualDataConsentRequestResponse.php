@@ -1,6 +1,6 @@
 <?php
 /**
- * DataConsentRequestModel
+ * IndividualDataConsentRequestResponse
  *
  * PHP version 7.3
  *
@@ -33,9 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataConsentRequestModel Class Doc Comment
+ * IndividualDataConsentRequestResponse Class Doc Comment
  *
  * @category Class
+ * @description Individual Data Consent Request Response.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class IndividualDataConsentRequestResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +53,7 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataConsentRequestModel';
+    protected static $openAPIModelName = 'IndividualDataConsentRequestResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +61,12 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'consent_template_id' => 'string',
-        'receiver' => '\MyDataMyConsent\Model\Receiver'
+        'id' => 'string',
+        'template_id' => 'string',
+        'requested_at_utc' => '\DateTime',
+        'request_expires_at_utc' => '\DateTime',
+        'status' => '\MyDataMyConsent\Model\DataConsentStatus',
+        'transaction_id' => 'string'
     ];
 
     /**
@@ -72,8 +77,12 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'consent_template_id' => 'uuid',
-        'receiver' => null
+        'id' => 'uuid',
+        'template_id' => 'uuid',
+        'requested_at_utc' => 'date-time',
+        'request_expires_at_utc' => 'date-time',
+        'status' => null,
+        'transaction_id' => null
     ];
 
     /**
@@ -103,8 +112,12 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'consent_template_id' => 'consentTemplateId',
-        'receiver' => 'receiver'
+        'id' => 'id',
+        'template_id' => 'templateId',
+        'requested_at_utc' => 'requestedAtUtc',
+        'request_expires_at_utc' => 'requestExpiresAtUtc',
+        'status' => 'status',
+        'transaction_id' => 'transactionId'
     ];
 
     /**
@@ -113,8 +126,12 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'consent_template_id' => 'setConsentTemplateId',
-        'receiver' => 'setReceiver'
+        'id' => 'setId',
+        'template_id' => 'setTemplateId',
+        'requested_at_utc' => 'setRequestedAtUtc',
+        'request_expires_at_utc' => 'setRequestExpiresAtUtc',
+        'status' => 'setStatus',
+        'transaction_id' => 'setTransactionId'
     ];
 
     /**
@@ -123,8 +140,12 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'consent_template_id' => 'getConsentTemplateId',
-        'receiver' => 'getReceiver'
+        'id' => 'getId',
+        'template_id' => 'getTemplateId',
+        'requested_at_utc' => 'getRequestedAtUtc',
+        'request_expires_at_utc' => 'getRequestExpiresAtUtc',
+        'status' => 'getStatus',
+        'transaction_id' => 'getTransactionId'
     ];
 
     /**
@@ -184,8 +205,12 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['consent_template_id'] = $data['consent_template_id'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['template_id'] = $data['template_id'] ?? null;
+        $this->container['requested_at_utc'] = $data['requested_at_utc'] ?? null;
+        $this->container['request_expires_at_utc'] = $data['request_expires_at_utc'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['transaction_id'] = $data['transaction_id'] ?? null;
     }
 
     /**
@@ -197,9 +222,6 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -216,49 +238,145 @@ class DataConsentRequestModel implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets consent_template_id
+     * Gets id
      *
      * @return string|null
      */
-    public function getConsentTemplateId()
+    public function getId()
     {
-        return $this->container['consent_template_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets consent_template_id
+     * Sets id
      *
-     * @param string|null $consent_template_id consent_template_id
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setConsentTemplateId($consent_template_id)
+    public function setId($id)
     {
-        $this->container['consent_template_id'] = $consent_template_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets receiver
+     * Gets template_id
      *
-     * @return \MyDataMyConsent\Model\Receiver
+     * @return string|null
      */
-    public function getReceiver()
+    public function getTemplateId()
     {
-        return $this->container['receiver'];
+        return $this->container['template_id'];
     }
 
     /**
-     * Sets receiver
+     * Sets template_id
      *
-     * @param \MyDataMyConsent\Model\Receiver $receiver receiver
+     * @param string|null $template_id template_id
      *
      * @return self
      */
-    public function setReceiver($receiver)
+    public function setTemplateId($template_id)
     {
-        $this->container['receiver'] = $receiver;
+        $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets requested_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getRequestedAtUtc()
+    {
+        return $this->container['requested_at_utc'];
+    }
+
+    /**
+     * Sets requested_at_utc
+     *
+     * @param \DateTime|null $requested_at_utc requested_at_utc
+     *
+     * @return self
+     */
+    public function setRequestedAtUtc($requested_at_utc)
+    {
+        $this->container['requested_at_utc'] = $requested_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_expires_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getRequestExpiresAtUtc()
+    {
+        return $this->container['request_expires_at_utc'];
+    }
+
+    /**
+     * Sets request_expires_at_utc
+     *
+     * @param \DateTime|null $request_expires_at_utc request_expires_at_utc
+     *
+     * @return self
+     */
+    public function setRequestExpiresAtUtc($request_expires_at_utc)
+    {
+        $this->container['request_expires_at_utc'] = $request_expires_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return \MyDataMyConsent\Model\DataConsentStatus|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param \MyDataMyConsent\Model\DataConsentStatus|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets transaction_id
+     *
+     * @return string|null
+     */
+    public function getTransactionId()
+    {
+        return $this->container['transaction_id'];
+    }
+
+    /**
+     * Sets transaction_id
+     *
+     * @param string|null $transaction_id transaction_id
+     *
+     * @return self
+     */
+    public function setTransactionId($transaction_id)
+    {
+        $this->container['transaction_id'] = $transaction_id;
 
         return $this;
     }

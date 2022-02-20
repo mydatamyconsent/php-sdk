@@ -4,16 +4,16 @@ All URIs are relative to http://localhost.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**issuerIssuedoc1XmlPost()**](DigiLockerCompatIssuerApi.md#issuerIssuedoc1XmlPost) | **POST** /issuer/issuedoc/1/xml | Digilocker Compatible endpoint to Issue Documents.
+[**digilockerCompatIssueDocument()**](DigiLockerCompatIssuerApi.md#digilockerCompatIssueDocument) | **POST** /issuer/issuedoc/1/xml | Digilocker Compatible endpoint to issue document.
 
 
-## `issuerIssuedoc1XmlPost()`
+## `digilockerCompatIssueDocument()`
 
 ```php
-issuerIssuedoc1XmlPost($push_uri_request): \MyDataMyConsent\Model\PushUriResponse
+digilockerCompatIssueDocument($push_uri_request): \MyDataMyConsent\Model\PushUriResponse
 ```
 
-Digilocker Compatible endpoint to Issue Documents.
+Digilocker Compatible endpoint to issue document.
 
 ### Example
 
@@ -28,13 +28,13 @@ $apiInstance = new MyDataMyConsent\Api\DigiLockerCompatIssuerApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$push_uri_request = new \MyDataMyConsent\Model\PushUriRequest(); // \MyDataMyConsent\Model\PushUriRequest
+$push_uri_request = new \MyDataMyConsent\Model\PushUriRequest(); // \MyDataMyConsent\Model\PushUriRequest | Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest.
 
 try {
-    $result = $apiInstance->issuerIssuedoc1XmlPost($push_uri_request);
+    $result = $apiInstance->digilockerCompatIssueDocument($push_uri_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DigiLockerCompatIssuerApi->issuerIssuedoc1XmlPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DigiLockerCompatIssuerApi->digilockerCompatIssueDocument: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -42,7 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **push_uri_request** | [**\MyDataMyConsent\Model\PushUriRequest**](../Model/PushUriRequest.md)|  | [optional]
+ **push_uri_request** | [**\MyDataMyConsent\Model\PushUriRequest**](../Model/PushUriRequest.md)| Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. | [optional]
 
 ### Return type
 

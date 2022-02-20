@@ -1,16 +1,10 @@
-# # DocumentIssueRequest
+# # CreateIndividualDataConsentRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**document_type_id** | **string** |  |
-**document_identifier** | **string** |  |
-**name** | **string** |  |
-**description** | **string** |  |
+**consent_template_id** | **string** |  | [optional]
 **receiver** | [**\MyDataMyConsent\Model\Receiver**](Receiver.md) |  |
-**expires_at_utc** | **\DateTime** |  | [optional]
-**base64_pdf_document** | **string** |  |
-**metadata** | **mixed** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -117,384 +117,36 @@ class DataProviderDiscoveryApi
     }
 
     /**
-     * Operation v1DataProvidersGet
+     * Operation getDataProviderById
      *
-     * Discover all data providers in My Data My Consent by country and filters.
+     * Get a Data Provider details based on provider id.
      *
-     * @param  string $account_type Account type. (optional)
-     * @param  string $document_type Document type. (optional)
-     * @param  string $organization_category Organization category. (optional)
-     * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
-     * @param  string $country ISO2 Country code. (optional, default to 'IN')
-     *
-     * @throws \MyDataMyConsent\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataProviderPaginatedList
-     */
-    public function v1DataProvidersGet($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
-    {
-        list($response) = $this->v1DataProvidersGetWithHttpInfo($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
-        return $response;
-    }
-
-    /**
-     * Operation v1DataProvidersGetWithHttpInfo
-     *
-     * Discover all data providers in My Data My Consent by country and filters.
-     *
-     * @param  string $account_type Account type. (optional)
-     * @param  string $document_type Document type. (optional)
-     * @param  string $organization_category Organization category. (optional)
-     * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
-     * @param  string $country ISO2 Country code. (optional, default to 'IN')
-     *
-     * @throws \MyDataMyConsent\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataProviderPaginatedList, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function v1DataProvidersGetWithHttpInfo($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
-    {
-        $request = $this->v1DataProvidersGetRequest($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\MyDataMyConsent\Model\DataProviderPaginatedList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataProviderPaginatedList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\MyDataMyConsent\Model\DataProviderPaginatedList';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\DataProviderPaginatedList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation v1DataProvidersGetAsync
-     *
-     * Discover all data providers in My Data My Consent by country and filters.
-     *
-     * @param  string $account_type Account type. (optional)
-     * @param  string $document_type Document type. (optional)
-     * @param  string $organization_category Organization category. (optional)
-     * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
-     * @param  string $country ISO2 Country code. (optional, default to 'IN')
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function v1DataProvidersGetAsync($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
-    {
-        return $this->v1DataProvidersGetAsyncWithHttpInfo($account_type, $document_type, $organization_category, $page_no, $page_size, $country)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation v1DataProvidersGetAsyncWithHttpInfo
-     *
-     * Discover all data providers in My Data My Consent by country and filters.
-     *
-     * @param  string $account_type Account type. (optional)
-     * @param  string $document_type Document type. (optional)
-     * @param  string $organization_category Organization category. (optional)
-     * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
-     * @param  string $country ISO2 Country code. (optional, default to 'IN')
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function v1DataProvidersGetAsyncWithHttpInfo($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
-    {
-        $returnType = '\MyDataMyConsent\Model\DataProviderPaginatedList';
-        $request = $this->v1DataProvidersGetRequest($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'v1DataProvidersGet'
-     *
-     * @param  string $account_type Account type. (optional)
-     * @param  string $document_type Document type. (optional)
-     * @param  string $organization_category Organization category. (optional)
-     * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
-     * @param  string $country ISO2 Country code. (optional, default to 'IN')
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function v1DataProvidersGetRequest($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
-    {
-
-        $resourcePath = '/v1/data-providers';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($account_type !== null) {
-            if('form' === 'form' && is_array($account_type)) {
-                foreach($account_type as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['accountType'] = $account_type;
-            }
-        }
-        // query params
-        if ($document_type !== null) {
-            if('form' === 'form' && is_array($document_type)) {
-                foreach($document_type as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['documentType'] = $document_type;
-            }
-        }
-        // query params
-        if ($organization_category !== null) {
-            if('form' === 'form' && is_array($organization_category)) {
-                foreach($organization_category as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['organizationCategory'] = $organization_category;
-            }
-        }
-        // query params
-        if ($page_no !== null) {
-            if('form' === 'form' && is_array($page_no)) {
-                foreach($page_no as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageNo'] = $page_no;
-            }
-        }
-        // query params
-        if ($page_size !== null) {
-            if('form' === 'form' && is_array($page_size)) {
-                foreach($page_size as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $page_size;
-            }
-        }
-        // query params
-        if ($country !== null) {
-            if('form' === 'form' && is_array($country)) {
-                foreach($country as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['country'] = $country;
-            }
-        }
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'application/xml']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'application/xml'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation v1DataProvidersProviderIdGet
-     *
-     * Get a Data Provider details.
-     *
-     * @param  string $provider_id Provider Id. (required)
+     * @param  string $provider_id Provider id. (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \MyDataMyConsent\Model\DataProvider
      */
-    public function v1DataProvidersProviderIdGet($provider_id)
+    public function getDataProviderById($provider_id)
     {
-        list($response) = $this->v1DataProvidersProviderIdGetWithHttpInfo($provider_id);
+        list($response) = $this->getDataProviderByIdWithHttpInfo($provider_id);
         return $response;
     }
 
     /**
-     * Operation v1DataProvidersProviderIdGetWithHttpInfo
+     * Operation getDataProviderByIdWithHttpInfo
      *
-     * Get a Data Provider details.
+     * Get a Data Provider details based on provider id.
      *
-     * @param  string $provider_id Provider Id. (required)
+     * @param  string $provider_id Provider id. (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \MyDataMyConsent\Model\DataProvider, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1DataProvidersProviderIdGetWithHttpInfo($provider_id)
+    public function getDataProviderByIdWithHttpInfo($provider_id)
     {
-        $request = $this->v1DataProvidersProviderIdGetRequest($provider_id);
+        $request = $this->getDataProviderByIdRequest($provider_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -575,18 +227,18 @@ class DataProviderDiscoveryApi
     }
 
     /**
-     * Operation v1DataProvidersProviderIdGetAsync
+     * Operation getDataProviderByIdAsync
      *
-     * Get a Data Provider details.
+     * Get a Data Provider details based on provider id.
      *
-     * @param  string $provider_id Provider Id. (required)
+     * @param  string $provider_id Provider id. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DataProvidersProviderIdGetAsync($provider_id)
+    public function getDataProviderByIdAsync($provider_id)
     {
-        return $this->v1DataProvidersProviderIdGetAsyncWithHttpInfo($provider_id)
+        return $this->getDataProviderByIdAsyncWithHttpInfo($provider_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -595,19 +247,19 @@ class DataProviderDiscoveryApi
     }
 
     /**
-     * Operation v1DataProvidersProviderIdGetAsyncWithHttpInfo
+     * Operation getDataProviderByIdAsyncWithHttpInfo
      *
-     * Get a Data Provider details.
+     * Get a Data Provider details based on provider id.
      *
-     * @param  string $provider_id Provider Id. (required)
+     * @param  string $provider_id Provider id. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DataProvidersProviderIdGetAsyncWithHttpInfo($provider_id)
+    public function getDataProviderByIdAsyncWithHttpInfo($provider_id)
     {
         $returnType = '\MyDataMyConsent\Model\DataProvider';
-        $request = $this->v1DataProvidersProviderIdGetRequest($provider_id);
+        $request = $this->getDataProviderByIdRequest($provider_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -643,19 +295,19 @@ class DataProviderDiscoveryApi
     }
 
     /**
-     * Create request for operation 'v1DataProvidersProviderIdGet'
+     * Create request for operation 'getDataProviderById'
      *
-     * @param  string $provider_id Provider Id. (required)
+     * @param  string $provider_id Provider id. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function v1DataProvidersProviderIdGetRequest($provider_id)
+    public function getDataProviderByIdRequest($provider_id)
     {
         // verify the required parameter 'provider_id' is set
         if ($provider_id === null || (is_array($provider_id) && count($provider_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $provider_id when calling v1DataProvidersProviderIdGet'
+                'Missing the required parameter $provider_id when calling getDataProviderById'
             );
         }
 
@@ -676,6 +328,354 @@ class DataProviderDiscoveryApi
                 $resourcePath
             );
         }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'application/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'application/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getDataProviders
+     *
+     * Discover all data providers in My Data My Consent by country and filters.
+     *
+     * @param  string $account_type Account type. (optional)
+     * @param  string $document_type Document type. (optional)
+     * @param  string $organization_category Organization category. (optional)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  string $country ISO2 Country code. (optional, default to 'IN')
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \MyDataMyConsent\Model\DataProviderPaginatedList
+     */
+    public function getDataProviders($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
+    {
+        list($response) = $this->getDataProvidersWithHttpInfo($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
+        return $response;
+    }
+
+    /**
+     * Operation getDataProvidersWithHttpInfo
+     *
+     * Discover all data providers in My Data My Consent by country and filters.
+     *
+     * @param  string $account_type Account type. (optional)
+     * @param  string $document_type Document type. (optional)
+     * @param  string $organization_category Organization category. (optional)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  string $country ISO2 Country code. (optional, default to 'IN')
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \MyDataMyConsent\Model\DataProviderPaginatedList, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getDataProvidersWithHttpInfo($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
+    {
+        $request = $this->getDataProvidersRequest($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\MyDataMyConsent\Model\DataProviderPaginatedList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DataProviderPaginatedList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\MyDataMyConsent\Model\DataProviderPaginatedList';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\DataProviderPaginatedList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getDataProvidersAsync
+     *
+     * Discover all data providers in My Data My Consent by country and filters.
+     *
+     * @param  string $account_type Account type. (optional)
+     * @param  string $document_type Document type. (optional)
+     * @param  string $organization_category Organization category. (optional)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  string $country ISO2 Country code. (optional, default to 'IN')
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDataProvidersAsync($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
+    {
+        return $this->getDataProvidersAsyncWithHttpInfo($account_type, $document_type, $organization_category, $page_no, $page_size, $country)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getDataProvidersAsyncWithHttpInfo
+     *
+     * Discover all data providers in My Data My Consent by country and filters.
+     *
+     * @param  string $account_type Account type. (optional)
+     * @param  string $document_type Document type. (optional)
+     * @param  string $organization_category Organization category. (optional)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  string $country ISO2 Country code. (optional, default to 'IN')
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDataProvidersAsyncWithHttpInfo($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
+    {
+        $returnType = '\MyDataMyConsent\Model\DataProviderPaginatedList';
+        $request = $this->getDataProvidersRequest($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getDataProviders'
+     *
+     * @param  string $account_type Account type. (optional)
+     * @param  string $document_type Document type. (optional)
+     * @param  string $organization_category Organization category. (optional)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  string $country ISO2 Country code. (optional, default to 'IN')
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getDataProvidersRequest($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
+    {
+
+        $resourcePath = '/v1/data-providers';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($account_type !== null) {
+            if('form' === 'form' && is_array($account_type)) {
+                foreach($account_type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['accountType'] = $account_type;
+            }
+        }
+        // query params
+        if ($document_type !== null) {
+            if('form' === 'form' && is_array($document_type)) {
+                foreach($document_type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['documentType'] = $document_type;
+            }
+        }
+        // query params
+        if ($organization_category !== null) {
+            if('form' === 'form' && is_array($organization_category)) {
+                foreach($organization_category as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['organizationCategory'] = $organization_category;
+            }
+        }
+        // query params
+        if ($page_no !== null) {
+            if('form' === 'form' && is_array($page_no)) {
+                foreach($page_no as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['pageNo'] = $page_no;
+            }
+        }
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['pageSize'] = $page_size;
+            }
+        }
+        // query params
+        if ($country !== null) {
+            if('form' === 'form' && is_array($country)) {
+                foreach($country as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['country'] = $country;
+            }
+        }
+
+
 
 
         if ($multipart) {

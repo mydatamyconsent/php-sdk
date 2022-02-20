@@ -4,70 +4,16 @@ All URIs are relative to http://localhost.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getIssuedDocumentById()**](DocumentsApi.md#getIssuedDocumentById) | **GET** /v1/documents/issued/{documentId} | Get issued document.
+[**getIssuedDocuments()**](DocumentsApi.md#getIssuedDocuments) | **GET** /v1/documents/issued | Get issued documents.
+[**getRegisteredDocumentTypes()**](DocumentsApi.md#getRegisteredDocumentTypes) | **GET** /v1/documents/types | Get registered document types.
 [**issueDocument()**](DocumentsApi.md#issueDocument) | **POST** /v1/documents/issue | Issue a new document.
-[**v1DocumentsIssuedDocumentIdGet()**](DocumentsApi.md#v1DocumentsIssuedDocumentIdGet) | **GET** /v1/documents/issued/{documentId} | Get issued document.
-[**v1DocumentsIssuedGet()**](DocumentsApi.md#v1DocumentsIssuedGet) | **GET** /v1/documents/issued | Get issued documents.
-[**v1DocumentsTypesGet()**](DocumentsApi.md#v1DocumentsTypesGet) | **GET** /v1/documents/types | Get registered document types.
 
 
-## `issueDocument()`
+## `getIssuedDocumentById()`
 
 ```php
-issueDocument($document_issue_request): bool
-```
-
-Issue a new document.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new MyDataMyConsent\Api\DocumentsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$document_issue_request = new \MyDataMyConsent\Model\DocumentIssueRequest(); // \MyDataMyConsent\Model\DocumentIssueRequest
-
-try {
-    $result = $apiInstance->issueDocument($document_issue_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DocumentsApi->issueDocument: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **document_issue_request** | [**\MyDataMyConsent\Model\DocumentIssueRequest**](../Model/DocumentIssueRequest.md)|  | [optional]
-
-### Return type
-
-**bool**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `v1DocumentsIssuedDocumentIdGet()`
-
-```php
-v1DocumentsIssuedDocumentIdGet($document_id)
+getIssuedDocumentById($document_id)
 ```
 
 Get issued document.
@@ -88,9 +34,9 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
 $document_id = 'document_id_example'; // string | Document id.
 
 try {
-    $apiInstance->v1DocumentsIssuedDocumentIdGet($document_id);
+    $apiInstance->getIssuedDocumentById($document_id);
 } catch (Exception $e) {
-    echo 'Exception when calling DocumentsApi->v1DocumentsIssuedDocumentIdGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DocumentsApi->getIssuedDocumentById: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -117,10 +63,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `v1DocumentsIssuedGet()`
+## `getIssuedDocuments()`
 
 ```php
-v1DocumentsIssuedGet($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no)
+getIssuedDocuments($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no)
 ```
 
 Get issued documents.
@@ -145,9 +91,9 @@ $page_size = 25; // int
 $page_no = 1; // int
 
 try {
-    $apiInstance->v1DocumentsIssuedGet($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
+    $apiInstance->getIssuedDocuments($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
 } catch (Exception $e) {
-    echo 'Exception when calling DocumentsApi->v1DocumentsIssuedGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DocumentsApi->getIssuedDocuments: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -178,10 +124,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `v1DocumentsTypesGet()`
+## `getRegisteredDocumentTypes()`
 
 ```php
-v1DocumentsTypesGet($page_size, $page_no)
+getRegisteredDocumentTypes($page_size, $page_no)
 ```
 
 Get registered document types.
@@ -203,9 +149,9 @@ $page_size = 25; // int
 $page_no = 1; // int
 
 try {
-    $apiInstance->v1DocumentsTypesGet($page_size, $page_no);
+    $apiInstance->getRegisteredDocumentTypes($page_size, $page_no);
 } catch (Exception $e) {
-    echo 'Exception when calling DocumentsApi->v1DocumentsTypesGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DocumentsApi->getRegisteredDocumentTypes: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -228,6 +174,60 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `issueDocument()`
+
+```php
+issueDocument($document_issue_request): bool
+```
+
+Issue a new document.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DocumentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$document_issue_request = new \MyDataMyConsent\Model\DocumentIssueRequest(); // \MyDataMyConsent\Model\DocumentIssueRequest | Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest.
+
+try {
+    $result = $apiInstance->issueDocument($document_issue_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DocumentsApi->issueDocument: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **document_issue_request** | [**\MyDataMyConsent\Model\DocumentIssueRequest**](../Model/DocumentIssueRequest.md)| Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest. |
+
+### Return type
+
+**bool**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

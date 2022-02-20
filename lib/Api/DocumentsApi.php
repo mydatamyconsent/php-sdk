@@ -117,310 +117,7 @@ class DocumentsApi
     }
 
     /**
-     * Operation issueDocument
-     *
-     * Issue a new document.
-     *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request document_issue_request (optional)
-     *
-     * @throws \MyDataMyConsent\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return |bool|string|\MyDataMyConsent\Model\ProblemDetails
-     */
-    public function issueDocument($document_issue_request = null)
-    {
-        list($response) = $this->issueDocumentWithHttpInfo($document_issue_request);
-        return $response;
-    }
-
-    /**
-     * Operation issueDocumentWithHttpInfo
-     *
-     * Issue a new document.
-     *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request (optional)
-     *
-     * @throws \MyDataMyConsent\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of |bool|string|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function issueDocumentWithHttpInfo($document_issue_request = null)
-    {
-        $request = $this->issueDocumentRequest($document_issue_request);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('bool' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'bool', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('string' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'string', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = 'bool';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'bool',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation issueDocumentAsync
-     *
-     * Issue a new document.
-     *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function issueDocumentAsync($document_issue_request = null)
-    {
-        return $this->issueDocumentAsyncWithHttpInfo($document_issue_request)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation issueDocumentAsyncWithHttpInfo
-     *
-     * Issue a new document.
-     *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function issueDocumentAsyncWithHttpInfo($document_issue_request = null)
-    {
-        $returnType = 'bool';
-        $request = $this->issueDocumentRequest($document_issue_request);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'issueDocument'
-     *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function issueDocumentRequest($document_issue_request = null)
-    {
-
-        $resourcePath = '/v1/documents/issue';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($document_issue_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($document_issue_request));
-            } else {
-                $httpBody = $document_issue_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation v1DocumentsIssuedDocumentIdGet
+     * Operation getIssuedDocumentById
      *
      * Get issued document.
      *
@@ -430,13 +127,13 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function v1DocumentsIssuedDocumentIdGet($document_id)
+    public function getIssuedDocumentById($document_id)
     {
-        $this->v1DocumentsIssuedDocumentIdGetWithHttpInfo($document_id);
+        $this->getIssuedDocumentByIdWithHttpInfo($document_id);
     }
 
     /**
-     * Operation v1DocumentsIssuedDocumentIdGetWithHttpInfo
+     * Operation getIssuedDocumentByIdWithHttpInfo
      *
      * Get issued document.
      *
@@ -446,9 +143,9 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1DocumentsIssuedDocumentIdGetWithHttpInfo($document_id)
+    public function getIssuedDocumentByIdWithHttpInfo($document_id)
     {
-        $request = $this->v1DocumentsIssuedDocumentIdGetRequest($document_id);
+        $request = $this->getIssuedDocumentByIdRequest($document_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -495,7 +192,7 @@ class DocumentsApi
     }
 
     /**
-     * Operation v1DocumentsIssuedDocumentIdGetAsync
+     * Operation getIssuedDocumentByIdAsync
      *
      * Get issued document.
      *
@@ -504,9 +201,9 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DocumentsIssuedDocumentIdGetAsync($document_id)
+    public function getIssuedDocumentByIdAsync($document_id)
     {
-        return $this->v1DocumentsIssuedDocumentIdGetAsyncWithHttpInfo($document_id)
+        return $this->getIssuedDocumentByIdAsyncWithHttpInfo($document_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -515,7 +212,7 @@ class DocumentsApi
     }
 
     /**
-     * Operation v1DocumentsIssuedDocumentIdGetAsyncWithHttpInfo
+     * Operation getIssuedDocumentByIdAsyncWithHttpInfo
      *
      * Get issued document.
      *
@@ -524,10 +221,10 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DocumentsIssuedDocumentIdGetAsyncWithHttpInfo($document_id)
+    public function getIssuedDocumentByIdAsyncWithHttpInfo($document_id)
     {
         $returnType = '';
-        $request = $this->v1DocumentsIssuedDocumentIdGetRequest($document_id);
+        $request = $this->getIssuedDocumentByIdRequest($document_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -553,19 +250,19 @@ class DocumentsApi
     }
 
     /**
-     * Create request for operation 'v1DocumentsIssuedDocumentIdGet'
+     * Create request for operation 'getIssuedDocumentById'
      *
      * @param  string $document_id Document id. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function v1DocumentsIssuedDocumentIdGetRequest($document_id)
+    public function getIssuedDocumentByIdRequest($document_id)
     {
         // verify the required parameter 'document_id' is set
         if ($document_id === null || (is_array($document_id) && count($document_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $document_id when calling v1DocumentsIssuedDocumentIdGet'
+                'Missing the required parameter $document_id when calling getIssuedDocumentById'
             );
         }
 
@@ -646,7 +343,7 @@ class DocumentsApi
     }
 
     /**
-     * Operation v1DocumentsIssuedGet
+     * Operation getIssuedDocuments
      *
      * Get issued documents.
      *
@@ -660,13 +357,13 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function v1DocumentsIssuedGet($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
+    public function getIssuedDocuments($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
     {
-        $this->v1DocumentsIssuedGetWithHttpInfo($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
+        $this->getIssuedDocumentsWithHttpInfo($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
     }
 
     /**
-     * Operation v1DocumentsIssuedGetWithHttpInfo
+     * Operation getIssuedDocumentsWithHttpInfo
      *
      * Get issued documents.
      *
@@ -680,9 +377,9 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1DocumentsIssuedGetWithHttpInfo($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
+    public function getIssuedDocumentsWithHttpInfo($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
     {
-        $request = $this->v1DocumentsIssuedGetRequest($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
+        $request = $this->getIssuedDocumentsRequest($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
 
         try {
             $options = $this->createHttpClientOption();
@@ -729,7 +426,7 @@ class DocumentsApi
     }
 
     /**
-     * Operation v1DocumentsIssuedGetAsync
+     * Operation getIssuedDocumentsAsync
      *
      * Get issued documents.
      *
@@ -742,9 +439,9 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DocumentsIssuedGetAsync($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
+    public function getIssuedDocumentsAsync($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
     {
-        return $this->v1DocumentsIssuedGetAsyncWithHttpInfo($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no)
+        return $this->getIssuedDocumentsAsyncWithHttpInfo($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -753,7 +450,7 @@ class DocumentsApi
     }
 
     /**
-     * Operation v1DocumentsIssuedGetAsyncWithHttpInfo
+     * Operation getIssuedDocumentsAsyncWithHttpInfo
      *
      * Get issued documents.
      *
@@ -766,10 +463,10 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DocumentsIssuedGetAsyncWithHttpInfo($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
+    public function getIssuedDocumentsAsyncWithHttpInfo($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
     {
         $returnType = '';
-        $request = $this->v1DocumentsIssuedGetRequest($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
+        $request = $this->getIssuedDocumentsRequest($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -795,7 +492,7 @@ class DocumentsApi
     }
 
     /**
-     * Create request for operation 'v1DocumentsIssuedGet'
+     * Create request for operation 'getIssuedDocuments'
      *
      * @param  string $document_type_id (optional)
      * @param  \DateTime $from_date_time (optional)
@@ -806,7 +503,7 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function v1DocumentsIssuedGetRequest($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
+    public function getIssuedDocumentsRequest($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
     {
 
         $resourcePath = '/v1/documents/issued';
@@ -933,7 +630,7 @@ class DocumentsApi
     }
 
     /**
-     * Operation v1DocumentsTypesGet
+     * Operation getRegisteredDocumentTypes
      *
      * Get registered document types.
      *
@@ -944,13 +641,13 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function v1DocumentsTypesGet($page_size = 25, $page_no = 1)
+    public function getRegisteredDocumentTypes($page_size = 25, $page_no = 1)
     {
-        $this->v1DocumentsTypesGetWithHttpInfo($page_size, $page_no);
+        $this->getRegisteredDocumentTypesWithHttpInfo($page_size, $page_no);
     }
 
     /**
-     * Operation v1DocumentsTypesGetWithHttpInfo
+     * Operation getRegisteredDocumentTypesWithHttpInfo
      *
      * Get registered document types.
      *
@@ -961,9 +658,9 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1DocumentsTypesGetWithHttpInfo($page_size = 25, $page_no = 1)
+    public function getRegisteredDocumentTypesWithHttpInfo($page_size = 25, $page_no = 1)
     {
-        $request = $this->v1DocumentsTypesGetRequest($page_size, $page_no);
+        $request = $this->getRegisteredDocumentTypesRequest($page_size, $page_no);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1010,7 +707,7 @@ class DocumentsApi
     }
 
     /**
-     * Operation v1DocumentsTypesGetAsync
+     * Operation getRegisteredDocumentTypesAsync
      *
      * Get registered document types.
      *
@@ -1020,9 +717,9 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DocumentsTypesGetAsync($page_size = 25, $page_no = 1)
+    public function getRegisteredDocumentTypesAsync($page_size = 25, $page_no = 1)
     {
-        return $this->v1DocumentsTypesGetAsyncWithHttpInfo($page_size, $page_no)
+        return $this->getRegisteredDocumentTypesAsyncWithHttpInfo($page_size, $page_no)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1031,7 +728,7 @@ class DocumentsApi
     }
 
     /**
-     * Operation v1DocumentsTypesGetAsyncWithHttpInfo
+     * Operation getRegisteredDocumentTypesAsyncWithHttpInfo
      *
      * Get registered document types.
      *
@@ -1041,10 +738,10 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1DocumentsTypesGetAsyncWithHttpInfo($page_size = 25, $page_no = 1)
+    public function getRegisteredDocumentTypesAsyncWithHttpInfo($page_size = 25, $page_no = 1)
     {
         $returnType = '';
-        $request = $this->v1DocumentsTypesGetRequest($page_size, $page_no);
+        $request = $this->getRegisteredDocumentTypesRequest($page_size, $page_no);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1070,7 +767,7 @@ class DocumentsApi
     }
 
     /**
-     * Create request for operation 'v1DocumentsTypesGet'
+     * Create request for operation 'getRegisteredDocumentTypes'
      *
      * @param  int $page_size (optional, default to 25)
      * @param  int $page_no (optional, default to 1)
@@ -1078,7 +775,7 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function v1DocumentsTypesGetRequest($page_size = 25, $page_no = 1)
+    public function getRegisteredDocumentTypesRequest($page_size = 25, $page_no = 1)
     {
 
         $resourcePath = '/v1/documents/types';
@@ -1165,6 +862,315 @@ class DocumentsApi
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation issueDocument
+     *
+     * Issue a new document.
+     *
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest. (required)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return |bool|string|\MyDataMyConsent\Model\ProblemDetails
+     */
+    public function issueDocument($document_issue_request)
+    {
+        list($response) = $this->issueDocumentWithHttpInfo($document_issue_request);
+        return $response;
+    }
+
+    /**
+     * Operation issueDocumentWithHttpInfo
+     *
+     * Issue a new document.
+     *
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest. (required)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of |bool|string|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function issueDocumentWithHttpInfo($document_issue_request)
+    {
+        $request = $this->issueDocumentRequest($document_issue_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('bool' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'bool', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('string' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'string', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = 'bool';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'bool',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation issueDocumentAsync
+     *
+     * Issue a new document.
+     *
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function issueDocumentAsync($document_issue_request)
+    {
+        return $this->issueDocumentAsyncWithHttpInfo($document_issue_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation issueDocumentAsyncWithHttpInfo
+     *
+     * Issue a new document.
+     *
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function issueDocumentAsyncWithHttpInfo($document_issue_request)
+    {
+        $returnType = 'bool';
+        $request = $this->issueDocumentRequest($document_issue_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'issueDocument'
+     *
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function issueDocumentRequest($document_issue_request)
+    {
+        // verify the required parameter 'document_issue_request' is set
+        if ($document_issue_request === null || (is_array($document_issue_request) && count($document_issue_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $document_issue_request when calling issueDocument'
+            );
+        }
+
+        $resourcePath = '/v1/documents/issue';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($document_issue_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($document_issue_request));
+            } else {
+                $httpBody = $document_issue_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

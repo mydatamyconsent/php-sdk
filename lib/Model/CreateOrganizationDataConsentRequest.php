@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentIssueRequest
+ * CreateOrganizationDataConsentRequest
  *
  * PHP version 7.3
  *
@@ -33,9 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DocumentIssueRequest Class Doc Comment
+ * CreateOrganizationDataConsentRequest Class Doc Comment
  *
  * @category Class
+ * @description Organization Data Consent Request.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateOrganizationDataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +53,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DocumentIssueRequest';
+    protected static $openAPIModelName = 'CreateOrganizationDataConsentRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,14 +61,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'document_type_id' => 'string',
-        'document_identifier' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'receiver' => '\MyDataMyConsent\Model\Receiver',
-        'expires_at_utc' => '\DateTime',
-        'base64_pdf_document' => 'string',
-        'metadata' => 'mixed'
+        'consent_template_id' => 'string',
+        'receiver' => '\MyDataMyConsent\Model\Receiver'
     ];
 
     /**
@@ -78,14 +73,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'document_type_id' => null,
-        'document_identifier' => null,
-        'name' => null,
-        'description' => null,
-        'receiver' => null,
-        'expires_at_utc' => 'date-time',
-        'base64_pdf_document' => null,
-        'metadata' => null
+        'consent_template_id' => 'uuid',
+        'receiver' => null
     ];
 
     /**
@@ -115,14 +104,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'document_type_id' => 'documentTypeId',
-        'document_identifier' => 'documentIdentifier',
-        'name' => 'name',
-        'description' => 'description',
-        'receiver' => 'receiver',
-        'expires_at_utc' => 'expiresAtUtc',
-        'base64_pdf_document' => 'base64PdfDocument',
-        'metadata' => 'metadata'
+        'consent_template_id' => 'consentTemplateId',
+        'receiver' => 'receiver'
     ];
 
     /**
@@ -131,14 +114,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'document_type_id' => 'setDocumentTypeId',
-        'document_identifier' => 'setDocumentIdentifier',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'receiver' => 'setReceiver',
-        'expires_at_utc' => 'setExpiresAtUtc',
-        'base64_pdf_document' => 'setBase64PdfDocument',
-        'metadata' => 'setMetadata'
+        'consent_template_id' => 'setConsentTemplateId',
+        'receiver' => 'setReceiver'
     ];
 
     /**
@@ -147,14 +124,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'document_type_id' => 'getDocumentTypeId',
-        'document_identifier' => 'getDocumentIdentifier',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'receiver' => 'getReceiver',
-        'expires_at_utc' => 'getExpiresAtUtc',
-        'base64_pdf_document' => 'getBase64PdfDocument',
-        'metadata' => 'getMetadata'
+        'consent_template_id' => 'getConsentTemplateId',
+        'receiver' => 'getReceiver'
     ];
 
     /**
@@ -214,14 +185,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['document_type_id'] = $data['document_type_id'] ?? null;
-        $this->container['document_identifier'] = $data['document_identifier'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
+        $this->container['consent_template_id'] = $data['consent_template_id'] ?? null;
         $this->container['receiver'] = $data['receiver'] ?? null;
-        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
-        $this->container['base64_pdf_document'] = $data['base64_pdf_document'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
     }
 
     /**
@@ -233,23 +198,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['document_type_id'] === null) {
-            $invalidProperties[] = "'document_type_id' can't be null";
-        }
-        if ($this->container['document_identifier'] === null) {
-            $invalidProperties[] = "'document_identifier' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
         if ($this->container['receiver'] === null) {
             $invalidProperties[] = "'receiver' can't be null";
-        }
-        if ($this->container['base64_pdf_document'] === null) {
-            $invalidProperties[] = "'base64_pdf_document' can't be null";
         }
         return $invalidProperties;
     }
@@ -267,97 +217,25 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets document_type_id
+     * Gets consent_template_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getDocumentTypeId()
+    public function getConsentTemplateId()
     {
-        return $this->container['document_type_id'];
+        return $this->container['consent_template_id'];
     }
 
     /**
-     * Sets document_type_id
+     * Sets consent_template_id
      *
-     * @param string $document_type_id document_type_id
+     * @param string|null $consent_template_id consent_template_id
      *
      * @return self
      */
-    public function setDocumentTypeId($document_type_id)
+    public function setConsentTemplateId($consent_template_id)
     {
-        $this->container['document_type_id'] = $document_type_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets document_identifier
-     *
-     * @return string
-     */
-    public function getDocumentIdentifier()
-    {
-        return $this->container['document_identifier'];
-    }
-
-    /**
-     * Sets document_identifier
-     *
-     * @param string $document_identifier document_identifier
-     *
-     * @return self
-     */
-    public function setDocumentIdentifier($document_identifier)
-    {
-        $this->container['document_identifier'] = $document_identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
+        $this->container['consent_template_id'] = $consent_template_id;
 
         return $this;
     }
@@ -382,78 +260,6 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setReceiver($receiver)
     {
         $this->container['receiver'] = $receiver;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at_utc
-     *
-     * @return \DateTime|null
-     */
-    public function getExpiresAtUtc()
-    {
-        return $this->container['expires_at_utc'];
-    }
-
-    /**
-     * Sets expires_at_utc
-     *
-     * @param \DateTime|null $expires_at_utc expires_at_utc
-     *
-     * @return self
-     */
-    public function setExpiresAtUtc($expires_at_utc)
-    {
-        $this->container['expires_at_utc'] = $expires_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets base64_pdf_document
-     *
-     * @return string
-     */
-    public function getBase64PdfDocument()
-    {
-        return $this->container['base64_pdf_document'];
-    }
-
-    /**
-     * Sets base64_pdf_document
-     *
-     * @param string $base64_pdf_document base64_pdf_document
-     *
-     * @return self
-     */
-    public function setBase64PdfDocument($base64_pdf_document)
-    {
-        $this->container['base64_pdf_document'] = $base64_pdf_document;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return mixed|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param mixed|null $metadata metadata
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        $this->container['metadata'] = $metadata;
 
         return $this;
     }
