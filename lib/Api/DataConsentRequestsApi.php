@@ -1404,8 +1404,8 @@ class DataConsentRequestsApi
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status Data consent status. (optional)
      * @param  \DateTime $start_date_time Start date time. (optional)
      * @param  \DateTime $end_date_time End date time. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1425,8 +1425,8 @@ class DataConsentRequestsApi
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status Data consent status. (optional)
      * @param  \DateTime $start_date_time Start date time. (optional)
      * @param  \DateTime $end_date_time End date time. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1542,8 +1542,8 @@ class DataConsentRequestsApi
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status Data consent status. (optional)
      * @param  \DateTime $start_date_time Start date time. (optional)
      * @param  \DateTime $end_date_time End date time. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1566,8 +1566,8 @@ class DataConsentRequestsApi
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status Data consent status. (optional)
      * @param  \DateTime $start_date_time Start date time. (optional)
      * @param  \DateTime $end_date_time End date time. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1616,8 +1616,8 @@ class DataConsentRequestsApi
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status Data consent status. (optional)
      * @param  \DateTime $start_date_time Start date time. (optional)
      * @param  \DateTime $end_date_time End date time. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1756,8 +1756,8 @@ class DataConsentRequestsApi
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status Data consent status. (optional)
      * @param  \DateTime $start_date_time Start date time. (optional)
      * @param  \DateTime $end_date_time End date time. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1777,8 +1777,8 @@ class DataConsentRequestsApi
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status Data consent status. (optional)
      * @param  \DateTime $start_date_time Start date time. (optional)
      * @param  \DateTime $end_date_time End date time. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1894,8 +1894,8 @@ class DataConsentRequestsApi
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status Data consent status. (optional)
      * @param  \DateTime $start_date_time Start date time. (optional)
      * @param  \DateTime $end_date_time End date time. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1918,8 +1918,8 @@ class DataConsentRequestsApi
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status Data consent status. (optional)
      * @param  \DateTime $start_date_time Start date time. (optional)
      * @param  \DateTime $end_date_time End date time. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1968,8 +1968,8 @@ class DataConsentRequestsApi
      * @param  \MyDataMyConsent\Model\DataConsentStatus $status Data consent status. (optional)
      * @param  \DateTime $start_date_time Start date time. (optional)
      * @param  \DateTime $end_date_time End date time. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

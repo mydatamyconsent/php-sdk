@@ -1,6 +1,6 @@
 <?php
 /**
- * DataConsentRequesterDto
+ * IssuedDocument
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataConsentRequesterDto Class Doc Comment
+ * IssuedDocument Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSerializable
+class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataConsentRequesterDto';
+    protected static $openAPIModelName = 'IssuedDocument';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,13 +60,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'logo_url' => 'string',
-        'description' => 'string',
-        'location' => 'string',
-        'website' => 'string',
-        'support_email' => 'string',
-        'help_line_number' => 'string'
+        'document_id' => 'string',
+        'identifier' => 'string',
+        'document_type' => 'string',
+        'issued_to' => 'string',
+        'issued_at_utc' => '\DateTime'
     ];
 
     /**
@@ -77,13 +75,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'logo_url' => null,
-        'description' => null,
-        'location' => null,
-        'website' => null,
-        'support_email' => null,
-        'help_line_number' => null
+        'document_id' => 'uuid',
+        'identifier' => null,
+        'document_type' => null,
+        'issued_to' => null,
+        'issued_at_utc' => 'date-time'
     ];
 
     /**
@@ -113,13 +109,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'logo_url' => 'logoUrl',
-        'description' => 'description',
-        'location' => 'location',
-        'website' => 'website',
-        'support_email' => 'supportEmail',
-        'help_line_number' => 'helpLineNumber'
+        'document_id' => 'documentId',
+        'identifier' => 'identifier',
+        'document_type' => 'documentType',
+        'issued_to' => 'issuedTo',
+        'issued_at_utc' => 'issuedAtUtc'
     ];
 
     /**
@@ -128,13 +122,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'logo_url' => 'setLogoUrl',
-        'description' => 'setDescription',
-        'location' => 'setLocation',
-        'website' => 'setWebsite',
-        'support_email' => 'setSupportEmail',
-        'help_line_number' => 'setHelpLineNumber'
+        'document_id' => 'setDocumentId',
+        'identifier' => 'setIdentifier',
+        'document_type' => 'setDocumentType',
+        'issued_to' => 'setIssuedTo',
+        'issued_at_utc' => 'setIssuedAtUtc'
     ];
 
     /**
@@ -143,13 +135,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'logo_url' => 'getLogoUrl',
-        'description' => 'getDescription',
-        'location' => 'getLocation',
-        'website' => 'getWebsite',
-        'support_email' => 'getSupportEmail',
-        'help_line_number' => 'getHelpLineNumber'
+        'document_id' => 'getDocumentId',
+        'identifier' => 'getIdentifier',
+        'document_type' => 'getDocumentType',
+        'issued_to' => 'getIssuedTo',
+        'issued_at_utc' => 'getIssuedAtUtc'
     ];
 
     /**
@@ -209,13 +199,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['logo_url'] = $data['logo_url'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
-        $this->container['website'] = $data['website'] ?? null;
-        $this->container['support_email'] = $data['support_email'] ?? null;
-        $this->container['help_line_number'] = $data['help_line_number'] ?? null;
+        $this->container['document_id'] = $data['document_id'] ?? null;
+        $this->container['identifier'] = $data['identifier'] ?? null;
+        $this->container['document_type'] = $data['document_type'] ?? null;
+        $this->container['issued_to'] = $data['issued_to'] ?? null;
+        $this->container['issued_at_utc'] = $data['issued_at_utc'] ?? null;
     }
 
     /**
@@ -243,169 +231,121 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets name
+     * Gets document_id
      *
      * @return string|null
      */
-    public function getName()
+    public function getDocumentId()
     {
-        return $this->container['name'];
+        return $this->container['document_id'];
     }
 
     /**
-     * Sets name
+     * Sets document_id
      *
-     * @param string|null $name name
+     * @param string|null $document_id document_id
      *
      * @return self
      */
-    public function setName($name)
+    public function setDocumentId($document_id)
     {
-        $this->container['name'] = $name;
+        $this->container['document_id'] = $document_id;
 
         return $this;
     }
 
     /**
-     * Gets logo_url
+     * Gets identifier
      *
      * @return string|null
      */
-    public function getLogoUrl()
+    public function getIdentifier()
     {
-        return $this->container['logo_url'];
+        return $this->container['identifier'];
     }
 
     /**
-     * Sets logo_url
+     * Sets identifier
      *
-     * @param string|null $logo_url logo_url
+     * @param string|null $identifier identifier
      *
      * @return self
      */
-    public function setLogoUrl($logo_url)
+    public function setIdentifier($identifier)
     {
-        $this->container['logo_url'] = $logo_url;
+        $this->container['identifier'] = $identifier;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets document_type
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getDocumentType()
     {
-        return $this->container['description'];
+        return $this->container['document_type'];
     }
 
     /**
-     * Sets description
+     * Sets document_type
      *
-     * @param string|null $description description
+     * @param string|null $document_type document_type
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setDocumentType($document_type)
     {
-        $this->container['description'] = $description;
+        $this->container['document_type'] = $document_type;
 
         return $this;
     }
 
     /**
-     * Gets location
+     * Gets issued_to
      *
      * @return string|null
      */
-    public function getLocation()
+    public function getIssuedTo()
     {
-        return $this->container['location'];
+        return $this->container['issued_to'];
     }
 
     /**
-     * Sets location
+     * Sets issued_to
      *
-     * @param string|null $location location
+     * @param string|null $issued_to issued_to
      *
      * @return self
      */
-    public function setLocation($location)
+    public function setIssuedTo($issued_to)
     {
-        $this->container['location'] = $location;
+        $this->container['issued_to'] = $issued_to;
 
         return $this;
     }
 
     /**
-     * Gets website
+     * Gets issued_at_utc
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getWebsite()
+    public function getIssuedAtUtc()
     {
-        return $this->container['website'];
+        return $this->container['issued_at_utc'];
     }
 
     /**
-     * Sets website
+     * Sets issued_at_utc
      *
-     * @param string|null $website website
+     * @param \DateTime|null $issued_at_utc issued_at_utc
      *
      * @return self
      */
-    public function setWebsite($website)
+    public function setIssuedAtUtc($issued_at_utc)
     {
-        $this->container['website'] = $website;
-
-        return $this;
-    }
-
-    /**
-     * Gets support_email
-     *
-     * @return string|null
-     */
-    public function getSupportEmail()
-    {
-        return $this->container['support_email'];
-    }
-
-    /**
-     * Sets support_email
-     *
-     * @param string|null $support_email support_email
-     *
-     * @return self
-     */
-    public function setSupportEmail($support_email)
-    {
-        $this->container['support_email'] = $support_email;
-
-        return $this;
-    }
-
-    /**
-     * Gets help_line_number
-     *
-     * @return string|null
-     */
-    public function getHelpLineNumber()
-    {
-        return $this->container['help_line_number'];
-    }
-
-    /**
-     * Sets help_line_number
-     *
-     * @param string|null $help_line_number help_line_number
-     *
-     * @return self
-     */
-    public function setHelpLineNumber($help_line_number)
-    {
-        $this->container['help_line_number'] = $help_line_number;
+        $this->container['issued_at_utc'] = $issued_at_utc;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * DataConsentRequesterDto
+ * DocumentTypeDetailsDtoPaginatedList
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataConsentRequesterDto Class Doc Comment
+ * DocumentTypeDetailsDtoPaginatedList Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSerializable
+class DocumentTypeDetailsDtoPaginatedList implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataConsentRequesterDto';
+    protected static $openAPIModelName = 'DocumentTypeDetailsDtoPaginatedList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,13 +60,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'logo_url' => 'string',
-        'description' => 'string',
-        'location' => 'string',
-        'website' => 'string',
-        'support_email' => 'string',
-        'help_line_number' => 'string'
+        'page_index' => 'int',
+        'page_size' => 'int',
+        'total_pages' => 'int',
+        'total_items' => 'int',
+        'items' => '\MyDataMyConsent\Model\DocumentTypeDetailsDto[]'
     ];
 
     /**
@@ -77,13 +75,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'logo_url' => null,
-        'description' => null,
-        'location' => null,
-        'website' => null,
-        'support_email' => null,
-        'help_line_number' => null
+        'page_index' => 'int32',
+        'page_size' => 'int32',
+        'total_pages' => 'int32',
+        'total_items' => 'int64',
+        'items' => null
     ];
 
     /**
@@ -113,13 +109,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'logo_url' => 'logoUrl',
-        'description' => 'description',
-        'location' => 'location',
-        'website' => 'website',
-        'support_email' => 'supportEmail',
-        'help_line_number' => 'helpLineNumber'
+        'page_index' => 'pageIndex',
+        'page_size' => 'pageSize',
+        'total_pages' => 'totalPages',
+        'total_items' => 'totalItems',
+        'items' => 'items'
     ];
 
     /**
@@ -128,13 +122,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'logo_url' => 'setLogoUrl',
-        'description' => 'setDescription',
-        'location' => 'setLocation',
-        'website' => 'setWebsite',
-        'support_email' => 'setSupportEmail',
-        'help_line_number' => 'setHelpLineNumber'
+        'page_index' => 'setPageIndex',
+        'page_size' => 'setPageSize',
+        'total_pages' => 'setTotalPages',
+        'total_items' => 'setTotalItems',
+        'items' => 'setItems'
     ];
 
     /**
@@ -143,13 +135,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'logo_url' => 'getLogoUrl',
-        'description' => 'getDescription',
-        'location' => 'getLocation',
-        'website' => 'getWebsite',
-        'support_email' => 'getSupportEmail',
-        'help_line_number' => 'getHelpLineNumber'
+        'page_index' => 'getPageIndex',
+        'page_size' => 'getPageSize',
+        'total_pages' => 'getTotalPages',
+        'total_items' => 'getTotalItems',
+        'items' => 'getItems'
     ];
 
     /**
@@ -209,13 +199,11 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['logo_url'] = $data['logo_url'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
-        $this->container['website'] = $data['website'] ?? null;
-        $this->container['support_email'] = $data['support_email'] ?? null;
-        $this->container['help_line_number'] = $data['help_line_number'] ?? null;
+        $this->container['page_index'] = $data['page_index'] ?? null;
+        $this->container['page_size'] = $data['page_size'] ?? null;
+        $this->container['total_pages'] = $data['total_pages'] ?? null;
+        $this->container['total_items'] = $data['total_items'] ?? null;
+        $this->container['items'] = $data['items'] ?? null;
     }
 
     /**
@@ -243,169 +231,121 @@ class DataConsentRequesterDto implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets name
+     * Gets page_index
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getName()
+    public function getPageIndex()
     {
-        return $this->container['name'];
+        return $this->container['page_index'];
     }
 
     /**
-     * Sets name
+     * Sets page_index
      *
-     * @param string|null $name name
+     * @param int|null $page_index page_index
      *
      * @return self
      */
-    public function setName($name)
+    public function setPageIndex($page_index)
     {
-        $this->container['name'] = $name;
+        $this->container['page_index'] = $page_index;
 
         return $this;
     }
 
     /**
-     * Gets logo_url
+     * Gets page_size
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getLogoUrl()
+    public function getPageSize()
     {
-        return $this->container['logo_url'];
+        return $this->container['page_size'];
     }
 
     /**
-     * Sets logo_url
+     * Sets page_size
      *
-     * @param string|null $logo_url logo_url
+     * @param int|null $page_size page_size
      *
      * @return self
      */
-    public function setLogoUrl($logo_url)
+    public function setPageSize($page_size)
     {
-        $this->container['logo_url'] = $logo_url;
+        $this->container['page_size'] = $page_size;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets total_pages
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getDescription()
+    public function getTotalPages()
     {
-        return $this->container['description'];
+        return $this->container['total_pages'];
     }
 
     /**
-     * Sets description
+     * Sets total_pages
      *
-     * @param string|null $description description
+     * @param int|null $total_pages total_pages
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setTotalPages($total_pages)
     {
-        $this->container['description'] = $description;
+        $this->container['total_pages'] = $total_pages;
 
         return $this;
     }
 
     /**
-     * Gets location
+     * Gets total_items
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getLocation()
+    public function getTotalItems()
     {
-        return $this->container['location'];
+        return $this->container['total_items'];
     }
 
     /**
-     * Sets location
+     * Sets total_items
      *
-     * @param string|null $location location
+     * @param int|null $total_items total_items
      *
      * @return self
      */
-    public function setLocation($location)
+    public function setTotalItems($total_items)
     {
-        $this->container['location'] = $location;
+        $this->container['total_items'] = $total_items;
 
         return $this;
     }
 
     /**
-     * Gets website
+     * Gets items
      *
-     * @return string|null
+     * @return \MyDataMyConsent\Model\DocumentTypeDetailsDto[]|null
      */
-    public function getWebsite()
+    public function getItems()
     {
-        return $this->container['website'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets website
+     * Sets items
      *
-     * @param string|null $website website
+     * @param \MyDataMyConsent\Model\DocumentTypeDetailsDto[]|null $items items
      *
      * @return self
      */
-    public function setWebsite($website)
+    public function setItems($items)
     {
-        $this->container['website'] = $website;
-
-        return $this;
-    }
-
-    /**
-     * Gets support_email
-     *
-     * @return string|null
-     */
-    public function getSupportEmail()
-    {
-        return $this->container['support_email'];
-    }
-
-    /**
-     * Sets support_email
-     *
-     * @param string|null $support_email support_email
-     *
-     * @return self
-     */
-    public function setSupportEmail($support_email)
-    {
-        $this->container['support_email'] = $support_email;
-
-        return $this;
-    }
-
-    /**
-     * Gets help_line_number
-     *
-     * @return string|null
-     */
-    public function getHelpLineNumber()
-    {
-        return $this->container['help_line_number'];
-    }
-
-    /**
-     * Sets help_line_number
-     *
-     * @param string|null $help_line_number help_line_number
-     *
-     * @return self
-     */
-    public function setHelpLineNumber($help_line_number)
-    {
-        $this->container['help_line_number'] = $help_line_number;
+        $this->container['items'] = $items;
 
         return $this;
     }

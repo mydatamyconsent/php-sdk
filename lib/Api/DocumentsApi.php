@@ -125,11 +125,12 @@ class DocumentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return |\MyDataMyConsent\Model\IssuedDocument|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails
      */
     public function getIssuedDocumentById($document_id)
     {
-        $this->getIssuedDocumentByIdWithHttpInfo($document_id);
+        list($response) = $this->getIssuedDocumentByIdWithHttpInfo($document_id);
+        return $response;
     }
 
     /**
@@ -141,7 +142,7 @@ class DocumentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\MyDataMyConsent\Model\IssuedDocument|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIssuedDocumentByIdWithHttpInfo($document_id)
     {
@@ -182,10 +183,104 @@ class DocumentsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\MyDataMyConsent\Model\IssuedDocument' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\IssuedDocument', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\MyDataMyConsent\Model\IssuedDocument';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\IssuedDocument',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -223,14 +318,24 @@ class DocumentsApi
      */
     public function getIssuedDocumentByIdAsyncWithHttpInfo($document_id)
     {
-        $returnType = '';
+        $returnType = '\MyDataMyConsent\Model\IssuedDocument';
         $request = $this->getIssuedDocumentByIdRequest($document_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -287,11 +392,11 @@ class DocumentsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -355,11 +460,12 @@ class DocumentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return |\MyDataMyConsent\Model\IssuedDocumentPaginatedList|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails
      */
     public function getIssuedDocuments($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
     {
-        $this->getIssuedDocumentsWithHttpInfo($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
+        list($response) = $this->getIssuedDocumentsWithHttpInfo($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
+        return $response;
     }
 
     /**
@@ -375,7 +481,7 @@ class DocumentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\MyDataMyConsent\Model\IssuedDocumentPaginatedList|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIssuedDocumentsWithHttpInfo($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
     {
@@ -416,10 +522,84 @@ class DocumentsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\MyDataMyConsent\Model\IssuedDocumentPaginatedList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\IssuedDocumentPaginatedList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\MyDataMyConsent\Model\IssuedDocumentPaginatedList';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\IssuedDocumentPaginatedList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -465,14 +645,24 @@ class DocumentsApi
      */
     public function getIssuedDocumentsAsyncWithHttpInfo($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_size = 25, $page_no = 1)
     {
-        $returnType = '';
+        $returnType = '\MyDataMyConsent\Model\IssuedDocumentPaginatedList';
         $request = $this->getIssuedDocumentsRequest($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -574,11 +764,11 @@ class DocumentsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -634,16 +824,17 @@ class DocumentsApi
      *
      * Get registered document types.
      *
-     * @param  int $page_size page_size (optional, default to 25)
-     * @param  int $page_no page_no (optional, default to 1)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return |\MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails
      */
-    public function getRegisteredDocumentTypes($page_size = 25, $page_no = 1)
+    public function getRegisteredDocumentTypes($page_no = 1, $page_size = 25)
     {
-        $this->getRegisteredDocumentTypesWithHttpInfo($page_size, $page_no);
+        list($response) = $this->getRegisteredDocumentTypesWithHttpInfo($page_no, $page_size);
+        return $response;
     }
 
     /**
@@ -651,16 +842,16 @@ class DocumentsApi
      *
      * Get registered document types.
      *
-     * @param  int $page_size (optional, default to 25)
-     * @param  int $page_no (optional, default to 1)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRegisteredDocumentTypesWithHttpInfo($page_size = 25, $page_no = 1)
+    public function getRegisteredDocumentTypesWithHttpInfo($page_no = 1, $page_size = 25)
     {
-        $request = $this->getRegisteredDocumentTypesRequest($page_size, $page_no);
+        $request = $this->getRegisteredDocumentTypesRequest($page_no, $page_size);
 
         try {
             $options = $this->createHttpClientOption();
@@ -697,10 +888,84 @@ class DocumentsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -711,15 +976,15 @@ class DocumentsApi
      *
      * Get registered document types.
      *
-     * @param  int $page_size (optional, default to 25)
-     * @param  int $page_no (optional, default to 1)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRegisteredDocumentTypesAsync($page_size = 25, $page_no = 1)
+    public function getRegisteredDocumentTypesAsync($page_no = 1, $page_size = 25)
     {
-        return $this->getRegisteredDocumentTypesAsyncWithHttpInfo($page_size, $page_no)
+        return $this->getRegisteredDocumentTypesAsyncWithHttpInfo($page_no, $page_size)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -732,22 +997,32 @@ class DocumentsApi
      *
      * Get registered document types.
      *
-     * @param  int $page_size (optional, default to 25)
-     * @param  int $page_no (optional, default to 1)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRegisteredDocumentTypesAsyncWithHttpInfo($page_size = 25, $page_no = 1)
+    public function getRegisteredDocumentTypesAsyncWithHttpInfo($page_no = 1, $page_size = 25)
     {
-        $returnType = '';
-        $request = $this->getRegisteredDocumentTypesRequest($page_size, $page_no);
+        $returnType = '\MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList';
+        $request = $this->getRegisteredDocumentTypesRequest($page_no, $page_size);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -769,13 +1044,13 @@ class DocumentsApi
     /**
      * Create request for operation 'getRegisteredDocumentTypes'
      *
-     * @param  int $page_size (optional, default to 25)
-     * @param  int $page_no (optional, default to 1)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRegisteredDocumentTypesRequest($page_size = 25, $page_no = 1)
+    public function getRegisteredDocumentTypesRequest($page_no = 1, $page_size = 25)
     {
 
         $resourcePath = '/v1/documents/types';
@@ -785,17 +1060,6 @@ class DocumentsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($page_size !== null) {
-            if('form' === 'form' && is_array($page_size)) {
-                foreach($page_size as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['pageSize'] = $page_size;
-            }
-        }
         // query params
         if ($page_no !== null) {
             if('form' === 'form' && is_array($page_no)) {
@@ -807,17 +1071,28 @@ class DocumentsApi
                 $queryParams['pageNo'] = $page_no;
             }
         }
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['pageSize'] = $page_size;
+            }
+        }
 
 
 
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -877,7 +1152,7 @@ class DocumentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |bool|string|\MyDataMyConsent\Model\ProblemDetails
+     * @return |\MyDataMyConsent\Model\IssuedDocument|string|\MyDataMyConsent\Model\ProblemDetails
      */
     public function issueDocument($document_issue_request)
     {
@@ -894,7 +1169,7 @@ class DocumentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |bool|string|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\MyDataMyConsent\Model\IssuedDocument|string|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function issueDocumentWithHttpInfo($document_issue_request)
     {
@@ -937,14 +1212,14 @@ class DocumentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('bool' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\IssuedDocument' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'bool', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\IssuedDocument', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -974,7 +1249,7 @@ class DocumentsApi
                     ];
             }
 
-            $returnType = 'bool';
+            $returnType = '\MyDataMyConsent\Model\IssuedDocument';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -992,7 +1267,7 @@ class DocumentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'bool',
+                        '\MyDataMyConsent\Model\IssuedDocument',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1050,7 +1325,7 @@ class DocumentsApi
      */
     public function issueDocumentAsyncWithHttpInfo($document_issue_request)
     {
-        $returnType = 'bool';
+        $returnType = '\MyDataMyConsent\Model\IssuedDocument';
         $request = $this->issueDocumentRequest($document_issue_request);
 
         return $this->client

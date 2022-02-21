@@ -125,7 +125,7 @@ class DataProviderDiscoveryApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataProvider
+     * @return \MyDataMyConsent\Model\DataProvider|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails
      */
     public function getDataProviderById($provider_id)
     {
@@ -142,7 +142,7 @@ class DataProviderDiscoveryApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataProvider, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\DataProvider|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDataProviderByIdWithHttpInfo($provider_id)
     {
@@ -196,6 +196,42 @@ class DataProviderDiscoveryApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\MyDataMyConsent\Model\DataProvider';
@@ -217,6 +253,30 @@ class DataProviderDiscoveryApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\MyDataMyConsent\Model\DataProvider',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -396,12 +456,12 @@ class DataProviderDiscoveryApi
      * @param  string $document_type Document type. (optional)
      * @param  string $organization_category Organization category. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      * @param  string $country ISO2 Country code. (optional, default to 'IN')
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataProviderPaginatedList
+     * @return \MyDataMyConsent\Model\DataProviderPaginatedList|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails
      */
     public function getDataProviders($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
     {
@@ -418,12 +478,12 @@ class DataProviderDiscoveryApi
      * @param  string $document_type Document type. (optional)
      * @param  string $organization_category Organization category. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      * @param  string $country ISO2 Country code. (optional, default to 'IN')
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataProviderPaginatedList, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\DataProviderPaginatedList|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDataProvidersWithHttpInfo($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
     {
@@ -477,6 +537,30 @@ class DataProviderDiscoveryApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\MyDataMyConsent\Model\DataProviderPaginatedList';
@@ -502,6 +586,22 @@ class DataProviderDiscoveryApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\MyDataMyConsent\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -516,7 +616,7 @@ class DataProviderDiscoveryApi
      * @param  string $document_type Document type. (optional)
      * @param  string $organization_category Organization category. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      * @param  string $country ISO2 Country code. (optional, default to 'IN')
      *
      * @throws \InvalidArgumentException
@@ -541,7 +641,7 @@ class DataProviderDiscoveryApi
      * @param  string $document_type Document type. (optional)
      * @param  string $organization_category Organization category. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      * @param  string $country ISO2 Country code. (optional, default to 'IN')
      *
      * @throws \InvalidArgumentException
@@ -592,7 +692,7 @@ class DataProviderDiscoveryApi
      * @param  string $document_type Document type. (optional)
      * @param  string $organization_category Organization category. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      * @param  string $country ISO2 Country code. (optional, default to 'IN')
      *
      * @throws \InvalidArgumentException

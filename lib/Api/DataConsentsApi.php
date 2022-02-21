@@ -3131,8 +3131,8 @@ class DataConsentsApi
      * @param  string $filters Filters. (optional)
      * @param  \DateTime $from_date_time_utc From date time in utc timezone. (optional)
      * @param  \DateTime $to_date_time_utc Til date time in utc timezone. (optional)
-     * @param  int $page_no Page no. (optional, default to 10)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 10)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3154,8 +3154,8 @@ class DataConsentsApi
      * @param  string $filters Filters. (optional)
      * @param  \DateTime $from_date_time_utc From date time in utc timezone. (optional)
      * @param  \DateTime $to_date_time_utc Til date time in utc timezone. (optional)
-     * @param  int $page_no Page no. (optional, default to 10)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 10)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3273,8 +3273,8 @@ class DataConsentsApi
      * @param  string $filters Filters. (optional)
      * @param  \DateTime $from_date_time_utc From date time in utc timezone. (optional)
      * @param  \DateTime $to_date_time_utc Til date time in utc timezone. (optional)
-     * @param  int $page_no Page no. (optional, default to 10)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 10)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3299,8 +3299,8 @@ class DataConsentsApi
      * @param  string $filters Filters. (optional)
      * @param  \DateTime $from_date_time_utc From date time in utc timezone. (optional)
      * @param  \DateTime $to_date_time_utc Til date time in utc timezone. (optional)
-     * @param  int $page_no Page no. (optional, default to 10)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 10)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3351,8 +3351,8 @@ class DataConsentsApi
      * @param  string $filters Filters. (optional)
      * @param  \DateTime $from_date_time_utc From date time in utc timezone. (optional)
      * @param  \DateTime $to_date_time_utc Til date time in utc timezone. (optional)
-     * @param  int $page_no Page no. (optional, default to 10)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 10)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3520,7 +3520,7 @@ class DataConsentsApi
      * @param  \DateTime $from From date time in utc timezone. (optional)
      * @param  \DateTime $to Til date time in utc timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3541,7 +3541,7 @@ class DataConsentsApi
      * @param  \DateTime $from From date time in utc timezone. (optional)
      * @param  \DateTime $to Til date time in utc timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3658,7 +3658,7 @@ class DataConsentsApi
      * @param  \DateTime $from From date time in utc timezone. (optional)
      * @param  \DateTime $to Til date time in utc timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3682,7 +3682,7 @@ class DataConsentsApi
      * @param  \DateTime $from From date time in utc timezone. (optional)
      * @param  \DateTime $to Til date time in utc timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3732,7 +3732,7 @@ class DataConsentsApi
      * @param  \DateTime $from From date time in utc timezone. (optional)
      * @param  \DateTime $to Til date time in utc timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3872,7 +3872,7 @@ class DataConsentsApi
      * @param  \DateTime $from From date time in utc timezone. (optional)
      * @param  \DateTime $to Til date time in utc timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3893,7 +3893,7 @@ class DataConsentsApi
      * @param  \DateTime $from From date time in utc timezone. (optional)
      * @param  \DateTime $to Til date time in utc timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4010,7 +4010,7 @@ class DataConsentsApi
      * @param  \DateTime $from From date time in utc timezone. (optional)
      * @param  \DateTime $to Til date time in utc timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4034,7 +4034,7 @@ class DataConsentsApi
      * @param  \DateTime $from From date time in utc timezone. (optional)
      * @param  \DateTime $to Til date time in utc timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4084,7 +4084,7 @@ class DataConsentsApi
      * @param  \DateTime $from From date time in utc timezone. (optional)
      * @param  \DateTime $to Til date time in utc timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4225,8 +4225,8 @@ class DataConsentsApi
      * @param  string $filters Filters. (optional)
      * @param  \DateTime $from_date_time_utc From date time in utc timezone. (optional)
      * @param  \DateTime $to_date_time_utc Til date time in utc timezone. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4248,8 +4248,8 @@ class DataConsentsApi
      * @param  string $filters Filters. (optional)
      * @param  \DateTime $from_date_time_utc From date time in utc timezone. (optional)
      * @param  \DateTime $to_date_time_utc Til date time in utc timezone. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4367,8 +4367,8 @@ class DataConsentsApi
      * @param  string $filters Filters. (optional)
      * @param  \DateTime $from_date_time_utc From date time in utc timezone. (optional)
      * @param  \DateTime $to_date_time_utc Til date time in utc timezone. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4393,8 +4393,8 @@ class DataConsentsApi
      * @param  string $filters Filters. (optional)
      * @param  \DateTime $from_date_time_utc From date time in utc timezone. (optional)
      * @param  \DateTime $to_date_time_utc Til date time in utc timezone. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4445,8 +4445,8 @@ class DataConsentsApi
      * @param  string $filters Filters. (optional)
      * @param  \DateTime $from_date_time_utc From date time in utc timezone. (optional)
      * @param  \DateTime $to_date_time_utc Til date time in utc timezone. (optional)
-     * @param  int $page_no Page no. (optional, default to 1)
-     * @param  int $page_size Page size. (optional, default to 25)
+     * @param  int $page_no Page number. (optional, default to 1)
+     * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

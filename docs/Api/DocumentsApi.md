@@ -13,7 +13,7 @@ Method | HTTP request | Description
 ## `getIssuedDocumentById()`
 
 ```php
-getIssuedDocumentById($document_id)
+getIssuedDocumentById($document_id): \MyDataMyConsent\Model\IssuedDocument
 ```
 
 Get issued document.
@@ -34,7 +34,8 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
 $document_id = 'document_id_example'; // string | Document id.
 
 try {
-    $apiInstance->getIssuedDocumentById($document_id);
+    $result = $apiInstance->getIssuedDocumentById($document_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentsApi->getIssuedDocumentById: ', $e->getMessage(), PHP_EOL;
 }
@@ -48,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\MyDataMyConsent\Model\IssuedDocument**](../Model/IssuedDocument.md)
 
 ### Authorization
 
@@ -57,7 +58,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -66,7 +67,7 @@ No authorization required
 ## `getIssuedDocuments()`
 
 ```php
-getIssuedDocuments($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no)
+getIssuedDocuments($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no): \MyDataMyConsent\Model\IssuedDocumentPaginatedList
 ```
 
 Get issued documents.
@@ -91,7 +92,8 @@ $page_size = 25; // int
 $page_no = 1; // int
 
 try {
-    $apiInstance->getIssuedDocuments($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
+    $result = $apiInstance->getIssuedDocuments($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentsApi->getIssuedDocuments: ', $e->getMessage(), PHP_EOL;
 }
@@ -109,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\MyDataMyConsent\Model\IssuedDocumentPaginatedList**](../Model/IssuedDocumentPaginatedList.md)
 
 ### Authorization
 
@@ -118,7 +120,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -127,7 +129,7 @@ No authorization required
 ## `getRegisteredDocumentTypes()`
 
 ```php
-getRegisteredDocumentTypes($page_size, $page_no)
+getRegisteredDocumentTypes($page_no, $page_size): \MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList
 ```
 
 Get registered document types.
@@ -145,11 +147,12 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$page_size = 25; // int
-$page_no = 1; // int
+$page_no = 1; // int | Page number.
+$page_size = 25; // int | Number of items to return.
 
 try {
-    $apiInstance->getRegisteredDocumentTypes($page_size, $page_no);
+    $result = $apiInstance->getRegisteredDocumentTypes($page_no, $page_size);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentsApi->getRegisteredDocumentTypes: ', $e->getMessage(), PHP_EOL;
 }
@@ -159,12 +162,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page_size** | **int**|  | [optional] [default to 25]
- **page_no** | **int**|  | [optional] [default to 1]
+ **page_no** | **int**| Page number. | [optional] [default to 1]
+ **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
-void (empty response body)
+[**\MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList**](../Model/DocumentTypeDetailsDtoPaginatedList.md)
 
 ### Authorization
 
@@ -173,7 +176,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -182,7 +185,7 @@ No authorization required
 ## `issueDocument()`
 
 ```php
-issueDocument($document_issue_request): bool
+issueDocument($document_issue_request): \MyDataMyConsent\Model\IssuedDocument
 ```
 
 Issue a new document.
@@ -218,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bool**
+[**\MyDataMyConsent\Model\IssuedDocument**](../Model/IssuedDocument.md)
 
 ### Authorization
 

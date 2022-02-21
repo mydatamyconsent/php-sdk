@@ -254,8 +254,8 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
 $status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status.
 $start_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start date time.
 $end_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date time.
-$page_no = 1; // int | Page no.
-$page_size = 25; // int | Page size.
+$page_no = 1; // int | Page number.
+$page_size = 25; // int | Number of items to return.
 
 try {
     $result = $apiInstance->getAllConsentRequestsToIndividuals($status, $start_date_time, $end_date_time, $page_no, $page_size);
@@ -272,8 +272,8 @@ Name | Type | Description  | Notes
  **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
  **start_date_time** | **\DateTime**| Start date time. | [optional]
  **end_date_time** | **\DateTime**| End date time. | [optional]
- **page_no** | **int**| Page no. | [optional] [default to 1]
- **page_size** | **int**| Page size. | [optional] [default to 25]
+ **page_no** | **int**| Page number. | [optional] [default to 1]
+ **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -316,8 +316,8 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
 $status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status.
 $start_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start date time.
 $end_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date time.
-$page_no = 1; // int | Page no.
-$page_size = 25; // int | Page size.
+$page_no = 1; // int | Page number.
+$page_size = 25; // int | Number of items to return.
 
 try {
     $result = $apiInstance->getAllConsentRequestsToOrganizations($status, $start_date_time, $end_date_time, $page_no, $page_size);
@@ -334,8 +334,8 @@ Name | Type | Description  | Notes
  **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
  **start_date_time** | **\DateTime**| Start date time. | [optional]
  **end_date_time** | **\DateTime**| End date time. | [optional]
- **page_no** | **int**| Page no. | [optional] [default to 1]
- **page_size** | **int**| Page size. | [optional] [default to 25]
+ **page_no** | **int**| Page number. | [optional] [default to 1]
+ **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 

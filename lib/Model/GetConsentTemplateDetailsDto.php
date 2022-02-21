@@ -71,10 +71,15 @@ class GetConsentTemplateDetailsDto implements ModelInterface, ArrayAccess, \Json
         'created_at_utc' => '\DateTime',
         'status' => 'string',
         'template_type' => '\MyDataMyConsent\Model\ConsentTemplateTypes',
+        'data_life' => '\MyDataMyConsent\Model\Life',
+        'request_life' => '\MyDataMyConsent\Model\Life',
         'frequency' => '\MyDataMyConsent\Model\Life',
         'identity' => '\MyDataMyConsent\Model\IdentitySupportedFields[]',
         'documents' => '\MyDataMyConsent\Model\Document[]',
-        'financials' => '\MyDataMyConsent\Model\Financial[]'
+        'financials' => '\MyDataMyConsent\Model\Financial[]',
+        'health_records' => 'object[]',
+        'approved_by' => 'string',
+        'approved_at_utc' => '\DateTime'
     ];
 
     /**
@@ -96,10 +101,15 @@ class GetConsentTemplateDetailsDto implements ModelInterface, ArrayAccess, \Json
         'created_at_utc' => 'date-time',
         'status' => null,
         'template_type' => null,
+        'data_life' => null,
+        'request_life' => null,
         'frequency' => null,
         'identity' => null,
         'documents' => null,
-        'financials' => null
+        'financials' => null,
+        'health_records' => null,
+        'approved_by' => 'uuid',
+        'approved_at_utc' => 'date-time'
     ];
 
     /**
@@ -140,10 +150,15 @@ class GetConsentTemplateDetailsDto implements ModelInterface, ArrayAccess, \Json
         'created_at_utc' => 'createdAtUtc',
         'status' => 'status',
         'template_type' => 'templateType',
+        'data_life' => 'dataLife',
+        'request_life' => 'requestLife',
         'frequency' => 'frequency',
         'identity' => 'identity',
         'documents' => 'documents',
-        'financials' => 'financials'
+        'financials' => 'financials',
+        'health_records' => 'healthRecords',
+        'approved_by' => 'approvedBy',
+        'approved_at_utc' => 'approvedAtUtc'
     ];
 
     /**
@@ -163,10 +178,15 @@ class GetConsentTemplateDetailsDto implements ModelInterface, ArrayAccess, \Json
         'created_at_utc' => 'setCreatedAtUtc',
         'status' => 'setStatus',
         'template_type' => 'setTemplateType',
+        'data_life' => 'setDataLife',
+        'request_life' => 'setRequestLife',
         'frequency' => 'setFrequency',
         'identity' => 'setIdentity',
         'documents' => 'setDocuments',
-        'financials' => 'setFinancials'
+        'financials' => 'setFinancials',
+        'health_records' => 'setHealthRecords',
+        'approved_by' => 'setApprovedBy',
+        'approved_at_utc' => 'setApprovedAtUtc'
     ];
 
     /**
@@ -186,10 +206,15 @@ class GetConsentTemplateDetailsDto implements ModelInterface, ArrayAccess, \Json
         'created_at_utc' => 'getCreatedAtUtc',
         'status' => 'getStatus',
         'template_type' => 'getTemplateType',
+        'data_life' => 'getDataLife',
+        'request_life' => 'getRequestLife',
         'frequency' => 'getFrequency',
         'identity' => 'getIdentity',
         'documents' => 'getDocuments',
-        'financials' => 'getFinancials'
+        'financials' => 'getFinancials',
+        'health_records' => 'getHealthRecords',
+        'approved_by' => 'getApprovedBy',
+        'approved_at_utc' => 'getApprovedAtUtc'
     ];
 
     /**
@@ -260,10 +285,15 @@ class GetConsentTemplateDetailsDto implements ModelInterface, ArrayAccess, \Json
         $this->container['created_at_utc'] = $data['created_at_utc'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['template_type'] = $data['template_type'] ?? null;
+        $this->container['data_life'] = $data['data_life'] ?? null;
+        $this->container['request_life'] = $data['request_life'] ?? null;
         $this->container['frequency'] = $data['frequency'] ?? null;
         $this->container['identity'] = $data['identity'] ?? null;
         $this->container['documents'] = $data['documents'] ?? null;
         $this->container['financials'] = $data['financials'] ?? null;
+        $this->container['health_records'] = $data['health_records'] ?? null;
+        $this->container['approved_by'] = $data['approved_by'] ?? null;
+        $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
     }
 
     /**
@@ -555,6 +585,54 @@ class GetConsentTemplateDetailsDto implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets data_life
+     *
+     * @return \MyDataMyConsent\Model\Life|null
+     */
+    public function getDataLife()
+    {
+        return $this->container['data_life'];
+    }
+
+    /**
+     * Sets data_life
+     *
+     * @param \MyDataMyConsent\Model\Life|null $data_life data_life
+     *
+     * @return self
+     */
+    public function setDataLife($data_life)
+    {
+        $this->container['data_life'] = $data_life;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_life
+     *
+     * @return \MyDataMyConsent\Model\Life|null
+     */
+    public function getRequestLife()
+    {
+        return $this->container['request_life'];
+    }
+
+    /**
+     * Sets request_life
+     *
+     * @param \MyDataMyConsent\Model\Life|null $request_life request_life
+     *
+     * @return self
+     */
+    public function setRequestLife($request_life)
+    {
+        $this->container['request_life'] = $request_life;
+
+        return $this;
+    }
+
+    /**
      * Gets frequency
      *
      * @return \MyDataMyConsent\Model\Life|null
@@ -646,6 +724,78 @@ class GetConsentTemplateDetailsDto implements ModelInterface, ArrayAccess, \Json
     public function setFinancials($financials)
     {
         $this->container['financials'] = $financials;
+
+        return $this;
+    }
+
+    /**
+     * Gets health_records
+     *
+     * @return object[]|null
+     */
+    public function getHealthRecords()
+    {
+        return $this->container['health_records'];
+    }
+
+    /**
+     * Sets health_records
+     *
+     * @param object[]|null $health_records health_records
+     *
+     * @return self
+     */
+    public function setHealthRecords($health_records)
+    {
+        $this->container['health_records'] = $health_records;
+
+        return $this;
+    }
+
+    /**
+     * Gets approved_by
+     *
+     * @return string|null
+     */
+    public function getApprovedBy()
+    {
+        return $this->container['approved_by'];
+    }
+
+    /**
+     * Sets approved_by
+     *
+     * @param string|null $approved_by approved_by
+     *
+     * @return self
+     */
+    public function setApprovedBy($approved_by)
+    {
+        $this->container['approved_by'] = $approved_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets approved_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getApprovedAtUtc()
+    {
+        return $this->container['approved_at_utc'];
+    }
+
+    /**
+     * Sets approved_at_utc
+     *
+     * @param \DateTime|null $approved_at_utc approved_at_utc
+     *
+     * @return self
+     */
+    public function setApprovedAtUtc($approved_at_utc)
+    {
+        $this->container['approved_at_utc'] = $approved_at_utc;
 
         return $this;
     }

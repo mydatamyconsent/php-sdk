@@ -87,7 +87,7 @@ $account_type = 'account_type_example'; // string | Account type.
 $document_type = 'document_type_example'; // string | Document type.
 $organization_category = 'organization_category_example'; // string | Organization category.
 $page_no = 1; // int | Page number.
-$page_size = 25; // int | Page size.
+$page_size = 25; // int | Number of items to return.
 $country = 'IN'; // string | ISO2 Country code.
 
 try {
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
  **document_type** | **string**| Document type. | [optional]
  **organization_category** | **string**| Organization category. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
- **page_size** | **int**| Page size. | [optional] [default to 25]
+ **page_size** | **int**| Number of items to return. | [optional] [default to 25]
  **country** | **string**| ISO2 Country code. | [optional] [default to &#39;IN&#39;]
 
 ### Return type

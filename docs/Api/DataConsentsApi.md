@@ -598,8 +598,8 @@ $account_id = 'account_id_example'; // string | Account id.
 $filters = 'filters_example'; // string | Filters.
 $from_date_time_utc = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date time in utc timezone.
 $to_date_time_utc = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Til date time in utc timezone.
-$page_no = 10; // int | Page no.
-$page_size = 25; // int | Page size.
+$page_no = 10; // int | Page number.
+$page_size = 25; // int | Number of items to return.
 
 try {
     $result = $apiInstance->getConsentedFinancialAccountTransactions($consent_id, $account_id, $filters, $from_date_time_utc, $to_date_time_utc, $page_no, $page_size);
@@ -618,8 +618,8 @@ Name | Type | Description  | Notes
  **filters** | **string**| Filters. | [optional]
  **from_date_time_utc** | **\DateTime**| From date time in utc timezone. | [optional]
  **to_date_time_utc** | **\DateTime**| Til date time in utc timezone. | [optional]
- **page_no** | **int**| Page no. | [optional] [default to 10]
- **page_size** | **int**| Page size. | [optional] [default to 25]
+ **page_no** | **int**| Page number. | [optional] [default to 10]
+ **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -663,7 +663,7 @@ $status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus();
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date time in utc timezone.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Til date time in utc timezone.
 $page_no = 1; // int | Page number.
-$page_size = 25; // int | Page size.
+$page_size = 25; // int | Number of items to return.
 
 try {
     $result = $apiInstance->getConsents($status, $from, $to, $page_no, $page_size);
@@ -681,7 +681,7 @@ Name | Type | Description  | Notes
  **from** | **\DateTime**| From date time in utc timezone. | [optional]
  **to** | **\DateTime**| Til date time in utc timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
- **page_size** | **int**| Page size. | [optional] [default to 25]
+ **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -725,7 +725,7 @@ $status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus();
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date time in utc timezone.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Til date time in utc timezone.
 $page_no = 1; // int | Page number.
-$page_size = 25; // int | Page size.
+$page_size = 25; // int | Number of items to return.
 
 try {
     $result = $apiInstance->getConsentsForOrganizations($status, $from, $to, $page_no, $page_size);
@@ -743,7 +743,7 @@ Name | Type | Description  | Notes
  **from** | **\DateTime**| From date time in utc timezone. | [optional]
  **to** | **\DateTime**| Til date time in utc timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
- **page_size** | **int**| Page size. | [optional] [default to 25]
+ **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -788,8 +788,8 @@ $account_id = 'account_id_example'; // string | Account id.
 $filters = 'filters_example'; // string | Filters.
 $from_date_time_utc = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date time in utc timezone.
 $to_date_time_utc = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Til date time in utc timezone.
-$page_no = 1; // int | Page no.
-$page_size = 25; // int | Page size.
+$page_no = 1; // int | Page number.
+$page_size = 25; // int | Number of items to return.
 
 try {
     $result = $apiInstance->getOrgConsentedAccountTransactions($consent_id, $account_id, $filters, $from_date_time_utc, $to_date_time_utc, $page_no, $page_size);
@@ -808,8 +808,8 @@ Name | Type | Description  | Notes
  **filters** | **string**| Filters. | [optional]
  **from_date_time_utc** | **\DateTime**| From date time in utc timezone. | [optional]
  **to_date_time_utc** | **\DateTime**| Til date time in utc timezone. | [optional]
- **page_no** | **int**| Page no. | [optional] [default to 1]
- **page_size** | **int**| Page size. | [optional] [default to 25]
+ **page_no** | **int**| Page number. | [optional] [default to 1]
+ **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 

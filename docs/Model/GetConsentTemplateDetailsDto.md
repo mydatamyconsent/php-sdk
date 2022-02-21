@@ -15,9 +15,14 @@ Name | Type | Description | Notes
 **created_at_utc** | **\DateTime** |  | [optional]
 **status** | **string** |  | [optional]
 **template_type** | [**\MyDataMyConsent\Model\ConsentTemplateTypes**](ConsentTemplateTypes.md) |  | [optional]
+**data_life** | [**\MyDataMyConsent\Model\Life**](Life.md) |  | [optional]
+**request_life** | [**\MyDataMyConsent\Model\Life**](Life.md) |  | [optional]
 **frequency** | [**\MyDataMyConsent\Model\Life**](Life.md) |  | [optional]
 **identity** | [**\MyDataMyConsent\Model\IdentitySupportedFields[]**](IdentitySupportedFields.md) |  | [optional]
 **documents** | [**\MyDataMyConsent\Model\Document[]**](Document.md) |  | [optional]
 **financials** | [**\MyDataMyConsent\Model\Financial[]**](Financial.md) |  | [optional]
+**health_records** | **object[]** |  | [optional]
+**approved_by** | **string** |  | [optional]
+**approved_at_utc** | **\DateTime** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
