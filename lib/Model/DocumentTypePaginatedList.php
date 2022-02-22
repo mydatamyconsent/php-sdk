@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentTypeDetailsDtoPaginatedList
+ * DocumentTypePaginatedList
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DocumentTypeDetailsDtoPaginatedList Class Doc Comment
+ * DocumentTypePaginatedList Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DocumentTypeDetailsDtoPaginatedList implements ModelInterface, ArrayAccess, \JsonSerializable
+class DocumentTypePaginatedList implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class DocumentTypeDetailsDtoPaginatedList implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DocumentTypeDetailsDtoPaginatedList';
+    protected static $openAPIModelName = 'DocumentTypePaginatedList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -64,7 +64,7 @@ class DocumentTypeDetailsDtoPaginatedList implements ModelInterface, ArrayAccess
         'page_size' => 'int',
         'total_pages' => 'int',
         'total_items' => 'int',
-        'items' => '\MyDataMyConsent\Model\DocumentTypeDetailsDto[]'
+        'items' => '\MyDataMyConsent\Model\DocumentType[]'
     ];
 
     /**
@@ -329,7 +329,7 @@ class DocumentTypeDetailsDtoPaginatedList implements ModelInterface, ArrayAccess
     /**
      * Gets items
      *
-     * @return \MyDataMyConsent\Model\DocumentTypeDetailsDto[]|null
+     * @return \MyDataMyConsent\Model\DocumentType[]|null
      */
     public function getItems()
     {
@@ -339,7 +339,7 @@ class DocumentTypeDetailsDtoPaginatedList implements ModelInterface, ArrayAccess
     /**
      * Sets items
      *
-     * @param \MyDataMyConsent\Model\DocumentTypeDetailsDto[]|null $items items
+     * @param \MyDataMyConsent\Model\DocumentType[]|null $items items
      *
      * @return self
      */

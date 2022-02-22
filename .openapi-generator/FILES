@@ -35,8 +35,8 @@ docs/Model/Document.md
 docs/Model/DocumentCategoryType.md
 docs/Model/DocumentIssueRequest.md
 docs/Model/DocumentSubCategoryType.md
-docs/Model/DocumentTypeDetailsDto.md
-docs/Model/DocumentTypeDetailsDtoPaginatedList.md
+docs/Model/DocumentType.md
+docs/Model/DocumentTypePaginatedList.md
 docs/Model/DocumentsRequired.md
 docs/Model/FetchTypes.md
 docs/Model/FileType.md
@@ -111,8 +111,8 @@ lib/Model/Document.php
 lib/Model/DocumentCategoryType.php
 lib/Model/DocumentIssueRequest.php
 lib/Model/DocumentSubCategoryType.php
-lib/Model/DocumentTypeDetailsDto.php
-lib/Model/DocumentTypeDetailsDtoPaginatedList.php
+lib/Model/DocumentType.php
+lib/Model/DocumentTypePaginatedList.php
 lib/Model/DocumentsRequired.php
 lib/Model/FetchTypes.php
 lib/Model/FileType.php
@@ -155,9 +155,5 @@ lib/Model/UserDocumentDetailsDto.php
 lib/Model/UserDocumentDownloadDto.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/DocumentSubCategoryTypeTest.php
-test/Model/DocumentTypeDetailsDtoPaginatedListTest.php
-test/Model/DocumentTypeDetailsDtoTest.php
-test/Model/IssuedDocumentPaginatedListTest.php
-test/Model/IssuedDocumentTest.php
-test/Model/SupportedEntityTypeTest.php
+test/Model/DocumentTypePaginatedListTest.php
+test/Model/DocumentTypeTest.php

@@ -129,7 +129,7 @@ No authorization required
 ## `getRegisteredDocumentTypes()`
 
 ```php
-getRegisteredDocumentTypes($page_no, $page_size): \MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList
+getRegisteredDocumentTypes($page_no, $page_size): \MyDataMyConsent\Model\DocumentTypePaginatedList
 ```
 
 Get registered document types.
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DocumentTypeDetailsDtoPaginatedList**](../Model/DocumentTypeDetailsDtoPaginatedList.md)
+[**\MyDataMyConsent\Model\DocumentTypePaginatedList**](../Model/DocumentTypePaginatedList.md)
 
 ### Authorization
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentTypeDetailsDto
+ * DocumentType
  *
  * PHP version 7.3
  *
@@ -33,9 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DocumentTypeDetailsDto Class Doc Comment
+ * DocumentType Class Doc Comment
  *
  * @category Class
+ * @description Issuable Document Type details.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerializable
+class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +53,7 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DocumentTypeDetailsDto';
+    protected static $openAPIModelName = 'DocumentType';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,22 +62,20 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'organization_id' => 'string',
         'category_type' => '\MyDataMyConsent\Model\DocumentCategoryType',
         'sub_category_type' => '\MyDataMyConsent\Model\DocumentSubCategoryType',
-        'document_type_category_id' => 'string',
         'name' => 'string',
         'slug' => 'string',
         'description' => 'string',
         'logo_url' => 'string',
-        'country_iso2' => 'string',
-        'country_id' => 'string',
-        'search_service_id' => 'string',
-        'repository_service_id' => 'string',
-        'supported_entity_type' => '\MyDataMyConsent\Model\SupportedEntityType',
+        'search_service_name' => 'string',
+        'repository_service_name' => 'string',
+        'supported_entity_types' => '\MyDataMyConsent\Model\SupportedEntityType[]',
         'added_by' => 'string',
         'payable_amount' => 'double',
-        'approved_at_utc' => '\DateTime'
+        'payable_amount_currency' => 'string',
+        'approved_at_utc' => '\DateTime',
+        'approved' => 'bool'
     ];
 
     /**
@@ -88,22 +87,20 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'id' => 'uuid',
-        'organization_id' => 'uuid',
         'category_type' => null,
         'sub_category_type' => null,
-        'document_type_category_id' => 'uuid',
         'name' => null,
         'slug' => null,
         'description' => null,
         'logo_url' => null,
-        'country_iso2' => null,
-        'country_id' => 'uuid',
-        'search_service_id' => 'uuid',
-        'repository_service_id' => 'uuid',
-        'supported_entity_type' => null,
+        'search_service_name' => null,
+        'repository_service_name' => null,
+        'supported_entity_types' => null,
         'added_by' => null,
         'payable_amount' => 'double',
-        'approved_at_utc' => 'date-time'
+        'payable_amount_currency' => null,
+        'approved_at_utc' => 'date-time',
+        'approved' => null
     ];
 
     /**
@@ -134,22 +131,20 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'organization_id' => 'organizationId',
         'category_type' => 'categoryType',
         'sub_category_type' => 'subCategoryType',
-        'document_type_category_id' => 'documentTypeCategoryId',
         'name' => 'name',
         'slug' => 'slug',
         'description' => 'description',
         'logo_url' => 'logoUrl',
-        'country_iso2' => 'countryIso2',
-        'country_id' => 'countryId',
-        'search_service_id' => 'searchServiceId',
-        'repository_service_id' => 'repositoryServiceId',
-        'supported_entity_type' => 'supportedEntityType',
+        'search_service_name' => 'searchServiceName',
+        'repository_service_name' => 'repositoryServiceName',
+        'supported_entity_types' => 'supportedEntityTypes',
         'added_by' => 'addedBy',
         'payable_amount' => 'payableAmount',
-        'approved_at_utc' => 'approvedAtUtc'
+        'payable_amount_currency' => 'payableAmountCurrency',
+        'approved_at_utc' => 'approvedAtUtc',
+        'approved' => 'approved'
     ];
 
     /**
@@ -159,22 +154,20 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'id' => 'setId',
-        'organization_id' => 'setOrganizationId',
         'category_type' => 'setCategoryType',
         'sub_category_type' => 'setSubCategoryType',
-        'document_type_category_id' => 'setDocumentTypeCategoryId',
         'name' => 'setName',
         'slug' => 'setSlug',
         'description' => 'setDescription',
         'logo_url' => 'setLogoUrl',
-        'country_iso2' => 'setCountryIso2',
-        'country_id' => 'setCountryId',
-        'search_service_id' => 'setSearchServiceId',
-        'repository_service_id' => 'setRepositoryServiceId',
-        'supported_entity_type' => 'setSupportedEntityType',
+        'search_service_name' => 'setSearchServiceName',
+        'repository_service_name' => 'setRepositoryServiceName',
+        'supported_entity_types' => 'setSupportedEntityTypes',
         'added_by' => 'setAddedBy',
         'payable_amount' => 'setPayableAmount',
-        'approved_at_utc' => 'setApprovedAtUtc'
+        'payable_amount_currency' => 'setPayableAmountCurrency',
+        'approved_at_utc' => 'setApprovedAtUtc',
+        'approved' => 'setApproved'
     ];
 
     /**
@@ -184,22 +177,20 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'id' => 'getId',
-        'organization_id' => 'getOrganizationId',
         'category_type' => 'getCategoryType',
         'sub_category_type' => 'getSubCategoryType',
-        'document_type_category_id' => 'getDocumentTypeCategoryId',
         'name' => 'getName',
         'slug' => 'getSlug',
         'description' => 'getDescription',
         'logo_url' => 'getLogoUrl',
-        'country_iso2' => 'getCountryIso2',
-        'country_id' => 'getCountryId',
-        'search_service_id' => 'getSearchServiceId',
-        'repository_service_id' => 'getRepositoryServiceId',
-        'supported_entity_type' => 'getSupportedEntityType',
+        'search_service_name' => 'getSearchServiceName',
+        'repository_service_name' => 'getRepositoryServiceName',
+        'supported_entity_types' => 'getSupportedEntityTypes',
         'added_by' => 'getAddedBy',
         'payable_amount' => 'getPayableAmount',
-        'approved_at_utc' => 'getApprovedAtUtc'
+        'payable_amount_currency' => 'getPayableAmountCurrency',
+        'approved_at_utc' => 'getApprovedAtUtc',
+        'approved' => 'getApproved'
     ];
 
     /**
@@ -260,22 +251,20 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['organization_id'] = $data['organization_id'] ?? null;
         $this->container['category_type'] = $data['category_type'] ?? null;
         $this->container['sub_category_type'] = $data['sub_category_type'] ?? null;
-        $this->container['document_type_category_id'] = $data['document_type_category_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['logo_url'] = $data['logo_url'] ?? null;
-        $this->container['country_iso2'] = $data['country_iso2'] ?? null;
-        $this->container['country_id'] = $data['country_id'] ?? null;
-        $this->container['search_service_id'] = $data['search_service_id'] ?? null;
-        $this->container['repository_service_id'] = $data['repository_service_id'] ?? null;
-        $this->container['supported_entity_type'] = $data['supported_entity_type'] ?? null;
+        $this->container['search_service_name'] = $data['search_service_name'] ?? null;
+        $this->container['repository_service_name'] = $data['repository_service_name'] ?? null;
+        $this->container['supported_entity_types'] = $data['supported_entity_types'] ?? null;
         $this->container['added_by'] = $data['added_by'] ?? null;
         $this->container['payable_amount'] = $data['payable_amount'] ?? null;
+        $this->container['payable_amount_currency'] = $data['payable_amount_currency'] ?? null;
         $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
+        $this->container['approved'] = $data['approved'] ?? null;
     }
 
     /**
@@ -290,17 +279,11 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['organization_id'] === null) {
-            $invalidProperties[] = "'organization_id' can't be null";
-        }
         if ($this->container['category_type'] === null) {
             $invalidProperties[] = "'category_type' can't be null";
         }
         if ($this->container['sub_category_type'] === null) {
             $invalidProperties[] = "'sub_category_type' can't be null";
-        }
-        if ($this->container['document_type_category_id'] === null) {
-            $invalidProperties[] = "'document_type_category_id' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
@@ -311,17 +294,14 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['logo_url'] === null) {
             $invalidProperties[] = "'logo_url' can't be null";
         }
-        if ($this->container['country_iso2'] === null) {
-            $invalidProperties[] = "'country_iso2' can't be null";
-        }
-        if ($this->container['country_id'] === null) {
-            $invalidProperties[] = "'country_id' can't be null";
-        }
-        if ($this->container['supported_entity_type'] === null) {
-            $invalidProperties[] = "'supported_entity_type' can't be null";
+        if ($this->container['supported_entity_types'] === null) {
+            $invalidProperties[] = "'supported_entity_types' can't be null";
         }
         if ($this->container['added_by'] === null) {
             $invalidProperties[] = "'added_by' can't be null";
+        }
+        if ($this->container['approved'] === null) {
+            $invalidProperties[] = "'approved' can't be null";
         }
         return $invalidProperties;
     }
@@ -351,37 +331,13 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id Document Type Identifier.
      *
      * @return self
      */
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets organization_id
-     *
-     * @return string
-     */
-    public function getOrganizationId()
-    {
-        return $this->container['organization_id'];
-    }
-
-    /**
-     * Sets organization_id
-     *
-     * @param string $organization_id organization_id
-     *
-     * @return self
-     */
-    public function setOrganizationId($organization_id)
-    {
-        $this->container['organization_id'] = $organization_id;
 
         return $this;
     }
@@ -435,30 +391,6 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets document_type_category_id
-     *
-     * @return string
-     */
-    public function getDocumentTypeCategoryId()
-    {
-        return $this->container['document_type_category_id'];
-    }
-
-    /**
-     * Sets document_type_category_id
-     *
-     * @param string $document_type_category_id document_type_category_id
-     *
-     * @return self
-     */
-    public function setDocumentTypeCategoryId($document_type_category_id)
-    {
-        $this->container['document_type_category_id'] = $document_type_category_id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string
@@ -471,7 +403,7 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name Document Type Name. eg: Driving License.
      *
      * @return self
      */
@@ -495,7 +427,7 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets slug
      *
-     * @param string $slug slug
+     * @param string $slug Document Type Unique Slug. eg: \"in.gov.gj.transport.dl\".
      *
      * @return self
      */
@@ -519,7 +451,7 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string|null $description Document Type description. eg: Gujarat State Driving License.
      *
      * @return self
      */
@@ -543,7 +475,7 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets logo_url
      *
-     * @param string $logo_url logo_url
+     * @param string $logo_url Logo URL of document type.
      *
      * @return self
      */
@@ -555,121 +487,73 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets country_iso2
-     *
-     * @return string
-     */
-    public function getCountryIso2()
-    {
-        return $this->container['country_iso2'];
-    }
-
-    /**
-     * Sets country_iso2
-     *
-     * @param string $country_iso2 country_iso2
-     *
-     * @return self
-     */
-    public function setCountryIso2($country_iso2)
-    {
-        $this->container['country_iso2'] = $country_iso2;
-
-        return $this;
-    }
-
-    /**
-     * Gets country_id
-     *
-     * @return string
-     */
-    public function getCountryId()
-    {
-        return $this->container['country_id'];
-    }
-
-    /**
-     * Sets country_id
-     *
-     * @param string $country_id country_id
-     *
-     * @return self
-     */
-    public function setCountryId($country_id)
-    {
-        $this->container['country_id'] = $country_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets search_service_id
+     * Gets search_service_name
      *
      * @return string|null
      */
-    public function getSearchServiceId()
+    public function getSearchServiceName()
     {
-        return $this->container['search_service_id'];
+        return $this->container['search_service_name'];
     }
 
     /**
-     * Sets search_service_id
+     * Sets search_service_name
      *
-     * @param string|null $search_service_id search_service_id
+     * @param string|null $search_service_name Document search repository service name.
      *
      * @return self
      */
-    public function setSearchServiceId($search_service_id)
+    public function setSearchServiceName($search_service_name)
     {
-        $this->container['search_service_id'] = $search_service_id;
+        $this->container['search_service_name'] = $search_service_name;
 
         return $this;
     }
 
     /**
-     * Gets repository_service_id
+     * Gets repository_service_name
      *
      * @return string|null
      */
-    public function getRepositoryServiceId()
+    public function getRepositoryServiceName()
     {
-        return $this->container['repository_service_id'];
+        return $this->container['repository_service_name'];
     }
 
     /**
-     * Sets repository_service_id
+     * Sets repository_service_name
      *
-     * @param string|null $repository_service_id repository_service_id
+     * @param string|null $repository_service_name Document repository service name.
      *
      * @return self
      */
-    public function setRepositoryServiceId($repository_service_id)
+    public function setRepositoryServiceName($repository_service_name)
     {
-        $this->container['repository_service_id'] = $repository_service_id;
+        $this->container['repository_service_name'] = $repository_service_name;
 
         return $this;
     }
 
     /**
-     * Gets supported_entity_type
+     * Gets supported_entity_types
      *
-     * @return \MyDataMyConsent\Model\SupportedEntityType
+     * @return \MyDataMyConsent\Model\SupportedEntityType[]
      */
-    public function getSupportedEntityType()
+    public function getSupportedEntityTypes()
     {
-        return $this->container['supported_entity_type'];
+        return $this->container['supported_entity_types'];
     }
 
     /**
-     * Sets supported_entity_type
+     * Sets supported_entity_types
      *
-     * @param \MyDataMyConsent\Model\SupportedEntityType $supported_entity_type supported_entity_type
+     * @param \MyDataMyConsent\Model\SupportedEntityType[] $supported_entity_types Supported entity types. eg: Individual, Organization.
      *
      * @return self
      */
-    public function setSupportedEntityType($supported_entity_type)
+    public function setSupportedEntityTypes($supported_entity_types)
     {
-        $this->container['supported_entity_type'] = $supported_entity_type;
+        $this->container['supported_entity_types'] = $supported_entity_types;
 
         return $this;
     }
@@ -687,7 +571,7 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets added_by
      *
-     * @param string $added_by added_by
+     * @param string $added_by Name of the document type creator.
      *
      * @return self
      */
@@ -711,13 +595,37 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets payable_amount
      *
-     * @param double|null $payable_amount payable_amount
+     * @param double|null $payable_amount Payable amount if document is chargeable. eg: 10.25.
      *
      * @return self
      */
     public function setPayableAmount($payable_amount)
     {
         $this->container['payable_amount'] = $payable_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets payable_amount_currency
+     *
+     * @return string|null
+     */
+    public function getPayableAmountCurrency()
+    {
+        return $this->container['payable_amount_currency'];
+    }
+
+    /**
+     * Sets payable_amount_currency
+     *
+     * @param string|null $payable_amount_currency Payable amount currency. eg: INR, USD etc.,.
+     *
+     * @return self
+     */
+    public function setPayableAmountCurrency($payable_amount_currency)
+    {
+        $this->container['payable_amount_currency'] = $payable_amount_currency;
 
         return $this;
     }
@@ -735,13 +643,37 @@ class DocumentTypeDetailsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets approved_at_utc
      *
-     * @param \DateTime|null $approved_at_utc approved_at_utc
+     * @param \DateTime|null $approved_at_utc DateTime of approval in UTC timezone.
      *
      * @return self
      */
     public function setApprovedAtUtc($approved_at_utc)
     {
         $this->container['approved_at_utc'] = $approved_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets approved
+     *
+     * @return bool
+     */
+    public function getApproved()
+    {
+        return $this->container['approved'];
+    }
+
+    /**
+     * Sets approved
+     *
+     * @param bool $approved Document type approval status.
+     *
+     * @return self
+     */
+    public function setApproved($approved)
+    {
+        $this->container['approved'] = $approved;
 
         return $this;
     }
