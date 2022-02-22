@@ -107,9 +107,13 @@ Class | Method | HTTP request | Description
 *DataProviderDiscoveryApi* | [**getDataProviders**](docs/Api/DataProviderDiscoveryApi.md#getdataproviders) | **GET** /v1/data-providers | Discover all data providers in My Data My Consent by country and filters.
 *DigiLockerCompatIssuerApi* | [**digilockerCompatIssueDocument**](docs/Api/DigiLockerCompatIssuerApi.md#digilockercompatissuedocument) | **POST** /issuer/issuedoc/1/xml | Digilocker Compatible endpoint to issue document.
 *DocumentsApi* | [**getIssuedDocumentById**](docs/Api/DocumentsApi.md#getissueddocumentbyid) | **GET** /v1/documents/issued/{documentId} | Get issued document.
-*DocumentsApi* | [**getIssuedDocuments**](docs/Api/DocumentsApi.md#getissueddocuments) | **GET** /v1/documents/issued | Get issued documents.
+*DocumentsApi* | [**getIssuedDocuments**](docs/Api/DocumentsApi.md#getissueddocuments) | **GET** /v1/documents/issued/{documentTypeId} | Get paginated list of issued documents of given document type.
 *DocumentsApi* | [**getRegisteredDocumentTypes**](docs/Api/DocumentsApi.md#getregistereddocumenttypes) | **GET** /v1/documents/types | Get registered document types.
-*DocumentsApi* | [**issueDocument**](docs/Api/DocumentsApi.md#issuedocument) | **POST** /v1/documents/issue | Issue a new document.
+*DocumentsApi* | [**issueDocumentToIndividual**](docs/Api/DocumentsApi.md#issuedocumenttoindividual) | **POST** /v1/documents/issue/individual | Issue a new document to an individual user.
+*DocumentsApi* | [**issueDocumentToOrganization**](docs/Api/DocumentsApi.md#issuedocumenttoorganization) | **POST** /v1/documents/issue/organization | Issue a new document to an organization.
+*DocumentsApi* | [**uploadDocumentForIndividual**](docs/Api/DocumentsApi.md#uploaddocumentforindividual) | **POST** /v1/documents/issue/individual/upload/{issueRequestId} | Upload a document for issuance request of individual.
+*DocumentsApi* | [**uploadDocumentForOrganization**](docs/Api/DocumentsApi.md#uploaddocumentfororganization) | **POST** /v1/documents/issue/organization/upload/{issueRequestId} | Upload a document for issuance request of organization.
+*SupportedIdentifiersApi* | [**getAllSupportedIdentifiers**](docs/Api/SupportedIdentifiersApi.md#getallsupportedidentifiers) | **GET** /v1/supported-identifiers/{countryIso2Code} | Get all supported identifiers by country.
 
 ## Models
 
@@ -138,6 +142,8 @@ Class | Method | HTTP request | Description
 - [Document](docs/Model/Document.md)
 - [DocumentCategoryType](docs/Model/DocumentCategoryType.md)
 - [DocumentIssueRequest](docs/Model/DocumentIssueRequest.md)
+- [DocumentIssueRequestDetails](docs/Model/DocumentIssueRequestDetails.md)
+- [DocumentReceiver](docs/Model/DocumentReceiver.md)
 - [DocumentSubCategoryType](docs/Model/DocumentSubCategoryType.md)
 - [DocumentType](docs/Model/DocumentType.md)
 - [DocumentTypePaginatedList](docs/Model/DocumentTypePaginatedList.md)
@@ -171,7 +177,10 @@ Class | Method | HTTP request | Description
 - [Receiver](docs/Model/Receiver.md)
 - [ReceiverType](docs/Model/ReceiverType.md)
 - [SharedWith](docs/Model/SharedWith.md)
+- [StringStringKeyValuePair](docs/Model/StringStringKeyValuePair.md)
 - [SupportedEntityType](docs/Model/SupportedEntityType.md)
+- [SupportedIdentifier](docs/Model/SupportedIdentifier.md)
+- [SupportedIdentifiersByCountry](docs/Model/SupportedIdentifiersByCountry.md)
 - [UpdateDataProcessingAgreementRequestModel](docs/Model/UpdateDataProcessingAgreementRequestModel.md)
 - [UriDetails](docs/Model/UriDetails.md)
 - [UserAccountFinancialTransactionsDto](docs/Model/UserAccountFinancialTransactionsDto.md)

@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentIssueRequest
+ * SupportedIdentifiersByCountry
  *
  * PHP version 7.3
  *
@@ -33,10 +33,9 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DocumentIssueRequest Class Doc Comment
+ * SupportedIdentifiersByCountry Class Doc Comment
  *
  * @category Class
- * @description Document Issue Request.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SupportedIdentifiersByCountry implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +52,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DocumentIssueRequest';
+    protected static $openAPIModelName = 'SupportedIdentifiersByCountry';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,12 +60,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'document_type_id' => 'string',
-        'document_identifier' => 'string',
-        'description' => 'string',
-        'receiver' => '\MyDataMyConsent\Model\DocumentReceiver',
-        'expires_at_utc' => '\DateTime',
-        'metadata' => 'array<string,string>'
+        'iso2' => 'string',
+        'name' => 'string',
+        'flag' => 'string',
+        'individual_identifiers' => '\MyDataMyConsent\Model\SupportedIdentifier[]',
+        'organization_identifiers' => '\MyDataMyConsent\Model\SupportedIdentifier[]'
     ];
 
     /**
@@ -77,12 +75,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'document_type_id' => 'uuid',
-        'document_identifier' => null,
-        'description' => null,
-        'receiver' => null,
-        'expires_at_utc' => 'date-time',
-        'metadata' => null
+        'iso2' => null,
+        'name' => null,
+        'flag' => null,
+        'individual_identifiers' => null,
+        'organization_identifiers' => null
     ];
 
     /**
@@ -112,12 +109,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'document_type_id' => 'documentTypeId',
-        'document_identifier' => 'documentIdentifier',
-        'description' => 'description',
-        'receiver' => 'receiver',
-        'expires_at_utc' => 'expiresAtUtc',
-        'metadata' => 'metadata'
+        'iso2' => 'iso2',
+        'name' => 'name',
+        'flag' => 'flag',
+        'individual_identifiers' => 'individualIdentifiers',
+        'organization_identifiers' => 'organizationIdentifiers'
     ];
 
     /**
@@ -126,12 +122,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'document_type_id' => 'setDocumentTypeId',
-        'document_identifier' => 'setDocumentIdentifier',
-        'description' => 'setDescription',
-        'receiver' => 'setReceiver',
-        'expires_at_utc' => 'setExpiresAtUtc',
-        'metadata' => 'setMetadata'
+        'iso2' => 'setIso2',
+        'name' => 'setName',
+        'flag' => 'setFlag',
+        'individual_identifiers' => 'setIndividualIdentifiers',
+        'organization_identifiers' => 'setOrganizationIdentifiers'
     ];
 
     /**
@@ -140,12 +135,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'document_type_id' => 'getDocumentTypeId',
-        'document_identifier' => 'getDocumentIdentifier',
-        'description' => 'getDescription',
-        'receiver' => 'getReceiver',
-        'expires_at_utc' => 'getExpiresAtUtc',
-        'metadata' => 'getMetadata'
+        'iso2' => 'getIso2',
+        'name' => 'getName',
+        'flag' => 'getFlag',
+        'individual_identifiers' => 'getIndividualIdentifiers',
+        'organization_identifiers' => 'getOrganizationIdentifiers'
     ];
 
     /**
@@ -205,12 +199,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['document_type_id'] = $data['document_type_id'] ?? null;
-        $this->container['document_identifier'] = $data['document_identifier'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
-        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['iso2'] = $data['iso2'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['flag'] = $data['flag'] ?? null;
+        $this->container['individual_identifiers'] = $data['individual_identifiers'] ?? null;
+        $this->container['organization_identifiers'] = $data['organization_identifiers'] ?? null;
     }
 
     /**
@@ -222,18 +215,6 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['document_type_id'] === null) {
-            $invalidProperties[] = "'document_type_id' can't be null";
-        }
-        if ($this->container['document_identifier'] === null) {
-            $invalidProperties[] = "'document_identifier' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -250,145 +231,121 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets document_type_id
+     * Gets iso2
      *
-     * @return string
+     * @return string|null
      */
-    public function getDocumentTypeId()
+    public function getIso2()
     {
-        return $this->container['document_type_id'];
+        return $this->container['iso2'];
     }
 
     /**
-     * Sets document_type_id
+     * Sets iso2
      *
-     * @param string $document_type_id document_type_id
+     * @param string|null $iso2 iso2
      *
      * @return self
      */
-    public function setDocumentTypeId($document_type_id)
+    public function setIso2($iso2)
     {
-        $this->container['document_type_id'] = $document_type_id;
+        $this->container['iso2'] = $iso2;
 
         return $this;
     }
 
     /**
-     * Gets document_identifier
+     * Gets name
      *
-     * @return string
+     * @return string|null
      */
-    public function getDocumentIdentifier()
+    public function getName()
     {
-        return $this->container['document_identifier'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets document_identifier
+     * Sets name
      *
-     * @param string $document_identifier document_identifier
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setDocumentIdentifier($document_identifier)
+    public function setName($name)
     {
-        $this->container['document_identifier'] = $document_identifier;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets flag
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription()
+    public function getFlag()
     {
-        return $this->container['description'];
+        return $this->container['flag'];
     }
 
     /**
-     * Sets description
+     * Sets flag
      *
-     * @param string $description description
+     * @param string|null $flag flag
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setFlag($flag)
     {
-        $this->container['description'] = $description;
+        $this->container['flag'] = $flag;
 
         return $this;
     }
 
     /**
-     * Gets receiver
+     * Gets individual_identifiers
      *
-     * @return \MyDataMyConsent\Model\DocumentReceiver
+     * @return \MyDataMyConsent\Model\SupportedIdentifier[]|null
      */
-    public function getReceiver()
+    public function getIndividualIdentifiers()
     {
-        return $this->container['receiver'];
+        return $this->container['individual_identifiers'];
     }
 
     /**
-     * Sets receiver
+     * Sets individual_identifiers
      *
-     * @param \MyDataMyConsent\Model\DocumentReceiver $receiver receiver
+     * @param \MyDataMyConsent\Model\SupportedIdentifier[]|null $individual_identifiers individual_identifiers
      *
      * @return self
      */
-    public function setReceiver($receiver)
+    public function setIndividualIdentifiers($individual_identifiers)
     {
-        $this->container['receiver'] = $receiver;
+        $this->container['individual_identifiers'] = $individual_identifiers;
 
         return $this;
     }
 
     /**
-     * Gets expires_at_utc
+     * Gets organization_identifiers
      *
-     * @return \DateTime|null
+     * @return \MyDataMyConsent\Model\SupportedIdentifier[]|null
      */
-    public function getExpiresAtUtc()
+    public function getOrganizationIdentifiers()
     {
-        return $this->container['expires_at_utc'];
+        return $this->container['organization_identifiers'];
     }
 
     /**
-     * Sets expires_at_utc
+     * Sets organization_identifiers
      *
-     * @param \DateTime|null $expires_at_utc expires_at_utc
+     * @param \MyDataMyConsent\Model\SupportedIdentifier[]|null $organization_identifiers organization_identifiers
      *
      * @return self
      */
-    public function setExpiresAtUtc($expires_at_utc)
+    public function setOrganizationIdentifiers($organization_identifiers)
     {
-        $this->container['expires_at_utc'] = $expires_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return array<string,string>|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param array<string,string>|null $metadata metadata
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        $this->container['metadata'] = $metadata;
+        $this->container['organization_identifiers'] = $organization_identifiers;
 
         return $this;
     }

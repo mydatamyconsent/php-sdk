@@ -5,9 +5,12 @@ All URIs are relative to http://localhost.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getIssuedDocumentById()**](DocumentsApi.md#getIssuedDocumentById) | **GET** /v1/documents/issued/{documentId} | Get issued document.
-[**getIssuedDocuments()**](DocumentsApi.md#getIssuedDocuments) | **GET** /v1/documents/issued | Get issued documents.
+[**getIssuedDocuments()**](DocumentsApi.md#getIssuedDocuments) | **GET** /v1/documents/issued/{documentTypeId} | Get paginated list of issued documents of given document type.
 [**getRegisteredDocumentTypes()**](DocumentsApi.md#getRegisteredDocumentTypes) | **GET** /v1/documents/types | Get registered document types.
-[**issueDocument()**](DocumentsApi.md#issueDocument) | **POST** /v1/documents/issue | Issue a new document.
+[**issueDocumentToIndividual()**](DocumentsApi.md#issueDocumentToIndividual) | **POST** /v1/documents/issue/individual | Issue a new document to an individual user.
+[**issueDocumentToOrganization()**](DocumentsApi.md#issueDocumentToOrganization) | **POST** /v1/documents/issue/organization | Issue a new document to an organization.
+[**uploadDocumentForIndividual()**](DocumentsApi.md#uploadDocumentForIndividual) | **POST** /v1/documents/issue/individual/upload/{issueRequestId} | Upload a document for issuance request of individual.
+[**uploadDocumentForOrganization()**](DocumentsApi.md#uploadDocumentForOrganization) | **POST** /v1/documents/issue/organization/upload/{issueRequestId} | Upload a document for issuance request of organization.
 
 
 ## `getIssuedDocumentById()`
@@ -67,10 +70,10 @@ No authorization required
 ## `getIssuedDocuments()`
 
 ```php
-getIssuedDocuments($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no): \MyDataMyConsent\Model\IssuedDocumentPaginatedList
+getIssuedDocuments($document_type_id, $from_date_time, $to_date_time, $page_no, $page_size): \MyDataMyConsent\Model\IssuedDocumentPaginatedList
 ```
 
-Get issued documents.
+Get paginated list of issued documents of given document type.
 
 ### Example
 
@@ -85,14 +88,14 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$document_type_id = 'document_type_id_example'; // string
-$from_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
-$to_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
-$page_size = 25; // int
-$page_no = 1; // int
+$document_type_id = 'document_type_id_example'; // string | Document type id.
+$from_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From DateTime.
+$to_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To DateTime.
+$page_no = 1; // int | Page number.
+$page_size = 25; // int | Number of items to return.
 
 try {
-    $result = $apiInstance->getIssuedDocuments($document_type_id, $from_date_time, $to_date_time, $page_size, $page_no);
+    $result = $apiInstance->getIssuedDocuments($document_type_id, $from_date_time, $to_date_time, $page_no, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentsApi->getIssuedDocuments: ', $e->getMessage(), PHP_EOL;
@@ -103,11 +106,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **document_type_id** | **string**|  | [optional]
- **from_date_time** | **\DateTime**|  | [optional]
- **to_date_time** | **\DateTime**|  | [optional]
- **page_size** | **int**|  | [optional] [default to 25]
- **page_no** | **int**|  | [optional] [default to 1]
+ **document_type_id** | **string**| Document type id. |
+ **from_date_time** | **\DateTime**| From DateTime. | [optional]
+ **to_date_time** | **\DateTime**| To DateTime. | [optional]
+ **page_no** | **int**| Page number. | [optional] [default to 1]
+ **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
@@ -182,13 +185,13 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `issueDocument()`
+## `issueDocumentToIndividual()`
 
 ```php
-issueDocument($document_issue_request): \MyDataMyConsent\Model\IssuedDocument
+issueDocumentToIndividual($document_issue_request): \MyDataMyConsent\Model\DocumentIssueRequestDetails
 ```
 
-Issue a new document.
+Issue a new document to an individual user.
 
 ### Example
 
@@ -203,13 +206,13 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$document_issue_request = new \MyDataMyConsent\Model\DocumentIssueRequest(); // \MyDataMyConsent\Model\DocumentIssueRequest | Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest.
+$document_issue_request = new \MyDataMyConsent\Model\DocumentIssueRequest(); // \MyDataMyConsent\Model\DocumentIssueRequest | Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest.
 
 try {
-    $result = $apiInstance->issueDocument($document_issue_request);
+    $result = $apiInstance->issueDocumentToIndividual($document_issue_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DocumentsApi->issueDocument: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DocumentsApi->issueDocumentToIndividual: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -217,11 +220,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **document_issue_request** | [**\MyDataMyConsent\Model\DocumentIssueRequest**](../Model/DocumentIssueRequest.md)| Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest. |
+ **document_issue_request** | [**\MyDataMyConsent\Model\DocumentIssueRequest**](../Model/DocumentIssueRequest.md)| Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\IssuedDocument**](../Model/IssuedDocument.md)
+[**\MyDataMyConsent\Model\DocumentIssueRequestDetails**](../Model/DocumentIssueRequestDetails.md)
 
 ### Authorization
 
@@ -230,6 +233,172 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `issueDocumentToOrganization()`
+
+```php
+issueDocumentToOrganization($document_issue_request): \MyDataMyConsent\Model\DocumentIssueRequestDetails
+```
+
+Issue a new document to an organization.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DocumentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$document_issue_request = new \MyDataMyConsent\Model\DocumentIssueRequest(); // \MyDataMyConsent\Model\DocumentIssueRequest | Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest.
+
+try {
+    $result = $apiInstance->issueDocumentToOrganization($document_issue_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DocumentsApi->issueDocumentToOrganization: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **document_issue_request** | [**\MyDataMyConsent\Model\DocumentIssueRequest**](../Model/DocumentIssueRequest.md)| Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. |
+
+### Return type
+
+[**\MyDataMyConsent\Model\DocumentIssueRequestDetails**](../Model/DocumentIssueRequestDetails.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `uploadDocumentForIndividual()`
+
+```php
+uploadDocumentForIndividual($issue_request_id, $form_file): string
+```
+
+Upload a document for issuance request of individual.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DocumentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$issue_request_id = 'issue_request_id_example'; // string | Issue Request Id System.Guid.
+$form_file = "/path/to/file.txt"; // \SplFileObject
+
+try {
+    $result = $apiInstance->uploadDocumentForIndividual($issue_request_id, $form_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DocumentsApi->uploadDocumentForIndividual: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **issue_request_id** | **string**| Issue Request Id System.Guid. |
+ **form_file** | **\SplFileObject****\SplFileObject**|  | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `uploadDocumentForOrganization()`
+
+```php
+uploadDocumentForOrganization($issue_request_id, $form_file): string
+```
+
+Upload a document for issuance request of organization.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DocumentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$issue_request_id = 'issue_request_id_example'; // string | Issue Request Id System.Guid.
+$form_file = "/path/to/file.txt"; // \SplFileObject
+
+try {
+    $result = $apiInstance->uploadDocumentForOrganization($issue_request_id, $form_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DocumentsApi->uploadDocumentForOrganization: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **issue_request_id** | **string**| Issue Request Id System.Guid. |
+ **form_file** | **\SplFileObject****\SplFileObject**|  | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

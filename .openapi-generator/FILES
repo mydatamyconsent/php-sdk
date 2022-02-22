@@ -9,6 +9,7 @@ docs/Api/DataProcessingAgreementsApi.md
 docs/Api/DataProviderDiscoveryApi.md
 docs/Api/DigiLockerCompatIssuerApi.md
 docs/Api/DocumentsApi.md
+docs/Api/SupportedIdentifiersApi.md
 docs/Model/Activity.md
 docs/Model/ApprovedConsentRequest.md
 docs/Model/BankAccountType.md
@@ -34,6 +35,8 @@ docs/Model/DigitalSignature.md
 docs/Model/Document.md
 docs/Model/DocumentCategoryType.md
 docs/Model/DocumentIssueRequest.md
+docs/Model/DocumentIssueRequestDetails.md
+docs/Model/DocumentReceiver.md
 docs/Model/DocumentSubCategoryType.md
 docs/Model/DocumentType.md
 docs/Model/DocumentTypePaginatedList.md
@@ -67,7 +70,10 @@ docs/Model/PushUriResponse.md
 docs/Model/Receiver.md
 docs/Model/ReceiverType.md
 docs/Model/SharedWith.md
+docs/Model/StringStringKeyValuePair.md
 docs/Model/SupportedEntityType.md
+docs/Model/SupportedIdentifier.md
+docs/Model/SupportedIdentifiersByCountry.md
 docs/Model/UpdateDataProcessingAgreementRequestModel.md
 docs/Model/UriDetails.md
 docs/Model/UserAccountFinancialTransactionsDto.md
@@ -82,6 +88,7 @@ lib/Api/DataProcessingAgreementsApi.php
 lib/Api/DataProviderDiscoveryApi.php
 lib/Api/DigiLockerCompatIssuerApi.php
 lib/Api/DocumentsApi.php
+lib/Api/SupportedIdentifiersApi.php
 lib/ApiException.php
 lib/Configuration.php
 lib/HeaderSelector.php
@@ -110,6 +117,8 @@ lib/Model/DigitalSignature.php
 lib/Model/Document.php
 lib/Model/DocumentCategoryType.php
 lib/Model/DocumentIssueRequest.php
+lib/Model/DocumentIssueRequestDetails.php
+lib/Model/DocumentReceiver.php
 lib/Model/DocumentSubCategoryType.php
 lib/Model/DocumentType.php
 lib/Model/DocumentTypePaginatedList.php
@@ -144,7 +153,10 @@ lib/Model/PushUriResponse.php
 lib/Model/Receiver.php
 lib/Model/ReceiverType.php
 lib/Model/SharedWith.php
+lib/Model/StringStringKeyValuePair.php
 lib/Model/SupportedEntityType.php
+lib/Model/SupportedIdentifier.php
+lib/Model/SupportedIdentifiersByCountry.php
 lib/Model/UpdateDataProcessingAgreementRequestModel.php
 lib/Model/UriDetails.php
 lib/Model/UserAccountFinancialTransactionsDto.php
@@ -155,5 +167,9 @@ lib/Model/UserDocumentDetailsDto.php
 lib/Model/UserDocumentDownloadDto.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/DocumentTypePaginatedListTest.php
-test/Model/DocumentTypeTest.php
+test/Api/SupportedIdentifiersApiTest.php
+test/Model/DocumentIssueRequestDetailsTest.php
+test/Model/DocumentReceiverTest.php
+test/Model/StringStringKeyValuePairTest.php
+test/Model/SupportedIdentifierTest.php
+test/Model/SupportedIdentifiersByCountryTest.php

@@ -63,8 +63,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'string',
         'title' => 'string',
         'status' => 'int',
-        'detail' => 'string',
-        'instance' => 'string'
+        'detail' => 'string'
     ];
 
     /**
@@ -78,8 +77,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'title' => null,
         'status' => 'int32',
-        'detail' => null,
-        'instance' => null
+        'detail' => null
     ];
 
     /**
@@ -112,8 +110,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'type',
         'title' => 'title',
         'status' => 'status',
-        'detail' => 'detail',
-        'instance' => 'instance'
+        'detail' => 'detail'
     ];
 
     /**
@@ -125,8 +122,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'title' => 'setTitle',
         'status' => 'setStatus',
-        'detail' => 'setDetail',
-        'instance' => 'setInstance'
+        'detail' => 'setDetail'
     ];
 
     /**
@@ -138,8 +134,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'title' => 'getTitle',
         'status' => 'getStatus',
-        'detail' => 'getDetail',
-        'instance' => 'getInstance'
+        'detail' => 'getDetail'
     ];
 
     /**
@@ -203,7 +198,6 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['title'] = $data['title'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['detail'] = $data['detail'] ?? null;
-        $this->container['instance'] = $data['instance'] ?? null;
     }
 
     /**
@@ -322,30 +316,6 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDetail($detail)
     {
         $this->container['detail'] = $detail;
-
-        return $this;
-    }
-
-    /**
-     * Gets instance
-     *
-     * @return string|null
-     */
-    public function getInstance()
-    {
-        return $this->container['instance'];
-    }
-
-    /**
-     * Sets instance
-     *
-     * @param string|null $instance instance
-     *
-     * @return self
-     */
-    public function setInstance($instance)
-    {
-        $this->container['instance'] = $instance;
 
         return $this;
     }

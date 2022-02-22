@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentIssueRequest
+ * SupportedIdentifier
  *
  * PHP version 7.3
  *
@@ -33,10 +33,9 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DocumentIssueRequest Class Doc Comment
+ * SupportedIdentifier Class Doc Comment
  *
  * @category Class
- * @description Document Issue Request.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SupportedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +52,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DocumentIssueRequest';
+    protected static $openAPIModelName = 'SupportedIdentifier';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,12 +60,10 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'document_type_id' => 'string',
-        'document_identifier' => 'string',
+        'key' => 'string',
+        'name' => 'string',
         'description' => 'string',
-        'receiver' => '\MyDataMyConsent\Model\DocumentReceiver',
-        'expires_at_utc' => '\DateTime',
-        'metadata' => 'array<string,string>'
+        'example_value' => 'string'
     ];
 
     /**
@@ -77,12 +74,10 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'document_type_id' => 'uuid',
-        'document_identifier' => null,
+        'key' => null,
+        'name' => null,
         'description' => null,
-        'receiver' => null,
-        'expires_at_utc' => 'date-time',
-        'metadata' => null
+        'example_value' => null
     ];
 
     /**
@@ -112,12 +107,10 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'document_type_id' => 'documentTypeId',
-        'document_identifier' => 'documentIdentifier',
+        'key' => 'key',
+        'name' => 'name',
         'description' => 'description',
-        'receiver' => 'receiver',
-        'expires_at_utc' => 'expiresAtUtc',
-        'metadata' => 'metadata'
+        'example_value' => 'exampleValue'
     ];
 
     /**
@@ -126,12 +119,10 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'document_type_id' => 'setDocumentTypeId',
-        'document_identifier' => 'setDocumentIdentifier',
+        'key' => 'setKey',
+        'name' => 'setName',
         'description' => 'setDescription',
-        'receiver' => 'setReceiver',
-        'expires_at_utc' => 'setExpiresAtUtc',
-        'metadata' => 'setMetadata'
+        'example_value' => 'setExampleValue'
     ];
 
     /**
@@ -140,12 +131,10 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'document_type_id' => 'getDocumentTypeId',
-        'document_identifier' => 'getDocumentIdentifier',
+        'key' => 'getKey',
+        'name' => 'getName',
         'description' => 'getDescription',
-        'receiver' => 'getReceiver',
-        'expires_at_utc' => 'getExpiresAtUtc',
-        'metadata' => 'getMetadata'
+        'example_value' => 'getExampleValue'
     ];
 
     /**
@@ -205,12 +194,10 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['document_type_id'] = $data['document_type_id'] ?? null;
-        $this->container['document_identifier'] = $data['document_identifier'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
-        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['example_value'] = $data['example_value'] ?? null;
     }
 
     /**
@@ -222,18 +209,6 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['document_type_id'] === null) {
-            $invalidProperties[] = "'document_type_id' can't be null";
-        }
-        if ($this->container['document_identifier'] === null) {
-            $invalidProperties[] = "'document_identifier' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -250,49 +225,49 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets document_type_id
+     * Gets key
      *
-     * @return string
+     * @return string|null
      */
-    public function getDocumentTypeId()
+    public function getKey()
     {
-        return $this->container['document_type_id'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets document_type_id
+     * Sets key
      *
-     * @param string $document_type_id document_type_id
+     * @param string|null $key key
      *
      * @return self
      */
-    public function setDocumentTypeId($document_type_id)
+    public function setKey($key)
     {
-        $this->container['document_type_id'] = $document_type_id;
+        $this->container['key'] = $key;
 
         return $this;
     }
 
     /**
-     * Gets document_identifier
+     * Gets name
      *
-     * @return string
+     * @return string|null
      */
-    public function getDocumentIdentifier()
+    public function getName()
     {
-        return $this->container['document_identifier'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets document_identifier
+     * Sets name
      *
-     * @param string $document_identifier document_identifier
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setDocumentIdentifier($document_identifier)
+    public function setName($name)
     {
-        $this->container['document_identifier'] = $document_identifier;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -300,7 +275,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -310,7 +285,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets description
      *
-     * @param string $description description
+     * @param string|null $description description
      *
      * @return self
      */
@@ -322,73 +297,25 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets receiver
+     * Gets example_value
      *
-     * @return \MyDataMyConsent\Model\DocumentReceiver
+     * @return string|null
      */
-    public function getReceiver()
+    public function getExampleValue()
     {
-        return $this->container['receiver'];
+        return $this->container['example_value'];
     }
 
     /**
-     * Sets receiver
+     * Sets example_value
      *
-     * @param \MyDataMyConsent\Model\DocumentReceiver $receiver receiver
+     * @param string|null $example_value example_value
      *
      * @return self
      */
-    public function setReceiver($receiver)
+    public function setExampleValue($example_value)
     {
-        $this->container['receiver'] = $receiver;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at_utc
-     *
-     * @return \DateTime|null
-     */
-    public function getExpiresAtUtc()
-    {
-        return $this->container['expires_at_utc'];
-    }
-
-    /**
-     * Sets expires_at_utc
-     *
-     * @param \DateTime|null $expires_at_utc expires_at_utc
-     *
-     * @return self
-     */
-    public function setExpiresAtUtc($expires_at_utc)
-    {
-        $this->container['expires_at_utc'] = $expires_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return array<string,string>|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param array<string,string>|null $metadata metadata
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        $this->container['metadata'] = $metadata;
+        $this->container['example_value'] = $example_value;
 
         return $this;
     }

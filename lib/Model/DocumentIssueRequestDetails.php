@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentIssueRequest
+ * DocumentIssueRequestDetails
  *
  * PHP version 7.3
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DocumentIssueRequest Class Doc Comment
+ * DocumentIssueRequestDetails Class Doc Comment
  *
  * @category Class
- * @description Document Issue Request.
+ * @description Document issue request details.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DocumentIssueRequest';
+    protected static $openAPIModelName = 'DocumentIssueRequestDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,11 +62,13 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'document_type_id' => 'string',
+        'document_type_name' => 'string',
         'document_identifier' => 'string',
         'description' => 'string',
-        'receiver' => '\MyDataMyConsent\Model\DocumentReceiver',
+        'receiver' => 'mixed',
         'expires_at_utc' => '\DateTime',
-        'metadata' => 'array<string,string>'
+        'metadata' => 'mixed',
+        'created_at_utc' => '\DateTime'
     ];
 
     /**
@@ -78,11 +80,13 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'document_type_id' => 'uuid',
+        'document_type_name' => null,
         'document_identifier' => null,
         'description' => null,
         'receiver' => null,
         'expires_at_utc' => 'date-time',
-        'metadata' => null
+        'metadata' => null,
+        'created_at_utc' => 'date-time'
     ];
 
     /**
@@ -113,11 +117,13 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'document_type_id' => 'documentTypeId',
+        'document_type_name' => 'documentTypeName',
         'document_identifier' => 'documentIdentifier',
         'description' => 'description',
         'receiver' => 'receiver',
         'expires_at_utc' => 'expiresAtUtc',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'created_at_utc' => 'createdAtUtc'
     ];
 
     /**
@@ -127,11 +133,13 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'document_type_id' => 'setDocumentTypeId',
+        'document_type_name' => 'setDocumentTypeName',
         'document_identifier' => 'setDocumentIdentifier',
         'description' => 'setDescription',
         'receiver' => 'setReceiver',
         'expires_at_utc' => 'setExpiresAtUtc',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'created_at_utc' => 'setCreatedAtUtc'
     ];
 
     /**
@@ -141,11 +149,13 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'document_type_id' => 'getDocumentTypeId',
+        'document_type_name' => 'getDocumentTypeName',
         'document_identifier' => 'getDocumentIdentifier',
         'description' => 'getDescription',
         'receiver' => 'getReceiver',
         'expires_at_utc' => 'getExpiresAtUtc',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'created_at_utc' => 'getCreatedAtUtc'
     ];
 
     /**
@@ -206,11 +216,13 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['document_type_id'] = $data['document_type_id'] ?? null;
+        $this->container['document_type_name'] = $data['document_type_name'] ?? null;
         $this->container['document_identifier'] = $data['document_identifier'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['receiver'] = $data['receiver'] ?? null;
         $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
         $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['created_at_utc'] = $data['created_at_utc'] ?? null;
     }
 
     /**
@@ -225,6 +237,9 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['document_type_id'] === null) {
             $invalidProperties[] = "'document_type_id' can't be null";
         }
+        if ($this->container['document_type_name'] === null) {
+            $invalidProperties[] = "'document_type_name' can't be null";
+        }
         if ($this->container['document_identifier'] === null) {
             $invalidProperties[] = "'document_identifier' can't be null";
         }
@@ -233,6 +248,9 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         }
         if ($this->container['receiver'] === null) {
             $invalidProperties[] = "'receiver' can't be null";
+        }
+        if ($this->container['created_at_utc'] === null) {
+            $invalidProperties[] = "'created_at_utc' can't be null";
         }
         return $invalidProperties;
     }
@@ -269,6 +287,30 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setDocumentTypeId($document_type_id)
     {
         $this->container['document_type_id'] = $document_type_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_type_name
+     *
+     * @return string
+     */
+    public function getDocumentTypeName()
+    {
+        return $this->container['document_type_name'];
+    }
+
+    /**
+     * Sets document_type_name
+     *
+     * @param string $document_type_name document_type_name
+     *
+     * @return self
+     */
+    public function setDocumentTypeName($document_type_name)
+    {
+        $this->container['document_type_name'] = $document_type_name;
 
         return $this;
     }
@@ -324,7 +366,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets receiver
      *
-     * @return \MyDataMyConsent\Model\DocumentReceiver
+     * @return mixed
      */
     public function getReceiver()
     {
@@ -334,7 +376,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets receiver
      *
-     * @param \MyDataMyConsent\Model\DocumentReceiver $receiver receiver
+     * @param mixed $receiver receiver
      *
      * @return self
      */
@@ -372,7 +414,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets metadata
      *
-     * @return array<string,string>|null
+     * @return mixed|null
      */
     public function getMetadata()
     {
@@ -382,13 +424,37 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets metadata
      *
-     * @param array<string,string>|null $metadata metadata
+     * @param mixed|null $metadata metadata
      *
      * @return self
      */
     public function setMetadata($metadata)
     {
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at_utc
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAtUtc()
+    {
+        return $this->container['created_at_utc'];
+    }
+
+    /**
+     * Sets created_at_utc
+     *
+     * @param \DateTime $created_at_utc created_at_utc
+     *
+     * @return self
+     */
+    public function setCreatedAtUtc($created_at_utc)
+    {
+        $this->container['created_at_utc'] = $created_at_utc;
 
         return $this;
     }

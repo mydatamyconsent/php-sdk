@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**document_id** | **string** |  | [optional]
-**identifier** | **string** |  | [optional]
-**document_type** | **string** |  | [optional]
-**issued_to** | **string** |  | [optional]
-**issued_at_utc** | **\DateTime** |  | [optional]
+**id** | **string** | Document Identifier. |
+**identifier** | **string** | Document Identifier. eg: GJ05FG67866586. |
+**document_type** | **string** | Document type name. eg: Driving License. |
+**issued_to** | **string** |  |
+**issued_at_utc** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

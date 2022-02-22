@@ -36,6 +36,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * IssuedDocument Class Doc Comment
  *
  * @category Class
+ * @description Issued Document Identifier.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +61,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'document_id' => 'string',
+        'id' => 'string',
         'identifier' => 'string',
         'document_type' => 'string',
         'issued_to' => 'string',
@@ -75,7 +76,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'document_id' => 'uuid',
+        'id' => 'uuid',
         'identifier' => null,
         'document_type' => null,
         'issued_to' => null,
@@ -109,7 +110,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'document_id' => 'documentId',
+        'id' => 'id',
         'identifier' => 'identifier',
         'document_type' => 'documentType',
         'issued_to' => 'issuedTo',
@@ -122,7 +123,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'document_id' => 'setDocumentId',
+        'id' => 'setId',
         'identifier' => 'setIdentifier',
         'document_type' => 'setDocumentType',
         'issued_to' => 'setIssuedTo',
@@ -135,7 +136,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'document_id' => 'getDocumentId',
+        'id' => 'getId',
         'identifier' => 'getIdentifier',
         'document_type' => 'getDocumentType',
         'issued_to' => 'getIssuedTo',
@@ -199,7 +200,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['document_id'] = $data['document_id'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['identifier'] = $data['identifier'] ?? null;
         $this->container['document_type'] = $data['document_type'] ?? null;
         $this->container['issued_to'] = $data['issued_to'] ?? null;
@@ -215,6 +216,21 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['identifier'] === null) {
+            $invalidProperties[] = "'identifier' can't be null";
+        }
+        if ($this->container['document_type'] === null) {
+            $invalidProperties[] = "'document_type' can't be null";
+        }
+        if ($this->container['issued_to'] === null) {
+            $invalidProperties[] = "'issued_to' can't be null";
+        }
+        if ($this->container['issued_at_utc'] === null) {
+            $invalidProperties[] = "'issued_at_utc' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -231,25 +247,25 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets document_id
+     * Gets id
      *
-     * @return string|null
+     * @return string
      */
-    public function getDocumentId()
+    public function getId()
     {
-        return $this->container['document_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets document_id
+     * Sets id
      *
-     * @param string|null $document_id document_id
+     * @param string $id Document Identifier.
      *
      * @return self
      */
-    public function setDocumentId($document_id)
+    public function setId($id)
     {
-        $this->container['document_id'] = $document_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -257,7 +273,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets identifier
      *
-     * @return string|null
+     * @return string
      */
     public function getIdentifier()
     {
@@ -267,7 +283,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifier
      *
-     * @param string|null $identifier identifier
+     * @param string $identifier Document Identifier. eg: GJ05FG67866586.
      *
      * @return self
      */
@@ -281,7 +297,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets document_type
      *
-     * @return string|null
+     * @return string
      */
     public function getDocumentType()
     {
@@ -291,7 +307,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets document_type
      *
-     * @param string|null $document_type document_type
+     * @param string $document_type Document type name. eg: Driving License.
      *
      * @return self
      */
@@ -305,7 +321,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets issued_to
      *
-     * @return string|null
+     * @return string
      */
     public function getIssuedTo()
     {
@@ -315,7 +331,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets issued_to
      *
-     * @param string|null $issued_to issued_to
+     * @param string $issued_to issued_to
      *
      * @return self
      */
@@ -329,7 +345,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets issued_at_utc
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getIssuedAtUtc()
     {
@@ -339,7 +355,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets issued_at_utc
      *
-     * @param \DateTime|null $issued_at_utc issued_at_utc
+     * @param \DateTime $issued_at_utc issued_at_utc
      *
      * @return self
      */

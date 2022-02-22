@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentIssueRequest
+ * DocumentReceiver
  *
  * PHP version 7.3
  *
@@ -33,10 +33,9 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DocumentIssueRequest Class Doc Comment
+ * DocumentReceiver Class Doc Comment
  *
  * @category Class
- * @description Document Issue Request.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class DocumentReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +52,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DocumentIssueRequest';
+    protected static $openAPIModelName = 'DocumentReceiver';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,12 +60,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'document_type_id' => 'string',
-        'document_identifier' => 'string',
-        'description' => 'string',
-        'receiver' => '\MyDataMyConsent\Model\DocumentReceiver',
-        'expires_at_utc' => '\DateTime',
-        'metadata' => 'array<string,string>'
+        'identifiers' => '\MyDataMyConsent\Model\StringStringKeyValuePair[]',
+        'identification_strategy' => '\MyDataMyConsent\Model\IdentificationStrategy'
     ];
 
     /**
@@ -77,12 +72,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'document_type_id' => 'uuid',
-        'document_identifier' => null,
-        'description' => null,
-        'receiver' => null,
-        'expires_at_utc' => 'date-time',
-        'metadata' => null
+        'identifiers' => null,
+        'identification_strategy' => null
     ];
 
     /**
@@ -112,12 +103,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'document_type_id' => 'documentTypeId',
-        'document_identifier' => 'documentIdentifier',
-        'description' => 'description',
-        'receiver' => 'receiver',
-        'expires_at_utc' => 'expiresAtUtc',
-        'metadata' => 'metadata'
+        'identifiers' => 'identifiers',
+        'identification_strategy' => 'identificationStrategy'
     ];
 
     /**
@@ -126,12 +113,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'document_type_id' => 'setDocumentTypeId',
-        'document_identifier' => 'setDocumentIdentifier',
-        'description' => 'setDescription',
-        'receiver' => 'setReceiver',
-        'expires_at_utc' => 'setExpiresAtUtc',
-        'metadata' => 'setMetadata'
+        'identifiers' => 'setIdentifiers',
+        'identification_strategy' => 'setIdentificationStrategy'
     ];
 
     /**
@@ -140,12 +123,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'document_type_id' => 'getDocumentTypeId',
-        'document_identifier' => 'getDocumentIdentifier',
-        'description' => 'getDescription',
-        'receiver' => 'getReceiver',
-        'expires_at_utc' => 'getExpiresAtUtc',
-        'metadata' => 'getMetadata'
+        'identifiers' => 'getIdentifiers',
+        'identification_strategy' => 'getIdentificationStrategy'
     ];
 
     /**
@@ -205,12 +184,8 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['document_type_id'] = $data['document_type_id'] ?? null;
-        $this->container['document_identifier'] = $data['document_identifier'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
-        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['identifiers'] = $data['identifiers'] ?? null;
+        $this->container['identification_strategy'] = $data['identification_strategy'] ?? null;
     }
 
     /**
@@ -222,17 +197,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['document_type_id'] === null) {
-            $invalidProperties[] = "'document_type_id' can't be null";
+        if ($this->container['identifiers'] === null) {
+            $invalidProperties[] = "'identifiers' can't be null";
         }
-        if ($this->container['document_identifier'] === null) {
-            $invalidProperties[] = "'document_identifier' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
+        if ($this->container['identification_strategy'] === null) {
+            $invalidProperties[] = "'identification_strategy' can't be null";
         }
         return $invalidProperties;
     }
@@ -250,145 +219,49 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets document_type_id
+     * Gets identifiers
      *
-     * @return string
+     * @return \MyDataMyConsent\Model\StringStringKeyValuePair[]
      */
-    public function getDocumentTypeId()
+    public function getIdentifiers()
     {
-        return $this->container['document_type_id'];
+        return $this->container['identifiers'];
     }
 
     /**
-     * Sets document_type_id
+     * Sets identifiers
      *
-     * @param string $document_type_id document_type_id
+     * @param \MyDataMyConsent\Model\StringStringKeyValuePair[] $identifiers identifiers
      *
      * @return self
      */
-    public function setDocumentTypeId($document_type_id)
+    public function setIdentifiers($identifiers)
     {
-        $this->container['document_type_id'] = $document_type_id;
+        $this->container['identifiers'] = $identifiers;
 
         return $this;
     }
 
     /**
-     * Gets document_identifier
+     * Gets identification_strategy
      *
-     * @return string
+     * @return \MyDataMyConsent\Model\IdentificationStrategy
      */
-    public function getDocumentIdentifier()
+    public function getIdentificationStrategy()
     {
-        return $this->container['document_identifier'];
+        return $this->container['identification_strategy'];
     }
 
     /**
-     * Sets document_identifier
+     * Sets identification_strategy
      *
-     * @param string $document_identifier document_identifier
+     * @param \MyDataMyConsent\Model\IdentificationStrategy $identification_strategy identification_strategy
      *
      * @return self
      */
-    public function setDocumentIdentifier($document_identifier)
+    public function setIdentificationStrategy($identification_strategy)
     {
-        $this->container['document_identifier'] = $document_identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets receiver
-     *
-     * @return \MyDataMyConsent\Model\DocumentReceiver
-     */
-    public function getReceiver()
-    {
-        return $this->container['receiver'];
-    }
-
-    /**
-     * Sets receiver
-     *
-     * @param \MyDataMyConsent\Model\DocumentReceiver $receiver receiver
-     *
-     * @return self
-     */
-    public function setReceiver($receiver)
-    {
-        $this->container['receiver'] = $receiver;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at_utc
-     *
-     * @return \DateTime|null
-     */
-    public function getExpiresAtUtc()
-    {
-        return $this->container['expires_at_utc'];
-    }
-
-    /**
-     * Sets expires_at_utc
-     *
-     * @param \DateTime|null $expires_at_utc expires_at_utc
-     *
-     * @return self
-     */
-    public function setExpiresAtUtc($expires_at_utc)
-    {
-        $this->container['expires_at_utc'] = $expires_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return array<string,string>|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param array<string,string>|null $metadata metadata
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        $this->container['metadata'] = $metadata;
+        $this->container['identification_strategy'] = $identification_strategy;
 
         return $this;
     }
