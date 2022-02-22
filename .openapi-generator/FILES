@@ -167,9 +167,3 @@ lib/Model/UserDocumentDetailsDto.php
 lib/Model/UserDocumentDownloadDto.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/SupportedIdentifiersApiTest.php
-test/Model/DocumentIssueRequestDetailsTest.php
-test/Model/DocumentReceiverTest.php
-test/Model/StringStringKeyValuePairTest.php
-test/Model/SupportedIdentifierTest.php
-test/Model/SupportedIdentifiersByCountryTest.php

@@ -1,6 +1,6 @@
 # MyDataMyConsent\DataProviderDiscoveryApi
 
-All URIs are relative to http://localhost.
+All URIs are relative to https://api.mydatamyconsent.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
