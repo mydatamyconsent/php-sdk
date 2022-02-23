@@ -229,7 +229,7 @@ class CreateIndividualDataConsentRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets consent_template_id
      *
-     * @param string|null $consent_template_id consent_template_id
+     * @param string|null $consent_template_id Consent template id
      *
      * @return self
      */

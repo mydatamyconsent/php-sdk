@@ -36,6 +36,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * Receiver Class Doc Comment
  *
  * @category Class
+ * @description Consent request receiver details
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -255,7 +256,7 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifiers
      *
-     * @param \MyDataMyConsent\Model\IdentifierStringKeyValuePair[]|null $identifiers identifiers
+     * @param \MyDataMyConsent\Model\IdentifierStringKeyValuePair[]|null $identifiers Consent request receiver identifiers
      *
      * @return self
      */

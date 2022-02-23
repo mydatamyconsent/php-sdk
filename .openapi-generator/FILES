@@ -1,6 +1,4 @@
 .gitignore
-.php_cs
-.travis.yml
 README.md
 composer.json
 docs/Api/DataConsentRequestsApi.md
@@ -166,4 +164,3 @@ lib/Model/UserDataConsentInfoDtoPaginatedList.php
 lib/Model/UserDocumentDetailsDto.php
 lib/Model/UserDocumentDownloadDto.php
 lib/ObjectSerializer.php
-phpunit.xml.dist

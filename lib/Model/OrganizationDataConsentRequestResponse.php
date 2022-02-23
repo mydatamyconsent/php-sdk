@@ -250,7 +250,7 @@ class OrganizationDataConsentRequestResponse implements ModelInterface, ArrayAcc
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id Consent request id
      *
      * @return self
      */
@@ -274,7 +274,7 @@ class OrganizationDataConsentRequestResponse implements ModelInterface, ArrayAcc
     /**
      * Sets template_id
      *
-     * @param string|null $template_id template_id
+     * @param string|null $template_id Consent request template id
      *
      * @return self
      */
@@ -298,7 +298,7 @@ class OrganizationDataConsentRequestResponse implements ModelInterface, ArrayAcc
     /**
      * Sets requested_at_utc
      *
-     * @param \DateTime|null $requested_at_utc requested_at_utc
+     * @param \DateTime|null $requested_at_utc Requested date time in utc zone
      *
      * @return self
      */
@@ -322,7 +322,7 @@ class OrganizationDataConsentRequestResponse implements ModelInterface, ArrayAcc
     /**
      * Sets request_expires_at_utc
      *
-     * @param \DateTime|null $request_expires_at_utc request_expires_at_utc
+     * @param \DateTime|null $request_expires_at_utc Request expires date time in utc zone
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class OrganizationDataConsentRequestResponse implements ModelInterface, ArrayAcc
     /**
      * Sets transaction_id
      *
-     * @param string|null $transaction_id transaction_id
+     * @param string|null $transaction_id Requested transaction id
      *
      * @return self
      */
