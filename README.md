@@ -189,7 +189,7 @@ Class | Method | HTTP request | Description
 
 - **Type**: `OAuth`
 - **Flow**: `application`
-- **Authorization URL**: `https://accounts.mydatamyconsent.com/connect/authorize`
+- **Authorization URL**: ``
 - **Scopes**: 
     - **developer**: Developer API
 

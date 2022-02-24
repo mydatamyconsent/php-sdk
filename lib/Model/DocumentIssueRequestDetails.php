@@ -63,13 +63,15 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'id' => 'string',
         'document_type_id' => 'string',
-        'document_type_name' => 'string',
-        'document_identifier' => 'string',
+        'type_name' => 'string',
+        'identifier' => 'string',
         'status' => '\MyDataMyConsent\Model\DocumentIssueRequestStatus',
         'description' => 'string',
         'receiver' => 'mixed',
+        'issued_at_utc' => '\DateTime',
+        'valid_from_utc' => '\DateTime',
         'expires_at_utc' => '\DateTime',
-        'metadata' => 'mixed',
+        'meta_data' => 'mixed',
         'created_at_utc' => '\DateTime'
     ];
 
@@ -83,13 +85,15 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPIFormats = [
         'id' => 'uuid',
         'document_type_id' => 'uuid',
-        'document_type_name' => null,
-        'document_identifier' => null,
+        'type_name' => null,
+        'identifier' => null,
         'status' => null,
         'description' => null,
         'receiver' => null,
+        'issued_at_utc' => 'date-time',
+        'valid_from_utc' => 'date-time',
         'expires_at_utc' => 'date-time',
-        'metadata' => null,
+        'meta_data' => null,
         'created_at_utc' => 'date-time'
     ];
 
@@ -122,13 +126,15 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     protected static $attributeMap = [
         'id' => 'id',
         'document_type_id' => 'documentTypeId',
-        'document_type_name' => 'documentTypeName',
-        'document_identifier' => 'documentIdentifier',
+        'type_name' => 'typeName',
+        'identifier' => 'identifier',
         'status' => 'status',
         'description' => 'description',
         'receiver' => 'receiver',
+        'issued_at_utc' => 'issuedAtUtc',
+        'valid_from_utc' => 'validFromUtc',
         'expires_at_utc' => 'expiresAtUtc',
-        'metadata' => 'metadata',
+        'meta_data' => 'metaData',
         'created_at_utc' => 'createdAtUtc'
     ];
 
@@ -140,13 +146,15 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     protected static $setters = [
         'id' => 'setId',
         'document_type_id' => 'setDocumentTypeId',
-        'document_type_name' => 'setDocumentTypeName',
-        'document_identifier' => 'setDocumentIdentifier',
+        'type_name' => 'setTypeName',
+        'identifier' => 'setIdentifier',
         'status' => 'setStatus',
         'description' => 'setDescription',
         'receiver' => 'setReceiver',
+        'issued_at_utc' => 'setIssuedAtUtc',
+        'valid_from_utc' => 'setValidFromUtc',
         'expires_at_utc' => 'setExpiresAtUtc',
-        'metadata' => 'setMetadata',
+        'meta_data' => 'setMetaData',
         'created_at_utc' => 'setCreatedAtUtc'
     ];
 
@@ -158,13 +166,15 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     protected static $getters = [
         'id' => 'getId',
         'document_type_id' => 'getDocumentTypeId',
-        'document_type_name' => 'getDocumentTypeName',
-        'document_identifier' => 'getDocumentIdentifier',
+        'type_name' => 'getTypeName',
+        'identifier' => 'getIdentifier',
         'status' => 'getStatus',
         'description' => 'getDescription',
         'receiver' => 'getReceiver',
+        'issued_at_utc' => 'getIssuedAtUtc',
+        'valid_from_utc' => 'getValidFromUtc',
         'expires_at_utc' => 'getExpiresAtUtc',
-        'metadata' => 'getMetadata',
+        'meta_data' => 'getMetaData',
         'created_at_utc' => 'getCreatedAtUtc'
     ];
 
@@ -227,13 +237,15 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['document_type_id'] = $data['document_type_id'] ?? null;
-        $this->container['document_type_name'] = $data['document_type_name'] ?? null;
-        $this->container['document_identifier'] = $data['document_identifier'] ?? null;
+        $this->container['type_name'] = $data['type_name'] ?? null;
+        $this->container['identifier'] = $data['identifier'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['receiver'] = $data['receiver'] ?? null;
+        $this->container['issued_at_utc'] = $data['issued_at_utc'] ?? null;
+        $this->container['valid_from_utc'] = $data['valid_from_utc'] ?? null;
         $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['meta_data'] = $data['meta_data'] ?? null;
         $this->container['created_at_utc'] = $data['created_at_utc'] ?? null;
     }
 
@@ -252,17 +264,26 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['document_type_id'] === null) {
             $invalidProperties[] = "'document_type_id' can't be null";
         }
-        if ($this->container['document_type_name'] === null) {
-            $invalidProperties[] = "'document_type_name' can't be null";
+        if ($this->container['type_name'] === null) {
+            $invalidProperties[] = "'type_name' can't be null";
         }
-        if ($this->container['document_identifier'] === null) {
-            $invalidProperties[] = "'document_identifier' can't be null";
+        if ($this->container['identifier'] === null) {
+            $invalidProperties[] = "'identifier' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
         }
         if ($this->container['receiver'] === null) {
             $invalidProperties[] = "'receiver' can't be null";
+        }
+        if ($this->container['issued_at_utc'] === null) {
+            $invalidProperties[] = "'issued_at_utc' can't be null";
+        }
+        if ($this->container['valid_from_utc'] === null) {
+            $invalidProperties[] = "'valid_from_utc' can't be null";
         }
         if ($this->container['created_at_utc'] === null) {
             $invalidProperties[] = "'created_at_utc' can't be null";
@@ -331,49 +352,49 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets document_type_name
+     * Gets type_name
      *
      * @return string
      */
-    public function getDocumentTypeName()
+    public function getTypeName()
     {
-        return $this->container['document_type_name'];
+        return $this->container['type_name'];
     }
 
     /**
-     * Sets document_type_name
+     * Sets type_name
      *
-     * @param string $document_type_name document_type_name
+     * @param string $type_name type_name
      *
      * @return self
      */
-    public function setDocumentTypeName($document_type_name)
+    public function setTypeName($type_name)
     {
-        $this->container['document_type_name'] = $document_type_name;
+        $this->container['type_name'] = $type_name;
 
         return $this;
     }
 
     /**
-     * Gets document_identifier
+     * Gets identifier
      *
      * @return string
      */
-    public function getDocumentIdentifier()
+    public function getIdentifier()
     {
-        return $this->container['document_identifier'];
+        return $this->container['identifier'];
     }
 
     /**
-     * Sets document_identifier
+     * Sets identifier
      *
-     * @param string $document_identifier document_identifier
+     * @param string $identifier identifier
      *
      * @return self
      */
-    public function setDocumentIdentifier($document_identifier)
+    public function setIdentifier($identifier)
     {
-        $this->container['document_identifier'] = $document_identifier;
+        $this->container['identifier'] = $identifier;
 
         return $this;
     }
@@ -381,7 +402,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets status
      *
-     * @return \MyDataMyConsent\Model\DocumentIssueRequestStatus|null
+     * @return \MyDataMyConsent\Model\DocumentIssueRequestStatus
      */
     public function getStatus()
     {
@@ -391,7 +412,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets status
      *
-     * @param \MyDataMyConsent\Model\DocumentIssueRequestStatus|null $status status
+     * @param \MyDataMyConsent\Model\DocumentIssueRequestStatus $status status
      *
      * @return self
      */
@@ -451,6 +472,54 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets issued_at_utc
+     *
+     * @return \DateTime
+     */
+    public function getIssuedAtUtc()
+    {
+        return $this->container['issued_at_utc'];
+    }
+
+    /**
+     * Sets issued_at_utc
+     *
+     * @param \DateTime $issued_at_utc issued_at_utc
+     *
+     * @return self
+     */
+    public function setIssuedAtUtc($issued_at_utc)
+    {
+        $this->container['issued_at_utc'] = $issued_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets valid_from_utc
+     *
+     * @return \DateTime
+     */
+    public function getValidFromUtc()
+    {
+        return $this->container['valid_from_utc'];
+    }
+
+    /**
+     * Sets valid_from_utc
+     *
+     * @param \DateTime $valid_from_utc valid_from_utc
+     *
+     * @return self
+     */
+    public function setValidFromUtc($valid_from_utc)
+    {
+        $this->container['valid_from_utc'] = $valid_from_utc;
+
+        return $this;
+    }
+
+    /**
      * Gets expires_at_utc
      *
      * @return \DateTime|null
@@ -475,25 +544,25 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets metadata
+     * Gets meta_data
      *
      * @return mixed|null
      */
-    public function getMetadata()
+    public function getMetaData()
     {
-        return $this->container['metadata'];
+        return $this->container['meta_data'];
     }
 
     /**
-     * Sets metadata
+     * Sets meta_data
      *
-     * @param mixed|null $metadata metadata
+     * @param mixed|null $meta_data meta_data
      *
      * @return self
      */
-    public function setMetadata($metadata)
+    public function setMetaData($meta_data)
     {
-        $this->container['metadata'] = $metadata;
+        $this->container['meta_data'] = $meta_data;
 
         return $this;
     }

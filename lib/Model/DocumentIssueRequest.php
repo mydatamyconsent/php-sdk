@@ -62,9 +62,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'document_type_id' => 'string',
-        'document_identifier' => 'string',
+        'identifier' => 'string',
         'description' => 'string',
         'receiver' => '\MyDataMyConsent\Model\DocumentReceiver',
+        'issued_at_utc' => '\DateTime',
+        'valid_from_utc' => '\DateTime',
         'expires_at_utc' => '\DateTime',
         'metadata' => 'array<string,string>'
     ];
@@ -78,9 +80,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'document_type_id' => 'uuid',
-        'document_identifier' => null,
+        'identifier' => null,
         'description' => null,
         'receiver' => null,
+        'issued_at_utc' => 'date-time',
+        'valid_from_utc' => 'date-time',
         'expires_at_utc' => 'date-time',
         'metadata' => null
     ];
@@ -113,9 +117,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'document_type_id' => 'documentTypeId',
-        'document_identifier' => 'documentIdentifier',
+        'identifier' => 'identifier',
         'description' => 'description',
         'receiver' => 'receiver',
+        'issued_at_utc' => 'issuedAtUtc',
+        'valid_from_utc' => 'validFromUtc',
         'expires_at_utc' => 'expiresAtUtc',
         'metadata' => 'metadata'
     ];
@@ -127,9 +133,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'document_type_id' => 'setDocumentTypeId',
-        'document_identifier' => 'setDocumentIdentifier',
+        'identifier' => 'setIdentifier',
         'description' => 'setDescription',
         'receiver' => 'setReceiver',
+        'issued_at_utc' => 'setIssuedAtUtc',
+        'valid_from_utc' => 'setValidFromUtc',
         'expires_at_utc' => 'setExpiresAtUtc',
         'metadata' => 'setMetadata'
     ];
@@ -141,9 +149,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'document_type_id' => 'getDocumentTypeId',
-        'document_identifier' => 'getDocumentIdentifier',
+        'identifier' => 'getIdentifier',
         'description' => 'getDescription',
         'receiver' => 'getReceiver',
+        'issued_at_utc' => 'getIssuedAtUtc',
+        'valid_from_utc' => 'getValidFromUtc',
         'expires_at_utc' => 'getExpiresAtUtc',
         'metadata' => 'getMetadata'
     ];
@@ -206,9 +216,11 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['document_type_id'] = $data['document_type_id'] ?? null;
-        $this->container['document_identifier'] = $data['document_identifier'] ?? null;
+        $this->container['identifier'] = $data['identifier'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['receiver'] = $data['receiver'] ?? null;
+        $this->container['issued_at_utc'] = $data['issued_at_utc'] ?? null;
+        $this->container['valid_from_utc'] = $data['valid_from_utc'] ?? null;
         $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
         $this->container['metadata'] = $data['metadata'] ?? null;
     }
@@ -225,14 +237,20 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['document_type_id'] === null) {
             $invalidProperties[] = "'document_type_id' can't be null";
         }
-        if ($this->container['document_identifier'] === null) {
-            $invalidProperties[] = "'document_identifier' can't be null";
+        if ($this->container['identifier'] === null) {
+            $invalidProperties[] = "'identifier' can't be null";
         }
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
         }
         if ($this->container['receiver'] === null) {
             $invalidProperties[] = "'receiver' can't be null";
+        }
+        if ($this->container['issued_at_utc'] === null) {
+            $invalidProperties[] = "'issued_at_utc' can't be null";
+        }
+        if ($this->container['valid_from_utc'] === null) {
+            $invalidProperties[] = "'valid_from_utc' can't be null";
         }
         return $invalidProperties;
     }
@@ -274,25 +292,25 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets document_identifier
+     * Gets identifier
      *
      * @return string
      */
-    public function getDocumentIdentifier()
+    public function getIdentifier()
     {
-        return $this->container['document_identifier'];
+        return $this->container['identifier'];
     }
 
     /**
-     * Sets document_identifier
+     * Sets identifier
      *
-     * @param string $document_identifier document_identifier
+     * @param string $identifier identifier
      *
      * @return self
      */
-    public function setDocumentIdentifier($document_identifier)
+    public function setIdentifier($identifier)
     {
-        $this->container['document_identifier'] = $document_identifier;
+        $this->container['identifier'] = $identifier;
 
         return $this;
     }
@@ -341,6 +359,54 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setReceiver($receiver)
     {
         $this->container['receiver'] = $receiver;
+
+        return $this;
+    }
+
+    /**
+     * Gets issued_at_utc
+     *
+     * @return \DateTime
+     */
+    public function getIssuedAtUtc()
+    {
+        return $this->container['issued_at_utc'];
+    }
+
+    /**
+     * Sets issued_at_utc
+     *
+     * @param \DateTime $issued_at_utc issued_at_utc
+     *
+     * @return self
+     */
+    public function setIssuedAtUtc($issued_at_utc)
+    {
+        $this->container['issued_at_utc'] = $issued_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets valid_from_utc
+     *
+     * @return \DateTime
+     */
+    public function getValidFromUtc()
+    {
+        return $this->container['valid_from_utc'];
+    }
+
+    /**
+     * Sets valid_from_utc
+     *
+     * @param \DateTime $valid_from_utc valid_from_utc
+     *
+     * @return self
+     */
+    public function setValidFromUtc($valid_from_utc)
+    {
+        $this->container['valid_from_utc'] = $valid_from_utc;
 
         return $this;
     }
