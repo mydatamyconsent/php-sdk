@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**country_iso2_code** | **string** |  |
 **identifiers** | [**\MyDataMyConsent\Model\StringStringKeyValuePair[]**](StringStringKeyValuePair.md) |  |
 **identification_strategy** | [**\MyDataMyConsent\Model\IdentificationStrategy**](IdentificationStrategy.md) |  |
 

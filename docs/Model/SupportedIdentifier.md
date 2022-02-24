@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **string** |  | [optional]
+**iso2** | **string** |  | [optional]
 **name** | **string** |  | [optional]
-**description** | **string** |  | [optional]
-**example_value** | **string** |  | [optional]
+**individual_identifiers** | [**\MyDataMyConsent\Model\Identifier[]**](Identifier.md) |  | [optional]
+**organization_identifiers** | [**\MyDataMyConsent\Model\Identifier[]**](Identifier.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

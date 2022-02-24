@@ -130,6 +130,8 @@ createIndividualDataConsentRequest($create_individual_data_consent_request): \My
 
 Create a individual data consent request.
 
+Create a individual data consent request.
+
 ### Example
 
 ```php
@@ -143,7 +145,7 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$create_individual_data_consent_request = new \MyDataMyConsent\Model\CreateIndividualDataConsentRequest(); // \MyDataMyConsent\Model\CreateIndividualDataConsentRequest | M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateIndividualDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateIndividualDataConsentRequest).
+$create_individual_data_consent_request = new \MyDataMyConsent\Model\CreateIndividualDataConsentRequest(); // \MyDataMyConsent\Model\CreateIndividualDataConsentRequest | The Individual data consent request payload
 
 try {
     $result = $apiInstance->createIndividualDataConsentRequest($create_individual_data_consent_request);
@@ -157,7 +159,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_individual_data_consent_request** | [**\MyDataMyConsent\Model\CreateIndividualDataConsentRequest**](../Model/CreateIndividualDataConsentRequest.md)| M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateIndividualDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateIndividualDataConsentRequest). |
+ **create_individual_data_consent_request** | [**\MyDataMyConsent\Model\CreateIndividualDataConsentRequest**](../Model/CreateIndividualDataConsentRequest.md)| The Individual data consent request payload |
 
 ### Return type
 
@@ -181,6 +183,8 @@ No authorization required
 ```php
 createOrganizationDataConsentRequest($create_organization_data_consent_request): \MyDataMyConsent\Model\OrganizationDataConsentRequestResponse
 ```
+
+Create a organization data consent request.
 
 Create a organization data consent request.
 

@@ -61,9 +61,11 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'document_type_id' => 'string',
         'document_type_name' => 'string',
         'document_identifier' => 'string',
+        'status' => '\MyDataMyConsent\Model\DocumentIssueRequestStatus',
         'description' => 'string',
         'receiver' => 'mixed',
         'expires_at_utc' => '\DateTime',
@@ -79,9 +81,11 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => 'uuid',
         'document_type_id' => 'uuid',
         'document_type_name' => null,
         'document_identifier' => null,
+        'status' => null,
         'description' => null,
         'receiver' => null,
         'expires_at_utc' => 'date-time',
@@ -116,9 +120,11 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'document_type_id' => 'documentTypeId',
         'document_type_name' => 'documentTypeName',
         'document_identifier' => 'documentIdentifier',
+        'status' => 'status',
         'description' => 'description',
         'receiver' => 'receiver',
         'expires_at_utc' => 'expiresAtUtc',
@@ -132,9 +138,11 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'document_type_id' => 'setDocumentTypeId',
         'document_type_name' => 'setDocumentTypeName',
         'document_identifier' => 'setDocumentIdentifier',
+        'status' => 'setStatus',
         'description' => 'setDescription',
         'receiver' => 'setReceiver',
         'expires_at_utc' => 'setExpiresAtUtc',
@@ -148,9 +156,11 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'document_type_id' => 'getDocumentTypeId',
         'document_type_name' => 'getDocumentTypeName',
         'document_identifier' => 'getDocumentIdentifier',
+        'status' => 'getStatus',
         'description' => 'getDescription',
         'receiver' => 'getReceiver',
         'expires_at_utc' => 'getExpiresAtUtc',
@@ -215,9 +225,11 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['document_type_id'] = $data['document_type_id'] ?? null;
         $this->container['document_type_name'] = $data['document_type_name'] ?? null;
         $this->container['document_identifier'] = $data['document_identifier'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['receiver'] = $data['receiver'] ?? null;
         $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
@@ -234,6 +246,9 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         if ($this->container['document_type_id'] === null) {
             $invalidProperties[] = "'document_type_id' can't be null";
         }
@@ -266,6 +281,30 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Request Id.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets document_type_id
@@ -335,6 +374,30 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     public function setDocumentIdentifier($document_identifier)
     {
         $this->container['document_identifier'] = $document_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return \MyDataMyConsent\Model\DocumentIssueRequestStatus|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param \MyDataMyConsent\Model\DocumentIssueRequestStatus|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

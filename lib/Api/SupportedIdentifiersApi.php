@@ -125,7 +125,7 @@ class SupportedIdentifiersApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\SupportedIdentifiersByCountry|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\SupportedIdentifier|object|object
      */
     public function getAllSupportedIdentifiers($country_iso2_code)
     {
@@ -142,7 +142,7 @@ class SupportedIdentifiersApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\SupportedIdentifiersByCountry|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\SupportedIdentifier|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllSupportedIdentifiersWithHttpInfo($country_iso2_code)
     {
@@ -185,44 +185,44 @@ class SupportedIdentifiersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\SupportedIdentifiersByCountry' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\SupportedIdentifier' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\SupportedIdentifiersByCountry', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\SupportedIdentifier', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                default:
-                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                case 500:
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\SupportedIdentifiersByCountry';
+            $returnType = '\MyDataMyConsent\Model\SupportedIdentifier';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -240,7 +240,7 @@ class SupportedIdentifiersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\SupportedIdentifiersByCountry',
+                        '\MyDataMyConsent\Model\SupportedIdentifier',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -248,15 +248,15 @@ class SupportedIdentifiersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\ProblemDetails',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
-                default:
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\ProblemDetails',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -298,7 +298,7 @@ class SupportedIdentifiersApi
      */
     public function getAllSupportedIdentifiersAsyncWithHttpInfo($country_iso2_code)
     {
-        $returnType = '\MyDataMyConsent\Model\SupportedIdentifiersByCountry';
+        $returnType = '\MyDataMyConsent\Model\SupportedIdentifier';
         $request = $this->getAllSupportedIdentifiersRequest($country_iso2_code);
 
         return $this->client

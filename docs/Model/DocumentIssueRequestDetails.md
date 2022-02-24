@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **string** | Request Id. |
 **document_type_id** | **string** |  |
 **document_type_name** | **string** |  |
 **document_identifier** | **string** |  |
+**status** | [**\MyDataMyConsent\Model\DocumentIssueRequestStatus**](DocumentIssueRequestStatus.md) |  | [optional]
 **description** | **string** |  |
 **receiver** | **mixed** |  |
 **expires_at_utc** | **\DateTime** |  | [optional]

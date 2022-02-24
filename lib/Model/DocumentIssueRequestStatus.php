@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsentTemplateTypes
+ * DocumentIssueRequestStatus
  *
  * PHP version 7.3
  *
@@ -31,21 +31,25 @@ namespace MyDataMyConsent\Model;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * ConsentTemplateTypes Class Doc Comment
+ * DocumentIssueRequestStatus Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ConsentTemplateTypes
+class DocumentIssueRequestStatus
 {
     /**
      * Possible values of this enum
      */
-    const INDIVIDUAL = 'Individual';
+    const CREATED = 'Created';
 
-    const ORGANIZATION = 'Organization';
+    const ISSUED = 'Issued';
+
+    const ACCEPTED = 'Accepted';
+
+    const REJECTED = 'Rejected';
 
     /**
      * Gets allowable values of the enum
@@ -54,8 +58,10 @@ class ConsentTemplateTypes
     public static function getAllowableEnumValues()
     {
         return [
-            self::INDIVIDUAL,
-            self::ORGANIZATION
+            self::CREATED,
+            self::ISSUED,
+            self::ACCEPTED,
+            self::REJECTED
         ];
     }
 }

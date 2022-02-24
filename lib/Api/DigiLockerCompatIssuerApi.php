@@ -125,7 +125,7 @@ class DigiLockerCompatIssuerApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\PushUriResponse|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\PushUriResponse|object|\MyDataMyConsent\Model\ProblemDetails|object
      */
     public function digilockerCompatIssueDocument($push_uri_request = null)
     {
@@ -142,7 +142,7 @@ class DigiLockerCompatIssuerApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\PushUriResponse|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\PushUriResponse|object|\MyDataMyConsent\Model\ProblemDetails|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function digilockerCompatIssueDocumentWithHttpInfo($push_uri_request = null)
     {
@@ -197,14 +197,14 @@ class DigiLockerCompatIssuerApi
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -220,15 +220,15 @@ class DigiLockerCompatIssuerApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                default:
-                    if ('\MyDataMyConsent\Model\ProblemDetails' === '\SplFileObject') {
+                case 500:
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\ProblemDetails', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -260,7 +260,7 @@ class DigiLockerCompatIssuerApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\ProblemDetails',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -273,10 +273,10 @@ class DigiLockerCompatIssuerApi
                     );
                     $e->setResponseObject($data);
                     break;
-                default:
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\ProblemDetails',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

@@ -36,7 +36,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * CreateOrganizationDataConsentRequest Class Doc Comment
  *
  * @category Class
- * @description Organization Data Consent Request.
+ * @description Create organization data consent request
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

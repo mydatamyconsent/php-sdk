@@ -1,6 +1,6 @@
 <?php
 /**
- * IdentitySupportedFields
+ * JsonSchema
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * IdentitySupportedFields Class Doc Comment
+ * JsonSchema Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSerializable
+class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IdentitySupportedFields';
+    protected static $openAPIModelName = 'JsonSchema';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,11 +60,9 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'icon' => 'int',
-        'title' => 'string',
-        'description' => 'string',
-        'key' => 'string',
-        'data_type' => 'string'
+        'keywords' => 'object[]',
+        'other_data' => 'array<string,mixed>',
+        'bool_value' => 'bool'
     ];
 
     /**
@@ -75,11 +73,9 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'icon' => 'int32',
-        'title' => null,
-        'description' => null,
-        'key' => null,
-        'data_type' => null
+        'keywords' => null,
+        'other_data' => null,
+        'bool_value' => null
     ];
 
     /**
@@ -109,11 +105,9 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'icon' => 'icon',
-        'title' => 'title',
-        'description' => 'description',
-        'key' => 'key',
-        'data_type' => 'dataType'
+        'keywords' => 'keywords',
+        'other_data' => 'otherData',
+        'bool_value' => 'boolValue'
     ];
 
     /**
@@ -122,11 +116,9 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'icon' => 'setIcon',
-        'title' => 'setTitle',
-        'description' => 'setDescription',
-        'key' => 'setKey',
-        'data_type' => 'setDataType'
+        'keywords' => 'setKeywords',
+        'other_data' => 'setOtherData',
+        'bool_value' => 'setBoolValue'
     ];
 
     /**
@@ -135,11 +127,9 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'icon' => 'getIcon',
-        'title' => 'getTitle',
-        'description' => 'getDescription',
-        'key' => 'getKey',
-        'data_type' => 'getDataType'
+        'keywords' => 'getKeywords',
+        'other_data' => 'getOtherData',
+        'bool_value' => 'getBoolValue'
     ];
 
     /**
@@ -199,11 +189,9 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['icon'] = $data['icon'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['key'] = $data['key'] ?? null;
-        $this->container['data_type'] = $data['data_type'] ?? null;
+        $this->container['keywords'] = $data['keywords'] ?? null;
+        $this->container['other_data'] = $data['other_data'] ?? null;
+        $this->container['bool_value'] = $data['bool_value'] ?? null;
     }
 
     /**
@@ -215,18 +203,6 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['icon'] === null) {
-            $invalidProperties[] = "'icon' can't be null";
-        }
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
-        }
-        if ($this->container['data_type'] === null) {
-            $invalidProperties[] = "'data_type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -243,121 +219,73 @@ class IdentitySupportedFields implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets icon
+     * Gets keywords
      *
-     * @return int
+     * @return object[]|null
      */
-    public function getIcon()
+    public function getKeywords()
     {
-        return $this->container['icon'];
+        return $this->container['keywords'];
     }
 
     /**
-     * Sets icon
+     * Sets keywords
      *
-     * @param int $icon icon
+     * @param object[]|null $keywords keywords
      *
      * @return self
      */
-    public function setIcon($icon)
+    public function setKeywords($keywords)
     {
-        $this->container['icon'] = $icon;
+        $this->container['keywords'] = $keywords;
 
         return $this;
     }
 
     /**
-     * Gets title
+     * Gets other_data
      *
-     * @return string
+     * @return array<string,mixed>|null
      */
-    public function getTitle()
+    public function getOtherData()
     {
-        return $this->container['title'];
+        return $this->container['other_data'];
     }
 
     /**
-     * Sets title
+     * Sets other_data
      *
-     * @param string $title title
+     * @param array<string,mixed>|null $other_data other_data
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setOtherData($other_data)
     {
-        $this->container['title'] = $title;
+        $this->container['other_data'] = $other_data;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets bool_value
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getDescription()
+    public function getBoolValue()
     {
-        return $this->container['description'];
+        return $this->container['bool_value'];
     }
 
     /**
-     * Sets description
+     * Sets bool_value
      *
-     * @param string|null $description description
+     * @param bool|null $bool_value bool_value
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setBoolValue($bool_value)
     {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets key
-     *
-     * @return string
-     */
-    public function getKey()
-    {
-        return $this->container['key'];
-    }
-
-    /**
-     * Sets key
-     *
-     * @param string $key key
-     *
-     * @return self
-     */
-    public function setKey($key)
-    {
-        $this->container['key'] = $key;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_type
-     *
-     * @return string
-     */
-    public function getDataType()
-    {
-        return $this->container['data_type'];
-    }
-
-    /**
-     * Sets data_type
-     *
-     * @param string $data_type data_type
-     *
-     * @return self
-     */
-    public function setDataType($data_type)
-    {
-        $this->container['data_type'] = $data_type;
+        $this->container['bool_value'] = $bool_value;
 
         return $this;
     }

@@ -62,7 +62,7 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'type' => '\MyDataMyConsent\Model\ReceiverType',
-        'identifiers' => '\MyDataMyConsent\Model\IdentifierStringKeyValuePair[]',
+        'identifiers' => '\MyDataMyConsent\Model\StringStringKeyValuePair[]',
         'identification_strategy' => '\MyDataMyConsent\Model\IdentificationStrategy'
     ];
 
@@ -246,7 +246,7 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets identifiers
      *
-     * @return \MyDataMyConsent\Model\IdentifierStringKeyValuePair[]|null
+     * @return \MyDataMyConsent\Model\StringStringKeyValuePair[]|null
      */
     public function getIdentifiers()
     {
@@ -256,7 +256,7 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifiers
      *
-     * @param \MyDataMyConsent\Model\IdentifierStringKeyValuePair[]|null $identifiers Consent request receiver identifiers
+     * @param \MyDataMyConsent\Model\StringStringKeyValuePair[]|null $identifiers Consent request receiver identifiers
      *
      * @return self
      */

@@ -4,16 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional]
+**id** | **string** |  |
+**title** | **string** |  | [optional]
+**description** | **string** |  | [optional]
+**data_life** | [**\MyDataMyConsent\Model\Life**](Life.md) |  | [optional]
+**requester_name** | **string** |  | [optional]
+**requester_logo** | **string** |  | [optional]
+**location** | **string** |  | [optional]
 **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](DataConsentStatus.md) |  | [optional]
 **approved_at_utc** | **\DateTime** |  | [optional]
 **rejected_at_utc** | **\DateTime** |  | [optional]
 **expires_at_utc** | **\DateTime** |  | [optional]
 **requested_at_utc** | **\DateTime** |  | [optional]
-**requester** | [**\MyDataMyConsent\Model\DataConsentRequesterDto**](DataConsentRequesterDto.md) |  | [optional]
-**consent_details** | [**\MyDataMyConsent\Model\GetConsentTemplateDetailsDto**](GetConsentTemplateDetailsDto.md) |  | [optional]
-**identifiers** | [**\MyDataMyConsent\Model\DataConsentIdentifier[]**](DataConsentIdentifier.md) |  | [optional]
-**approved_documents** | [**\MyDataMyConsent\Model\DataConsentRequestedDocument[]**](DataConsentRequestedDocument.md) |  | [optional]
-**approved_financials** | [**\MyDataMyConsent\Model\DataConsentRequestedFinancialAccount[]**](DataConsentRequestedFinancialAccount.md) |  | [optional]
+**identifiers** | [**\MyDataMyConsent\Model\JsonSchema**](JsonSchema.md) |  | [optional]
+**documents** | **string** |  | [optional]
+**financials** | **string** |  | [optional]
+**health_records** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -60,10 +60,10 @@ class SupportedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
+        'iso2' => 'string',
         'name' => 'string',
-        'description' => 'string',
-        'example_value' => 'string'
+        'individual_identifiers' => '\MyDataMyConsent\Model\Identifier[]',
+        'organization_identifiers' => '\MyDataMyConsent\Model\Identifier[]'
     ];
 
     /**
@@ -74,10 +74,10 @@ class SupportedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
+        'iso2' => null,
         'name' => null,
-        'description' => null,
-        'example_value' => null
+        'individual_identifiers' => null,
+        'organization_identifiers' => null
     ];
 
     /**
@@ -107,10 +107,10 @@ class SupportedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
+        'iso2' => 'iso2',
         'name' => 'name',
-        'description' => 'description',
-        'example_value' => 'exampleValue'
+        'individual_identifiers' => 'individualIdentifiers',
+        'organization_identifiers' => 'organizationIdentifiers'
     ];
 
     /**
@@ -119,10 +119,10 @@ class SupportedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
+        'iso2' => 'setIso2',
         'name' => 'setName',
-        'description' => 'setDescription',
-        'example_value' => 'setExampleValue'
+        'individual_identifiers' => 'setIndividualIdentifiers',
+        'organization_identifiers' => 'setOrganizationIdentifiers'
     ];
 
     /**
@@ -131,10 +131,10 @@ class SupportedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
+        'iso2' => 'getIso2',
         'name' => 'getName',
-        'description' => 'getDescription',
-        'example_value' => 'getExampleValue'
+        'individual_identifiers' => 'getIndividualIdentifiers',
+        'organization_identifiers' => 'getOrganizationIdentifiers'
     ];
 
     /**
@@ -194,10 +194,10 @@ class SupportedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['key'] = $data['key'] ?? null;
+        $this->container['iso2'] = $data['iso2'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['example_value'] = $data['example_value'] ?? null;
+        $this->container['individual_identifiers'] = $data['individual_identifiers'] ?? null;
+        $this->container['organization_identifiers'] = $data['organization_identifiers'] ?? null;
     }
 
     /**
@@ -225,25 +225,25 @@ class SupportedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets key
+     * Gets iso2
      *
      * @return string|null
      */
-    public function getKey()
+    public function getIso2()
     {
-        return $this->container['key'];
+        return $this->container['iso2'];
     }
 
     /**
-     * Sets key
+     * Sets iso2
      *
-     * @param string|null $key key
+     * @param string|null $iso2 iso2
      *
      * @return self
      */
-    public function setKey($key)
+    public function setIso2($iso2)
     {
-        $this->container['key'] = $key;
+        $this->container['iso2'] = $iso2;
 
         return $this;
     }
@@ -273,49 +273,49 @@ class SupportedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets description
+     * Gets individual_identifiers
      *
-     * @return string|null
+     * @return \MyDataMyConsent\Model\Identifier[]|null
      */
-    public function getDescription()
+    public function getIndividualIdentifiers()
     {
-        return $this->container['description'];
+        return $this->container['individual_identifiers'];
     }
 
     /**
-     * Sets description
+     * Sets individual_identifiers
      *
-     * @param string|null $description description
+     * @param \MyDataMyConsent\Model\Identifier[]|null $individual_identifiers individual_identifiers
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setIndividualIdentifiers($individual_identifiers)
     {
-        $this->container['description'] = $description;
+        $this->container['individual_identifiers'] = $individual_identifiers;
 
         return $this;
     }
 
     /**
-     * Gets example_value
+     * Gets organization_identifiers
      *
-     * @return string|null
+     * @return \MyDataMyConsent\Model\Identifier[]|null
      */
-    public function getExampleValue()
+    public function getOrganizationIdentifiers()
     {
-        return $this->container['example_value'];
+        return $this->container['organization_identifiers'];
     }
 
     /**
-     * Sets example_value
+     * Sets organization_identifiers
      *
-     * @param string|null $example_value example_value
+     * @param \MyDataMyConsent\Model\Identifier[]|null $organization_identifiers organization_identifiers
      *
      * @return self
      */
-    public function setExampleValue($example_value)
+    public function setOrganizationIdentifiers($organization_identifiers)
     {
-        $this->container['example_value'] = $example_value;
+        $this->container['organization_identifiers'] = $organization_identifiers;
 
         return $this;
     }

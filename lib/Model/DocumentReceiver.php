@@ -60,6 +60,7 @@ class DocumentReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'country_iso2_code' => 'string',
         'identifiers' => '\MyDataMyConsent\Model\StringStringKeyValuePair[]',
         'identification_strategy' => '\MyDataMyConsent\Model\IdentificationStrategy'
     ];
@@ -72,6 +73,7 @@ class DocumentReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'country_iso2_code' => null,
         'identifiers' => null,
         'identification_strategy' => null
     ];
@@ -103,6 +105,7 @@ class DocumentReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'country_iso2_code' => 'countryIso2Code',
         'identifiers' => 'identifiers',
         'identification_strategy' => 'identificationStrategy'
     ];
@@ -113,6 +116,7 @@ class DocumentReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'country_iso2_code' => 'setCountryIso2Code',
         'identifiers' => 'setIdentifiers',
         'identification_strategy' => 'setIdentificationStrategy'
     ];
@@ -123,6 +127,7 @@ class DocumentReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'country_iso2_code' => 'getCountryIso2Code',
         'identifiers' => 'getIdentifiers',
         'identification_strategy' => 'getIdentificationStrategy'
     ];
@@ -184,6 +189,7 @@ class DocumentReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['country_iso2_code'] = $data['country_iso2_code'] ?? null;
         $this->container['identifiers'] = $data['identifiers'] ?? null;
         $this->container['identification_strategy'] = $data['identification_strategy'] ?? null;
     }
@@ -196,6 +202,17 @@ class DocumentReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['country_iso2_code'] === null) {
+            $invalidProperties[] = "'country_iso2_code' can't be null";
+        }
+        if ((mb_strlen($this->container['country_iso2_code']) > 2)) {
+            $invalidProperties[] = "invalid value for 'country_iso2_code', the character length must be smaller than or equal to 2.";
+        }
+
+        if ((mb_strlen($this->container['country_iso2_code']) < 2)) {
+            $invalidProperties[] = "invalid value for 'country_iso2_code', the character length must be bigger than or equal to 2.";
+        }
 
         if ($this->container['identifiers'] === null) {
             $invalidProperties[] = "'identifiers' can't be null";
@@ -217,6 +234,37 @@ class DocumentReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets country_iso2_code
+     *
+     * @return string
+     */
+    public function getCountryIso2Code()
+    {
+        return $this->container['country_iso2_code'];
+    }
+
+    /**
+     * Sets country_iso2_code
+     *
+     * @param string $country_iso2_code country_iso2_code
+     *
+     * @return self
+     */
+    public function setCountryIso2Code($country_iso2_code)
+    {
+        if ((mb_strlen($country_iso2_code) > 2)) {
+            throw new \InvalidArgumentException('invalid length for $country_iso2_code when calling DocumentReceiver., must be smaller than or equal to 2.');
+        }
+        if ((mb_strlen($country_iso2_code) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $country_iso2_code when calling DocumentReceiver., must be bigger than or equal to 2.');
+        }
+
+        $this->container['country_iso2_code'] = $country_iso2_code;
+
+        return $this;
+    }
 
     /**
      * Gets identifiers

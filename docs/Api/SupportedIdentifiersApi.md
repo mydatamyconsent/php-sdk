@@ -10,8 +10,10 @@ Method | HTTP request | Description
 ## `getAllSupportedIdentifiers()`
 
 ```php
-getAllSupportedIdentifiers($country_iso2_code): \MyDataMyConsent\Model\SupportedIdentifiersByCountry
+getAllSupportedIdentifiers($country_iso2_code): \MyDataMyConsent\Model\SupportedIdentifier
 ```
+
+Get all supported identifiers by country.
 
 Get all supported identifiers by country.
 
@@ -46,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\SupportedIdentifiersByCountry**](../Model/SupportedIdentifiersByCountry.md)
+[**\MyDataMyConsent\Model\SupportedIdentifier**](../Model/SupportedIdentifier.md)
 
 ### Authorization
 
