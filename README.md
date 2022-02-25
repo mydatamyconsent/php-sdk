@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
 - [Activity](docs/Model/Activity.md)
 - [ApprovedConsentRequest](docs/Model/ApprovedConsentRequest.md)
 - [BankAccountType](docs/Model/BankAccountType.md)
+- [ConsentRequestReceiver](docs/Model/ConsentRequestReceiver.md)
 - [CreateDataProcessingAgreementRequestModel](docs/Model/CreateDataProcessingAgreementRequestModel.md)
 - [CreateIndividualDataConsentRequest](docs/Model/CreateIndividualDataConsentRequest.md)
 - [CreateOrganizationDataConsentRequest](docs/Model/CreateOrganizationDataConsentRequest.md)
@@ -168,8 +169,6 @@ Class | Method | HTTP request | Description
 - [ProblemDetails](docs/Model/ProblemDetails.md)
 - [PushUriRequest](docs/Model/PushUriRequest.md)
 - [PushUriResponse](docs/Model/PushUriResponse.md)
-- [Receiver](docs/Model/Receiver.md)
-- [ReceiverType](docs/Model/ReceiverType.md)
 - [SharedWith](docs/Model/SharedWith.md)
 - [StringStringKeyValuePair](docs/Model/StringStringKeyValuePair.md)
 - [SupportedEntityType](docs/Model/SupportedEntityType.md)
@@ -189,7 +188,7 @@ Class | Method | HTTP request | Description
 
 - **Type**: `OAuth`
 - **Flow**: `application`
-- **Authorization URL**: ``
+- **Authorization URL**: `https://accounts.mydatamyconsent.com/connect/authorize`
 - **Scopes**: 
     - **developer**: Developer API
 

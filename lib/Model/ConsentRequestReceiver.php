@@ -1,6 +1,6 @@
 <?php
 /**
- * Receiver
+ * ConsentRequestReceiver
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * Receiver Class Doc Comment
+ * ConsentRequestReceiver Class Doc Comment
  *
  * @category Class
  * @description Consent request receiver details
@@ -44,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Receiver';
+    protected static $openAPIModelName = 'ConsentRequestReceiver';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,6 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => '\MyDataMyConsent\Model\ReceiverType',
         'identifiers' => '\MyDataMyConsent\Model\StringStringKeyValuePair[]',
         'identification_strategy' => '\MyDataMyConsent\Model\IdentificationStrategy'
     ];
@@ -74,7 +73,6 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
         'identifiers' => null,
         'identification_strategy' => null
     ];
@@ -106,7 +104,6 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
         'identifiers' => 'identifiers',
         'identification_strategy' => 'identificationStrategy'
     ];
@@ -117,7 +114,6 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
         'identifiers' => 'setIdentifiers',
         'identification_strategy' => 'setIdentificationStrategy'
     ];
@@ -128,7 +124,6 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
         'identifiers' => 'getIdentifiers',
         'identification_strategy' => 'getIdentificationStrategy'
     ];
@@ -190,7 +185,6 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['identifiers'] = $data['identifiers'] ?? null;
         $this->container['identification_strategy'] = $data['identification_strategy'] ?? null;
     }
@@ -218,30 +212,6 @@ class Receiver implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets type
-     *
-     * @return \MyDataMyConsent\Model\ReceiverType|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \MyDataMyConsent\Model\ReceiverType|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
 
     /**
      * Gets identifiers

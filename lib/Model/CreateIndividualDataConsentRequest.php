@@ -62,7 +62,7 @@ class CreateIndividualDataConsentRequest implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'consent_template_id' => 'string',
-        'receiver' => '\MyDataMyConsent\Model\Receiver'
+        'receiver' => '\MyDataMyConsent\Model\ConsentRequestReceiver'
     ];
 
     /**
@@ -243,7 +243,7 @@ class CreateIndividualDataConsentRequest implements ModelInterface, ArrayAccess,
     /**
      * Gets receiver
      *
-     * @return \MyDataMyConsent\Model\Receiver
+     * @return \MyDataMyConsent\Model\ConsentRequestReceiver
      */
     public function getReceiver()
     {
@@ -253,7 +253,7 @@ class CreateIndividualDataConsentRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets receiver
      *
-     * @param \MyDataMyConsent\Model\Receiver $receiver receiver
+     * @param \MyDataMyConsent\Model\ConsentRequestReceiver $receiver receiver
      *
      * @return self
      */

@@ -11,6 +11,7 @@ docs/Api/SupportedIdentifiersApi.md
 docs/Model/Activity.md
 docs/Model/ApprovedConsentRequest.md
 docs/Model/BankAccountType.md
+docs/Model/ConsentRequestReceiver.md
 docs/Model/CreateDataProcessingAgreementRequestModel.md
 docs/Model/CreateIndividualDataConsentRequest.md
 docs/Model/CreateOrganizationDataConsentRequest.md
@@ -59,8 +60,6 @@ docs/Model/OrganizationFinancialTransactionsDtoPaginatedList.md
 docs/Model/ProblemDetails.md
 docs/Model/PushUriRequest.md
 docs/Model/PushUriResponse.md
-docs/Model/Receiver.md
-docs/Model/ReceiverType.md
 docs/Model/SharedWith.md
 docs/Model/StringStringKeyValuePair.md
 docs/Model/SupportedEntityType.md
@@ -86,6 +85,7 @@ lib/HeaderSelector.php
 lib/Model/Activity.php
 lib/Model/ApprovedConsentRequest.php
 lib/Model/BankAccountType.php
+lib/Model/ConsentRequestReceiver.php
 lib/Model/CreateDataProcessingAgreementRequestModel.php
 lib/Model/CreateIndividualDataConsentRequest.php
 lib/Model/CreateOrganizationDataConsentRequest.php
@@ -135,8 +135,6 @@ lib/Model/OrganizationFinancialTransactionsDtoPaginatedList.php
 lib/Model/ProblemDetails.php
 lib/Model/PushUriRequest.php
 lib/Model/PushUriResponse.php
-lib/Model/Receiver.php
-lib/Model/ReceiverType.php
 lib/Model/SharedWith.php
 lib/Model/StringStringKeyValuePair.php
 lib/Model/SupportedEntityType.php
