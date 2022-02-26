@@ -1,6 +1,6 @@
 <?php
 /**
- * UserDocumentDownloadDto
+ * UserDocumentDetails
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * UserDocumentDownloadDto Class Doc Comment
+ * UserDocumentDetails Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class UserDocumentDownloadDto implements ModelInterface, ArrayAccess, \JsonSerializable
+class UserDocumentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class UserDocumentDownloadDto implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UserDocumentDownloadDto';
+    protected static $openAPIModelName = 'UserDocumentDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,18 @@ class UserDocumentDownloadDto implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'category_type' => '\MyDataMyConsent\Model\DocumentCategoryType',
+        'type_id' => 'string',
+        'type_name' => 'string',
+        'full_name' => 'string',
+        'identifier' => 'string',
+        'account_id' => 'string',
+        'issuer_id' => 'string',
+        'issuer_name' => 'string',
         'storage_url' => 'string',
+        'is_quick_access_enabled' => 'bool',
+        'is_owner' => 'bool',
+        'digital_signature_details' => '\MyDataMyConsent\Model\DigitalSignature[]',
         'owner_id' => 'string'
     ];
 
@@ -74,7 +85,18 @@ class UserDocumentDownloadDto implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'id' => 'uuid',
+        'category_type' => null,
+        'type_id' => 'uuid',
+        'type_name' => null,
+        'full_name' => null,
+        'identifier' => null,
+        'account_id' => 'uuid',
+        'issuer_id' => 'uuid',
+        'issuer_name' => null,
         'storage_url' => null,
+        'is_quick_access_enabled' => null,
+        'is_owner' => null,
+        'digital_signature_details' => null,
         'owner_id' => 'uuid'
     ];
 
@@ -106,7 +128,18 @@ class UserDocumentDownloadDto implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'category_type' => 'categoryType',
+        'type_id' => 'typeId',
+        'type_name' => 'typeName',
+        'full_name' => 'fullName',
+        'identifier' => 'identifier',
+        'account_id' => 'accountId',
+        'issuer_id' => 'issuerId',
+        'issuer_name' => 'issuerName',
         'storage_url' => 'storageUrl',
+        'is_quick_access_enabled' => 'isQuickAccessEnabled',
+        'is_owner' => 'isOwner',
+        'digital_signature_details' => 'digitalSignatureDetails',
         'owner_id' => 'ownerId'
     ];
 
@@ -117,7 +150,18 @@ class UserDocumentDownloadDto implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'id' => 'setId',
+        'category_type' => 'setCategoryType',
+        'type_id' => 'setTypeId',
+        'type_name' => 'setTypeName',
+        'full_name' => 'setFullName',
+        'identifier' => 'setIdentifier',
+        'account_id' => 'setAccountId',
+        'issuer_id' => 'setIssuerId',
+        'issuer_name' => 'setIssuerName',
         'storage_url' => 'setStorageUrl',
+        'is_quick_access_enabled' => 'setIsQuickAccessEnabled',
+        'is_owner' => 'setIsOwner',
+        'digital_signature_details' => 'setDigitalSignatureDetails',
         'owner_id' => 'setOwnerId'
     ];
 
@@ -128,7 +172,18 @@ class UserDocumentDownloadDto implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'id' => 'getId',
+        'category_type' => 'getCategoryType',
+        'type_id' => 'getTypeId',
+        'type_name' => 'getTypeName',
+        'full_name' => 'getFullName',
+        'identifier' => 'getIdentifier',
+        'account_id' => 'getAccountId',
+        'issuer_id' => 'getIssuerId',
+        'issuer_name' => 'getIssuerName',
         'storage_url' => 'getStorageUrl',
+        'is_quick_access_enabled' => 'getIsQuickAccessEnabled',
+        'is_owner' => 'getIsOwner',
+        'digital_signature_details' => 'getDigitalSignatureDetails',
         'owner_id' => 'getOwnerId'
     ];
 
@@ -190,7 +245,18 @@ class UserDocumentDownloadDto implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['category_type'] = $data['category_type'] ?? null;
+        $this->container['type_id'] = $data['type_id'] ?? null;
+        $this->container['type_name'] = $data['type_name'] ?? null;
+        $this->container['full_name'] = $data['full_name'] ?? null;
+        $this->container['identifier'] = $data['identifier'] ?? null;
+        $this->container['account_id'] = $data['account_id'] ?? null;
+        $this->container['issuer_id'] = $data['issuer_id'] ?? null;
+        $this->container['issuer_name'] = $data['issuer_name'] ?? null;
         $this->container['storage_url'] = $data['storage_url'] ?? null;
+        $this->container['is_quick_access_enabled'] = $data['is_quick_access_enabled'] ?? null;
+        $this->container['is_owner'] = $data['is_owner'] ?? null;
+        $this->container['digital_signature_details'] = $data['digital_signature_details'] ?? null;
         $this->container['owner_id'] = $data['owner_id'] ?? null;
     }
 
@@ -243,6 +309,198 @@ class UserDocumentDownloadDto implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
+     * Gets category_type
+     *
+     * @return \MyDataMyConsent\Model\DocumentCategoryType|null
+     */
+    public function getCategoryType()
+    {
+        return $this->container['category_type'];
+    }
+
+    /**
+     * Sets category_type
+     *
+     * @param \MyDataMyConsent\Model\DocumentCategoryType|null $category_type category_type
+     *
+     * @return self
+     */
+    public function setCategoryType($category_type)
+    {
+        $this->container['category_type'] = $category_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets type_id
+     *
+     * @return string|null
+     */
+    public function getTypeId()
+    {
+        return $this->container['type_id'];
+    }
+
+    /**
+     * Sets type_id
+     *
+     * @param string|null $type_id type_id
+     *
+     * @return self
+     */
+    public function setTypeId($type_id)
+    {
+        $this->container['type_id'] = $type_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type_name
+     *
+     * @return string|null
+     */
+    public function getTypeName()
+    {
+        return $this->container['type_name'];
+    }
+
+    /**
+     * Sets type_name
+     *
+     * @param string|null $type_name type_name
+     *
+     * @return self
+     */
+    public function setTypeName($type_name)
+    {
+        $this->container['type_name'] = $type_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets full_name
+     *
+     * @return string|null
+     */
+    public function getFullName()
+    {
+        return $this->container['full_name'];
+    }
+
+    /**
+     * Sets full_name
+     *
+     * @param string|null $full_name full_name
+     *
+     * @return self
+     */
+    public function setFullName($full_name)
+    {
+        $this->container['full_name'] = $full_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets identifier
+     *
+     * @return string|null
+     */
+    public function getIdentifier()
+    {
+        return $this->container['identifier'];
+    }
+
+    /**
+     * Sets identifier
+     *
+     * @param string|null $identifier identifier
+     *
+     * @return self
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->container['identifier'] = $identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id account_id
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets issuer_id
+     *
+     * @return string|null
+     */
+    public function getIssuerId()
+    {
+        return $this->container['issuer_id'];
+    }
+
+    /**
+     * Sets issuer_id
+     *
+     * @param string|null $issuer_id issuer_id
+     *
+     * @return self
+     */
+    public function setIssuerId($issuer_id)
+    {
+        $this->container['issuer_id'] = $issuer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets issuer_name
+     *
+     * @return string|null
+     */
+    public function getIssuerName()
+    {
+        return $this->container['issuer_name'];
+    }
+
+    /**
+     * Sets issuer_name
+     *
+     * @param string|null $issuer_name issuer_name
+     *
+     * @return self
+     */
+    public function setIssuerName($issuer_name)
+    {
+        $this->container['issuer_name'] = $issuer_name;
+
+        return $this;
+    }
+
+    /**
      * Gets storage_url
      *
      * @return string|null
@@ -262,6 +520,78 @@ class UserDocumentDownloadDto implements ModelInterface, ArrayAccess, \JsonSeria
     public function setStorageUrl($storage_url)
     {
         $this->container['storage_url'] = $storage_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_quick_access_enabled
+     *
+     * @return bool|null
+     */
+    public function getIsQuickAccessEnabled()
+    {
+        return $this->container['is_quick_access_enabled'];
+    }
+
+    /**
+     * Sets is_quick_access_enabled
+     *
+     * @param bool|null $is_quick_access_enabled is_quick_access_enabled
+     *
+     * @return self
+     */
+    public function setIsQuickAccessEnabled($is_quick_access_enabled)
+    {
+        $this->container['is_quick_access_enabled'] = $is_quick_access_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_owner
+     *
+     * @return bool|null
+     */
+    public function getIsOwner()
+    {
+        return $this->container['is_owner'];
+    }
+
+    /**
+     * Sets is_owner
+     *
+     * @param bool|null $is_owner is_owner
+     *
+     * @return self
+     */
+    public function setIsOwner($is_owner)
+    {
+        $this->container['is_owner'] = $is_owner;
+
+        return $this;
+    }
+
+    /**
+     * Gets digital_signature_details
+     *
+     * @return \MyDataMyConsent\Model\DigitalSignature[]|null
+     */
+    public function getDigitalSignatureDetails()
+    {
+        return $this->container['digital_signature_details'];
+    }
+
+    /**
+     * Sets digital_signature_details
+     *
+     * @param \MyDataMyConsent\Model\DigitalSignature[]|null $digital_signature_details digital_signature_details
+     *
+     * @return self
+     */
+    public function setDigitalSignatureDetails($digital_signature_details)
+    {
+        $this->container['digital_signature_details'] = $digital_signature_details;
 
         return $this;
     }

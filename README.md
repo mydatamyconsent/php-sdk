@@ -84,17 +84,17 @@ Class | Method | HTTP request | Description
 *DataConsentsApi* | [**downloadConsentedDocumentById**](docs/Api/DataConsentsApi.md#downloadconsenteddocumentbyid) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId}/download | Download a individuals consented document.
 *DataConsentsApi* | [**downloadOrgConsentedDocumentById**](docs/Api/DataConsentsApi.md#downloadorgconsenteddocumentbyid) | **GET** /v1/consents/organizations/{consentId}/documents/{documentId}/download | Download a organizations consented document.
 *DataConsentsApi* | [**getAllConsentedDocuments**](docs/Api/DataConsentsApi.md#getallconsenteddocuments) | **GET** /v1/consents/individuals/{consentId}/documents | Get the individual documents based on ConsentId.
-*DataConsentsApi* | [**getAllConsentedFinancialAccounts**](docs/Api/DataConsentsApi.md#getallconsentedfinancialaccounts) | **GET** /v1/consents/individuals/{consentId}/accounts | Get all individual consented financial accounts.
+*DataConsentsApi* | [**getAllConsentedFinancialAccounts**](docs/Api/DataConsentsApi.md#getallconsentedfinancialaccounts) | **GET** /v1/consents/individuals/{consentId}/financial-accounts | Get all individual consented financial accounts.
 *DataConsentsApi* | [**getAllOrganizationConsentedDocuments**](docs/Api/DataConsentsApi.md#getallorganizationconsenteddocuments) | **GET** /v1/consents/organizations/{consentId}/documents | Get the organization documents based on ConsentId.
 *DataConsentsApi* | [**getConsentDetailsById**](docs/Api/DataConsentsApi.md#getconsentdetailsbyid) | **GET** /v1/consents/individuals/{consentId} | Get all individuals consent details by consent id.
-*DataConsentsApi* | [**getConsentFinancialAccounts**](docs/Api/DataConsentsApi.md#getconsentfinancialaccounts) | **GET** /v1/consents/organizations/{consentId}/accounts | Get all organizational consented financial accounts.
-*DataConsentsApi* | [**getConsentedAccountById**](docs/Api/DataConsentsApi.md#getconsentedaccountbyid) | **GET** /v1/consents/individuals/{consentId}/accounts/{accountId} | Get individual consented financial account details based on account id.
+*DataConsentsApi* | [**getConsentFinancialAccounts**](docs/Api/DataConsentsApi.md#getconsentfinancialaccounts) | **GET** /v1/consents/organizations/{consentId}/financial-accounts | Get all organizational consented financial accounts.
+*DataConsentsApi* | [**getConsentedAccountById**](docs/Api/DataConsentsApi.md#getconsentedaccountbyid) | **GET** /v1/consents/individuals/{consentId}/financial-accounts/{accountId} | Get individual consented financial account details based on account id.
 *DataConsentsApi* | [**getConsentedDocumentById**](docs/Api/DataConsentsApi.md#getconsenteddocumentbyid) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId} | Get individuals consent document based on document id.
-*DataConsentsApi* | [**getConsentedFinancialAccount**](docs/Api/DataConsentsApi.md#getconsentedfinancialaccount) | **GET** /v1/consents/organizations/{consentId}/accounts/{accountId} | Get organization consented financial account details based on account id.
-*DataConsentsApi* | [**getConsentedFinancialAccountTransactions**](docs/Api/DataConsentsApi.md#getconsentedfinancialaccounttransactions) | **GET** /v1/consents/individuals/{consentId}/accounts/{accountId}/transactions | Get individual consented financial account transactions of an individual based on accountId.
+*DataConsentsApi* | [**getConsentedFinancialAccount**](docs/Api/DataConsentsApi.md#getconsentedfinancialaccount) | **GET** /v1/consents/organizations/{consentId}/financial-accounts/{accountId} | Get organization consented financial account details based on account id.
+*DataConsentsApi* | [**getConsentedFinancialAccountTransactions**](docs/Api/DataConsentsApi.md#getconsentedfinancialaccounttransactions) | **GET** /v1/consents/individuals/{consentId}/financial-accounts/{accountId}/transactions | Get individual consented financial account transactions of an individual based on accountId.
 *DataConsentsApi* | [**getConsentsForOrganizations**](docs/Api/DataConsentsApi.md#getconsentsfororganizations) | **GET** /v1/consents/organizations | Get the list of data consents sent for organizations.
 *DataConsentsApi* | [**getConsentsSentToIndividuals**](docs/Api/DataConsentsApi.md#getconsentssenttoindividuals) | **GET** /v1/consents/individuals | Get the list of Consents Sent to Individuals.
-*DataConsentsApi* | [**getOrgConsentedAccountTransactions**](docs/Api/DataConsentsApi.md#getorgconsentedaccounttransactions) | **GET** /v1/consents/organizations/{consentId}/accounts/{accountId}/transactions | Get organization consented financial account transactions of an individual based on accountId.
+*DataConsentsApi* | [**getOrgConsentedAccountTransactions**](docs/Api/DataConsentsApi.md#getorgconsentedaccounttransactions) | **GET** /v1/consents/organizations/{consentId}/financial-accounts/{accountId}/transactions | Get organization consented financial account transactions of an individual based on accountId.
 *DataConsentsApi* | [**getOrganizationConsentDetailsById**](docs/Api/DataConsentsApi.md#getorganizationconsentdetailsbyid) | **GET** /v1/consents/organizations/{consentId} | Get all organization consent details by consent id.
 *DataConsentsApi* | [**getOrganizationConsentedDocumentById**](docs/Api/DataConsentsApi.md#getorganizationconsenteddocumentbyid) | **GET** /v1/consents/organizations/{consentId}/documents/{documentId} | Get organization consent document based on document id.
 *DataProcessingAgreementsApi* | [**createDataProcessingAgreement**](docs/Api/DataProcessingAgreementsApi.md#createdataprocessingagreement) | **POST** /v1/data-agreements | Create a data processing agreement.
@@ -161,7 +161,7 @@ Class | Method | HTTP request | Description
 - [OrganizationDataConsentInfoDto](docs/Model/OrganizationDataConsentInfoDto.md)
 - [OrganizationDataConsentInfoDtoPaginatedList](docs/Model/OrganizationDataConsentInfoDtoPaginatedList.md)
 - [OrganizationDataConsentRequestResponse](docs/Model/OrganizationDataConsentRequestResponse.md)
-- [OrganizationDocumentDetailsDto](docs/Model/OrganizationDocumentDetailsDto.md)
+- [OrganizationDocumentDetails](docs/Model/OrganizationDocumentDetails.md)
 - [OrganizationDocumentDownloadDto](docs/Model/OrganizationDocumentDownloadDto.md)
 - [OrganizationFinancialAccountDto](docs/Model/OrganizationFinancialAccountDto.md)
 - [OrganizationFinancialTransactionsDto](docs/Model/OrganizationFinancialTransactionsDto.md)
@@ -179,8 +179,8 @@ Class | Method | HTTP request | Description
 - [UserAccountFinancialTransactionsDtoPaginatedList](docs/Model/UserAccountFinancialTransactionsDtoPaginatedList.md)
 - [UserDataConsentInfoDto](docs/Model/UserDataConsentInfoDto.md)
 - [UserDataConsentInfoDtoPaginatedList](docs/Model/UserDataConsentInfoDtoPaginatedList.md)
-- [UserDocumentDetailsDto](docs/Model/UserDocumentDetailsDto.md)
-- [UserDocumentDownloadDto](docs/Model/UserDocumentDownloadDto.md)
+- [UserDocumentDetails](docs/Model/UserDocumentDetails.md)
+- [UserDocumentDownload](docs/Model/UserDocumentDownload.md)
 
 ## Authorization
 

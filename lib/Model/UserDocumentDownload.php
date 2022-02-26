@@ -1,6 +1,6 @@
 <?php
 /**
- * OrganizationDocumentDetailsDto
+ * UserDocumentDownload
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * OrganizationDocumentDetailsDto Class Doc Comment
+ * UserDocumentDownload Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrganizationDocumentDetailsDto implements ModelInterface, ArrayAccess, \JsonSerializable
+class UserDocumentDownload implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class OrganizationDocumentDetailsDto implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'OrganizationDocumentDetailsDto';
+    protected static $openAPIModelName = 'UserDocumentDownload';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,16 +61,9 @@ class OrganizationDocumentDetailsDto implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'organization_id' => 'string',
-        'organization_name' => 'string',
-        'type_id' => 'string',
-        'type_name' => 'string',
-        'name' => 'string',
-        'identifier' => 'string',
-        'storage_url' => 'string',
-        'country_iso2' => 'string',
-        'issuer_id' => 'string',
-        'issuer_name' => 'string'
+        'download_url' => 'string',
+        'expires_at_utc' => '\DateTime',
+        'owner_id' => 'string'
     ];
 
     /**
@@ -82,16 +75,9 @@ class OrganizationDocumentDetailsDto implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPIFormats = [
         'id' => 'uuid',
-        'organization_id' => 'uuid',
-        'organization_name' => null,
-        'type_id' => 'uuid',
-        'type_name' => null,
-        'name' => null,
-        'identifier' => null,
-        'storage_url' => null,
-        'country_iso2' => null,
-        'issuer_id' => 'uuid',
-        'issuer_name' => null
+        'download_url' => null,
+        'expires_at_utc' => 'date-time',
+        'owner_id' => 'uuid'
     ];
 
     /**
@@ -122,16 +108,9 @@ class OrganizationDocumentDetailsDto implements ModelInterface, ArrayAccess, \Js
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'organization_id' => 'organizationId',
-        'organization_name' => 'organizationName',
-        'type_id' => 'typeId',
-        'type_name' => 'typeName',
-        'name' => 'name',
-        'identifier' => 'identifier',
-        'storage_url' => 'storageUrl',
-        'country_iso2' => 'countryIso2',
-        'issuer_id' => 'issuerId',
-        'issuer_name' => 'issuerName'
+        'download_url' => 'downloadUrl',
+        'expires_at_utc' => 'expiresAtUtc',
+        'owner_id' => 'ownerId'
     ];
 
     /**
@@ -141,16 +120,9 @@ class OrganizationDocumentDetailsDto implements ModelInterface, ArrayAccess, \Js
      */
     protected static $setters = [
         'id' => 'setId',
-        'organization_id' => 'setOrganizationId',
-        'organization_name' => 'setOrganizationName',
-        'type_id' => 'setTypeId',
-        'type_name' => 'setTypeName',
-        'name' => 'setName',
-        'identifier' => 'setIdentifier',
-        'storage_url' => 'setStorageUrl',
-        'country_iso2' => 'setCountryIso2',
-        'issuer_id' => 'setIssuerId',
-        'issuer_name' => 'setIssuerName'
+        'download_url' => 'setDownloadUrl',
+        'expires_at_utc' => 'setExpiresAtUtc',
+        'owner_id' => 'setOwnerId'
     ];
 
     /**
@@ -160,16 +132,9 @@ class OrganizationDocumentDetailsDto implements ModelInterface, ArrayAccess, \Js
      */
     protected static $getters = [
         'id' => 'getId',
-        'organization_id' => 'getOrganizationId',
-        'organization_name' => 'getOrganizationName',
-        'type_id' => 'getTypeId',
-        'type_name' => 'getTypeName',
-        'name' => 'getName',
-        'identifier' => 'getIdentifier',
-        'storage_url' => 'getStorageUrl',
-        'country_iso2' => 'getCountryIso2',
-        'issuer_id' => 'getIssuerId',
-        'issuer_name' => 'getIssuerName'
+        'download_url' => 'getDownloadUrl',
+        'expires_at_utc' => 'getExpiresAtUtc',
+        'owner_id' => 'getOwnerId'
     ];
 
     /**
@@ -230,16 +195,9 @@ class OrganizationDocumentDetailsDto implements ModelInterface, ArrayAccess, \Js
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['organization_id'] = $data['organization_id'] ?? null;
-        $this->container['organization_name'] = $data['organization_name'] ?? null;
-        $this->container['type_id'] = $data['type_id'] ?? null;
-        $this->container['type_name'] = $data['type_name'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['identifier'] = $data['identifier'] ?? null;
-        $this->container['storage_url'] = $data['storage_url'] ?? null;
-        $this->container['country_iso2'] = $data['country_iso2'] ?? null;
-        $this->container['issuer_id'] = $data['issuer_id'] ?? null;
-        $this->container['issuer_name'] = $data['issuer_name'] ?? null;
+        $this->container['download_url'] = $data['download_url'] ?? null;
+        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
+        $this->container['owner_id'] = $data['owner_id'] ?? null;
     }
 
     /**
@@ -291,241 +249,73 @@ class OrganizationDocumentDetailsDto implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets organization_id
+     * Gets download_url
      *
      * @return string|null
      */
-    public function getOrganizationId()
+    public function getDownloadUrl()
     {
-        return $this->container['organization_id'];
+        return $this->container['download_url'];
     }
 
     /**
-     * Sets organization_id
+     * Sets download_url
      *
-     * @param string|null $organization_id organization_id
+     * @param string|null $download_url download_url
      *
      * @return self
      */
-    public function setOrganizationId($organization_id)
+    public function setDownloadUrl($download_url)
     {
-        $this->container['organization_id'] = $organization_id;
+        $this->container['download_url'] = $download_url;
 
         return $this;
     }
 
     /**
-     * Gets organization_name
+     * Gets expires_at_utc
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getOrganizationName()
+    public function getExpiresAtUtc()
     {
-        return $this->container['organization_name'];
+        return $this->container['expires_at_utc'];
     }
 
     /**
-     * Sets organization_name
+     * Sets expires_at_utc
      *
-     * @param string|null $organization_name organization_name
+     * @param \DateTime|null $expires_at_utc expires_at_utc
      *
      * @return self
      */
-    public function setOrganizationName($organization_name)
+    public function setExpiresAtUtc($expires_at_utc)
     {
-        $this->container['organization_name'] = $organization_name;
+        $this->container['expires_at_utc'] = $expires_at_utc;
 
         return $this;
     }
 
     /**
-     * Gets type_id
+     * Gets owner_id
      *
      * @return string|null
      */
-    public function getTypeId()
+    public function getOwnerId()
     {
-        return $this->container['type_id'];
+        return $this->container['owner_id'];
     }
 
     /**
-     * Sets type_id
+     * Sets owner_id
      *
-     * @param string|null $type_id type_id
+     * @param string|null $owner_id owner_id
      *
      * @return self
      */
-    public function setTypeId($type_id)
+    public function setOwnerId($owner_id)
     {
-        $this->container['type_id'] = $type_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type_name
-     *
-     * @return string|null
-     */
-    public function getTypeName()
-    {
-        return $this->container['type_name'];
-    }
-
-    /**
-     * Sets type_name
-     *
-     * @param string|null $type_name type_name
-     *
-     * @return self
-     */
-    public function setTypeName($type_name)
-    {
-        $this->container['type_name'] = $type_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets identifier
-     *
-     * @return string|null
-     */
-    public function getIdentifier()
-    {
-        return $this->container['identifier'];
-    }
-
-    /**
-     * Sets identifier
-     *
-     * @param string|null $identifier identifier
-     *
-     * @return self
-     */
-    public function setIdentifier($identifier)
-    {
-        $this->container['identifier'] = $identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets storage_url
-     *
-     * @return string|null
-     */
-    public function getStorageUrl()
-    {
-        return $this->container['storage_url'];
-    }
-
-    /**
-     * Sets storage_url
-     *
-     * @param string|null $storage_url storage_url
-     *
-     * @return self
-     */
-    public function setStorageUrl($storage_url)
-    {
-        $this->container['storage_url'] = $storage_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets country_iso2
-     *
-     * @return string|null
-     */
-    public function getCountryIso2()
-    {
-        return $this->container['country_iso2'];
-    }
-
-    /**
-     * Sets country_iso2
-     *
-     * @param string|null $country_iso2 country_iso2
-     *
-     * @return self
-     */
-    public function setCountryIso2($country_iso2)
-    {
-        $this->container['country_iso2'] = $country_iso2;
-
-        return $this;
-    }
-
-    /**
-     * Gets issuer_id
-     *
-     * @return string|null
-     */
-    public function getIssuerId()
-    {
-        return $this->container['issuer_id'];
-    }
-
-    /**
-     * Sets issuer_id
-     *
-     * @param string|null $issuer_id issuer_id
-     *
-     * @return self
-     */
-    public function setIssuerId($issuer_id)
-    {
-        $this->container['issuer_id'] = $issuer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets issuer_name
-     *
-     * @return string|null
-     */
-    public function getIssuerName()
-    {
-        return $this->container['issuer_name'];
-    }
-
-    /**
-     * Sets issuer_name
-     *
-     * @param string|null $issuer_name issuer_name
-     *
-     * @return self
-     */
-    public function setIssuerName($issuer_name)
-    {
-        $this->container['issuer_name'] = $issuer_name;
+        $this->container['owner_id'] = $owner_id;
 
         return $this;
     }

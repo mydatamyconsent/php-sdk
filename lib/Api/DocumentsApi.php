@@ -1830,13 +1830,13 @@ class DocumentsApi
      * Upload a document for issuance request of individual.
      *
      * @param  string $issue_request_id Issue Request Id System.Guid. (required)
-     * @param  \SplFileObject $form_file form_file (optional)
+     * @param  \SplFileObject $form_file form_file (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string|object|object
      */
-    public function uploadDocumentForIndividual($issue_request_id, $form_file = null)
+    public function uploadDocumentForIndividual($issue_request_id, $form_file)
     {
         list($response) = $this->uploadDocumentForIndividualWithHttpInfo($issue_request_id, $form_file);
         return $response;
@@ -1848,13 +1848,13 @@ class DocumentsApi
      * Upload a document for issuance request of individual.
      *
      * @param  string $issue_request_id Issue Request Id System.Guid. (required)
-     * @param  \SplFileObject $form_file (optional)
+     * @param  \SplFileObject $form_file (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string|object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function uploadDocumentForIndividualWithHttpInfo($issue_request_id, $form_file = null)
+    public function uploadDocumentForIndividualWithHttpInfo($issue_request_id, $form_file)
     {
         $request = $this->uploadDocumentForIndividualRequest($issue_request_id, $form_file);
 
@@ -1982,12 +1982,12 @@ class DocumentsApi
      * Upload a document for issuance request of individual.
      *
      * @param  string $issue_request_id Issue Request Id System.Guid. (required)
-     * @param  \SplFileObject $form_file (optional)
+     * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadDocumentForIndividualAsync($issue_request_id, $form_file = null)
+    public function uploadDocumentForIndividualAsync($issue_request_id, $form_file)
     {
         return $this->uploadDocumentForIndividualAsyncWithHttpInfo($issue_request_id, $form_file)
             ->then(
@@ -2003,12 +2003,12 @@ class DocumentsApi
      * Upload a document for issuance request of individual.
      *
      * @param  string $issue_request_id Issue Request Id System.Guid. (required)
-     * @param  \SplFileObject $form_file (optional)
+     * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadDocumentForIndividualAsyncWithHttpInfo($issue_request_id, $form_file = null)
+    public function uploadDocumentForIndividualAsyncWithHttpInfo($issue_request_id, $form_file)
     {
         $returnType = 'string';
         $request = $this->uploadDocumentForIndividualRequest($issue_request_id, $form_file);
@@ -2050,17 +2050,23 @@ class DocumentsApi
      * Create request for operation 'uploadDocumentForIndividual'
      *
      * @param  string $issue_request_id Issue Request Id System.Guid. (required)
-     * @param  \SplFileObject $form_file (optional)
+     * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function uploadDocumentForIndividualRequest($issue_request_id, $form_file = null)
+    public function uploadDocumentForIndividualRequest($issue_request_id, $form_file)
     {
         // verify the required parameter 'issue_request_id' is set
         if ($issue_request_id === null || (is_array($issue_request_id) && count($issue_request_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $issue_request_id when calling uploadDocumentForIndividual'
+            );
+        }
+        // verify the required parameter 'form_file' is set
+        if ($form_file === null || (is_array($form_file) && count($form_file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $form_file when calling uploadDocumentForIndividual'
             );
         }
 

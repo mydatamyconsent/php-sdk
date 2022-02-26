@@ -52,7 +52,7 @@ docs/Model/Life.md
 docs/Model/OrganizationDataConsentInfoDto.md
 docs/Model/OrganizationDataConsentInfoDtoPaginatedList.md
 docs/Model/OrganizationDataConsentRequestResponse.md
-docs/Model/OrganizationDocumentDetailsDto.md
+docs/Model/OrganizationDocumentDetails.md
 docs/Model/OrganizationDocumentDownloadDto.md
 docs/Model/OrganizationFinancialAccountDto.md
 docs/Model/OrganizationFinancialTransactionsDto.md
@@ -70,8 +70,8 @@ docs/Model/UserAccountFinancialTransactionsDto.md
 docs/Model/UserAccountFinancialTransactionsDtoPaginatedList.md
 docs/Model/UserDataConsentInfoDto.md
 docs/Model/UserDataConsentInfoDtoPaginatedList.md
-docs/Model/UserDocumentDetailsDto.md
-docs/Model/UserDocumentDownloadDto.md
+docs/Model/UserDocumentDetails.md
+docs/Model/UserDocumentDownload.md
 lib/Api/DataConsentRequestsApi.php
 lib/Api/DataConsentsApi.php
 lib/Api/DataProcessingAgreementsApi.php
@@ -127,7 +127,7 @@ lib/Model/ModelInterface.php
 lib/Model/OrganizationDataConsentInfoDto.php
 lib/Model/OrganizationDataConsentInfoDtoPaginatedList.php
 lib/Model/OrganizationDataConsentRequestResponse.php
-lib/Model/OrganizationDocumentDetailsDto.php
+lib/Model/OrganizationDocumentDetails.php
 lib/Model/OrganizationDocumentDownloadDto.php
 lib/Model/OrganizationFinancialAccountDto.php
 lib/Model/OrganizationFinancialTransactionsDto.php
@@ -145,6 +145,6 @@ lib/Model/UserAccountFinancialTransactionsDto.php
 lib/Model/UserAccountFinancialTransactionsDtoPaginatedList.php
 lib/Model/UserDataConsentInfoDto.php
 lib/Model/UserDataConsentInfoDtoPaginatedList.php
-lib/Model/UserDocumentDetailsDto.php
-lib/Model/UserDocumentDownloadDto.php
+lib/Model/UserDocumentDetails.php
+lib/Model/UserDocumentDownload.php
 lib/ObjectSerializer.php
