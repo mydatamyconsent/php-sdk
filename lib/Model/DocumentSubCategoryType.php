@@ -45,11 +45,13 @@ class DocumentSubCategoryType
      */
     const IDENTITY = 'Identity';
 
-    const HOUSE = 'House';
+    const PROPERTY = 'Property';
 
     const VEHICLE = 'Vehicle';
 
-    const MARKS_MEMOS = 'MarksMemos';
+    const ADMIT_AND_ID_CARDS = 'AdmitAndIdCards';
+
+    const MARKSHEETS = 'Marksheets';
 
     const TRANSCRIPTS = 'Transcripts';
 
@@ -61,17 +63,31 @@ class DocumentSubCategoryType
 
     const DISCHARGE_SUMMARY = 'DischargeSummary';
 
-    const BILLS = 'Bills';
+    const ACCOUNT_AND_CERTIFICATES = 'AccountAndCertificates';
 
-    const INVOICES = 'Invoices';
+    const BILLS_AND_INVOICES = 'BillsAndInvoices';
+
+    const INSURANCE = 'Insurance';
+
+    const RECEIPTS_AND_SUBSCRIPTIONS = 'ReceiptsAndSubscriptions';
 
     const TAXES = 'Taxes';
+
+    const LICENCES_AND_CERTIFICATES = 'LicencesAndCertificates';
 
     const CORPORATES = 'Corporates';
 
     const COMPETITIONS = 'Competitions';
 
     const INTELLECTUAL_PROPERTIES = 'IntellectualProperties';
+
+    const OTHERS = 'Others';
+
+    const APPLICATIONS_AND_CERTIFICATES = 'ApplicationsAndCertificates';
+
+    const LICENSES = 'Licenses';
+
+    const ORGANIZATION_IDS = 'OrganizationIds';
 
     /**
      * Gets allowable values of the enum
@@ -81,20 +97,28 @@ class DocumentSubCategoryType
     {
         return [
             self::IDENTITY,
-            self::HOUSE,
+            self::PROPERTY,
             self::VEHICLE,
-            self::MARKS_MEMOS,
+            self::ADMIT_AND_ID_CARDS,
+            self::MARKSHEETS,
             self::TRANSCRIPTS,
             self::CERTIFICATES,
             self::PRESCRIPTIONS,
             self::MEDICAL_REPORTS,
             self::DISCHARGE_SUMMARY,
-            self::BILLS,
-            self::INVOICES,
+            self::ACCOUNT_AND_CERTIFICATES,
+            self::BILLS_AND_INVOICES,
+            self::INSURANCE,
+            self::RECEIPTS_AND_SUBSCRIPTIONS,
             self::TAXES,
+            self::LICENCES_AND_CERTIFICATES,
             self::CORPORATES,
             self::COMPETITIONS,
-            self::INTELLECTUAL_PROPERTIES
+            self::INTELLECTUAL_PROPERTIES,
+            self::OTHERS,
+            self::APPLICATIONS_AND_CERTIFICATES,
+            self::LICENSES,
+            self::ORGANIZATION_IDS
         ];
     }
 }

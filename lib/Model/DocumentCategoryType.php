@@ -51,7 +51,11 @@ class DocumentCategoryType
 
     const FINANCE = 'Finance';
 
-    const CERTIFICATES = 'Certificates';
+    const WORK_AND_AWARDS = 'WorkAndAwards';
+
+    const LICENCES_AND_CERTIFICATES = 'LicencesAndCertificates';
+
+    const OTHERS = 'Others';
 
     /**
      * Gets allowable values of the enum
@@ -64,7 +68,9 @@ class DocumentCategoryType
             self::EDUCATION,
             self::HEALTH,
             self::FINANCE,
-            self::CERTIFICATES
+            self::WORK_AND_AWARDS,
+            self::LICENCES_AND_CERTIFICATES,
+            self::OTHERS
         ];
     }
 }
