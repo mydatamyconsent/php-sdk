@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uri_details** | [**\MyDataMyConsent\Model\UriDetails**](UriDetails.md) |  | [optional]
+**uri_details** | [**\MyDataMyConsent\Model\UriDetails**](UriDetails.md) |  |
 **ns2** | **string** |  | [optional]
 **ver** | **string** |  | [optional]
 **ts** | **string** |  | [optional]

@@ -1,6 +1,6 @@
 <?php
 /**
- * UriDetails
+ * SupportedDocumentProviderDetailsDto
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * UriDetails Class Doc Comment
+ * SupportedDocumentProviderDetailsDto Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
+class SupportedDocumentProviderDetailsDto implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UriDetails';
+    protected static $openAPIModelName = 'SupportedDocumentProviderDetailsDto';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,16 +60,9 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'aadhaar' => 'string',
-        'uri' => 'string',
-        'doc_type' => 'string',
-        'doc_name' => 'string',
-        'doc_id' => 'string',
-        'issued_on' => 'string',
-        'valid_from' => 'string',
-        'valid_to' => 'string',
-        'timestamp' => 'string',
-        'action' => 'string'
+        'id' => 'string',
+        'name' => 'string',
+        'logo_url' => 'string'
     ];
 
     /**
@@ -80,16 +73,9 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'aadhaar' => null,
-        'uri' => null,
-        'doc_type' => null,
-        'doc_name' => null,
-        'doc_id' => null,
-        'issued_on' => null,
-        'valid_from' => null,
-        'valid_to' => null,
-        'timestamp' => null,
-        'action' => null
+        'id' => 'uuid',
+        'name' => null,
+        'logo_url' => null
     ];
 
     /**
@@ -119,16 +105,9 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'aadhaar' => 'aadhaar',
-        'uri' => 'uri',
-        'doc_type' => 'docType',
-        'doc_name' => 'docName',
-        'doc_id' => 'docId',
-        'issued_on' => 'issuedOn',
-        'valid_from' => 'validFrom',
-        'valid_to' => 'validTo',
-        'timestamp' => 'timestamp',
-        'action' => 'action'
+        'id' => 'id',
+        'name' => 'name',
+        'logo_url' => 'logoUrl'
     ];
 
     /**
@@ -137,16 +116,9 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'aadhaar' => 'setAadhaar',
-        'uri' => 'setUri',
-        'doc_type' => 'setDocType',
-        'doc_name' => 'setDocName',
-        'doc_id' => 'setDocId',
-        'issued_on' => 'setIssuedOn',
-        'valid_from' => 'setValidFrom',
-        'valid_to' => 'setValidTo',
-        'timestamp' => 'setTimestamp',
-        'action' => 'setAction'
+        'id' => 'setId',
+        'name' => 'setName',
+        'logo_url' => 'setLogoUrl'
     ];
 
     /**
@@ -155,16 +127,9 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'aadhaar' => 'getAadhaar',
-        'uri' => 'getUri',
-        'doc_type' => 'getDocType',
-        'doc_name' => 'getDocName',
-        'doc_id' => 'getDocId',
-        'issued_on' => 'getIssuedOn',
-        'valid_from' => 'getValidFrom',
-        'valid_to' => 'getValidTo',
-        'timestamp' => 'getTimestamp',
-        'action' => 'getAction'
+        'id' => 'getId',
+        'name' => 'getName',
+        'logo_url' => 'getLogoUrl'
     ];
 
     /**
@@ -224,16 +189,9 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['aadhaar'] = $data['aadhaar'] ?? null;
-        $this->container['uri'] = $data['uri'] ?? null;
-        $this->container['doc_type'] = $data['doc_type'] ?? null;
-        $this->container['doc_name'] = $data['doc_name'] ?? null;
-        $this->container['doc_id'] = $data['doc_id'] ?? null;
-        $this->container['issued_on'] = $data['issued_on'] ?? null;
-        $this->container['valid_from'] = $data['valid_from'] ?? null;
-        $this->container['valid_to'] = $data['valid_to'] ?? null;
-        $this->container['timestamp'] = $data['timestamp'] ?? null;
-        $this->container['action'] = $data['action'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['logo_url'] = $data['logo_url'] ?? null;
     }
 
     /**
@@ -245,26 +203,11 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['aadhaar'] === null) {
-            $invalidProperties[] = "'aadhaar' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['uri'] === null) {
-            $invalidProperties[] = "'uri' can't be null";
-        }
-        if ($this->container['doc_type'] === null) {
-            $invalidProperties[] = "'doc_type' can't be null";
-        }
-        if ($this->container['doc_name'] === null) {
-            $invalidProperties[] = "'doc_name' can't be null";
-        }
-        if ($this->container['doc_id'] === null) {
-            $invalidProperties[] = "'doc_id' can't be null";
-        }
-        if ($this->container['issued_on'] === null) {
-            $invalidProperties[] = "'issued_on' can't be null";
-        }
-        if ($this->container['valid_from'] === null) {
-            $invalidProperties[] = "'valid_from' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         return $invalidProperties;
     }
@@ -282,241 +225,73 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets aadhaar
+     * Gets id
      *
      * @return string
      */
-    public function getAadhaar()
+    public function getId()
     {
-        return $this->container['aadhaar'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets aadhaar
+     * Sets id
      *
-     * @param string $aadhaar aadhaar
+     * @param string $id id
      *
      * @return self
      */
-    public function setAadhaar($aadhaar)
+    public function setId($id)
     {
-        $this->container['aadhaar'] = $aadhaar;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets uri
+     * Gets name
      *
      * @return string
      */
-    public function getUri()
+    public function getName()
     {
-        return $this->container['uri'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets uri
+     * Sets name
      *
-     * @param string $uri uri
+     * @param string $name name
      *
      * @return self
      */
-    public function setUri($uri)
+    public function setName($name)
     {
-        $this->container['uri'] = $uri;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets doc_type
-     *
-     * @return string
-     */
-    public function getDocType()
-    {
-        return $this->container['doc_type'];
-    }
-
-    /**
-     * Sets doc_type
-     *
-     * @param string $doc_type doc_type
-     *
-     * @return self
-     */
-    public function setDocType($doc_type)
-    {
-        $this->container['doc_type'] = $doc_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets doc_name
-     *
-     * @return string
-     */
-    public function getDocName()
-    {
-        return $this->container['doc_name'];
-    }
-
-    /**
-     * Sets doc_name
-     *
-     * @param string $doc_name doc_name
-     *
-     * @return self
-     */
-    public function setDocName($doc_name)
-    {
-        $this->container['doc_name'] = $doc_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets doc_id
-     *
-     * @return string
-     */
-    public function getDocId()
-    {
-        return $this->container['doc_id'];
-    }
-
-    /**
-     * Sets doc_id
-     *
-     * @param string $doc_id doc_id
-     *
-     * @return self
-     */
-    public function setDocId($doc_id)
-    {
-        $this->container['doc_id'] = $doc_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets issued_on
-     *
-     * @return string
-     */
-    public function getIssuedOn()
-    {
-        return $this->container['issued_on'];
-    }
-
-    /**
-     * Sets issued_on
-     *
-     * @param string $issued_on issued_on
-     *
-     * @return self
-     */
-    public function setIssuedOn($issued_on)
-    {
-        $this->container['issued_on'] = $issued_on;
-
-        return $this;
-    }
-
-    /**
-     * Gets valid_from
-     *
-     * @return string
-     */
-    public function getValidFrom()
-    {
-        return $this->container['valid_from'];
-    }
-
-    /**
-     * Sets valid_from
-     *
-     * @param string $valid_from valid_from
-     *
-     * @return self
-     */
-    public function setValidFrom($valid_from)
-    {
-        $this->container['valid_from'] = $valid_from;
-
-        return $this;
-    }
-
-    /**
-     * Gets valid_to
+     * Gets logo_url
      *
      * @return string|null
      */
-    public function getValidTo()
+    public function getLogoUrl()
     {
-        return $this->container['valid_to'];
+        return $this->container['logo_url'];
     }
 
     /**
-     * Sets valid_to
+     * Sets logo_url
      *
-     * @param string|null $valid_to valid_to
+     * @param string|null $logo_url logo_url
      *
      * @return self
      */
-    public function setValidTo($valid_to)
+    public function setLogoUrl($logo_url)
     {
-        $this->container['valid_to'] = $valid_to;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return string|null
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param string|null $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Gets action
-     *
-     * @return string|null
-     */
-    public function getAction()
-    {
-        return $this->container['action'];
-    }
-
-    /**
-     * Sets action
-     *
-     * @param string|null $action action
-     *
-     * @return self
-     */
-    public function setAction($action)
-    {
-        $this->container['action'] = $action;
+        $this->container['logo_url'] = $logo_url;
 
         return $this;
     }

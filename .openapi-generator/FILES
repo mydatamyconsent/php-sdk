@@ -16,6 +16,7 @@ docs/Model/CreateDataProcessingAgreementRequestModel.md
 docs/Model/CreateIndividualDataConsentRequest.md
 docs/Model/CreateOrganizationDataConsentRequest.md
 docs/Model/DataConsentDetailsDto.md
+docs/Model/DataConsentDocumentDetailsDto.md
 docs/Model/DataConsentDocumentsDto.md
 docs/Model/DataConsentFinancialsDto.md
 docs/Model/DataConsentRequestedDocument.md
@@ -62,6 +63,9 @@ docs/Model/PushUriRequest.md
 docs/Model/PushUriResponse.md
 docs/Model/SharedWith.md
 docs/Model/StringStringKeyValuePair.md
+docs/Model/SupportedDocumentDetailsDto.md
+docs/Model/SupportedDocumentProviderDetailsDto.md
+docs/Model/SupportedDocumentTypeCategoryDetailsDto.md
 docs/Model/SupportedEntityType.md
 docs/Model/SupportedIdentifier.md
 docs/Model/UpdateDataProcessingAgreementRequestModel.md
@@ -90,6 +94,7 @@ lib/Model/CreateDataProcessingAgreementRequestModel.php
 lib/Model/CreateIndividualDataConsentRequest.php
 lib/Model/CreateOrganizationDataConsentRequest.php
 lib/Model/DataConsentDetailsDto.php
+lib/Model/DataConsentDocumentDetailsDto.php
 lib/Model/DataConsentDocumentsDto.php
 lib/Model/DataConsentFinancialsDto.php
 lib/Model/DataConsentRequestedDocument.php
@@ -137,6 +142,9 @@ lib/Model/PushUriRequest.php
 lib/Model/PushUriResponse.php
 lib/Model/SharedWith.php
 lib/Model/StringStringKeyValuePair.php
+lib/Model/SupportedDocumentDetailsDto.php
+lib/Model/SupportedDocumentProviderDetailsDto.php
+lib/Model/SupportedDocumentTypeCategoryDetailsDto.php
 lib/Model/SupportedEntityType.php
 lib/Model/SupportedIdentifier.php
 lib/Model/UpdateDataProcessingAgreementRequestModel.php

@@ -227,6 +227,9 @@ class PushUriRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['uri_details'] === null) {
+            $invalidProperties[] = "'uri_details' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -245,7 +248,7 @@ class PushUriRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets uri_details
      *
-     * @return \MyDataMyConsent\Model\UriDetails|null
+     * @return \MyDataMyConsent\Model\UriDetails
      */
     public function getUriDetails()
     {
@@ -255,7 +258,7 @@ class PushUriRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uri_details
      *
-     * @param \MyDataMyConsent\Model\UriDetails|null $uri_details uri_details
+     * @param \MyDataMyConsent\Model\UriDetails $uri_details uri_details
      *
      * @return self
      */

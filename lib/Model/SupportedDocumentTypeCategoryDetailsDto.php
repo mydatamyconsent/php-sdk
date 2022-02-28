@@ -1,6 +1,6 @@
 <?php
 /**
- * UriDetails
+ * SupportedDocumentTypeCategoryDetailsDto
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * UriDetails Class Doc Comment
+ * SupportedDocumentTypeCategoryDetailsDto Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
+class SupportedDocumentTypeCategoryDetailsDto implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UriDetails';
+    protected static $openAPIModelName = 'SupportedDocumentTypeCategoryDetailsDto';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,16 +60,10 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'aadhaar' => 'string',
-        'uri' => 'string',
-        'doc_type' => 'string',
-        'doc_name' => 'string',
-        'doc_id' => 'string',
-        'issued_on' => 'string',
-        'valid_from' => 'string',
-        'valid_to' => 'string',
-        'timestamp' => 'string',
-        'action' => 'string'
+        'document_type_category_id' => 'string',
+        'document_type_category_name' => 'string',
+        'supported_documents' => '\MyDataMyConsent\Model\SupportedDocumentDetailsDto[]',
+        'supported_document_provider_details' => '\MyDataMyConsent\Model\SupportedDocumentProviderDetailsDto[]'
     ];
 
     /**
@@ -80,16 +74,10 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'aadhaar' => null,
-        'uri' => null,
-        'doc_type' => null,
-        'doc_name' => null,
-        'doc_id' => null,
-        'issued_on' => null,
-        'valid_from' => null,
-        'valid_to' => null,
-        'timestamp' => null,
-        'action' => null
+        'document_type_category_id' => 'uuid',
+        'document_type_category_name' => null,
+        'supported_documents' => null,
+        'supported_document_provider_details' => null
     ];
 
     /**
@@ -119,16 +107,10 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'aadhaar' => 'aadhaar',
-        'uri' => 'uri',
-        'doc_type' => 'docType',
-        'doc_name' => 'docName',
-        'doc_id' => 'docId',
-        'issued_on' => 'issuedOn',
-        'valid_from' => 'validFrom',
-        'valid_to' => 'validTo',
-        'timestamp' => 'timestamp',
-        'action' => 'action'
+        'document_type_category_id' => 'documentTypeCategoryId',
+        'document_type_category_name' => 'documentTypeCategoryName',
+        'supported_documents' => 'supportedDocuments',
+        'supported_document_provider_details' => 'supportedDocumentProviderDetails'
     ];
 
     /**
@@ -137,16 +119,10 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'aadhaar' => 'setAadhaar',
-        'uri' => 'setUri',
-        'doc_type' => 'setDocType',
-        'doc_name' => 'setDocName',
-        'doc_id' => 'setDocId',
-        'issued_on' => 'setIssuedOn',
-        'valid_from' => 'setValidFrom',
-        'valid_to' => 'setValidTo',
-        'timestamp' => 'setTimestamp',
-        'action' => 'setAction'
+        'document_type_category_id' => 'setDocumentTypeCategoryId',
+        'document_type_category_name' => 'setDocumentTypeCategoryName',
+        'supported_documents' => 'setSupportedDocuments',
+        'supported_document_provider_details' => 'setSupportedDocumentProviderDetails'
     ];
 
     /**
@@ -155,16 +131,10 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'aadhaar' => 'getAadhaar',
-        'uri' => 'getUri',
-        'doc_type' => 'getDocType',
-        'doc_name' => 'getDocName',
-        'doc_id' => 'getDocId',
-        'issued_on' => 'getIssuedOn',
-        'valid_from' => 'getValidFrom',
-        'valid_to' => 'getValidTo',
-        'timestamp' => 'getTimestamp',
-        'action' => 'getAction'
+        'document_type_category_id' => 'getDocumentTypeCategoryId',
+        'document_type_category_name' => 'getDocumentTypeCategoryName',
+        'supported_documents' => 'getSupportedDocuments',
+        'supported_document_provider_details' => 'getSupportedDocumentProviderDetails'
     ];
 
     /**
@@ -224,16 +194,10 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['aadhaar'] = $data['aadhaar'] ?? null;
-        $this->container['uri'] = $data['uri'] ?? null;
-        $this->container['doc_type'] = $data['doc_type'] ?? null;
-        $this->container['doc_name'] = $data['doc_name'] ?? null;
-        $this->container['doc_id'] = $data['doc_id'] ?? null;
-        $this->container['issued_on'] = $data['issued_on'] ?? null;
-        $this->container['valid_from'] = $data['valid_from'] ?? null;
-        $this->container['valid_to'] = $data['valid_to'] ?? null;
-        $this->container['timestamp'] = $data['timestamp'] ?? null;
-        $this->container['action'] = $data['action'] ?? null;
+        $this->container['document_type_category_id'] = $data['document_type_category_id'] ?? null;
+        $this->container['document_type_category_name'] = $data['document_type_category_name'] ?? null;
+        $this->container['supported_documents'] = $data['supported_documents'] ?? null;
+        $this->container['supported_document_provider_details'] = $data['supported_document_provider_details'] ?? null;
     }
 
     /**
@@ -245,26 +209,17 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['aadhaar'] === null) {
-            $invalidProperties[] = "'aadhaar' can't be null";
+        if ($this->container['document_type_category_id'] === null) {
+            $invalidProperties[] = "'document_type_category_id' can't be null";
         }
-        if ($this->container['uri'] === null) {
-            $invalidProperties[] = "'uri' can't be null";
+        if ($this->container['document_type_category_name'] === null) {
+            $invalidProperties[] = "'document_type_category_name' can't be null";
         }
-        if ($this->container['doc_type'] === null) {
-            $invalidProperties[] = "'doc_type' can't be null";
+        if ($this->container['supported_documents'] === null) {
+            $invalidProperties[] = "'supported_documents' can't be null";
         }
-        if ($this->container['doc_name'] === null) {
-            $invalidProperties[] = "'doc_name' can't be null";
-        }
-        if ($this->container['doc_id'] === null) {
-            $invalidProperties[] = "'doc_id' can't be null";
-        }
-        if ($this->container['issued_on'] === null) {
-            $invalidProperties[] = "'issued_on' can't be null";
-        }
-        if ($this->container['valid_from'] === null) {
-            $invalidProperties[] = "'valid_from' can't be null";
+        if ($this->container['supported_document_provider_details'] === null) {
+            $invalidProperties[] = "'supported_document_provider_details' can't be null";
         }
         return $invalidProperties;
     }
@@ -282,241 +237,97 @@ class UriDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets aadhaar
+     * Gets document_type_category_id
      *
      * @return string
      */
-    public function getAadhaar()
+    public function getDocumentTypeCategoryId()
     {
-        return $this->container['aadhaar'];
+        return $this->container['document_type_category_id'];
     }
 
     /**
-     * Sets aadhaar
+     * Sets document_type_category_id
      *
-     * @param string $aadhaar aadhaar
+     * @param string $document_type_category_id document_type_category_id
      *
      * @return self
      */
-    public function setAadhaar($aadhaar)
+    public function setDocumentTypeCategoryId($document_type_category_id)
     {
-        $this->container['aadhaar'] = $aadhaar;
+        $this->container['document_type_category_id'] = $document_type_category_id;
 
         return $this;
     }
 
     /**
-     * Gets uri
+     * Gets document_type_category_name
      *
      * @return string
      */
-    public function getUri()
+    public function getDocumentTypeCategoryName()
     {
-        return $this->container['uri'];
+        return $this->container['document_type_category_name'];
     }
 
     /**
-     * Sets uri
+     * Sets document_type_category_name
      *
-     * @param string $uri uri
+     * @param string $document_type_category_name document_type_category_name
      *
      * @return self
      */
-    public function setUri($uri)
+    public function setDocumentTypeCategoryName($document_type_category_name)
     {
-        $this->container['uri'] = $uri;
+        $this->container['document_type_category_name'] = $document_type_category_name;
 
         return $this;
     }
 
     /**
-     * Gets doc_type
+     * Gets supported_documents
      *
-     * @return string
+     * @return \MyDataMyConsent\Model\SupportedDocumentDetailsDto[]
      */
-    public function getDocType()
+    public function getSupportedDocuments()
     {
-        return $this->container['doc_type'];
+        return $this->container['supported_documents'];
     }
 
     /**
-     * Sets doc_type
+     * Sets supported_documents
      *
-     * @param string $doc_type doc_type
+     * @param \MyDataMyConsent\Model\SupportedDocumentDetailsDto[] $supported_documents supported_documents
      *
      * @return self
      */
-    public function setDocType($doc_type)
+    public function setSupportedDocuments($supported_documents)
     {
-        $this->container['doc_type'] = $doc_type;
+        $this->container['supported_documents'] = $supported_documents;
 
         return $this;
     }
 
     /**
-     * Gets doc_name
+     * Gets supported_document_provider_details
      *
-     * @return string
+     * @return \MyDataMyConsent\Model\SupportedDocumentProviderDetailsDto[]
      */
-    public function getDocName()
+    public function getSupportedDocumentProviderDetails()
     {
-        return $this->container['doc_name'];
+        return $this->container['supported_document_provider_details'];
     }
 
     /**
-     * Sets doc_name
+     * Sets supported_document_provider_details
      *
-     * @param string $doc_name doc_name
+     * @param \MyDataMyConsent\Model\SupportedDocumentProviderDetailsDto[] $supported_document_provider_details supported_document_provider_details
      *
      * @return self
      */
-    public function setDocName($doc_name)
+    public function setSupportedDocumentProviderDetails($supported_document_provider_details)
     {
-        $this->container['doc_name'] = $doc_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets doc_id
-     *
-     * @return string
-     */
-    public function getDocId()
-    {
-        return $this->container['doc_id'];
-    }
-
-    /**
-     * Sets doc_id
-     *
-     * @param string $doc_id doc_id
-     *
-     * @return self
-     */
-    public function setDocId($doc_id)
-    {
-        $this->container['doc_id'] = $doc_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets issued_on
-     *
-     * @return string
-     */
-    public function getIssuedOn()
-    {
-        return $this->container['issued_on'];
-    }
-
-    /**
-     * Sets issued_on
-     *
-     * @param string $issued_on issued_on
-     *
-     * @return self
-     */
-    public function setIssuedOn($issued_on)
-    {
-        $this->container['issued_on'] = $issued_on;
-
-        return $this;
-    }
-
-    /**
-     * Gets valid_from
-     *
-     * @return string
-     */
-    public function getValidFrom()
-    {
-        return $this->container['valid_from'];
-    }
-
-    /**
-     * Sets valid_from
-     *
-     * @param string $valid_from valid_from
-     *
-     * @return self
-     */
-    public function setValidFrom($valid_from)
-    {
-        $this->container['valid_from'] = $valid_from;
-
-        return $this;
-    }
-
-    /**
-     * Gets valid_to
-     *
-     * @return string|null
-     */
-    public function getValidTo()
-    {
-        return $this->container['valid_to'];
-    }
-
-    /**
-     * Sets valid_to
-     *
-     * @param string|null $valid_to valid_to
-     *
-     * @return self
-     */
-    public function setValidTo($valid_to)
-    {
-        $this->container['valid_to'] = $valid_to;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return string|null
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param string|null $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Gets action
-     *
-     * @return string|null
-     */
-    public function getAction()
-    {
-        return $this->container['action'];
-    }
-
-    /**
-     * Sets action
-     *
-     * @param string|null $action action
-     *
-     * @return self
-     */
-    public function setAction($action)
-    {
-        $this->container['action'] = $action;
+        $this->container['supported_document_provider_details'] = $supported_document_provider_details;
 
         return $this;
     }

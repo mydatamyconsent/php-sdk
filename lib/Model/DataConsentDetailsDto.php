@@ -73,7 +73,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'expires_at_utc' => '\DateTime',
         'requested_at_utc' => '\DateTime',
         'identifiers' => '\MyDataMyConsent\Model\JsonSchema',
-        'documents' => 'string',
+        'documents' => '\MyDataMyConsent\Model\DataConsentDocumentDetailsDto[]',
         'financials' => 'string',
         'health_records' => 'string'
     ];
@@ -614,7 +614,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets documents
      *
-     * @return string|null
+     * @return \MyDataMyConsent\Model\DataConsentDocumentDetailsDto[]|null
      */
     public function getDocuments()
     {
@@ -624,7 +624,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets documents
      *
-     * @param string|null $documents documents
+     * @param \MyDataMyConsent\Model\DataConsentDocumentDetailsDto[]|null $documents documents
      *
      * @return self
      */

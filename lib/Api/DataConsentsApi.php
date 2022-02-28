@@ -4614,7 +4614,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataConsentDetailsDto|object
+     * @return \MyDataMyConsent\Model\DataConsentDetailsDto|object|object
      */
     public function getOrganizationConsentDetailsById($consent_id)
     {
@@ -4631,7 +4631,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataConsentDetailsDto|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\DataConsentDetailsDto|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrganizationConsentDetailsByIdWithHttpInfo($consent_id)
     {
@@ -4697,6 +4697,18 @@ class DataConsentsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\MyDataMyConsent\Model\DataConsentDetailsDto';
@@ -4723,6 +4735,14 @@ class DataConsentsApi
                     $e->setResponseObject($data);
                     break;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
