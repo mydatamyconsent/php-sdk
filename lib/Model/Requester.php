@@ -1,6 +1,6 @@
 <?php
 /**
- * JsonSchema
+ * Requester
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * JsonSchema Class Doc Comment
+ * Requester Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
+class Requester implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'JsonSchema';
+    protected static $openAPIModelName = 'Requester';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,14 @@ class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'keywords' => 'object[]',
-        'other_data' => 'array<string,mixed>',
-        'bool_value' => 'bool'
+        'id' => 'string',
+        'name' => 'string',
+        'logo_url' => 'string',
+        'description' => 'string',
+        'location' => 'string',
+        'website_url' => 'string',
+        'support_email' => 'string',
+        'help_line_number' => 'string'
     ];
 
     /**
@@ -73,9 +78,14 @@ class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'keywords' => null,
-        'other_data' => null,
-        'bool_value' => null
+        'id' => 'uuid',
+        'name' => null,
+        'logo_url' => null,
+        'description' => null,
+        'location' => null,
+        'website_url' => null,
+        'support_email' => null,
+        'help_line_number' => null
     ];
 
     /**
@@ -105,9 +115,14 @@ class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'keywords' => 'keywords',
-        'other_data' => 'otherData',
-        'bool_value' => 'boolValue'
+        'id' => 'id',
+        'name' => 'name',
+        'logo_url' => 'logoUrl',
+        'description' => 'description',
+        'location' => 'location',
+        'website_url' => 'websiteUrl',
+        'support_email' => 'supportEmail',
+        'help_line_number' => 'helpLineNumber'
     ];
 
     /**
@@ -116,9 +131,14 @@ class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'keywords' => 'setKeywords',
-        'other_data' => 'setOtherData',
-        'bool_value' => 'setBoolValue'
+        'id' => 'setId',
+        'name' => 'setName',
+        'logo_url' => 'setLogoUrl',
+        'description' => 'setDescription',
+        'location' => 'setLocation',
+        'website_url' => 'setWebsiteUrl',
+        'support_email' => 'setSupportEmail',
+        'help_line_number' => 'setHelpLineNumber'
     ];
 
     /**
@@ -127,9 +147,14 @@ class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'keywords' => 'getKeywords',
-        'other_data' => 'getOtherData',
-        'bool_value' => 'getBoolValue'
+        'id' => 'getId',
+        'name' => 'getName',
+        'logo_url' => 'getLogoUrl',
+        'description' => 'getDescription',
+        'location' => 'getLocation',
+        'website_url' => 'getWebsiteUrl',
+        'support_email' => 'getSupportEmail',
+        'help_line_number' => 'getHelpLineNumber'
     ];
 
     /**
@@ -189,9 +214,14 @@ class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['keywords'] = $data['keywords'] ?? null;
-        $this->container['other_data'] = $data['other_data'] ?? null;
-        $this->container['bool_value'] = $data['bool_value'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['logo_url'] = $data['logo_url'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['location'] = $data['location'] ?? null;
+        $this->container['website_url'] = $data['website_url'] ?? null;
+        $this->container['support_email'] = $data['support_email'] ?? null;
+        $this->container['help_line_number'] = $data['help_line_number'] ?? null;
     }
 
     /**
@@ -203,6 +233,12 @@ class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -219,73 +255,193 @@ class JsonSchema implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets keywords
+     * Gets id
      *
-     * @return object[]|null
+     * @return string
      */
-    public function getKeywords()
+    public function getId()
     {
-        return $this->container['keywords'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets keywords
+     * Sets id
      *
-     * @param object[]|null $keywords keywords
+     * @param string $id id
      *
      * @return self
      */
-    public function setKeywords($keywords)
+    public function setId($id)
     {
-        $this->container['keywords'] = $keywords;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets other_data
+     * Gets name
      *
-     * @return array<string,mixed>|null
+     * @return string
      */
-    public function getOtherData()
+    public function getName()
     {
-        return $this->container['other_data'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets other_data
+     * Sets name
      *
-     * @param array<string,mixed>|null $other_data other_data
+     * @param string $name name
      *
      * @return self
      */
-    public function setOtherData($other_data)
+    public function setName($name)
     {
-        $this->container['other_data'] = $other_data;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets bool_value
+     * Gets logo_url
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getBoolValue()
+    public function getLogoUrl()
     {
-        return $this->container['bool_value'];
+        return $this->container['logo_url'];
     }
 
     /**
-     * Sets bool_value
+     * Sets logo_url
      *
-     * @param bool|null $bool_value bool_value
+     * @param string|null $logo_url logo_url
      *
      * @return self
      */
-    public function setBoolValue($bool_value)
+    public function setLogoUrl($logo_url)
     {
-        $this->container['bool_value'] = $bool_value;
+        $this->container['logo_url'] = $logo_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets location
+     *
+     * @return string|null
+     */
+    public function getLocation()
+    {
+        return $this->container['location'];
+    }
+
+    /**
+     * Sets location
+     *
+     * @param string|null $location location
+     *
+     * @return self
+     */
+    public function setLocation($location)
+    {
+        $this->container['location'] = $location;
+
+        return $this;
+    }
+
+    /**
+     * Gets website_url
+     *
+     * @return string|null
+     */
+    public function getWebsiteUrl()
+    {
+        return $this->container['website_url'];
+    }
+
+    /**
+     * Sets website_url
+     *
+     * @param string|null $website_url website_url
+     *
+     * @return self
+     */
+    public function setWebsiteUrl($website_url)
+    {
+        $this->container['website_url'] = $website_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets support_email
+     *
+     * @return string|null
+     */
+    public function getSupportEmail()
+    {
+        return $this->container['support_email'];
+    }
+
+    /**
+     * Sets support_email
+     *
+     * @param string|null $support_email support_email
+     *
+     * @return self
+     */
+    public function setSupportEmail($support_email)
+    {
+        $this->container['support_email'] = $support_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets help_line_number
+     *
+     * @return string|null
+     */
+    public function getHelpLineNumber()
+    {
+        return $this->container['help_line_number'];
+    }
+
+    /**
+     * Sets help_line_number
+     *
+     * @param string|null $help_line_number help_line_number
+     *
+     * @return self
+     */
+    public function setHelpLineNumber($help_line_number)
+    {
+        $this->container['help_line_number'] = $help_line_number;
 
         return $this;
     }

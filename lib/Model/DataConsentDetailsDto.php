@@ -64,15 +64,13 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'title' => 'string',
         'description' => 'string',
         'data_life' => '\MyDataMyConsent\Model\Life',
-        'requester_name' => 'string',
-        'requester_logo' => 'string',
-        'location' => 'string',
+        'requested_by_org' => '\MyDataMyConsent\Model\Requester',
         'status' => '\MyDataMyConsent\Model\DataConsentStatus',
         'approved_at_utc' => '\DateTime',
         'rejected_at_utc' => '\DateTime',
         'expires_at_utc' => '\DateTime',
         'requested_at_utc' => '\DateTime',
-        'identifiers' => '\MyDataMyConsent\Model\JsonSchema',
+        'identifiers' => 'mixed',
         'documents' => '\MyDataMyConsent\Model\DataConsentDocumentDetailsDto[]',
         'financials' => 'string',
         'health_records' => 'string'
@@ -90,9 +88,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'title' => null,
         'description' => null,
         'data_life' => null,
-        'requester_name' => null,
-        'requester_logo' => null,
-        'location' => null,
+        'requested_by_org' => null,
         'status' => null,
         'approved_at_utc' => 'date-time',
         'rejected_at_utc' => 'date-time',
@@ -135,9 +131,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'title' => 'title',
         'description' => 'description',
         'data_life' => 'dataLife',
-        'requester_name' => 'requesterName',
-        'requester_logo' => 'requesterLogo',
-        'location' => 'location',
+        'requested_by_org' => 'requestedByOrg',
         'status' => 'status',
         'approved_at_utc' => 'approvedAtUtc',
         'rejected_at_utc' => 'rejectedAtUtc',
@@ -159,9 +153,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'title' => 'setTitle',
         'description' => 'setDescription',
         'data_life' => 'setDataLife',
-        'requester_name' => 'setRequesterName',
-        'requester_logo' => 'setRequesterLogo',
-        'location' => 'setLocation',
+        'requested_by_org' => 'setRequestedByOrg',
         'status' => 'setStatus',
         'approved_at_utc' => 'setApprovedAtUtc',
         'rejected_at_utc' => 'setRejectedAtUtc',
@@ -183,9 +175,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'title' => 'getTitle',
         'description' => 'getDescription',
         'data_life' => 'getDataLife',
-        'requester_name' => 'getRequesterName',
-        'requester_logo' => 'getRequesterLogo',
-        'location' => 'getLocation',
+        'requested_by_org' => 'getRequestedByOrg',
         'status' => 'getStatus',
         'approved_at_utc' => 'getApprovedAtUtc',
         'rejected_at_utc' => 'getRejectedAtUtc',
@@ -258,9 +248,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['title'] = $data['title'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['data_life'] = $data['data_life'] ?? null;
-        $this->container['requester_name'] = $data['requester_name'] ?? null;
-        $this->container['requester_logo'] = $data['requester_logo'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
+        $this->container['requested_by_org'] = $data['requested_by_org'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
         $this->container['rejected_at_utc'] = $data['rejected_at_utc'] ?? null;
@@ -396,73 +384,25 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets requester_name
+     * Gets requested_by_org
      *
-     * @return string|null
+     * @return \MyDataMyConsent\Model\Requester|null
      */
-    public function getRequesterName()
+    public function getRequestedByOrg()
     {
-        return $this->container['requester_name'];
+        return $this->container['requested_by_org'];
     }
 
     /**
-     * Sets requester_name
+     * Sets requested_by_org
      *
-     * @param string|null $requester_name requester_name
+     * @param \MyDataMyConsent\Model\Requester|null $requested_by_org requested_by_org
      *
      * @return self
      */
-    public function setRequesterName($requester_name)
+    public function setRequestedByOrg($requested_by_org)
     {
-        $this->container['requester_name'] = $requester_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets requester_logo
-     *
-     * @return string|null
-     */
-    public function getRequesterLogo()
-    {
-        return $this->container['requester_logo'];
-    }
-
-    /**
-     * Sets requester_logo
-     *
-     * @param string|null $requester_logo requester_logo
-     *
-     * @return self
-     */
-    public function setRequesterLogo($requester_logo)
-    {
-        $this->container['requester_logo'] = $requester_logo;
-
-        return $this;
-    }
-
-    /**
-     * Gets location
-     *
-     * @return string|null
-     */
-    public function getLocation()
-    {
-        return $this->container['location'];
-    }
-
-    /**
-     * Sets location
-     *
-     * @param string|null $location location
-     *
-     * @return self
-     */
-    public function setLocation($location)
-    {
-        $this->container['location'] = $location;
+        $this->container['requested_by_org'] = $requested_by_org;
 
         return $this;
     }
@@ -590,7 +530,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets identifiers
      *
-     * @return \MyDataMyConsent\Model\JsonSchema|null
+     * @return mixed|null
      */
     public function getIdentifiers()
     {
@@ -600,7 +540,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets identifiers
      *
-     * @param \MyDataMyConsent\Model\JsonSchema|null $identifiers identifiers
+     * @param mixed|null $identifiers identifiers
      *
      * @return self
      */
