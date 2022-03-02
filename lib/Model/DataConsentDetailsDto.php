@@ -60,7 +60,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'consent_request_id' => 'string',
         'title' => 'string',
         'description' => 'string',
         'data_life' => '\MyDataMyConsent\Model\Life',
@@ -68,12 +68,11 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => '\MyDataMyConsent\Model\DataConsentStatus',
         'approved_at_utc' => '\DateTime',
         'rejected_at_utc' => '\DateTime',
-        'expires_at_utc' => '\DateTime',
+        'revoked_at_utc' => '\DateTime',
+        'requested_expires_at_utc' => '\DateTime',
         'requested_at_utc' => '\DateTime',
         'identifiers' => 'mixed',
-        'documents' => '\MyDataMyConsent\Model\DataConsentDocumentDetailsDto[]',
-        'financials' => 'string',
-        'health_records' => 'string'
+        'documents' => '\MyDataMyConsent\Model\DataConsentDocumentDetailsDto[]'
     ];
 
     /**
@@ -84,7 +83,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'uuid',
+        'consent_request_id' => 'uuid',
         'title' => null,
         'description' => null,
         'data_life' => null,
@@ -92,12 +91,11 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => null,
         'approved_at_utc' => 'date-time',
         'rejected_at_utc' => 'date-time',
-        'expires_at_utc' => 'date-time',
+        'revoked_at_utc' => 'date-time',
+        'requested_expires_at_utc' => 'date-time',
         'requested_at_utc' => 'date-time',
         'identifiers' => null,
-        'documents' => null,
-        'financials' => null,
-        'health_records' => null
+        'documents' => null
     ];
 
     /**
@@ -127,7 +125,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'consent_request_id' => 'consentRequestId',
         'title' => 'title',
         'description' => 'description',
         'data_life' => 'dataLife',
@@ -135,12 +133,11 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => 'status',
         'approved_at_utc' => 'approvedAtUtc',
         'rejected_at_utc' => 'rejectedAtUtc',
-        'expires_at_utc' => 'expiresAtUtc',
+        'revoked_at_utc' => 'revokedAtUtc',
+        'requested_expires_at_utc' => 'requestedExpiresAtUtc',
         'requested_at_utc' => 'requestedAtUtc',
         'identifiers' => 'identifiers',
-        'documents' => 'documents',
-        'financials' => 'financials',
-        'health_records' => 'healthRecords'
+        'documents' => 'documents'
     ];
 
     /**
@@ -149,7 +146,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'consent_request_id' => 'setConsentRequestId',
         'title' => 'setTitle',
         'description' => 'setDescription',
         'data_life' => 'setDataLife',
@@ -157,12 +154,11 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => 'setStatus',
         'approved_at_utc' => 'setApprovedAtUtc',
         'rejected_at_utc' => 'setRejectedAtUtc',
-        'expires_at_utc' => 'setExpiresAtUtc',
+        'revoked_at_utc' => 'setRevokedAtUtc',
+        'requested_expires_at_utc' => 'setRequestedExpiresAtUtc',
         'requested_at_utc' => 'setRequestedAtUtc',
         'identifiers' => 'setIdentifiers',
-        'documents' => 'setDocuments',
-        'financials' => 'setFinancials',
-        'health_records' => 'setHealthRecords'
+        'documents' => 'setDocuments'
     ];
 
     /**
@@ -171,7 +167,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'consent_request_id' => 'getConsentRequestId',
         'title' => 'getTitle',
         'description' => 'getDescription',
         'data_life' => 'getDataLife',
@@ -179,12 +175,11 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => 'getStatus',
         'approved_at_utc' => 'getApprovedAtUtc',
         'rejected_at_utc' => 'getRejectedAtUtc',
-        'expires_at_utc' => 'getExpiresAtUtc',
+        'revoked_at_utc' => 'getRevokedAtUtc',
+        'requested_expires_at_utc' => 'getRequestedExpiresAtUtc',
         'requested_at_utc' => 'getRequestedAtUtc',
         'identifiers' => 'getIdentifiers',
-        'documents' => 'getDocuments',
-        'financials' => 'getFinancials',
-        'health_records' => 'getHealthRecords'
+        'documents' => 'getDocuments'
     ];
 
     /**
@@ -244,7 +239,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['consent_request_id'] = $data['consent_request_id'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['data_life'] = $data['data_life'] ?? null;
@@ -252,12 +247,11 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['status'] = $data['status'] ?? null;
         $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
         $this->container['rejected_at_utc'] = $data['rejected_at_utc'] ?? null;
-        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
+        $this->container['revoked_at_utc'] = $data['revoked_at_utc'] ?? null;
+        $this->container['requested_expires_at_utc'] = $data['requested_expires_at_utc'] ?? null;
         $this->container['requested_at_utc'] = $data['requested_at_utc'] ?? null;
         $this->container['identifiers'] = $data['identifiers'] ?? null;
         $this->container['documents'] = $data['documents'] ?? null;
-        $this->container['financials'] = $data['financials'] ?? null;
-        $this->container['health_records'] = $data['health_records'] ?? null;
     }
 
     /**
@@ -269,8 +263,8 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['consent_request_id'] === null) {
+            $invalidProperties[] = "'consent_request_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -288,25 +282,25 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets id
+     * Gets consent_request_id
      *
      * @return string
      */
-    public function getId()
+    public function getConsentRequestId()
     {
-        return $this->container['id'];
+        return $this->container['consent_request_id'];
     }
 
     /**
-     * Sets id
+     * Sets consent_request_id
      *
-     * @param string $id id
+     * @param string $consent_request_id consent_request_id
      *
      * @return self
      */
-    public function setId($id)
+    public function setConsentRequestId($consent_request_id)
     {
-        $this->container['id'] = $id;
+        $this->container['consent_request_id'] = $consent_request_id;
 
         return $this;
     }
@@ -480,25 +474,49 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets expires_at_utc
+     * Gets revoked_at_utc
      *
      * @return \DateTime|null
      */
-    public function getExpiresAtUtc()
+    public function getRevokedAtUtc()
     {
-        return $this->container['expires_at_utc'];
+        return $this->container['revoked_at_utc'];
     }
 
     /**
-     * Sets expires_at_utc
+     * Sets revoked_at_utc
      *
-     * @param \DateTime|null $expires_at_utc expires_at_utc
+     * @param \DateTime|null $revoked_at_utc revoked_at_utc
      *
      * @return self
      */
-    public function setExpiresAtUtc($expires_at_utc)
+    public function setRevokedAtUtc($revoked_at_utc)
     {
-        $this->container['expires_at_utc'] = $expires_at_utc;
+        $this->container['revoked_at_utc'] = $revoked_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets requested_expires_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getRequestedExpiresAtUtc()
+    {
+        return $this->container['requested_expires_at_utc'];
+    }
+
+    /**
+     * Sets requested_expires_at_utc
+     *
+     * @param \DateTime|null $requested_expires_at_utc requested_expires_at_utc
+     *
+     * @return self
+     */
+    public function setRequestedExpiresAtUtc($requested_expires_at_utc)
+    {
+        $this->container['requested_expires_at_utc'] = $requested_expires_at_utc;
 
         return $this;
     }
@@ -571,54 +589,6 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDocuments($documents)
     {
         $this->container['documents'] = $documents;
-
-        return $this;
-    }
-
-    /**
-     * Gets financials
-     *
-     * @return string|null
-     */
-    public function getFinancials()
-    {
-        return $this->container['financials'];
-    }
-
-    /**
-     * Sets financials
-     *
-     * @param string|null $financials financials
-     *
-     * @return self
-     */
-    public function setFinancials($financials)
-    {
-        $this->container['financials'] = $financials;
-
-        return $this;
-    }
-
-    /**
-     * Gets health_records
-     *
-     * @return string|null
-     */
-    public function getHealthRecords()
-    {
-        return $this->container['health_records'];
-    }
-
-    /**
-     * Sets health_records
-     *
-     * @param string|null $health_records health_records
-     *
-     * @return self
-     */
-    public function setHealthRecords($health_records)
-    {
-        $this->container['health_records'] = $health_records;
 
         return $this;
     }
