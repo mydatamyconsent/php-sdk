@@ -53,6 +53,8 @@ class DataConsentStatus
 
     const EXPIRED = 'Expired';
 
+    const TIMEOUT = 'Timeout';
+
     const CANCELED = 'Canceled';
 
     /**
@@ -67,6 +69,7 @@ class DataConsentStatus
             self::REJECTED,
             self::REVOKED,
             self::EXPIRED,
+            self::TIMEOUT,
             self::CANCELED
         ];
     }

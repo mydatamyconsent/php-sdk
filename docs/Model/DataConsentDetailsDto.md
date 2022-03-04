@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **requested_by_org** | [**\MyDataMyConsent\Model\Requester**](Requester.md) |  | [optional]
 **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](DataConsentStatus.md) |  | [optional]
 **approved_at_utc** | **\DateTime** |  | [optional]
+**approved_expires_at_utc** | **\DateTime** |  | [optional]
 **rejected_at_utc** | **\DateTime** |  | [optional]
 **revoked_at_utc** | **\DateTime** |  | [optional]
 **requested_expires_at_utc** | **\DateTime** |  | [optional]

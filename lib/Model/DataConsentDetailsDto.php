@@ -67,6 +67,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'requested_by_org' => '\MyDataMyConsent\Model\Requester',
         'status' => '\MyDataMyConsent\Model\DataConsentStatus',
         'approved_at_utc' => '\DateTime',
+        'approved_expires_at_utc' => '\DateTime',
         'rejected_at_utc' => '\DateTime',
         'revoked_at_utc' => '\DateTime',
         'requested_expires_at_utc' => '\DateTime',
@@ -90,6 +91,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'requested_by_org' => null,
         'status' => null,
         'approved_at_utc' => 'date-time',
+        'approved_expires_at_utc' => 'date-time',
         'rejected_at_utc' => 'date-time',
         'revoked_at_utc' => 'date-time',
         'requested_expires_at_utc' => 'date-time',
@@ -132,6 +134,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'requested_by_org' => 'requestedByOrg',
         'status' => 'status',
         'approved_at_utc' => 'approvedAtUtc',
+        'approved_expires_at_utc' => 'approvedExpiresAtUtc',
         'rejected_at_utc' => 'rejectedAtUtc',
         'revoked_at_utc' => 'revokedAtUtc',
         'requested_expires_at_utc' => 'requestedExpiresAtUtc',
@@ -153,6 +156,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'requested_by_org' => 'setRequestedByOrg',
         'status' => 'setStatus',
         'approved_at_utc' => 'setApprovedAtUtc',
+        'approved_expires_at_utc' => 'setApprovedExpiresAtUtc',
         'rejected_at_utc' => 'setRejectedAtUtc',
         'revoked_at_utc' => 'setRevokedAtUtc',
         'requested_expires_at_utc' => 'setRequestedExpiresAtUtc',
@@ -174,6 +178,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'requested_by_org' => 'getRequestedByOrg',
         'status' => 'getStatus',
         'approved_at_utc' => 'getApprovedAtUtc',
+        'approved_expires_at_utc' => 'getApprovedExpiresAtUtc',
         'rejected_at_utc' => 'getRejectedAtUtc',
         'revoked_at_utc' => 'getRevokedAtUtc',
         'requested_expires_at_utc' => 'getRequestedExpiresAtUtc',
@@ -246,6 +251,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['requested_by_org'] = $data['requested_by_org'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
+        $this->container['approved_expires_at_utc'] = $data['approved_expires_at_utc'] ?? null;
         $this->container['rejected_at_utc'] = $data['rejected_at_utc'] ?? null;
         $this->container['revoked_at_utc'] = $data['revoked_at_utc'] ?? null;
         $this->container['requested_expires_at_utc'] = $data['requested_expires_at_utc'] ?? null;
@@ -445,6 +451,30 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setApprovedAtUtc($approved_at_utc)
     {
         $this->container['approved_at_utc'] = $approved_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets approved_expires_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getApprovedExpiresAtUtc()
+    {
+        return $this->container['approved_expires_at_utc'];
+    }
+
+    /**
+     * Sets approved_expires_at_utc
+     *
+     * @param \DateTime|null $approved_expires_at_utc approved_expires_at_utc
+     *
+     * @return self
+     */
+    public function setApprovedExpiresAtUtc($approved_expires_at_utc)
+    {
+        $this->container['approved_expires_at_utc'] = $approved_expires_at_utc;
 
         return $this;
     }

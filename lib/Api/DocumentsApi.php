@@ -2164,13 +2164,13 @@ class DocumentsApi
      * Upload a document for issuance request of organization.
      *
      * @param  string $issue_request_id Issue Request Id System.Guid. (required)
-     * @param  \SplFileObject $form_file form_file (optional)
+     * @param  \SplFileObject $form_file form_file (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string|object|object
      */
-    public function uploadDocumentForOrganization($issue_request_id, $form_file = null)
+    public function uploadDocumentForOrganization($issue_request_id, $form_file)
     {
         list($response) = $this->uploadDocumentForOrganizationWithHttpInfo($issue_request_id, $form_file);
         return $response;
@@ -2182,13 +2182,13 @@ class DocumentsApi
      * Upload a document for issuance request of organization.
      *
      * @param  string $issue_request_id Issue Request Id System.Guid. (required)
-     * @param  \SplFileObject $form_file (optional)
+     * @param  \SplFileObject $form_file (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string|object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function uploadDocumentForOrganizationWithHttpInfo($issue_request_id, $form_file = null)
+    public function uploadDocumentForOrganizationWithHttpInfo($issue_request_id, $form_file)
     {
         $request = $this->uploadDocumentForOrganizationRequest($issue_request_id, $form_file);
 
@@ -2316,12 +2316,12 @@ class DocumentsApi
      * Upload a document for issuance request of organization.
      *
      * @param  string $issue_request_id Issue Request Id System.Guid. (required)
-     * @param  \SplFileObject $form_file (optional)
+     * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadDocumentForOrganizationAsync($issue_request_id, $form_file = null)
+    public function uploadDocumentForOrganizationAsync($issue_request_id, $form_file)
     {
         return $this->uploadDocumentForOrganizationAsyncWithHttpInfo($issue_request_id, $form_file)
             ->then(
@@ -2337,12 +2337,12 @@ class DocumentsApi
      * Upload a document for issuance request of organization.
      *
      * @param  string $issue_request_id Issue Request Id System.Guid. (required)
-     * @param  \SplFileObject $form_file (optional)
+     * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadDocumentForOrganizationAsyncWithHttpInfo($issue_request_id, $form_file = null)
+    public function uploadDocumentForOrganizationAsyncWithHttpInfo($issue_request_id, $form_file)
     {
         $returnType = 'string';
         $request = $this->uploadDocumentForOrganizationRequest($issue_request_id, $form_file);
@@ -2384,17 +2384,23 @@ class DocumentsApi
      * Create request for operation 'uploadDocumentForOrganization'
      *
      * @param  string $issue_request_id Issue Request Id System.Guid. (required)
-     * @param  \SplFileObject $form_file (optional)
+     * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function uploadDocumentForOrganizationRequest($issue_request_id, $form_file = null)
+    public function uploadDocumentForOrganizationRequest($issue_request_id, $form_file)
     {
         // verify the required parameter 'issue_request_id' is set
         if ($issue_request_id === null || (is_array($issue_request_id) && count($issue_request_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $issue_request_id when calling uploadDocumentForOrganization'
+            );
+        }
+        // verify the required parameter 'form_file' is set
+        if ($form_file === null || (is_array($form_file) && count($form_file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $form_file when calling uploadDocumentForOrganization'
             );
         }
 

@@ -218,9 +218,6 @@ class SupportedDocumentTypeCategoryDetailsDto implements ModelInterface, ArrayAc
         if ($this->container['supported_documents'] === null) {
             $invalidProperties[] = "'supported_documents' can't be null";
         }
-        if ($this->container['supported_document_provider_details'] === null) {
-            $invalidProperties[] = "'supported_document_provider_details' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -311,7 +308,7 @@ class SupportedDocumentTypeCategoryDetailsDto implements ModelInterface, ArrayAc
     /**
      * Gets supported_document_provider_details
      *
-     * @return \MyDataMyConsent\Model\SupportedDocumentProviderDetailsDto[]
+     * @return \MyDataMyConsent\Model\SupportedDocumentProviderDetailsDto[]|null
      */
     public function getSupportedDocumentProviderDetails()
     {
@@ -321,7 +318,7 @@ class SupportedDocumentTypeCategoryDetailsDto implements ModelInterface, ArrayAc
     /**
      * Sets supported_document_provider_details
      *
-     * @param \MyDataMyConsent\Model\SupportedDocumentProviderDetailsDto[] $supported_document_provider_details supported_document_provider_details
+     * @param \MyDataMyConsent\Model\SupportedDocumentProviderDetailsDto[]|null $supported_document_provider_details supported_document_provider_details
      *
      * @return self
      */

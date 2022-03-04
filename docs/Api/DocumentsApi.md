@@ -386,7 +386,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **issue_request_id** | **string**| Issue Request Id System.Guid. |
- **form_file** | **\SplFileObject****\SplFileObject**|  | [optional]
+ **form_file** | **\SplFileObject****\SplFileObject**|  |
 
 ### Return type
 
