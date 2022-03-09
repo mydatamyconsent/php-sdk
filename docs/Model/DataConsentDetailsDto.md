@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | **string** |  | [optional]
 **data_life** | [**\MyDataMyConsent\Model\Life**](Life.md) |  | [optional]
 **requested_by_org** | [**\MyDataMyConsent\Model\Requester**](Requester.md) |  | [optional]
+**collectables** | [**\MyDataMyConsent\Model\CollectibleTypes[]**](CollectibleTypes.md) |  |
 **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](DataConsentStatus.md) |  | [optional]
 **approved_at_utc** | **\DateTime** |  | [optional]
 **approved_expires_at_utc** | **\DateTime** |  | [optional]

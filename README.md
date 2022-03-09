@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
 - [Activity](docs/Model/Activity.md)
 - [ApprovedConsentRequest](docs/Model/ApprovedConsentRequest.md)
 - [BankAccountType](docs/Model/BankAccountType.md)
+- [CollectibleTypes](docs/Model/CollectibleTypes.md)
 - [ConsentRequestReceiver](docs/Model/ConsentRequestReceiver.md)
 - [CreateDataProcessingAgreementRequestModel](docs/Model/CreateDataProcessingAgreementRequestModel.md)
 - [CreateIndividualDataConsentRequest](docs/Model/CreateIndividualDataConsentRequest.md)

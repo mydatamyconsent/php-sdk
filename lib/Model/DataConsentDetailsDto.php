@@ -65,6 +65,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'description' => 'string',
         'data_life' => '\MyDataMyConsent\Model\Life',
         'requested_by_org' => '\MyDataMyConsent\Model\Requester',
+        'collectables' => '\MyDataMyConsent\Model\CollectibleTypes[]',
         'status' => '\MyDataMyConsent\Model\DataConsentStatus',
         'approved_at_utc' => '\DateTime',
         'approved_expires_at_utc' => '\DateTime',
@@ -89,6 +90,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'description' => null,
         'data_life' => null,
         'requested_by_org' => null,
+        'collectables' => null,
         'status' => null,
         'approved_at_utc' => 'date-time',
         'approved_expires_at_utc' => 'date-time',
@@ -132,6 +134,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'description' => 'description',
         'data_life' => 'dataLife',
         'requested_by_org' => 'requestedByOrg',
+        'collectables' => 'collectables',
         'status' => 'status',
         'approved_at_utc' => 'approvedAtUtc',
         'approved_expires_at_utc' => 'approvedExpiresAtUtc',
@@ -154,6 +157,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'description' => 'setDescription',
         'data_life' => 'setDataLife',
         'requested_by_org' => 'setRequestedByOrg',
+        'collectables' => 'setCollectables',
         'status' => 'setStatus',
         'approved_at_utc' => 'setApprovedAtUtc',
         'approved_expires_at_utc' => 'setApprovedExpiresAtUtc',
@@ -176,6 +180,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'description' => 'getDescription',
         'data_life' => 'getDataLife',
         'requested_by_org' => 'getRequestedByOrg',
+        'collectables' => 'getCollectables',
         'status' => 'getStatus',
         'approved_at_utc' => 'getApprovedAtUtc',
         'approved_expires_at_utc' => 'getApprovedExpiresAtUtc',
@@ -249,6 +254,7 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['description'] = $data['description'] ?? null;
         $this->container['data_life'] = $data['data_life'] ?? null;
         $this->container['requested_by_org'] = $data['requested_by_org'] ?? null;
+        $this->container['collectables'] = $data['collectables'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
         $this->container['approved_expires_at_utc'] = $data['approved_expires_at_utc'] ?? null;
@@ -271,6 +277,9 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
 
         if ($this->container['consent_request_id'] === null) {
             $invalidProperties[] = "'consent_request_id' can't be null";
+        }
+        if ($this->container['collectables'] === null) {
+            $invalidProperties[] = "'collectables' can't be null";
         }
         return $invalidProperties;
     }
@@ -403,6 +412,30 @@ class DataConsentDetailsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setRequestedByOrg($requested_by_org)
     {
         $this->container['requested_by_org'] = $requested_by_org;
+
+        return $this;
+    }
+
+    /**
+     * Gets collectables
+     *
+     * @return \MyDataMyConsent\Model\CollectibleTypes[]
+     */
+    public function getCollectables()
+    {
+        return $this->container['collectables'];
+    }
+
+    /**
+     * Sets collectables
+     *
+     * @param \MyDataMyConsent\Model\CollectibleTypes[] $collectables collectables
+     *
+     * @return self
+     */
+    public function setCollectables($collectables)
+    {
+        $this->container['collectables'] = $collectables;
 
         return $this;
     }
