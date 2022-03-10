@@ -117,6 +117,259 @@ class DataConsentsApi
     }
 
     /**
+     * Operation downloadConsentedDocumentAnalysis
+     *
+     * Get analysis of a consented document.
+     *
+     * @param  string $consent_id consent_id (required)
+     * @param  string $document_id Document Id. (required)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function downloadConsentedDocumentAnalysis($consent_id, $document_id)
+    {
+        $this->downloadConsentedDocumentAnalysisWithHttpInfo($consent_id, $document_id);
+    }
+
+    /**
+     * Operation downloadConsentedDocumentAnalysisWithHttpInfo
+     *
+     * Get analysis of a consented document.
+     *
+     * @param  string $consent_id (required)
+     * @param  string $document_id Document Id. (required)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function downloadConsentedDocumentAnalysisWithHttpInfo($consent_id, $document_id)
+    {
+        $request = $this->downloadConsentedDocumentAnalysisRequest($consent_id, $document_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation downloadConsentedDocumentAnalysisAsync
+     *
+     * Get analysis of a consented document.
+     *
+     * @param  string $consent_id (required)
+     * @param  string $document_id Document Id. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function downloadConsentedDocumentAnalysisAsync($consent_id, $document_id)
+    {
+        return $this->downloadConsentedDocumentAnalysisAsyncWithHttpInfo($consent_id, $document_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation downloadConsentedDocumentAnalysisAsyncWithHttpInfo
+     *
+     * Get analysis of a consented document.
+     *
+     * @param  string $consent_id (required)
+     * @param  string $document_id Document Id. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function downloadConsentedDocumentAnalysisAsyncWithHttpInfo($consent_id, $document_id)
+    {
+        $returnType = '';
+        $request = $this->downloadConsentedDocumentAnalysisRequest($consent_id, $document_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'downloadConsentedDocumentAnalysis'
+     *
+     * @param  string $consent_id (required)
+     * @param  string $document_id Document Id. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function downloadConsentedDocumentAnalysisRequest($consent_id, $document_id)
+    {
+        // verify the required parameter 'consent_id' is set
+        if ($consent_id === null || (is_array($consent_id) && count($consent_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $consent_id when calling downloadConsentedDocumentAnalysis'
+            );
+        }
+        // verify the required parameter 'document_id' is set
+        if ($document_id === null || (is_array($document_id) && count($document_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $document_id when calling downloadConsentedDocumentAnalysis'
+            );
+        }
+
+        $resourcePath = '/v1/consents/{consentId}/documents/{documentId}/analysis';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($consent_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'consentId' . '}',
+                ObjectSerializer::toPathValue($consent_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($document_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'documentId' . '}',
+                ObjectSerializer::toPathValue($document_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation downloadConsentedDocumentById
      *
      * Download a individuals consented document.
@@ -3038,6 +3291,259 @@ class DataConsentsApi
         }
 
         $resourcePath = '/v1/consents/organizations/{consentId}/financial-accounts/{accountId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($consent_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'consentId' . '}',
+                ObjectSerializer::toPathValue($consent_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getConsentedFinancialAccountInsights
+     *
+     * Get consented financial account insights.
+     *
+     * @param  string $consent_id consent_id (required)
+     * @param  string $account_id account_id (required)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function getConsentedFinancialAccountInsights($consent_id, $account_id)
+    {
+        $this->getConsentedFinancialAccountInsightsWithHttpInfo($consent_id, $account_id);
+    }
+
+    /**
+     * Operation getConsentedFinancialAccountInsightsWithHttpInfo
+     *
+     * Get consented financial account insights.
+     *
+     * @param  string $consent_id (required)
+     * @param  string $account_id (required)
+     *
+     * @throws \MyDataMyConsent\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getConsentedFinancialAccountInsightsWithHttpInfo($consent_id, $account_id)
+    {
+        $request = $this->getConsentedFinancialAccountInsightsRequest($consent_id, $account_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getConsentedFinancialAccountInsightsAsync
+     *
+     * Get consented financial account insights.
+     *
+     * @param  string $consent_id (required)
+     * @param  string $account_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConsentedFinancialAccountInsightsAsync($consent_id, $account_id)
+    {
+        return $this->getConsentedFinancialAccountInsightsAsyncWithHttpInfo($consent_id, $account_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getConsentedFinancialAccountInsightsAsyncWithHttpInfo
+     *
+     * Get consented financial account insights.
+     *
+     * @param  string $consent_id (required)
+     * @param  string $account_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConsentedFinancialAccountInsightsAsyncWithHttpInfo($consent_id, $account_id)
+    {
+        $returnType = '';
+        $request = $this->getConsentedFinancialAccountInsightsRequest($consent_id, $account_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getConsentedFinancialAccountInsights'
+     *
+     * @param  string $consent_id (required)
+     * @param  string $account_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getConsentedFinancialAccountInsightsRequest($consent_id, $account_id)
+    {
+        // verify the required parameter 'consent_id' is set
+        if ($consent_id === null || (is_array($consent_id) && count($consent_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $consent_id when calling getConsentedFinancialAccountInsights'
+            );
+        }
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getConsentedFinancialAccountInsights'
+            );
+        }
+
+        $resourcePath = '/v1/consents/{consentId}/financial-accounts/{accountId}/insights';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
