@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getIssuedDocumentById()**](DocumentsApi.md#getIssuedDocumentById) | **GET** /v1/documents/issued/{documentId} | Get issued document.
 [**getIssuedDocuments()**](DocumentsApi.md#getIssuedDocuments) | **GET** /v1/documents/issued/{documentTypeId} | Get paginated list of issued documents of given document type.
-[**getRegisteredDocumentTypes()**](DocumentsApi.md#getRegisteredDocumentTypes) | **GET** /v1/documents/types | Get registered document types.
+[**getRegisteredDocumentTypes()**](DocumentsApi.md#getRegisteredDocumentTypes) | **GET** /v1/documents/types | Get paginated list of registered document types.
 [**issueDocumentToIndividual()**](DocumentsApi.md#issueDocumentToIndividual) | **POST** /v1/documents/issue/individual | Issue a new document to an individual user.
 [**issueDocumentToOrganization()**](DocumentsApi.md#issueDocumentToOrganization) | **POST** /v1/documents/issue/organization | Issue a new document to an organization.
 [**uploadDocumentForIndividual()**](DocumentsApi.md#uploadDocumentForIndividual) | **POST** /v1/documents/issue/individual/upload/{issueRequestId} | Upload a document for issuance request of individual.
@@ -89,8 +89,8 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
     new GuzzleHttp\Client()
 );
 $document_type_id = 'document_type_id_example'; // string | Document type id.
-$from_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From DateTime.
-$to_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To DateTime.
+$from_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From DateTime in UTC timezone.
+$to_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To DateTime in UTC timezone.
 $page_no = 1; // int | Page number.
 $page_size = 25; // int | Number of items to return.
 
@@ -107,8 +107,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **document_type_id** | **string**| Document type id. |
- **from_date_time** | **\DateTime**| From DateTime. | [optional]
- **to_date_time** | **\DateTime**| To DateTime. | [optional]
+ **from_date_time** | **\DateTime**| From DateTime in UTC timezone. | [optional]
+ **to_date_time** | **\DateTime**| To DateTime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
  **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
@@ -135,7 +135,7 @@ No authorization required
 getRegisteredDocumentTypes($page_no, $page_size): \MyDataMyConsent\Model\DocumentTypePaginatedList
 ```
 
-Get registered document types.
+Get paginated list of registered document types.
 
 ### Example
 
@@ -296,7 +296,7 @@ No authorization required
 ## `uploadDocumentForIndividual()`
 
 ```php
-uploadDocumentForIndividual($issue_request_id, $form_file): string
+uploadDocumentForIndividual($issue_request_id, $form_file)
 ```
 
 Upload a document for issuance request of individual.
@@ -314,12 +314,11 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$issue_request_id = 'issue_request_id_example'; // string | Issue Request Id System.Guid.
+$issue_request_id = 'issue_request_id_example'; // string | Document issue request id.
 $form_file = "/path/to/file.txt"; // \SplFileObject
 
 try {
-    $result = $apiInstance->uploadDocumentForIndividual($issue_request_id, $form_file);
-    print_r($result);
+    $apiInstance->uploadDocumentForIndividual($issue_request_id, $form_file);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentsApi->uploadDocumentForIndividual: ', $e->getMessage(), PHP_EOL;
 }
@@ -329,12 +328,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **issue_request_id** | **string**| Issue Request Id System.Guid. |
+ **issue_request_id** | **string**| Document issue request id. |
  **form_file** | **\SplFileObject****\SplFileObject**|  |
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -352,7 +351,7 @@ No authorization required
 ## `uploadDocumentForOrganization()`
 
 ```php
-uploadDocumentForOrganization($issue_request_id, $form_file): string
+uploadDocumentForOrganization($issue_request_id, $form_file)
 ```
 
 Upload a document for issuance request of organization.
@@ -370,12 +369,11 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$issue_request_id = 'issue_request_id_example'; // string | Issue Request Id System.Guid.
+$issue_request_id = 'issue_request_id_example'; // string | Document issue request id System.Guid.
 $form_file = "/path/to/file.txt"; // \SplFileObject
 
 try {
-    $result = $apiInstance->uploadDocumentForOrganization($issue_request_id, $form_file);
-    print_r($result);
+    $apiInstance->uploadDocumentForOrganization($issue_request_id, $form_file);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentsApi->uploadDocumentForOrganization: ', $e->getMessage(), PHP_EOL;
 }
@@ -385,12 +383,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **issue_request_id** | **string**| Issue Request Id System.Guid. |
+ **issue_request_id** | **string**| Document issue request id System.Guid. |
  **form_file** | **\SplFileObject****\SplFileObject**|  |
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 

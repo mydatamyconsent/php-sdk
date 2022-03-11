@@ -28,7 +28,7 @@ $apiInstance = new MyDataMyConsent\Api\DigiLockerCompatIssuerApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$push_uri_request = new \MyDataMyConsent\Model\PushUriRequest(); // \MyDataMyConsent\Model\PushUriRequest | Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest.
+$push_uri_request = new \MyDataMyConsent\Model\PushUriRequest(); // \MyDataMyConsent\Model\PushUriRequest | Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest.
 
 try {
     $result = $apiInstance->digilockerCompatIssueDocument($push_uri_request);
@@ -42,7 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **push_uri_request** | [**\MyDataMyConsent\Model\PushUriRequest**](../Model/PushUriRequest.md)| Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. | [optional]
+ **push_uri_request** | [**\MyDataMyConsent\Model\PushUriRequest**](../Model/PushUriRequest.md)| Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. | [optional]
 
 ### Return type
 

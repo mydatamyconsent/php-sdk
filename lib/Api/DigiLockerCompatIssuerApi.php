@@ -121,7 +121,7 @@ class DigiLockerCompatIssuerApi
      *
      * Digilocker Compatible endpoint to issue document.
      *
-     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
+     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -138,7 +138,7 @@ class DigiLockerCompatIssuerApi
      *
      * Digilocker Compatible endpoint to issue document.
      *
-     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
+     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -331,7 +331,7 @@ class DigiLockerCompatIssuerApi
      *
      * Digilocker Compatible endpoint to issue document.
      *
-     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
+     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -351,7 +351,7 @@ class DigiLockerCompatIssuerApi
      *
      * Digilocker Compatible endpoint to issue document.
      *
-     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
+     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -397,7 +397,7 @@ class DigiLockerCompatIssuerApi
     /**
      * Create request for operation 'digilockerCompatIssueDocument'
      *
-     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)
+     * @param  \MyDataMyConsent\Model\PushUriRequest $push_uri_request Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

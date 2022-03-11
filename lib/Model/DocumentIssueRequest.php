@@ -280,7 +280,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets document_type_id
      *
-     * @param string $document_type_id document_type_id
+     * @param string $document_type_id Document type id.
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets identifier
      *
-     * @param string $identifier identifier
+     * @param string $identifier Document identifier.
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets description
      *
-     * @param string $description description
+     * @param string $description Document description.
      *
      * @return self
      */
@@ -376,7 +376,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets issued_at_utc
      *
-     * @param \DateTime $issued_at_utc issued_at_utc
+     * @param \DateTime $issued_at_utc Datetime of issue in UTC timezone.
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets valid_from_utc
      *
-     * @param \DateTime $valid_from_utc valid_from_utc
+     * @param \DateTime $valid_from_utc Valid from datetime in UTC timezone.
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets expires_at_utc
      *
-     * @param \DateTime|null $expires_at_utc expires_at_utc
+     * @param \DateTime|null $expires_at_utc Datetime of expiry in UTC timezone.
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets metadata
      *
-     * @param array<string,string>|null $metadata metadata
+     * @param array<string,string>|null $metadata Metadata.
      *
      * @return self
      */

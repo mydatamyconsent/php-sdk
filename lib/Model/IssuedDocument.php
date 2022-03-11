@@ -259,7 +259,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id Document Identifier.
+     * @param string $id Document Id.
      *
      * @return self
      */
@@ -283,7 +283,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifier
      *
-     * @param string $identifier Document Identifier. eg: GJ05FG67866586.
+     * @param string $identifier Document Identifier.
      *
      * @return self
      */
@@ -307,7 +307,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets document_type
      *
-     * @param string $document_type Document type name. eg: Driving License.
+     * @param string $document_type Document type name.
      *
      * @return self
      */
@@ -331,7 +331,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets issued_to
      *
-     * @param string $issued_to issued_to
+     * @param string $issued_to User name.
      *
      * @return self
      */
@@ -355,7 +355,7 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets issued_at_utc
      *
-     * @param \DateTime $issued_at_utc issued_at_utc
+     * @param \DateTime $issued_at_utc Issued datetime in UTC timezone.
      *
      * @return self
      */

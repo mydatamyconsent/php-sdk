@@ -453,8 +453,8 @@ class DocumentsApi
      * Get paginated list of issued documents of given document type.
      *
      * @param  string $document_type_id Document type id. (required)
-     * @param  \DateTime $from_date_time From DateTime. (optional)
-     * @param  \DateTime $to_date_time To DateTime. (optional)
+     * @param  \DateTime $from_date_time From DateTime in UTC timezone. (optional)
+     * @param  \DateTime $to_date_time To DateTime in UTC timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
      *
@@ -474,8 +474,8 @@ class DocumentsApi
      * Get paginated list of issued documents of given document type.
      *
      * @param  string $document_type_id Document type id. (required)
-     * @param  \DateTime $from_date_time From DateTime. (optional)
-     * @param  \DateTime $to_date_time To DateTime. (optional)
+     * @param  \DateTime $from_date_time From DateTime in UTC timezone. (optional)
+     * @param  \DateTime $to_date_time To DateTime in UTC timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
      *
@@ -611,8 +611,8 @@ class DocumentsApi
      * Get paginated list of issued documents of given document type.
      *
      * @param  string $document_type_id Document type id. (required)
-     * @param  \DateTime $from_date_time From DateTime. (optional)
-     * @param  \DateTime $to_date_time To DateTime. (optional)
+     * @param  \DateTime $from_date_time From DateTime in UTC timezone. (optional)
+     * @param  \DateTime $to_date_time To DateTime in UTC timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
      *
@@ -635,8 +635,8 @@ class DocumentsApi
      * Get paginated list of issued documents of given document type.
      *
      * @param  string $document_type_id Document type id. (required)
-     * @param  \DateTime $from_date_time From DateTime. (optional)
-     * @param  \DateTime $to_date_time To DateTime. (optional)
+     * @param  \DateTime $from_date_time From DateTime in UTC timezone. (optional)
+     * @param  \DateTime $to_date_time To DateTime in UTC timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
      *
@@ -685,8 +685,8 @@ class DocumentsApi
      * Create request for operation 'getIssuedDocuments'
      *
      * @param  string $document_type_id Document type id. (required)
-     * @param  \DateTime $from_date_time From DateTime. (optional)
-     * @param  \DateTime $to_date_time To DateTime. (optional)
+     * @param  \DateTime $from_date_time From DateTime in UTC timezone. (optional)
+     * @param  \DateTime $to_date_time To DateTime in UTC timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
      *
@@ -825,7 +825,7 @@ class DocumentsApi
     /**
      * Operation getRegisteredDocumentTypes
      *
-     * Get registered document types.
+     * Get paginated list of registered document types.
      *
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
@@ -843,7 +843,7 @@ class DocumentsApi
     /**
      * Operation getRegisteredDocumentTypesWithHttpInfo
      *
-     * Get registered document types.
+     * Get paginated list of registered document types.
      *
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
@@ -977,7 +977,7 @@ class DocumentsApi
     /**
      * Operation getRegisteredDocumentTypesAsync
      *
-     * Get registered document types.
+     * Get paginated list of registered document types.
      *
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
@@ -998,7 +998,7 @@ class DocumentsApi
     /**
      * Operation getRegisteredDocumentTypesAsyncWithHttpInfo
      *
-     * Get registered document types.
+     * Get paginated list of registered document types.
      *
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
@@ -1829,17 +1829,16 @@ class DocumentsApi
      *
      * Upload a document for issuance request of individual.
      *
-     * @param  string $issue_request_id Issue Request Id System.Guid. (required)
+     * @param  string $issue_request_id Document issue request id. (required)
      * @param  \SplFileObject $form_file form_file (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string|object|object
+     * @return void
      */
     public function uploadDocumentForIndividual($issue_request_id, $form_file)
     {
-        list($response) = $this->uploadDocumentForIndividualWithHttpInfo($issue_request_id, $form_file);
-        return $response;
+        $this->uploadDocumentForIndividualWithHttpInfo($issue_request_id, $form_file);
     }
 
     /**
@@ -1847,12 +1846,12 @@ class DocumentsApi
      *
      * Upload a document for issuance request of individual.
      *
-     * @param  string $issue_request_id Issue Request Id System.Guid. (required)
+     * @param  string $issue_request_id Document issue request id. (required)
      * @param  \SplFileObject $form_file (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadDocumentForIndividualWithHttpInfo($issue_request_id, $form_file)
     {
@@ -1893,68 +1892,10 @@ class DocumentsApi
                 );
             }
 
-            switch($statusCode) {
-                case 200:
-                    if ('string' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'string', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('object' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if ('object' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = 'string';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1981,7 +1922,7 @@ class DocumentsApi
      *
      * Upload a document for issuance request of individual.
      *
-     * @param  string $issue_request_id Issue Request Id System.Guid. (required)
+     * @param  string $issue_request_id Document issue request id. (required)
      * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
@@ -2002,7 +1943,7 @@ class DocumentsApi
      *
      * Upload a document for issuance request of individual.
      *
-     * @param  string $issue_request_id Issue Request Id System.Guid. (required)
+     * @param  string $issue_request_id Document issue request id. (required)
      * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
@@ -2010,24 +1951,14 @@ class DocumentsApi
      */
     public function uploadDocumentForIndividualAsyncWithHttpInfo($issue_request_id, $form_file)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->uploadDocumentForIndividualRequest($issue_request_id, $form_file);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2049,7 +1980,7 @@ class DocumentsApi
     /**
      * Create request for operation 'uploadDocumentForIndividual'
      *
-     * @param  string $issue_request_id Issue Request Id System.Guid. (required)
+     * @param  string $issue_request_id Document issue request id. (required)
      * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
@@ -2163,17 +2094,16 @@ class DocumentsApi
      *
      * Upload a document for issuance request of organization.
      *
-     * @param  string $issue_request_id Issue Request Id System.Guid. (required)
+     * @param  string $issue_request_id Document issue request id System.Guid. (required)
      * @param  \SplFileObject $form_file form_file (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string|object|object
+     * @return void
      */
     public function uploadDocumentForOrganization($issue_request_id, $form_file)
     {
-        list($response) = $this->uploadDocumentForOrganizationWithHttpInfo($issue_request_id, $form_file);
-        return $response;
+        $this->uploadDocumentForOrganizationWithHttpInfo($issue_request_id, $form_file);
     }
 
     /**
@@ -2181,12 +2111,12 @@ class DocumentsApi
      *
      * Upload a document for issuance request of organization.
      *
-     * @param  string $issue_request_id Issue Request Id System.Guid. (required)
+     * @param  string $issue_request_id Document issue request id System.Guid. (required)
      * @param  \SplFileObject $form_file (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadDocumentForOrganizationWithHttpInfo($issue_request_id, $form_file)
     {
@@ -2227,68 +2157,10 @@ class DocumentsApi
                 );
             }
 
-            switch($statusCode) {
-                case 200:
-                    if ('string' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'string', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('object' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if ('object' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = 'string';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2315,7 +2187,7 @@ class DocumentsApi
      *
      * Upload a document for issuance request of organization.
      *
-     * @param  string $issue_request_id Issue Request Id System.Guid. (required)
+     * @param  string $issue_request_id Document issue request id System.Guid. (required)
      * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
@@ -2336,7 +2208,7 @@ class DocumentsApi
      *
      * Upload a document for issuance request of organization.
      *
-     * @param  string $issue_request_id Issue Request Id System.Guid. (required)
+     * @param  string $issue_request_id Document issue request id System.Guid. (required)
      * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException
@@ -2344,24 +2216,14 @@ class DocumentsApi
      */
     public function uploadDocumentForOrganizationAsyncWithHttpInfo($issue_request_id, $form_file)
     {
-        $returnType = 'string';
+        $returnType = '';
         $request = $this->uploadDocumentForOrganizationRequest($issue_request_id, $form_file);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2383,7 +2245,7 @@ class DocumentsApi
     /**
      * Create request for operation 'uploadDocumentForOrganization'
      *
-     * @param  string $issue_request_id Issue Request Id System.Guid. (required)
+     * @param  string $issue_request_id Document issue request id System.Guid. (required)
      * @param  \SplFileObject $form_file (required)
      *
      * @throws \InvalidArgumentException

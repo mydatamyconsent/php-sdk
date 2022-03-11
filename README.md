@@ -110,7 +110,7 @@ Class | Method | HTTP request | Description
 *DigiLockerCompatIssuerApi* | [**digilockerCompatIssueDocument**](docs/Api/DigiLockerCompatIssuerApi.md#digilockercompatissuedocument) | **POST** /issuer/issuedoc/1/xml | Digilocker Compatible endpoint to issue document.
 *DocumentsApi* | [**getIssuedDocumentById**](docs/Api/DocumentsApi.md#getissueddocumentbyid) | **GET** /v1/documents/issued/{documentId} | Get issued document.
 *DocumentsApi* | [**getIssuedDocuments**](docs/Api/DocumentsApi.md#getissueddocuments) | **GET** /v1/documents/issued/{documentTypeId} | Get paginated list of issued documents of given document type.
-*DocumentsApi* | [**getRegisteredDocumentTypes**](docs/Api/DocumentsApi.md#getregistereddocumenttypes) | **GET** /v1/documents/types | Get registered document types.
+*DocumentsApi* | [**getRegisteredDocumentTypes**](docs/Api/DocumentsApi.md#getregistereddocumenttypes) | **GET** /v1/documents/types | Get paginated list of registered document types.
 *DocumentsApi* | [**issueDocumentToIndividual**](docs/Api/DocumentsApi.md#issuedocumenttoindividual) | **POST** /v1/documents/issue/individual | Issue a new document to an individual user.
 *DocumentsApi* | [**issueDocumentToOrganization**](docs/Api/DocumentsApi.md#issuedocumenttoorganization) | **POST** /v1/documents/issue/organization | Issue a new document to an organization.
 *DocumentsApi* | [**uploadDocumentForIndividual**](docs/Api/DocumentsApi.md#uploaddocumentforindividual) | **POST** /v1/documents/issue/individual/upload/{issueRequestId} | Upload a document for issuance request of individual.

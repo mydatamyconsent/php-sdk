@@ -316,7 +316,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets id
      *
-     * @param string $id Request Id.
+     * @param string $id Document issue request Id.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets document_type_id
      *
-     * @param string $document_type_id document_type_id
+     * @param string $document_type_id Document type Id.
      *
      * @return self
      */
@@ -364,7 +364,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets type_name
      *
-     * @param string $type_name type_name
+     * @param string $type_name Document type name.
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets identifier
      *
-     * @param string $identifier identifier
+     * @param string $identifier Document identifier.
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets description
      *
-     * @param string $description description
+     * @param string $description Document description.
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets receiver
      *
-     * @param mixed $receiver receiver
+     * @param mixed $receiver Document receiver details.
      *
      * @return self
      */
@@ -484,7 +484,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets issued_at_utc
      *
-     * @param \DateTime $issued_at_utc issued_at_utc
+     * @param \DateTime $issued_at_utc Datetime of issue in UTC timezone.
      *
      * @return self
      */
@@ -508,7 +508,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets valid_from_utc
      *
-     * @param \DateTime $valid_from_utc valid_from_utc
+     * @param \DateTime $valid_from_utc Valid from datetime in UTC timezone.
      *
      * @return self
      */
@@ -532,7 +532,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets expires_at_utc
      *
-     * @param \DateTime|null $expires_at_utc expires_at_utc
+     * @param \DateTime|null $expires_at_utc Datetime of expiry in UTC timezone.
      *
      * @return self
      */
@@ -556,7 +556,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets meta_data
      *
-     * @param mixed|null $meta_data meta_data
+     * @param mixed|null $meta_data Metadata.
      *
      * @return self
      */
@@ -580,7 +580,7 @@ class DocumentIssueRequestDetails implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets created_at_utc
      *
-     * @param \DateTime $created_at_utc created_at_utc
+     * @param \DateTime $created_at_utc Creation datetime of issue request in UTC timezone.
      *
      * @return self
      */
