@@ -4,23 +4,23 @@ All URIs are relative to https://api.mydatamyconsent.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelIndividualDataConsentRequest()**](DataConsentRequestsApi.md#cancelIndividualDataConsentRequest) | **PUT** /v1/consent-requests/individual/{requestId}/cancel | Cancel the individual data consent request based on Id.
-[**cancelOrganizationDataConsentRequest()**](DataConsentRequestsApi.md#cancelOrganizationDataConsentRequest) | **PUT** /v1/consent-requests/organization/{requestId}/cancel | Cancel the Organization data consent request based on Id.
-[**createIndividualDataConsentRequest()**](DataConsentRequestsApi.md#createIndividualDataConsentRequest) | **POST** /v1/consent-requests/individual | Create a individual data consent request.
-[**createOrganizationDataConsentRequest()**](DataConsentRequestsApi.md#createOrganizationDataConsentRequest) | **POST** /v1/consent-requests/organization | Create a organization data consent request.
-[**getAllConsentRequestsToIndividuals()**](DataConsentRequestsApi.md#getAllConsentRequestsToIndividuals) | **GET** /v1/consent-requests/individuals | Get all Consent Requests sent to Individuals.
-[**getAllConsentRequestsToOrganizations()**](DataConsentRequestsApi.md#getAllConsentRequestsToOrganizations) | **GET** /v1/consent-requests/organizations | Get All Consent Requests sent to Organizations.
-[**getIndividualConsentRequestById()**](DataConsentRequestsApi.md#getIndividualConsentRequestById) | **GET** /v1/consent-requests/individuals/{requestId} | Get a Consent Request by ID.
+[**cancelIndividualDataConsentRequest()**](DataConsentRequestsApi.md#cancelIndividualDataConsentRequest) | **PUT** /v1/consent-requests/individual/{requestId}/cancel | Cancel the individual data consent request by Id.
+[**cancelOrganizationDataConsentRequest()**](DataConsentRequestsApi.md#cancelOrganizationDataConsentRequest) | **PUT** /v1/consent-requests/organization/{requestId}/cancel | Cancel the organization data consent request by Id.
+[**createIndividualDataConsentRequest()**](DataConsentRequestsApi.md#createIndividualDataConsentRequest) | **POST** /v1/consent-requests/individual | Create data consent request for an individual.
+[**createOrganizationDataConsentRequest()**](DataConsentRequestsApi.md#createOrganizationDataConsentRequest) | **POST** /v1/consent-requests/organization | Create data consent request for an organization.
+[**getAllConsentRequestsToIndividuals()**](DataConsentRequestsApi.md#getAllConsentRequestsToIndividuals) | **GET** /v1/consent-requests/individuals | Get all Consent Requests sent to individuals.
+[**getAllConsentRequestsToOrganizations()**](DataConsentRequestsApi.md#getAllConsentRequestsToOrganizations) | **GET** /v1/consent-requests/organizations | Get all Consent Requests sent to organizations.
+[**getIndividualConsentRequestById()**](DataConsentRequestsApi.md#getIndividualConsentRequestById) | **GET** /v1/consent-requests/individuals/{requestId} | Get individual data consent request by id.
 [**getOrganizationConsentRequestById()**](DataConsentRequestsApi.md#getOrganizationConsentRequestById) | **GET** /v1/consent-requests/organizations/{requestId} | Get a OrganizationConsent Request by Id.
 
 
 ## `cancelIndividualDataConsentRequest()`
 
 ```php
-cancelIndividualDataConsentRequest($request_id): \MyDataMyConsent\Model\IndividualDataConsentRequestResponse
+cancelIndividualDataConsentRequest($request_id)
 ```
 
-Cancel the individual data consent request based on Id.
+Cancel the individual data consent request by Id.
 
 ### Example
 
@@ -38,8 +38,7 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
 $request_id = 'request_id_example'; // string | Individual consent request id.
 
 try {
-    $result = $apiInstance->cancelIndividualDataConsentRequest($request_id);
-    print_r($result);
+    $apiInstance->cancelIndividualDataConsentRequest($request_id);
 } catch (Exception $e) {
     echo 'Exception when calling DataConsentRequestsApi->cancelIndividualDataConsentRequest: ', $e->getMessage(), PHP_EOL;
 }
@@ -53,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\IndividualDataConsentRequestResponse**](../Model/IndividualDataConsentRequestResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -71,10 +70,10 @@ No authorization required
 ## `cancelOrganizationDataConsentRequest()`
 
 ```php
-cancelOrganizationDataConsentRequest($request_id): \MyDataMyConsent\Model\OrganizationDataConsentRequestResponse
+cancelOrganizationDataConsentRequest($request_id)
 ```
 
-Cancel the Organization data consent request based on Id.
+Cancel the organization data consent request by Id.
 
 ### Example
 
@@ -92,8 +91,7 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
 $request_id = 'request_id_example'; // string | Organization consent request id.
 
 try {
-    $result = $apiInstance->cancelOrganizationDataConsentRequest($request_id);
-    print_r($result);
+    $apiInstance->cancelOrganizationDataConsentRequest($request_id);
 } catch (Exception $e) {
     echo 'Exception when calling DataConsentRequestsApi->cancelOrganizationDataConsentRequest: ', $e->getMessage(), PHP_EOL;
 }
@@ -107,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\OrganizationDataConsentRequestResponse**](../Model/OrganizationDataConsentRequestResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -125,12 +123,12 @@ No authorization required
 ## `createIndividualDataConsentRequest()`
 
 ```php
-createIndividualDataConsentRequest($create_individual_data_consent_request): \MyDataMyConsent\Model\IndividualDataConsentRequestResponse
+createIndividualDataConsentRequest($create_data_consent_request): \MyDataMyConsent\Model\IndividualDataConsentRequestDetails
 ```
 
-Create a individual data consent request.
+Create data consent request for an individual.
 
-Create a individual data consent request.
+Create data consent request for an individual.
 
 ### Example
 
@@ -145,10 +143,10 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$create_individual_data_consent_request = new \MyDataMyConsent\Model\CreateIndividualDataConsentRequest(); // \MyDataMyConsent\Model\CreateIndividualDataConsentRequest | The Individual data consent request payload
+$create_data_consent_request = new \MyDataMyConsent\Model\CreateDataConsentRequest(); // \MyDataMyConsent\Model\CreateDataConsentRequest | The Individual data consent request payload
 
 try {
-    $result = $apiInstance->createIndividualDataConsentRequest($create_individual_data_consent_request);
+    $result = $apiInstance->createIndividualDataConsentRequest($create_data_consent_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataConsentRequestsApi->createIndividualDataConsentRequest: ', $e->getMessage(), PHP_EOL;
@@ -159,11 +157,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_individual_data_consent_request** | [**\MyDataMyConsent\Model\CreateIndividualDataConsentRequest**](../Model/CreateIndividualDataConsentRequest.md)| The Individual data consent request payload |
+ **create_data_consent_request** | [**\MyDataMyConsent\Model\CreateDataConsentRequest**](../Model/CreateDataConsentRequest.md)| The Individual data consent request payload |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\IndividualDataConsentRequestResponse**](../Model/IndividualDataConsentRequestResponse.md)
+[**\MyDataMyConsent\Model\IndividualDataConsentRequestDetails**](../Model/IndividualDataConsentRequestDetails.md)
 
 ### Authorization
 
@@ -181,12 +179,12 @@ No authorization required
 ## `createOrganizationDataConsentRequest()`
 
 ```php
-createOrganizationDataConsentRequest($create_organization_data_consent_request): \MyDataMyConsent\Model\OrganizationDataConsentRequestResponse
+createOrganizationDataConsentRequest($create_data_consent_request): \MyDataMyConsent\Model\OrganizationDataConsentRequestDetails
 ```
 
-Create a organization data consent request.
+Create data consent request for an organization.
 
-Create a organization data consent request.
+Create data consent request for an organization.
 
 ### Example
 
@@ -201,10 +199,10 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$create_organization_data_consent_request = new \MyDataMyConsent\Model\CreateOrganizationDataConsentRequest(); // \MyDataMyConsent\Model\CreateOrganizationDataConsentRequest | M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateOrganizationDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateOrganizationDataConsentRequest).
+$create_data_consent_request = new \MyDataMyConsent\Model\CreateDataConsentRequest(); // \MyDataMyConsent\Model\CreateDataConsentRequest | The Organization data consent request payload
 
 try {
-    $result = $apiInstance->createOrganizationDataConsentRequest($create_organization_data_consent_request);
+    $result = $apiInstance->createOrganizationDataConsentRequest($create_data_consent_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataConsentRequestsApi->createOrganizationDataConsentRequest: ', $e->getMessage(), PHP_EOL;
@@ -215,11 +213,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_organization_data_consent_request** | [**\MyDataMyConsent\Model\CreateOrganizationDataConsentRequest**](../Model/CreateOrganizationDataConsentRequest.md)| M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateOrganizationDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateOrganizationDataConsentRequest). |
+ **create_data_consent_request** | [**\MyDataMyConsent\Model\CreateDataConsentRequest**](../Model/CreateDataConsentRequest.md)| The Organization data consent request payload |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\OrganizationDataConsentRequestResponse**](../Model/OrganizationDataConsentRequestResponse.md)
+[**\MyDataMyConsent\Model\OrganizationDataConsentRequestDetails**](../Model/OrganizationDataConsentRequestDetails.md)
 
 ### Authorization
 
@@ -237,10 +235,10 @@ No authorization required
 ## `getAllConsentRequestsToIndividuals()`
 
 ```php
-getAllConsentRequestsToIndividuals($status, $start_date_time, $end_date_time, $page_no, $page_size): \MyDataMyConsent\Model\UserDataConsentInfoDtoPaginatedList
+getAllConsentRequestsToIndividuals($status, $start_date_time, $end_date_time, $page_no, $page_size): \MyDataMyConsent\Model\IndividualDataConsentRequestDetailsPaginatedList
 ```
 
-Get all Consent Requests sent to Individuals.
+Get all Consent Requests sent to individuals.
 
 ### Example
 
@@ -256,8 +254,8 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     new GuzzleHttp\Client()
 );
 $status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status.
-$start_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start date time.
-$end_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date time.
+$start_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start datetime in UTC timezone.
+$end_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End datetime in UTC timezone.
 $page_no = 1; // int | Page number.
 $page_size = 25; // int | Number of items to return.
 
@@ -274,14 +272,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
- **start_date_time** | **\DateTime**| Start date time. | [optional]
- **end_date_time** | **\DateTime**| End date time. | [optional]
+ **start_date_time** | **\DateTime**| Start datetime in UTC timezone. | [optional]
+ **end_date_time** | **\DateTime**| End datetime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
  **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
-[**\MyDataMyConsent\Model\UserDataConsentInfoDtoPaginatedList**](../Model/UserDataConsentInfoDtoPaginatedList.md)
+[**\MyDataMyConsent\Model\IndividualDataConsentRequestDetailsPaginatedList**](../Model/IndividualDataConsentRequestDetailsPaginatedList.md)
 
 ### Authorization
 
@@ -299,10 +297,10 @@ No authorization required
 ## `getAllConsentRequestsToOrganizations()`
 
 ```php
-getAllConsentRequestsToOrganizations($status, $start_date_time, $end_date_time, $page_no, $page_size): \MyDataMyConsent\Model\OrganizationDataConsentInfoDtoPaginatedList
+getAllConsentRequestsToOrganizations($status, $start_date_time, $end_date_time, $page_no, $page_size): \MyDataMyConsent\Model\OrganizationDataConsentRequestDetailsPaginatedList
 ```
 
-Get All Consent Requests sent to Organizations.
+Get all Consent Requests sent to organizations.
 
 ### Example
 
@@ -318,8 +316,8 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     new GuzzleHttp\Client()
 );
 $status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status.
-$start_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start date time.
-$end_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date time.
+$start_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start datetime in UTC timezone.
+$end_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End datetime in UTC timezone.
 $page_no = 1; // int | Page number.
 $page_size = 25; // int | Number of items to return.
 
@@ -336,14 +334,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
- **start_date_time** | **\DateTime**| Start date time. | [optional]
- **end_date_time** | **\DateTime**| End date time. | [optional]
+ **start_date_time** | **\DateTime**| Start datetime in UTC timezone. | [optional]
+ **end_date_time** | **\DateTime**| End datetime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
  **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
-[**\MyDataMyConsent\Model\OrganizationDataConsentInfoDtoPaginatedList**](../Model/OrganizationDataConsentInfoDtoPaginatedList.md)
+[**\MyDataMyConsent\Model\OrganizationDataConsentRequestDetailsPaginatedList**](../Model/OrganizationDataConsentRequestDetailsPaginatedList.md)
 
 ### Authorization
 
@@ -361,10 +359,10 @@ No authorization required
 ## `getIndividualConsentRequestById()`
 
 ```php
-getIndividualConsentRequestById($request_id): \MyDataMyConsent\Model\DataConsentDetailsDto
+getIndividualConsentRequestById($request_id): \MyDataMyConsent\Model\DataConsentRequest
 ```
 
-Get a Consent Request by ID.
+Get individual data consent request by id.
 
 ### Example
 
@@ -379,7 +377,7 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$request_id = 'request_id_example'; // string | Individual consent request id.
+$request_id = 'request_id_example'; // string | Individual data consent request id.
 
 try {
     $result = $apiInstance->getIndividualConsentRequestById($request_id);
@@ -393,11 +391,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request_id** | **string**| Individual consent request id. |
+ **request_id** | **string**| Individual data consent request id. |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataConsentDetailsDto**](../Model/DataConsentDetailsDto.md)
+[**\MyDataMyConsent\Model\DataConsentRequest**](../Model/DataConsentRequest.md)
 
 ### Authorization
 
@@ -415,7 +413,7 @@ No authorization required
 ## `getOrganizationConsentRequestById()`
 
 ```php
-getOrganizationConsentRequestById($request_id): \MyDataMyConsent\Model\DataConsentDetailsDto
+getOrganizationConsentRequestById($request_id): \MyDataMyConsent\Model\DataConsentRequest
 ```
 
 Get a OrganizationConsent Request by Id.
@@ -451,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataConsentDetailsDto**](../Model/DataConsentDetailsDto.md)
+[**\MyDataMyConsent\Model\DataConsentRequest**](../Model/DataConsentRequest.md)
 
 ### Authorization
 

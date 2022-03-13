@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsentRequestReceiver
+ * CreateDataConsentRequest
  *
  * PHP version 7.3
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * ConsentRequestReceiver Class Doc Comment
+ * CreateDataConsentRequest Class Doc Comment
  *
  * @category Class
- * @description Consent request receiver details
+ * @description Create individual data consent request
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateDataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ConsentRequestReceiver';
+    protected static $openAPIModelName = 'CreateDataConsentRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,9 +61,8 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'country_iso2_code' => 'string',
-        'identifiers' => '\MyDataMyConsent\Model\StringStringKeyValuePair[]',
-        'identification_strategy' => '\MyDataMyConsent\Model\IdentificationStrategy'
+        'consent_template_id' => 'string',
+        'receiver' => '\MyDataMyConsent\Model\ConsentRequestReceiver'
     ];
 
     /**
@@ -74,9 +73,8 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'country_iso2_code' => null,
-        'identifiers' => null,
-        'identification_strategy' => null
+        'consent_template_id' => 'uuid',
+        'receiver' => null
     ];
 
     /**
@@ -106,9 +104,8 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'country_iso2_code' => 'countryIso2Code',
-        'identifiers' => 'identifiers',
-        'identification_strategy' => 'identificationStrategy'
+        'consent_template_id' => 'consentTemplateId',
+        'receiver' => 'receiver'
     ];
 
     /**
@@ -117,9 +114,8 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'country_iso2_code' => 'setCountryIso2Code',
-        'identifiers' => 'setIdentifiers',
-        'identification_strategy' => 'setIdentificationStrategy'
+        'consent_template_id' => 'setConsentTemplateId',
+        'receiver' => 'setReceiver'
     ];
 
     /**
@@ -128,9 +124,8 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'country_iso2_code' => 'getCountryIso2Code',
-        'identifiers' => 'getIdentifiers',
-        'identification_strategy' => 'getIdentificationStrategy'
+        'consent_template_id' => 'getConsentTemplateId',
+        'receiver' => 'getReceiver'
     ];
 
     /**
@@ -190,9 +185,8 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['country_iso2_code'] = $data['country_iso2_code'] ?? null;
-        $this->container['identifiers'] = $data['identifiers'] ?? null;
-        $this->container['identification_strategy'] = $data['identification_strategy'] ?? null;
+        $this->container['consent_template_id'] = $data['consent_template_id'] ?? null;
+        $this->container['receiver'] = $data['receiver'] ?? null;
     }
 
     /**
@@ -204,22 +198,11 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['country_iso2_code'] === null) {
-            $invalidProperties[] = "'country_iso2_code' can't be null";
+        if ($this->container['consent_template_id'] === null) {
+            $invalidProperties[] = "'consent_template_id' can't be null";
         }
-        if ((mb_strlen($this->container['country_iso2_code']) > 2)) {
-            $invalidProperties[] = "invalid value for 'country_iso2_code', the character length must be smaller than or equal to 2.";
-        }
-
-        if ((mb_strlen($this->container['country_iso2_code']) < 2)) {
-            $invalidProperties[] = "invalid value for 'country_iso2_code', the character length must be bigger than or equal to 2.";
-        }
-
-        if ($this->container['identifiers'] === null) {
-            $invalidProperties[] = "'identifiers' can't be null";
-        }
-        if ($this->container['identification_strategy'] === null) {
-            $invalidProperties[] = "'identification_strategy' can't be null";
+        if ($this->container['receiver'] === null) {
+            $invalidProperties[] = "'receiver' can't be null";
         }
         return $invalidProperties;
     }
@@ -237,80 +220,49 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets country_iso2_code
+     * Gets consent_template_id
      *
      * @return string
      */
-    public function getCountryIso2Code()
+    public function getConsentTemplateId()
     {
-        return $this->container['country_iso2_code'];
+        return $this->container['consent_template_id'];
     }
 
     /**
-     * Sets country_iso2_code
+     * Sets consent_template_id
      *
-     * @param string $country_iso2_code Consent request receiver country ISO 2 code
+     * @param string $consent_template_id Consent template id
      *
      * @return self
      */
-    public function setCountryIso2Code($country_iso2_code)
+    public function setConsentTemplateId($consent_template_id)
     {
-        if ((mb_strlen($country_iso2_code) > 2)) {
-            throw new \InvalidArgumentException('invalid length for $country_iso2_code when calling ConsentRequestReceiver., must be smaller than or equal to 2.');
-        }
-        if ((mb_strlen($country_iso2_code) < 2)) {
-            throw new \InvalidArgumentException('invalid length for $country_iso2_code when calling ConsentRequestReceiver., must be bigger than or equal to 2.');
-        }
-
-        $this->container['country_iso2_code'] = $country_iso2_code;
+        $this->container['consent_template_id'] = $consent_template_id;
 
         return $this;
     }
 
     /**
-     * Gets identifiers
+     * Gets receiver
      *
-     * @return \MyDataMyConsent\Model\StringStringKeyValuePair[]
+     * @return \MyDataMyConsent\Model\ConsentRequestReceiver
      */
-    public function getIdentifiers()
+    public function getReceiver()
     {
-        return $this->container['identifiers'];
+        return $this->container['receiver'];
     }
 
     /**
-     * Sets identifiers
+     * Sets receiver
      *
-     * @param \MyDataMyConsent\Model\StringStringKeyValuePair[] $identifiers Consent request receiver identifiers
+     * @param \MyDataMyConsent\Model\ConsentRequestReceiver $receiver receiver
      *
      * @return self
      */
-    public function setIdentifiers($identifiers)
+    public function setReceiver($receiver)
     {
-        $this->container['identifiers'] = $identifiers;
-
-        return $this;
-    }
-
-    /**
-     * Gets identification_strategy
-     *
-     * @return \MyDataMyConsent\Model\IdentificationStrategy
-     */
-    public function getIdentificationStrategy()
-    {
-        return $this->container['identification_strategy'];
-    }
-
-    /**
-     * Sets identification_strategy
-     *
-     * @param \MyDataMyConsent\Model\IdentificationStrategy $identification_strategy identification_strategy
-     *
-     * @return self
-     */
-    public function setIdentificationStrategy($identification_strategy)
-    {
-        $this->container['identification_strategy'] = $identification_strategy;
+        $this->container['receiver'] = $receiver;
 
         return $this;
     }

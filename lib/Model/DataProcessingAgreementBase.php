@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsentRequestReceiver
+ * DataProcessingAgreementBase
  *
  * PHP version 7.3
  *
@@ -33,10 +33,9 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * ConsentRequestReceiver Class Doc Comment
+ * DataProcessingAgreementBase Class Doc Comment
  *
  * @category Class
- * @description Consent request receiver details
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
+class DataProcessingAgreementBase implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +52,7 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ConsentRequestReceiver';
+    protected static $openAPIModelName = 'DataProcessingAgreementBase';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,9 +60,9 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'country_iso2_code' => 'string',
-        'identifiers' => '\MyDataMyConsent\Model\StringStringKeyValuePair[]',
-        'identification_strategy' => '\MyDataMyConsent\Model\IdentificationStrategy'
+        'version' => 'string',
+        'body' => 'string',
+        'attachment_url' => 'string'
     ];
 
     /**
@@ -74,9 +73,9 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'country_iso2_code' => null,
-        'identifiers' => null,
-        'identification_strategy' => null
+        'version' => null,
+        'body' => null,
+        'attachment_url' => null
     ];
 
     /**
@@ -106,9 +105,9 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'country_iso2_code' => 'countryIso2Code',
-        'identifiers' => 'identifiers',
-        'identification_strategy' => 'identificationStrategy'
+        'version' => 'version',
+        'body' => 'body',
+        'attachment_url' => 'attachmentUrl'
     ];
 
     /**
@@ -117,9 +116,9 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'country_iso2_code' => 'setCountryIso2Code',
-        'identifiers' => 'setIdentifiers',
-        'identification_strategy' => 'setIdentificationStrategy'
+        'version' => 'setVersion',
+        'body' => 'setBody',
+        'attachment_url' => 'setAttachmentUrl'
     ];
 
     /**
@@ -128,9 +127,9 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'country_iso2_code' => 'getCountryIso2Code',
-        'identifiers' => 'getIdentifiers',
-        'identification_strategy' => 'getIdentificationStrategy'
+        'version' => 'getVersion',
+        'body' => 'getBody',
+        'attachment_url' => 'getAttachmentUrl'
     ];
 
     /**
@@ -190,9 +189,9 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['country_iso2_code'] = $data['country_iso2_code'] ?? null;
-        $this->container['identifiers'] = $data['identifiers'] ?? null;
-        $this->container['identification_strategy'] = $data['identification_strategy'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
+        $this->container['body'] = $data['body'] ?? null;
+        $this->container['attachment_url'] = $data['attachment_url'] ?? null;
     }
 
     /**
@@ -204,22 +203,14 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['country_iso2_code'] === null) {
-            $invalidProperties[] = "'country_iso2_code' can't be null";
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
         }
-        if ((mb_strlen($this->container['country_iso2_code']) > 2)) {
-            $invalidProperties[] = "invalid value for 'country_iso2_code', the character length must be smaller than or equal to 2.";
+        if ($this->container['body'] === null) {
+            $invalidProperties[] = "'body' can't be null";
         }
-
-        if ((mb_strlen($this->container['country_iso2_code']) < 2)) {
-            $invalidProperties[] = "invalid value for 'country_iso2_code', the character length must be bigger than or equal to 2.";
-        }
-
-        if ($this->container['identifiers'] === null) {
-            $invalidProperties[] = "'identifiers' can't be null";
-        }
-        if ($this->container['identification_strategy'] === null) {
-            $invalidProperties[] = "'identification_strategy' can't be null";
+        if ($this->container['attachment_url'] === null) {
+            $invalidProperties[] = "'attachment_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -237,80 +228,73 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets country_iso2_code
+     * Gets version
      *
      * @return string
      */
-    public function getCountryIso2Code()
+    public function getVersion()
     {
-        return $this->container['country_iso2_code'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets country_iso2_code
+     * Sets version
      *
-     * @param string $country_iso2_code Consent request receiver country ISO 2 code
+     * @param string $version Agreement version.
      *
      * @return self
      */
-    public function setCountryIso2Code($country_iso2_code)
+    public function setVersion($version)
     {
-        if ((mb_strlen($country_iso2_code) > 2)) {
-            throw new \InvalidArgumentException('invalid length for $country_iso2_code when calling ConsentRequestReceiver., must be smaller than or equal to 2.');
-        }
-        if ((mb_strlen($country_iso2_code) < 2)) {
-            throw new \InvalidArgumentException('invalid length for $country_iso2_code when calling ConsentRequestReceiver., must be bigger than or equal to 2.');
-        }
-
-        $this->container['country_iso2_code'] = $country_iso2_code;
+        $this->container['version'] = $version;
 
         return $this;
     }
 
     /**
-     * Gets identifiers
+     * Gets body
      *
-     * @return \MyDataMyConsent\Model\StringStringKeyValuePair[]
+     * @return string
      */
-    public function getIdentifiers()
+    public function getBody()
     {
-        return $this->container['identifiers'];
+        return $this->container['body'];
     }
 
     /**
-     * Sets identifiers
+     * Sets body
      *
-     * @param \MyDataMyConsent\Model\StringStringKeyValuePair[] $identifiers Consent request receiver identifiers
+     * @param string $body Agreement body content.
      *
      * @return self
      */
-    public function setIdentifiers($identifiers)
+    public function setBody($body)
     {
-        $this->container['identifiers'] = $identifiers;
+        $this->container['body'] = $body;
 
         return $this;
     }
 
     /**
-     * Gets identification_strategy
+     * Gets attachment_url
      *
-     * @return \MyDataMyConsent\Model\IdentificationStrategy
+     * @return string
      */
-    public function getIdentificationStrategy()
+    public function getAttachmentUrl()
     {
-        return $this->container['identification_strategy'];
+        return $this->container['attachment_url'];
     }
 
     /**
-     * Sets identification_strategy
+     * Sets attachment_url
      *
-     * @param \MyDataMyConsent\Model\IdentificationStrategy $identification_strategy identification_strategy
+     * @param string $attachment_url Agreement attachment file URL.
      *
      * @return self
      */
-    public function setIdentificationStrategy($identification_strategy)
+    public function setAttachmentUrl($attachment_url)
     {
-        $this->container['identification_strategy'] = $identification_strategy;
+        $this->container['attachment_url'] = $attachment_url;
 
         return $this;
     }

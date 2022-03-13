@@ -5,23 +5,23 @@ All URIs are relative to https://api.mydatamyconsent.com.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**downloadConsentedDocumentAnalysis()**](DataConsentsApi.md#downloadConsentedDocumentAnalysis) | **GET** /v1/consents/{consentId}/documents/{documentId}/analysis | Get analysis of a consented document.
-[**downloadConsentedDocumentById()**](DataConsentsApi.md#downloadConsentedDocumentById) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId}/download | Download a individuals consented document.
-[**downloadOrgConsentedDocumentById()**](DataConsentsApi.md#downloadOrgConsentedDocumentById) | **GET** /v1/consents/organizations/{consentId}/documents/{documentId}/download | Download a organizations consented document.
-[**getAllConsentedDocuments()**](DataConsentsApi.md#getAllConsentedDocuments) | **GET** /v1/consents/individuals/{consentId}/documents | Get the individual documents based on ConsentId.
+[**downloadIndividualConsentedDocumentById()**](DataConsentsApi.md#downloadIndividualConsentedDocumentById) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId}/download | Download individual consented document by document id.
+[**downloadOrganizationConsentedDocumentById()**](DataConsentsApi.md#downloadOrganizationConsentedDocumentById) | **GET** /v1/consents/organizations/{consentId}/documents/{documentId}/download | Download organization consent document based on document id.
 [**getAllConsentedFinancialAccounts()**](DataConsentsApi.md#getAllConsentedFinancialAccounts) | **GET** /v1/consents/individuals/{consentId}/financial-accounts | Get all individual consented financial accounts.
-[**getAllOrganizationConsentedDocuments()**](DataConsentsApi.md#getAllOrganizationConsentedDocuments) | **GET** /v1/consents/organizations/{consentId}/documents | Get the organization documents based on ConsentId.
-[**getConsentDetailsById()**](DataConsentsApi.md#getConsentDetailsById) | **GET** /v1/consents/individuals/{consentId} | Get all individuals consent details by consent id.
 [**getConsentFinancialAccounts()**](DataConsentsApi.md#getConsentFinancialAccounts) | **GET** /v1/consents/organizations/{consentId}/financial-accounts | Get all organizational consented financial accounts.
 [**getConsentedAccountById()**](DataConsentsApi.md#getConsentedAccountById) | **GET** /v1/consents/individuals/{consentId}/financial-accounts/{accountId} | Get individual consented financial account details based on account id.
-[**getConsentedDocumentById()**](DataConsentsApi.md#getConsentedDocumentById) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId} | Get individuals consent document based on document id.
+[**getConsentedDocumentById()**](DataConsentsApi.md#getConsentedDocumentById) | **GET** /v1/consents/individuals/{consentId}/documents/{documentId} | Get individual consented document by document id.
 [**getConsentedFinancialAccount()**](DataConsentsApi.md#getConsentedFinancialAccount) | **GET** /v1/consents/organizations/{consentId}/financial-accounts/{accountId} | Get organization consented financial account details based on account id.
 [**getConsentedFinancialAccountInsights()**](DataConsentsApi.md#getConsentedFinancialAccountInsights) | **GET** /v1/consents/{consentId}/financial-accounts/{accountId}/insights | Get consented financial account insights.
 [**getConsentedFinancialAccountTransactions()**](DataConsentsApi.md#getConsentedFinancialAccountTransactions) | **GET** /v1/consents/individuals/{consentId}/financial-accounts/{accountId}/transactions | Get individual consented financial account transactions of an individual based on accountId.
-[**getConsentsForOrganizations()**](DataConsentsApi.md#getConsentsForOrganizations) | **GET** /v1/consents/organizations | Get the list of data consents sent for organizations.
-[**getConsentsSentToIndividuals()**](DataConsentsApi.md#getConsentsSentToIndividuals) | **GET** /v1/consents/individuals | Get the list of Consents Sent to Individuals.
+[**getConsents()**](DataConsentsApi.md#getConsents) | **GET** /v1/consents/individuals | Get the paginated list of individual data consents.
+[**getIndividualConsentedDocuments()**](DataConsentsApi.md#getIndividualConsentedDocuments) | **GET** /v1/consents/individuals/{consentId}/documents | Get individual consented documents by consent id.
+[**getIndividualDataConsentById()**](DataConsentsApi.md#getIndividualDataConsentById) | **GET** /v1/consents/individuals/{consentId} | Get individuals data consent details by consent id.
 [**getOrgConsentedAccountTransactions()**](DataConsentsApi.md#getOrgConsentedAccountTransactions) | **GET** /v1/consents/organizations/{consentId}/financial-accounts/{accountId}/transactions | Get organization consented financial account transactions of an individual based on accountId.
-[**getOrganizationConsentDetailsById()**](DataConsentsApi.md#getOrganizationConsentDetailsById) | **GET** /v1/consents/organizations/{consentId} | Get all organization consent details by consent id.
 [**getOrganizationConsentedDocumentById()**](DataConsentsApi.md#getOrganizationConsentedDocumentById) | **GET** /v1/consents/organizations/{consentId}/documents/{documentId} | Get organization consent document based on document id.
+[**getOrganizationConsentedDocuments()**](DataConsentsApi.md#getOrganizationConsentedDocuments) | **GET** /v1/consents/organizations/{consentId}/documents | Get organization consented documents by consent id.
+[**getOrganizationDataConsentById()**](DataConsentsApi.md#getOrganizationDataConsentById) | **GET** /v1/consents/organizations/{consentId} | Get organizations data consent details by consent id.
+[**getOrganizationDataConsents()**](DataConsentsApi.md#getOrganizationDataConsents) | **GET** /v1/consents/organizations | Get the paginated list of organization data consents.
 
 
 ## `downloadConsentedDocumentAnalysis()`
@@ -45,8 +45,8 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$consent_id = 'consent_id_example'; // string
-$document_id = 'document_id_example'; // string | Document Id.
+$consent_id = 'consent_id_example'; // string | Data consent id.
+$document_id = 'document_id_example'; // string | Consented document Id.
 
 try {
     $apiInstance->downloadConsentedDocumentAnalysis($consent_id, $document_id);
@@ -59,8 +59,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consent_id** | **string**|  |
- **document_id** | **string**| Document Id. |
+ **consent_id** | **string**| Data consent id. |
+ **document_id** | **string**| Consented document Id. |
 
 ### Return type
 
@@ -79,13 +79,13 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `downloadConsentedDocumentById()`
+## `downloadIndividualConsentedDocumentById()`
 
 ```php
-downloadConsentedDocumentById($consent_id, $document_id): \MyDataMyConsent\Model\UserDocumentDownload
+downloadIndividualConsentedDocumentById($consent_id, $document_id)
 ```
 
-Download a individuals consented document.
+Download individual consented document by document id.
 
 ### Example
 
@@ -100,14 +100,13 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$consent_id = 'consent_id_example'; // string | Consent id.
-$document_id = 'document_id_example'; // string | Document id.
+$consent_id = 'consent_id_example'; // string | Individual data consent id.
+$document_id = 'document_id_example'; // string | Consented document id.
 
 try {
-    $result = $apiInstance->downloadConsentedDocumentById($consent_id, $document_id);
-    print_r($result);
+    $apiInstance->downloadIndividualConsentedDocumentById($consent_id, $document_id);
 } catch (Exception $e) {
-    echo 'Exception when calling DataConsentsApi->downloadConsentedDocumentById: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DataConsentsApi->downloadIndividualConsentedDocumentById: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -115,12 +114,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consent_id** | **string**| Consent id. |
- **document_id** | **string**| Document id. |
+ **consent_id** | **string**| Individual data consent id. |
+ **document_id** | **string**| Consented document id. |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\UserDocumentDownload**](../Model/UserDocumentDownload.md)
+void (empty response body)
 
 ### Authorization
 
@@ -135,13 +134,13 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `downloadOrgConsentedDocumentById()`
+## `downloadOrganizationConsentedDocumentById()`
 
 ```php
-downloadOrgConsentedDocumentById($consent_id, $document_id): \MyDataMyConsent\Model\OrganizationDocumentDownloadDto
+downloadOrganizationConsentedDocumentById($consent_id, $document_id)
 ```
 
-Download a organizations consented document.
+Download organization consent document based on document id.
 
 ### Example
 
@@ -156,14 +155,13 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$consent_id = 'consent_id_example'; // string | Consent id.
-$document_id = 'document_id_example'; // string | Document id.
+$consent_id = 'consent_id_example'; // string | Organization data consent id.
+$document_id = 'document_id_example'; // string | Organization consented document Id.
 
 try {
-    $result = $apiInstance->downloadOrgConsentedDocumentById($consent_id, $document_id);
-    print_r($result);
+    $apiInstance->downloadOrganizationConsentedDocumentById($consent_id, $document_id);
 } catch (Exception $e) {
-    echo 'Exception when calling DataConsentsApi->downloadOrgConsentedDocumentById: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DataConsentsApi->downloadOrganizationConsentedDocumentById: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -171,66 +169,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consent_id** | **string**| Consent id. |
- **document_id** | **string**| Document id. |
+ **consent_id** | **string**| Organization data consent id. |
+ **document_id** | **string**| Organization consented document Id. |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\OrganizationDocumentDownloadDto**](../Model/OrganizationDocumentDownloadDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getAllConsentedDocuments()`
-
-```php
-getAllConsentedDocuments($consent_id): \MyDataMyConsent\Model\DataConsentDocumentsDto
-```
-
-Get the individual documents based on ConsentId.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$consent_id = 'consent_id_example'; // string | Consent id.
-
-try {
-    $result = $apiInstance->getAllConsentedDocuments($consent_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DataConsentsApi->getAllConsentedDocuments: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **consent_id** | **string**| Consent id. |
-
-### Return type
-
-[**\MyDataMyConsent\Model\DataConsentDocumentsDto**](../Model/DataConsentDocumentsDto.md)
+void (empty response body)
 
 ### Authorization
 
@@ -285,114 +229,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\MyDataMyConsent\Model\DataConsentFinancialsDto**](../Model/DataConsentFinancialsDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getAllOrganizationConsentedDocuments()`
-
-```php
-getAllOrganizationConsentedDocuments($consent_id): \MyDataMyConsent\Model\DataConsentDocumentsDto
-```
-
-Get the organization documents based on ConsentId.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$consent_id = 'consent_id_example'; // string | Consent id.
-
-try {
-    $result = $apiInstance->getAllOrganizationConsentedDocuments($consent_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DataConsentsApi->getAllOrganizationConsentedDocuments: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **consent_id** | **string**| Consent id. |
-
-### Return type
-
-[**\MyDataMyConsent\Model\DataConsentDocumentsDto**](../Model/DataConsentDocumentsDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getConsentDetailsById()`
-
-```php
-getConsentDetailsById($consent_id): \MyDataMyConsent\Model\DataConsentDetailsDto
-```
-
-Get all individuals consent details by consent id.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$consent_id = 'consent_id_example'; // string | Consent id.
-
-try {
-    $result = $apiInstance->getConsentDetailsById($consent_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DataConsentsApi->getConsentDetailsById: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **consent_id** | **string**| Consent id. |
-
-### Return type
-
-[**\MyDataMyConsent\Model\DataConsentDetailsDto**](../Model/DataConsentDetailsDto.md)
 
 ### Authorization
 
@@ -520,10 +356,10 @@ No authorization required
 ## `getConsentedDocumentById()`
 
 ```php
-getConsentedDocumentById($consent_id, $document_id): \MyDataMyConsent\Model\UserDocumentDetails
+getConsentedDocumentById($consent_id, $document_id): \MyDataMyConsent\Model\IndividualDataConsentDocument
 ```
 
-Get individuals consent document based on document id.
+Get individual consented document by document id.
 
 ### Example
 
@@ -538,8 +374,8 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$consent_id = 'consent_id_example'; // string | Consent id.
-$document_id = 'document_id_example'; // string | Document Id.
+$consent_id = 'consent_id_example'; // string | Individual data consent id.
+$document_id = 'document_id_example'; // string | Consented document id.
 
 try {
     $result = $apiInstance->getConsentedDocumentById($consent_id, $document_id);
@@ -553,12 +389,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consent_id** | **string**| Consent id. |
- **document_id** | **string**| Document Id. |
+ **consent_id** | **string**| Individual data consent id. |
+ **document_id** | **string**| Consented document id. |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\UserDocumentDetails**](../Model/UserDocumentDetails.md)
+[**\MyDataMyConsent\Model\IndividualDataConsentDocument**](../Model/IndividualDataConsentDocument.md)
 
 ### Authorization
 
@@ -750,13 +586,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getConsentsForOrganizations()`
+## `getConsents()`
 
 ```php
-getConsentsForOrganizations($status, $from, $to, $page_no, $page_size): \MyDataMyConsent\Model\OrganizationDataConsentInfoDtoPaginatedList
+getConsents($status, $from_date_time, $to_date_time, $page_no, $page_size): \MyDataMyConsent\Model\IndividualDataConsentDetailsPaginatedList
 ```
 
-Get the list of data consents sent for organizations.
+Get the paginated list of individual data consents.
+
+GetIndividualDataConsents
 
 ### Example
 
@@ -772,16 +610,16 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     new GuzzleHttp\Client()
 );
 $status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus.
-$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date time in utc timezone.
-$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Til date time in utc timezone.
+$from_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From datetime in UTC timezone.
+$to_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To datetime in UTC timezone.
 $page_no = 1; // int | Page number.
 $page_size = 25; // int | Number of items to return.
 
 try {
-    $result = $apiInstance->getConsentsForOrganizations($status, $from, $to, $page_no, $page_size);
+    $result = $apiInstance->getConsents($status, $from_date_time, $to_date_time, $page_no, $page_size);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DataConsentsApi->getConsentsForOrganizations: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DataConsentsApi->getConsents: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -790,14 +628,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. | [optional]
- **from** | **\DateTime**| From date time in utc timezone. | [optional]
- **to** | **\DateTime**| Til date time in utc timezone. | [optional]
+ **from_date_time** | **\DateTime**| From datetime in UTC timezone. | [optional]
+ **to_date_time** | **\DateTime**| To datetime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
  **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
 ### Return type
 
-[**\MyDataMyConsent\Model\OrganizationDataConsentInfoDtoPaginatedList**](../Model/OrganizationDataConsentInfoDtoPaginatedList.md)
+[**\MyDataMyConsent\Model\IndividualDataConsentDetailsPaginatedList**](../Model/IndividualDataConsentDetailsPaginatedList.md)
 
 ### Authorization
 
@@ -812,13 +650,13 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getConsentsSentToIndividuals()`
+## `getIndividualConsentedDocuments()`
 
 ```php
-getConsentsSentToIndividuals($status, $from, $to, $page_no, $page_size): \MyDataMyConsent\Model\UserDataConsentInfoDtoPaginatedList
+getIndividualConsentedDocuments($consent_id): \MyDataMyConsent\Model\IndividualDataConsentDocument[]
 ```
 
-Get the list of Consents Sent to Individuals.
+Get individual consented documents by consent id.
 
 ### Example
 
@@ -833,17 +671,13 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus.
-$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date time in utc timezone.
-$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Til date time in utc timezone.
-$page_no = 1; // int | Page number.
-$page_size = 25; // int | Number of items to return.
+$consent_id = 'consent_id_example'; // string | Individual data consent id.
 
 try {
-    $result = $apiInstance->getConsentsSentToIndividuals($status, $from, $to, $page_no, $page_size);
+    $result = $apiInstance->getIndividualConsentedDocuments($consent_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DataConsentsApi->getConsentsSentToIndividuals: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DataConsentsApi->getIndividualConsentedDocuments: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -851,15 +685,65 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. | [optional]
- **from** | **\DateTime**| From date time in utc timezone. | [optional]
- **to** | **\DateTime**| Til date time in utc timezone. | [optional]
- **page_no** | **int**| Page number. | [optional] [default to 1]
- **page_size** | **int**| Number of items to return. | [optional] [default to 25]
+ **consent_id** | **string**| Individual data consent id. |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\UserDataConsentInfoDtoPaginatedList**](../Model/UserDataConsentInfoDtoPaginatedList.md)
+[**\MyDataMyConsent\Model\IndividualDataConsentDocument[]**](../Model/IndividualDataConsentDocument.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getIndividualDataConsentById()`
+
+```php
+getIndividualDataConsentById($consent_id): OneOfDataConsentIndividualDataConsentOrganizationDataConsent
+```
+
+Get individuals data consent details by consent id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$consent_id = 'consent_id_example'; // string | Individual data consent id.
+
+try {
+    $result = $apiInstance->getIndividualDataConsentById($consent_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DataConsentsApi->getIndividualDataConsentById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consent_id** | **string**| Individual data consent id. |
+
+### Return type
+
+[**OneOfDataConsentIndividualDataConsentOrganizationDataConsent**](../Model/OneOfDataConsentIndividualDataConsentOrganizationDataConsent.md)
 
 ### Authorization
 
@@ -940,64 +824,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getOrganizationConsentDetailsById()`
-
-```php
-getOrganizationConsentDetailsById($consent_id): \MyDataMyConsent\Model\DataConsentDetailsDto
-```
-
-Get all organization consent details by consent id.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$consent_id = 'consent_id_example'; // string | Consent id.
-
-try {
-    $result = $apiInstance->getOrganizationConsentDetailsById($consent_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DataConsentsApi->getOrganizationConsentDetailsById: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **consent_id** | **string**| Consent id. |
-
-### Return type
-
-[**\MyDataMyConsent\Model\DataConsentDetailsDto**](../Model/DataConsentDetailsDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `getOrganizationConsentedDocumentById()`
 
 ```php
-getOrganizationConsentedDocumentById($consent_id, $document_id): \MyDataMyConsent\Model\OrganizationDocumentDetails
+getOrganizationConsentedDocumentById($consent_id, $document_id): \MyDataMyConsent\Model\OrganizationDataConsentDocument
 ```
 
 Get organization consent document based on document id.
@@ -1015,8 +845,8 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$consent_id = 'consent_id_example'; // string | Consent id.
-$document_id = 'document_id_example'; // string | Document Id.
+$consent_id = 'consent_id_example'; // string | Organization data consent id.
+$document_id = 'document_id_example'; // string | Organization consented document Id.
 
 try {
     $result = $apiInstance->getOrganizationConsentedDocumentById($consent_id, $document_id);
@@ -1030,12 +860,182 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consent_id** | **string**| Consent id. |
- **document_id** | **string**| Document Id. |
+ **consent_id** | **string**| Organization data consent id. |
+ **document_id** | **string**| Organization consented document Id. |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\OrganizationDocumentDetails**](../Model/OrganizationDocumentDetails.md)
+[**\MyDataMyConsent\Model\OrganizationDataConsentDocument**](../Model/OrganizationDataConsentDocument.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getOrganizationConsentedDocuments()`
+
+```php
+getOrganizationConsentedDocuments($consent_id): \MyDataMyConsent\Model\OrganizationDataConsentDocument[]
+```
+
+Get organization consented documents by consent id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$consent_id = 'consent_id_example'; // string | Organization data consent id.
+
+try {
+    $result = $apiInstance->getOrganizationConsentedDocuments($consent_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DataConsentsApi->getOrganizationConsentedDocuments: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consent_id** | **string**| Organization data consent id. |
+
+### Return type
+
+[**\MyDataMyConsent\Model\OrganizationDataConsentDocument[]**](../Model/OrganizationDataConsentDocument.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getOrganizationDataConsentById()`
+
+```php
+getOrganizationDataConsentById($consent_id): OneOfDataConsentIndividualDataConsentOrganizationDataConsent
+```
+
+Get organizations data consent details by consent id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$consent_id = 'consent_id_example'; // string | Organization data consent id.
+
+try {
+    $result = $apiInstance->getOrganizationDataConsentById($consent_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DataConsentsApi->getOrganizationDataConsentById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consent_id** | **string**| Organization data consent id. |
+
+### Return type
+
+[**OneOfDataConsentIndividualDataConsentOrganizationDataConsent**](../Model/OneOfDataConsentIndividualDataConsentOrganizationDataConsent.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getOrganizationDataConsents()`
+
+```php
+getOrganizationDataConsents($status, $from_date_time, $to_date_time, $page_no, $page_size): \MyDataMyConsent\Model\OrganizationDataConsentDetailsPaginatedList
+```
+
+Get the paginated list of organization data consents.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus.
+$from_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From datetime in UTC timezone.
+$to_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To datetime in UTC timezone.
+$page_no = 1; // int | Page number.
+$page_size = 25; // int | Number of items to return.
+
+try {
+    $result = $apiInstance->getOrganizationDataConsents($status, $from_date_time, $to_date_time, $page_no, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DataConsentsApi->getOrganizationDataConsents: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. | [optional]
+ **from_date_time** | **\DateTime**| From datetime in UTC timezone. | [optional]
+ **to_date_time** | **\DateTime**| To datetime in UTC timezone. | [optional]
+ **page_no** | **int**| Page number. | [optional] [default to 1]
+ **page_size** | **int**| Number of items to return. | [optional] [default to 25]
+
+### Return type
+
+[**\MyDataMyConsent\Model\OrganizationDataConsentDetailsPaginatedList**](../Model/OrganizationDataConsentDetailsPaginatedList.md)
 
 ### Authorization
 

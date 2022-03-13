@@ -1151,7 +1151,7 @@ class DocumentsApi
      *
      * Issue a new document to an individual user.
      *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. (required)
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request payload (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1168,7 +1168,7 @@ class DocumentsApi
      *
      * Issue a new document to an individual user.
      *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. (required)
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request payload (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1321,7 +1321,7 @@ class DocumentsApi
      *
      * Issue a new document to an individual user.
      *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. (required)
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request payload (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1341,7 +1341,7 @@ class DocumentsApi
      *
      * Issue a new document to an individual user.
      *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. (required)
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request payload (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1387,7 +1387,7 @@ class DocumentsApi
     /**
      * Create request for operation 'issueDocumentToIndividual'
      *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. (required)
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request payload (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1480,7 +1480,7 @@ class DocumentsApi
      *
      * Issue a new document to an organization.
      *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. (required)
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request payload (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1497,7 +1497,7 @@ class DocumentsApi
      *
      * Issue a new document to an organization.
      *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. (required)
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request payload (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1670,7 +1670,7 @@ class DocumentsApi
      *
      * Issue a new document to an organization.
      *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. (required)
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request payload (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1690,7 +1690,7 @@ class DocumentsApi
      *
      * Issue a new document to an organization.
      *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. (required)
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request payload (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1736,7 +1736,7 @@ class DocumentsApi
     /**
      * Create request for operation 'issueDocumentToOrganization'
      *
-     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest. (required)
+     * @param  \MyDataMyConsent\Model\DocumentIssueRequest $document_issue_request Document issue request payload (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

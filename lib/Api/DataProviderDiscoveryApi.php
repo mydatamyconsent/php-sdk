@@ -119,9 +119,9 @@ class DataProviderDiscoveryApi
     /**
      * Operation getDataProviderById
      *
-     * Get a Data Provider details based on provider id.
+     * Get a Data Provider details by provider id.
      *
-     * @param  string $provider_id Provider id. (required)
+     * @param  string $provider_id Data provider id. (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -136,9 +136,9 @@ class DataProviderDiscoveryApi
     /**
      * Operation getDataProviderByIdWithHttpInfo
      *
-     * Get a Data Provider details based on provider id.
+     * Get a Data Provider details by provider id.
      *
-     * @param  string $provider_id Provider id. (required)
+     * @param  string $provider_id Data provider id. (required)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -289,9 +289,9 @@ class DataProviderDiscoveryApi
     /**
      * Operation getDataProviderByIdAsync
      *
-     * Get a Data Provider details based on provider id.
+     * Get a Data Provider details by provider id.
      *
-     * @param  string $provider_id Provider id. (required)
+     * @param  string $provider_id Data provider id. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -309,9 +309,9 @@ class DataProviderDiscoveryApi
     /**
      * Operation getDataProviderByIdAsyncWithHttpInfo
      *
-     * Get a Data Provider details based on provider id.
+     * Get a Data Provider details by provider id.
      *
-     * @param  string $provider_id Provider id. (required)
+     * @param  string $provider_id Data provider id. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -357,7 +357,7 @@ class DataProviderDiscoveryApi
     /**
      * Create request for operation 'getDataProviderById'
      *
-     * @param  string $provider_id Provider id. (required)
+     * @param  string $provider_id Data provider id. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -457,15 +457,15 @@ class DataProviderDiscoveryApi
      * @param  string $organization_category Organization category. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
-     * @param  string $country ISO2 Country code. (optional, default to 'IN')
+     * @param  string $country_iso2_code ISO2 Country code. (optional, default to 'IN')
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \MyDataMyConsent\Model\DataProviderPaginatedList|object|object
      */
-    public function getDataProviders($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
+    public function getDataProviders($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country_iso2_code = 'IN')
     {
-        list($response) = $this->getDataProvidersWithHttpInfo($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
+        list($response) = $this->getDataProvidersWithHttpInfo($account_type, $document_type, $organization_category, $page_no, $page_size, $country_iso2_code);
         return $response;
     }
 
@@ -479,15 +479,15 @@ class DataProviderDiscoveryApi
      * @param  string $organization_category Organization category. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
-     * @param  string $country ISO2 Country code. (optional, default to 'IN')
+     * @param  string $country_iso2_code ISO2 Country code. (optional, default to 'IN')
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \MyDataMyConsent\Model\DataProviderPaginatedList|object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDataProvidersWithHttpInfo($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
+    public function getDataProvidersWithHttpInfo($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country_iso2_code = 'IN')
     {
-        $request = $this->getDataProvidersRequest($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
+        $request = $this->getDataProvidersRequest($account_type, $document_type, $organization_category, $page_no, $page_size, $country_iso2_code);
 
         try {
             $options = $this->createHttpClientOption();
@@ -617,14 +617,14 @@ class DataProviderDiscoveryApi
      * @param  string $organization_category Organization category. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
-     * @param  string $country ISO2 Country code. (optional, default to 'IN')
+     * @param  string $country_iso2_code ISO2 Country code. (optional, default to 'IN')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDataProvidersAsync($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
+    public function getDataProvidersAsync($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country_iso2_code = 'IN')
     {
-        return $this->getDataProvidersAsyncWithHttpInfo($account_type, $document_type, $organization_category, $page_no, $page_size, $country)
+        return $this->getDataProvidersAsyncWithHttpInfo($account_type, $document_type, $organization_category, $page_no, $page_size, $country_iso2_code)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -642,15 +642,15 @@ class DataProviderDiscoveryApi
      * @param  string $organization_category Organization category. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
-     * @param  string $country ISO2 Country code. (optional, default to 'IN')
+     * @param  string $country_iso2_code ISO2 Country code. (optional, default to 'IN')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDataProvidersAsyncWithHttpInfo($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
+    public function getDataProvidersAsyncWithHttpInfo($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country_iso2_code = 'IN')
     {
         $returnType = '\MyDataMyConsent\Model\DataProviderPaginatedList';
-        $request = $this->getDataProvidersRequest($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
+        $request = $this->getDataProvidersRequest($account_type, $document_type, $organization_category, $page_no, $page_size, $country_iso2_code);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -693,12 +693,12 @@ class DataProviderDiscoveryApi
      * @param  string $organization_category Organization category. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
-     * @param  string $country ISO2 Country code. (optional, default to 'IN')
+     * @param  string $country_iso2_code ISO2 Country code. (optional, default to 'IN')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDataProvidersRequest($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country = 'IN')
+    public function getDataProvidersRequest($account_type = null, $document_type = null, $organization_category = null, $page_no = 1, $page_size = 25, $country_iso2_code = 'IN')
     {
 
         $resourcePath = '/v1/data-providers';
@@ -764,14 +764,14 @@ class DataProviderDiscoveryApi
             }
         }
         // query params
-        if ($country !== null) {
-            if('form' === 'form' && is_array($country)) {
-                foreach($country as $key => $value) {
+        if ($country_iso2_code !== null) {
+            if('form' === 'form' && is_array($country_iso2_code)) {
+                foreach($country_iso2_code as $key => $value) {
                     $queryParams[$key] = $value;
                 }
             }
             else {
-                $queryParams['country'] = $country;
+                $queryParams['countryIso2Code'] = $country_iso2_code;
             }
         }
 

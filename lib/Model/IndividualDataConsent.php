@@ -1,6 +1,6 @@
 <?php
 /**
- * DataProvider
+ * IndividualDataConsent
  *
  * PHP version 7.3
  *
@@ -33,9 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataProvider Class Doc Comment
+ * IndividualDataConsent Class Doc Comment
  *
  * @category Class
+ * @description Individual data consent details.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
+class IndividualDataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +53,7 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataProvider';
+    protected static $openAPIModelName = 'IndividualDataConsent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,18 +61,17 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'approver' => 'string',
         'id' => 'string',
-        'name' => 'string',
-        'category' => 'string',
-        'logo_url' => 'string',
-        'website' => 'string',
-        'support_email' => 'string',
-        'help_line_number' => 'string',
-        'privacy_policy' => 'string',
-        'term_of_service' => 'string',
-        'data_protection_officer' => '\MyDataMyConsent\Model\DataProtectionOfficer',
-        'supported_document_types' => 'string[]',
-        'supported_account_types' => 'string[]'
+        'template_id' => 'string',
+        'title' => 'string',
+        'description' => 'string',
+        'purpose' => 'string',
+        'status' => '\MyDataMyConsent\Model\DataConsentStatus',
+        'transaction_id' => 'string',
+        'approved_at_utc' => '\DateTime',
+        'data_access_expires_at_utc' => '\DateTime',
+        'revoked_at_utc' => '\DateTime'
     ];
 
     /**
@@ -82,18 +82,17 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'category' => null,
-        'logo_url' => null,
-        'website' => null,
-        'support_email' => null,
-        'help_line_number' => null,
-        'privacy_policy' => null,
-        'term_of_service' => null,
-        'data_protection_officer' => null,
-        'supported_document_types' => null,
-        'supported_account_types' => null
+        'approver' => null,
+        'id' => 'uuid',
+        'template_id' => 'uuid',
+        'title' => null,
+        'description' => null,
+        'purpose' => null,
+        'status' => null,
+        'transaction_id' => null,
+        'approved_at_utc' => 'date-time',
+        'data_access_expires_at_utc' => 'date-time',
+        'revoked_at_utc' => 'date-time'
     ];
 
     /**
@@ -123,18 +122,17 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'approver' => 'approver',
         'id' => 'id',
-        'name' => 'name',
-        'category' => 'category',
-        'logo_url' => 'logoUrl',
-        'website' => 'website',
-        'support_email' => 'supportEmail',
-        'help_line_number' => 'helpLineNumber',
-        'privacy_policy' => 'privacyPolicy',
-        'term_of_service' => 'termOfService',
-        'data_protection_officer' => 'dataProtectionOfficer',
-        'supported_document_types' => 'supportedDocumentTypes',
-        'supported_account_types' => 'supportedAccountTypes'
+        'template_id' => 'templateId',
+        'title' => 'title',
+        'description' => 'description',
+        'purpose' => 'purpose',
+        'status' => 'status',
+        'transaction_id' => 'transactionId',
+        'approved_at_utc' => 'approvedAtUtc',
+        'data_access_expires_at_utc' => 'dataAccessExpiresAtUtc',
+        'revoked_at_utc' => 'revokedAtUtc'
     ];
 
     /**
@@ -143,18 +141,17 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'approver' => 'setApprover',
         'id' => 'setId',
-        'name' => 'setName',
-        'category' => 'setCategory',
-        'logo_url' => 'setLogoUrl',
-        'website' => 'setWebsite',
-        'support_email' => 'setSupportEmail',
-        'help_line_number' => 'setHelpLineNumber',
-        'privacy_policy' => 'setPrivacyPolicy',
-        'term_of_service' => 'setTermOfService',
-        'data_protection_officer' => 'setDataProtectionOfficer',
-        'supported_document_types' => 'setSupportedDocumentTypes',
-        'supported_account_types' => 'setSupportedAccountTypes'
+        'template_id' => 'setTemplateId',
+        'title' => 'setTitle',
+        'description' => 'setDescription',
+        'purpose' => 'setPurpose',
+        'status' => 'setStatus',
+        'transaction_id' => 'setTransactionId',
+        'approved_at_utc' => 'setApprovedAtUtc',
+        'data_access_expires_at_utc' => 'setDataAccessExpiresAtUtc',
+        'revoked_at_utc' => 'setRevokedAtUtc'
     ];
 
     /**
@@ -163,18 +160,17 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'approver' => 'getApprover',
         'id' => 'getId',
-        'name' => 'getName',
-        'category' => 'getCategory',
-        'logo_url' => 'getLogoUrl',
-        'website' => 'getWebsite',
-        'support_email' => 'getSupportEmail',
-        'help_line_number' => 'getHelpLineNumber',
-        'privacy_policy' => 'getPrivacyPolicy',
-        'term_of_service' => 'getTermOfService',
-        'data_protection_officer' => 'getDataProtectionOfficer',
-        'supported_document_types' => 'getSupportedDocumentTypes',
-        'supported_account_types' => 'getSupportedAccountTypes'
+        'template_id' => 'getTemplateId',
+        'title' => 'getTitle',
+        'description' => 'getDescription',
+        'purpose' => 'getPurpose',
+        'status' => 'getStatus',
+        'transaction_id' => 'getTransactionId',
+        'approved_at_utc' => 'getApprovedAtUtc',
+        'data_access_expires_at_utc' => 'getDataAccessExpiresAtUtc',
+        'revoked_at_utc' => 'getRevokedAtUtc'
     ];
 
     /**
@@ -234,18 +230,17 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['approver'] = $data['approver'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['category'] = $data['category'] ?? null;
-        $this->container['logo_url'] = $data['logo_url'] ?? null;
-        $this->container['website'] = $data['website'] ?? null;
-        $this->container['support_email'] = $data['support_email'] ?? null;
-        $this->container['help_line_number'] = $data['help_line_number'] ?? null;
-        $this->container['privacy_policy'] = $data['privacy_policy'] ?? null;
-        $this->container['term_of_service'] = $data['term_of_service'] ?? null;
-        $this->container['data_protection_officer'] = $data['data_protection_officer'] ?? null;
-        $this->container['supported_document_types'] = $data['supported_document_types'] ?? null;
-        $this->container['supported_account_types'] = $data['supported_account_types'] ?? null;
+        $this->container['template_id'] = $data['template_id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['purpose'] = $data['purpose'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['transaction_id'] = $data['transaction_id'] ?? null;
+        $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
+        $this->container['data_access_expires_at_utc'] = $data['data_access_expires_at_utc'] ?? null;
+        $this->container['revoked_at_utc'] = $data['revoked_at_utc'] ?? null;
     }
 
     /**
@@ -257,17 +252,26 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['approver'] === null) {
+            $invalidProperties[] = "'approver' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
         }
-        if ($this->container['supported_document_types'] === null) {
-            $invalidProperties[] = "'supported_document_types' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['approved_at_utc'] === null) {
+            $invalidProperties[] = "'approved_at_utc' can't be null";
+        }
+        if ($this->container['data_access_expires_at_utc'] === null) {
+            $invalidProperties[] = "'data_access_expires_at_utc' can't be null";
         }
         return $invalidProperties;
     }
@@ -285,6 +289,30 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets approver
+     *
+     * @return string
+     */
+    public function getApprover()
+    {
+        return $this->container['approver'];
+    }
+
+    /**
+     * Sets approver
+     *
+     * @param string $approver Name of consent approver individual.
+     *
+     * @return self
+     */
+    public function setApprover($approver)
+    {
+        $this->container['approver'] = $approver;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
      * @return string
@@ -297,7 +325,7 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id Data consent id.
      *
      * @return self
      */
@@ -309,265 +337,217 @@ class DataProvider implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
+     * Gets template_id
+     *
+     * @return string|null
+     */
+    public function getTemplateId()
+    {
+        return $this->container['template_id'];
+    }
+
+    /**
+     * Sets template_id
+     *
+     * @param string|null $template_id Consent template id.
+     *
+     * @return self
+     */
+    public function setTemplateId($template_id)
+    {
+        $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
      *
      * @return string
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->container['name'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets name
+     * Sets title
      *
-     * @param string $name name
+     * @param string $title Consent title.
      *
      * @return self
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->container['name'] = $name;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets category
+     * Gets description
      *
      * @return string
      */
-    public function getCategory()
+    public function getDescription()
     {
-        return $this->container['category'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets category
+     * Sets description
      *
-     * @param string $category category
+     * @param string $description Consent description.
      *
      * @return self
      */
-    public function setCategory($category)
+    public function setDescription($description)
     {
-        $this->container['category'] = $category;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets logo_url
+     * Gets purpose
      *
      * @return string|null
      */
-    public function getLogoUrl()
+    public function getPurpose()
     {
-        return $this->container['logo_url'];
+        return $this->container['purpose'];
     }
 
     /**
-     * Sets logo_url
+     * Sets purpose
      *
-     * @param string|null $logo_url logo_url
+     * @param string|null $purpose Consent purpose.
      *
      * @return self
      */
-    public function setLogoUrl($logo_url)
+    public function setPurpose($purpose)
     {
-        $this->container['logo_url'] = $logo_url;
+        $this->container['purpose'] = $purpose;
 
         return $this;
     }
 
     /**
-     * Gets website
+     * Gets status
+     *
+     * @return \MyDataMyConsent\Model\DataConsentStatus
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param \MyDataMyConsent\Model\DataConsentStatus $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets transaction_id
      *
      * @return string|null
      */
-    public function getWebsite()
+    public function getTransactionId()
     {
-        return $this->container['website'];
+        return $this->container['transaction_id'];
     }
 
     /**
-     * Sets website
+     * Sets transaction_id
      *
-     * @param string|null $website website
+     * @param string|null $transaction_id Transaction id.
      *
      * @return self
      */
-    public function setWebsite($website)
+    public function setTransactionId($transaction_id)
     {
-        $this->container['website'] = $website;
+        $this->container['transaction_id'] = $transaction_id;
 
         return $this;
     }
 
     /**
-     * Gets support_email
+     * Gets approved_at_utc
      *
-     * @return string|null
+     * @return \DateTime
      */
-    public function getSupportEmail()
+    public function getApprovedAtUtc()
     {
-        return $this->container['support_email'];
+        return $this->container['approved_at_utc'];
     }
 
     /**
-     * Sets support_email
+     * Sets approved_at_utc
      *
-     * @param string|null $support_email support_email
+     * @param \DateTime $approved_at_utc Consent approval datetime in UTC timezone.
      *
      * @return self
      */
-    public function setSupportEmail($support_email)
+    public function setApprovedAtUtc($approved_at_utc)
     {
-        $this->container['support_email'] = $support_email;
+        $this->container['approved_at_utc'] = $approved_at_utc;
 
         return $this;
     }
 
     /**
-     * Gets help_line_number
+     * Gets data_access_expires_at_utc
      *
-     * @return string|null
+     * @return \DateTime
      */
-    public function getHelpLineNumber()
+    public function getDataAccessExpiresAtUtc()
     {
-        return $this->container['help_line_number'];
+        return $this->container['data_access_expires_at_utc'];
     }
 
     /**
-     * Sets help_line_number
+     * Sets data_access_expires_at_utc
      *
-     * @param string|null $help_line_number help_line_number
+     * @param \DateTime $data_access_expires_at_utc Data access expiration datetime in UTC timezone.
      *
      * @return self
      */
-    public function setHelpLineNumber($help_line_number)
+    public function setDataAccessExpiresAtUtc($data_access_expires_at_utc)
     {
-        $this->container['help_line_number'] = $help_line_number;
+        $this->container['data_access_expires_at_utc'] = $data_access_expires_at_utc;
 
         return $this;
     }
 
     /**
-     * Gets privacy_policy
+     * Gets revoked_at_utc
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getPrivacyPolicy()
+    public function getRevokedAtUtc()
     {
-        return $this->container['privacy_policy'];
+        return $this->container['revoked_at_utc'];
     }
 
     /**
-     * Sets privacy_policy
+     * Sets revoked_at_utc
      *
-     * @param string|null $privacy_policy privacy_policy
+     * @param \DateTime|null $revoked_at_utc Consent revocation datetime in UTC timezone.
      *
      * @return self
      */
-    public function setPrivacyPolicy($privacy_policy)
+    public function setRevokedAtUtc($revoked_at_utc)
     {
-        $this->container['privacy_policy'] = $privacy_policy;
-
-        return $this;
-    }
-
-    /**
-     * Gets term_of_service
-     *
-     * @return string|null
-     */
-    public function getTermOfService()
-    {
-        return $this->container['term_of_service'];
-    }
-
-    /**
-     * Sets term_of_service
-     *
-     * @param string|null $term_of_service term_of_service
-     *
-     * @return self
-     */
-    public function setTermOfService($term_of_service)
-    {
-        $this->container['term_of_service'] = $term_of_service;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_protection_officer
-     *
-     * @return \MyDataMyConsent\Model\DataProtectionOfficer|null
-     */
-    public function getDataProtectionOfficer()
-    {
-        return $this->container['data_protection_officer'];
-    }
-
-    /**
-     * Sets data_protection_officer
-     *
-     * @param \MyDataMyConsent\Model\DataProtectionOfficer|null $data_protection_officer data_protection_officer
-     *
-     * @return self
-     */
-    public function setDataProtectionOfficer($data_protection_officer)
-    {
-        $this->container['data_protection_officer'] = $data_protection_officer;
-
-        return $this;
-    }
-
-    /**
-     * Gets supported_document_types
-     *
-     * @return string[]
-     */
-    public function getSupportedDocumentTypes()
-    {
-        return $this->container['supported_document_types'];
-    }
-
-    /**
-     * Sets supported_document_types
-     *
-     * @param string[] $supported_document_types supported_document_types
-     *
-     * @return self
-     */
-    public function setSupportedDocumentTypes($supported_document_types)
-    {
-        $this->container['supported_document_types'] = $supported_document_types;
-
-        return $this;
-    }
-
-    /**
-     * Gets supported_account_types
-     *
-     * @return string[]|null
-     */
-    public function getSupportedAccountTypes()
-    {
-        return $this->container['supported_account_types'];
-    }
-
-    /**
-     * Sets supported_account_types
-     *
-     * @param string[]|null $supported_account_types supported_account_types
-     *
-     * @return self
-     */
-    public function setSupportedAccountTypes($supported_account_types)
-    {
-        $this->container['supported_account_types'] = $supported_account_types;
+        $this->container['revoked_at_utc'] = $revoked_at_utc;
 
         return $this;
     }

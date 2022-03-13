@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsentRequestReceiver
+ * IndividualDataConsentDetailsPaginatedList
  *
  * PHP version 7.3
  *
@@ -33,10 +33,9 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * ConsentRequestReceiver Class Doc Comment
+ * IndividualDataConsentDetailsPaginatedList Class Doc Comment
  *
  * @category Class
- * @description Consent request receiver details
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerializable
+class IndividualDataConsentDetailsPaginatedList implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +52,7 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ConsentRequestReceiver';
+    protected static $openAPIModelName = 'IndividualDataConsentDetailsPaginatedList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,9 +60,11 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'country_iso2_code' => 'string',
-        'identifiers' => '\MyDataMyConsent\Model\StringStringKeyValuePair[]',
-        'identification_strategy' => '\MyDataMyConsent\Model\IdentificationStrategy'
+        'page_index' => 'int',
+        'page_size' => 'int',
+        'total_pages' => 'int',
+        'total_items' => 'int',
+        'items' => '\MyDataMyConsent\Model\IndividualDataConsentDetails[]'
     ];
 
     /**
@@ -74,9 +75,11 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'country_iso2_code' => null,
-        'identifiers' => null,
-        'identification_strategy' => null
+        'page_index' => 'int32',
+        'page_size' => 'int32',
+        'total_pages' => 'int32',
+        'total_items' => 'int64',
+        'items' => null
     ];
 
     /**
@@ -106,9 +109,11 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'country_iso2_code' => 'countryIso2Code',
-        'identifiers' => 'identifiers',
-        'identification_strategy' => 'identificationStrategy'
+        'page_index' => 'pageIndex',
+        'page_size' => 'pageSize',
+        'total_pages' => 'totalPages',
+        'total_items' => 'totalItems',
+        'items' => 'items'
     ];
 
     /**
@@ -117,9 +122,11 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'country_iso2_code' => 'setCountryIso2Code',
-        'identifiers' => 'setIdentifiers',
-        'identification_strategy' => 'setIdentificationStrategy'
+        'page_index' => 'setPageIndex',
+        'page_size' => 'setPageSize',
+        'total_pages' => 'setTotalPages',
+        'total_items' => 'setTotalItems',
+        'items' => 'setItems'
     ];
 
     /**
@@ -128,9 +135,11 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'country_iso2_code' => 'getCountryIso2Code',
-        'identifiers' => 'getIdentifiers',
-        'identification_strategy' => 'getIdentificationStrategy'
+        'page_index' => 'getPageIndex',
+        'page_size' => 'getPageSize',
+        'total_pages' => 'getTotalPages',
+        'total_items' => 'getTotalItems',
+        'items' => 'getItems'
     ];
 
     /**
@@ -190,9 +199,11 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['country_iso2_code'] = $data['country_iso2_code'] ?? null;
-        $this->container['identifiers'] = $data['identifiers'] ?? null;
-        $this->container['identification_strategy'] = $data['identification_strategy'] ?? null;
+        $this->container['page_index'] = $data['page_index'] ?? null;
+        $this->container['page_size'] = $data['page_size'] ?? null;
+        $this->container['total_pages'] = $data['total_pages'] ?? null;
+        $this->container['total_items'] = $data['total_items'] ?? null;
+        $this->container['items'] = $data['items'] ?? null;
     }
 
     /**
@@ -204,23 +215,6 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['country_iso2_code'] === null) {
-            $invalidProperties[] = "'country_iso2_code' can't be null";
-        }
-        if ((mb_strlen($this->container['country_iso2_code']) > 2)) {
-            $invalidProperties[] = "invalid value for 'country_iso2_code', the character length must be smaller than or equal to 2.";
-        }
-
-        if ((mb_strlen($this->container['country_iso2_code']) < 2)) {
-            $invalidProperties[] = "invalid value for 'country_iso2_code', the character length must be bigger than or equal to 2.";
-        }
-
-        if ($this->container['identifiers'] === null) {
-            $invalidProperties[] = "'identifiers' can't be null";
-        }
-        if ($this->container['identification_strategy'] === null) {
-            $invalidProperties[] = "'identification_strategy' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -237,80 +231,121 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets country_iso2_code
+     * Gets page_index
      *
-     * @return string
+     * @return int|null
      */
-    public function getCountryIso2Code()
+    public function getPageIndex()
     {
-        return $this->container['country_iso2_code'];
+        return $this->container['page_index'];
     }
 
     /**
-     * Sets country_iso2_code
+     * Sets page_index
      *
-     * @param string $country_iso2_code Consent request receiver country ISO 2 code
+     * @param int|null $page_index page_index
      *
      * @return self
      */
-    public function setCountryIso2Code($country_iso2_code)
+    public function setPageIndex($page_index)
     {
-        if ((mb_strlen($country_iso2_code) > 2)) {
-            throw new \InvalidArgumentException('invalid length for $country_iso2_code when calling ConsentRequestReceiver., must be smaller than or equal to 2.');
-        }
-        if ((mb_strlen($country_iso2_code) < 2)) {
-            throw new \InvalidArgumentException('invalid length for $country_iso2_code when calling ConsentRequestReceiver., must be bigger than or equal to 2.');
-        }
-
-        $this->container['country_iso2_code'] = $country_iso2_code;
+        $this->container['page_index'] = $page_index;
 
         return $this;
     }
 
     /**
-     * Gets identifiers
+     * Gets page_size
      *
-     * @return \MyDataMyConsent\Model\StringStringKeyValuePair[]
+     * @return int|null
      */
-    public function getIdentifiers()
+    public function getPageSize()
     {
-        return $this->container['identifiers'];
+        return $this->container['page_size'];
     }
 
     /**
-     * Sets identifiers
+     * Sets page_size
      *
-     * @param \MyDataMyConsent\Model\StringStringKeyValuePair[] $identifiers Consent request receiver identifiers
+     * @param int|null $page_size page_size
      *
      * @return self
      */
-    public function setIdentifiers($identifiers)
+    public function setPageSize($page_size)
     {
-        $this->container['identifiers'] = $identifiers;
+        $this->container['page_size'] = $page_size;
 
         return $this;
     }
 
     /**
-     * Gets identification_strategy
+     * Gets total_pages
      *
-     * @return \MyDataMyConsent\Model\IdentificationStrategy
+     * @return int|null
      */
-    public function getIdentificationStrategy()
+    public function getTotalPages()
     {
-        return $this->container['identification_strategy'];
+        return $this->container['total_pages'];
     }
 
     /**
-     * Sets identification_strategy
+     * Sets total_pages
      *
-     * @param \MyDataMyConsent\Model\IdentificationStrategy $identification_strategy identification_strategy
+     * @param int|null $total_pages total_pages
      *
      * @return self
      */
-    public function setIdentificationStrategy($identification_strategy)
+    public function setTotalPages($total_pages)
     {
-        $this->container['identification_strategy'] = $identification_strategy;
+        $this->container['total_pages'] = $total_pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_items
+     *
+     * @return int|null
+     */
+    public function getTotalItems()
+    {
+        return $this->container['total_items'];
+    }
+
+    /**
+     * Sets total_items
+     *
+     * @param int|null $total_items total_items
+     *
+     * @return self
+     */
+    public function setTotalItems($total_items)
+    {
+        $this->container['total_items'] = $total_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets items
+     *
+     * @return \MyDataMyConsent\Model\IndividualDataConsentDetails[]|null
+     */
+    public function getItems()
+    {
+        return $this->container['items'];
+    }
+
+    /**
+     * Sets items
+     *
+     * @param \MyDataMyConsent\Model\IndividualDataConsentDetails[]|null $items items
+     *
+     * @return self
+     */
+    public function setItems($items)
+    {
+        $this->container['items'] = $items;
 
         return $this;
     }

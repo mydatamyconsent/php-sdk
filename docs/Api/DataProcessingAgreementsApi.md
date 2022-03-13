@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**createDataProcessingAgreement()**](DataProcessingAgreementsApi.md#createDataProcessingAgreement) | **POST** /v1/data-agreements | Create a data processing agreement.
 [**deleteDataProcessingAgreementById()**](DataProcessingAgreementsApi.md#deleteDataProcessingAgreementById) | **DELETE** /v1/data-agreements/{id} | Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
 [**getDataProcessingAgreementById()**](DataProcessingAgreementsApi.md#getDataProcessingAgreementById) | **GET** /v1/data-agreements/{id} | Get data processing agreement by id.
-[**getDataProcessingAgreements()**](DataProcessingAgreementsApi.md#getDataProcessingAgreements) | **GET** /v1/data-agreements | Get all data processing agreements.
+[**getDataProcessingAgreements()**](DataProcessingAgreementsApi.md#getDataProcessingAgreements) | **GET** /v1/data-agreements | Get paginated data processing agreements.
 [**terminateDataProcessingAgreementById()**](DataProcessingAgreementsApi.md#terminateDataProcessingAgreementById) | **PUT** /v1/data-agreements/{id}/terminate | Terminate a data processing agreement.
 [**updateDataProcessingAgreement()**](DataProcessingAgreementsApi.md#updateDataProcessingAgreement) | **PUT** /v1/data-agreements/{id} | Update a data processing agreement.
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 ## `createDataProcessingAgreement()`
 
 ```php
-createDataProcessingAgreement($create_data_processing_agreement_request_model): \MyDataMyConsent\Model\DataProcessingAgreementDto
+createDataProcessingAgreement($create_data_processing_agreement): \MyDataMyConsent\Model\DataProcessingAgreement
 ```
 
 Create a data processing agreement.
@@ -33,10 +33,10 @@ $apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$create_data_processing_agreement_request_model = new \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel(); // \MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel | Create data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.CreateDataProcessingAgreementRequestModel.
+$create_data_processing_agreement = new \MyDataMyConsent\Model\CreateDataProcessingAgreement(); // \MyDataMyConsent\Model\CreateDataProcessingAgreement | Create data processing agreement payload
 
 try {
-    $result = $apiInstance->createDataProcessingAgreement($create_data_processing_agreement_request_model);
+    $result = $apiInstance->createDataProcessingAgreement($create_data_processing_agreement);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataProcessingAgreementsApi->createDataProcessingAgreement: ', $e->getMessage(), PHP_EOL;
@@ -47,11 +47,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_data_processing_agreement_request_model** | [**\MyDataMyConsent\Model\CreateDataProcessingAgreementRequestModel**](../Model/CreateDataProcessingAgreementRequestModel.md)| Create data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.CreateDataProcessingAgreementRequestModel. | [optional]
+ **create_data_processing_agreement** | [**\MyDataMyConsent\Model\CreateDataProcessingAgreement**](../Model/CreateDataProcessingAgreement.md)| Create data processing agreement payload |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataProcessingAgreementDto**](../Model/DataProcessingAgreementDto.md)
+[**\MyDataMyConsent\Model\DataProcessingAgreement**](../Model/DataProcessingAgreement.md)
 
 ### Authorization
 
@@ -122,7 +122,7 @@ No authorization required
 ## `getDataProcessingAgreementById()`
 
 ```php
-getDataProcessingAgreementById($id): \MyDataMyConsent\Model\DataProcessingAgreementDto
+getDataProcessingAgreementById($id): \MyDataMyConsent\Model\DataProcessingAgreement
 ```
 
 Get data processing agreement by id.
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataProcessingAgreementDto**](../Model/DataProcessingAgreementDto.md)
+[**\MyDataMyConsent\Model\DataProcessingAgreement**](../Model/DataProcessingAgreement.md)
 
 ### Authorization
 
@@ -176,10 +176,10 @@ No authorization required
 ## `getDataProcessingAgreements()`
 
 ```php
-getDataProcessingAgreements($page_no, $page_size): \MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList
+getDataProcessingAgreements($page_no, $page_size): \MyDataMyConsent\Model\DataProcessingAgreementPaginatedList
 ```
 
-Get all data processing agreements.
+Get paginated data processing agreements.
 
 ### Example
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataProcessingAgreementDtoPaginatedList**](../Model/DataProcessingAgreementDtoPaginatedList.md)
+[**\MyDataMyConsent\Model\DataProcessingAgreementPaginatedList**](../Model/DataProcessingAgreementPaginatedList.md)
 
 ### Authorization
 
@@ -285,7 +285,7 @@ No authorization required
 ## `updateDataProcessingAgreement()`
 
 ```php
-updateDataProcessingAgreement($id, $update_data_processing_agreement_request_model): \MyDataMyConsent\Model\DataProcessingAgreementDto
+updateDataProcessingAgreement($id, $update_data_processing_agreement): \MyDataMyConsent\Model\DataProcessingAgreement
 ```
 
 Update a data processing agreement.
@@ -304,10 +304,10 @@ $apiInstance = new MyDataMyConsent\Api\DataProcessingAgreementsApi(
     new GuzzleHttp\Client()
 );
 $id = 'id_example'; // string | Agreement id.
-$update_data_processing_agreement_request_model = new \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel(); // \MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel | Updated data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.UpdateDataProcessingAgreementRequestModel.
+$update_data_processing_agreement = new \MyDataMyConsent\Model\UpdateDataProcessingAgreement(); // \MyDataMyConsent\Model\UpdateDataProcessingAgreement | Update data processing agreement payload
 
 try {
-    $result = $apiInstance->updateDataProcessingAgreement($id, $update_data_processing_agreement_request_model);
+    $result = $apiInstance->updateDataProcessingAgreement($id, $update_data_processing_agreement);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataProcessingAgreementsApi->updateDataProcessingAgreement: ', $e->getMessage(), PHP_EOL;
@@ -319,11 +319,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Agreement id. |
- **update_data_processing_agreement_request_model** | [**\MyDataMyConsent\Model\UpdateDataProcessingAgreementRequestModel**](../Model/UpdateDataProcessingAgreementRequestModel.md)| Updated data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.UpdateDataProcessingAgreementRequestModel. | [optional]
+ **update_data_processing_agreement** | [**\MyDataMyConsent\Model\UpdateDataProcessingAgreement**](../Model/UpdateDataProcessingAgreement.md)| Update data processing agreement payload |
 
 ### Return type
 
-[**\MyDataMyConsent\Model\DataProcessingAgreementDto**](../Model/DataProcessingAgreementDto.md)
+[**\MyDataMyConsent\Model\DataProcessingAgreement**](../Model/DataProcessingAgreement.md)
 
 ### Authorization
 

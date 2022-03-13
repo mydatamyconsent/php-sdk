@@ -4,7 +4,7 @@ All URIs are relative to https://api.mydatamyconsent.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getDataProviderById()**](DataProviderDiscoveryApi.md#getDataProviderById) | **GET** /v1/data-providers/{providerId} | Get a Data Provider details based on provider id.
+[**getDataProviderById()**](DataProviderDiscoveryApi.md#getDataProviderById) | **GET** /v1/data-providers/{providerId} | Get a Data Provider details by provider id.
 [**getDataProviders()**](DataProviderDiscoveryApi.md#getDataProviders) | **GET** /v1/data-providers | Discover all data providers in My Data My Consent by country and filters.
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 getDataProviderById($provider_id): \MyDataMyConsent\Model\DataProvider
 ```
 
-Get a Data Provider details based on provider id.
+Get a Data Provider details by provider id.
 
 ### Example
 
@@ -29,7 +29,7 @@ $apiInstance = new MyDataMyConsent\Api\DataProviderDiscoveryApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$provider_id = 'provider_id_example'; // string | Provider id.
+$provider_id = 'provider_id_example'; // string | Data provider id.
 
 try {
     $result = $apiInstance->getDataProviderById($provider_id);
@@ -43,7 +43,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **provider_id** | **string**| Provider id. |
+ **provider_id** | **string**| Data provider id. |
 
 ### Return type
 
@@ -65,7 +65,7 @@ No authorization required
 ## `getDataProviders()`
 
 ```php
-getDataProviders($account_type, $document_type, $organization_category, $page_no, $page_size, $country): \MyDataMyConsent\Model\DataProviderPaginatedList
+getDataProviders($account_type, $document_type, $organization_category, $page_no, $page_size, $country_iso2_code): \MyDataMyConsent\Model\DataProviderPaginatedList
 ```
 
 Discover all data providers in My Data My Consent by country and filters.
@@ -88,10 +88,10 @@ $document_type = 'document_type_example'; // string | Document type.
 $organization_category = 'organization_category_example'; // string | Organization category.
 $page_no = 1; // int | Page number.
 $page_size = 25; // int | Number of items to return.
-$country = 'IN'; // string | ISO2 Country code.
+$country_iso2_code = 'IN'; // string | ISO2 Country code.
 
 try {
-    $result = $apiInstance->getDataProviders($account_type, $document_type, $organization_category, $page_no, $page_size, $country);
+    $result = $apiInstance->getDataProviders($account_type, $document_type, $organization_category, $page_no, $page_size, $country_iso2_code);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataProviderDiscoveryApi->getDataProviders: ', $e->getMessage(), PHP_EOL;
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
  **organization_category** | **string**| Organization category. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
  **page_size** | **int**| Number of items to return. | [optional] [default to 25]
- **country** | **string**| ISO2 Country code. | [optional] [default to &#39;IN&#39;]
+ **country_iso2_code** | **string**| ISO2 Country code. | [optional] [default to &#39;IN&#39;]
 
 ### Return type
 
