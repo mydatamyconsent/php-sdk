@@ -126,11 +126,12 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return object|object|object
      */
     public function downloadConsentedDocumentAnalysis($consent_id, $document_id)
     {
-        $this->downloadConsentedDocumentAnalysisWithHttpInfo($consent_id, $document_id);
+        list($response) = $this->downloadConsentedDocumentAnalysisWithHttpInfo($consent_id, $document_id);
+        return $response;
     }
 
     /**
@@ -143,7 +144,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function downloadConsentedDocumentAnalysisWithHttpInfo($consent_id, $document_id)
     {
@@ -184,11 +185,77 @@ class DataConsentsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = 'object';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 500:
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -235,14 +302,24 @@ class DataConsentsApi
      */
     public function downloadConsentedDocumentAnalysisAsyncWithHttpInfo($consent_id, $document_id)
     {
-        $returnType = '';
+        $returnType = 'object';
         $request = $this->downloadConsentedDocumentAnalysisRequest($consent_id, $document_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -379,11 +456,12 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return object|object|object
      */
     public function downloadIndividualConsentedDocumentById($consent_id, $document_id)
     {
-        $this->downloadIndividualConsentedDocumentByIdWithHttpInfo($consent_id, $document_id);
+        list($response) = $this->downloadIndividualConsentedDocumentByIdWithHttpInfo($consent_id, $document_id);
+        return $response;
     }
 
     /**
@@ -396,7 +474,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function downloadIndividualConsentedDocumentByIdWithHttpInfo($consent_id, $document_id)
     {
@@ -437,11 +515,77 @@ class DataConsentsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = 'object';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 500:
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -488,14 +632,24 @@ class DataConsentsApi
      */
     public function downloadIndividualConsentedDocumentByIdAsyncWithHttpInfo($consent_id, $document_id)
     {
-        $returnType = '';
+        $returnType = 'object';
         $request = $this->downloadIndividualConsentedDocumentByIdRequest($consent_id, $document_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -632,11 +786,12 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return object|object|object
      */
     public function downloadOrganizationConsentedDocumentById($consent_id, $document_id)
     {
-        $this->downloadOrganizationConsentedDocumentByIdWithHttpInfo($consent_id, $document_id);
+        list($response) = $this->downloadOrganizationConsentedDocumentByIdWithHttpInfo($consent_id, $document_id);
+        return $response;
     }
 
     /**
@@ -649,7 +804,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function downloadOrganizationConsentedDocumentByIdWithHttpInfo($consent_id, $document_id)
     {
@@ -690,11 +845,77 @@ class DataConsentsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = 'object';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 500:
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -741,14 +962,24 @@ class DataConsentsApi
      */
     public function downloadOrganizationConsentedDocumentByIdAsyncWithHttpInfo($consent_id, $document_id)
     {
-        $returnType = '';
+        $returnType = 'object';
         $request = $this->downloadOrganizationConsentedDocumentByIdRequest($consent_id, $document_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1777,7 +2008,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\IndividualDataConsentDocument|object
+     * @return object|object|object
      */
     public function getConsentedDocumentById($consent_id, $document_id)
     {
@@ -1795,7 +2026,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\IndividualDataConsentDocument|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getConsentedDocumentByIdWithHttpInfo($consent_id, $document_id)
     {
@@ -1838,18 +2069,30 @@ class DataConsentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\IndividualDataConsentDocument' === '\SplFileObject') {
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\IndividualDataConsentDocument', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 500:
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -1863,7 +2106,7 @@ class DataConsentsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\IndividualDataConsentDocument';
+            $returnType = 'object';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1881,12 +2124,20 @@ class DataConsentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\IndividualDataConsentDocument',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
-                case 500:
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -1933,7 +2184,7 @@ class DataConsentsApi
      */
     public function getConsentedDocumentByIdAsyncWithHttpInfo($consent_id, $document_id)
     {
-        $returnType = '\MyDataMyConsent\Model\IndividualDataConsentDocument';
+        $returnType = 'object';
         $request = $this->getConsentedDocumentByIdRequest($consent_id, $document_id);
 
         return $this->client
@@ -3043,7 +3294,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\IndividualDataConsentDetailsPaginatedList|object
+     * @return object|object
      */
     public function getConsents($status = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
@@ -3064,7 +3315,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\IndividualDataConsentDetailsPaginatedList|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getConsentsWithHttpInfo($status = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
@@ -3107,18 +3358,18 @@ class DataConsentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\IndividualDataConsentDetailsPaginatedList' === '\SplFileObject') {
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\IndividualDataConsentDetailsPaginatedList', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 500:
+                case 400:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -3132,7 +3383,7 @@ class DataConsentsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\IndividualDataConsentDetailsPaginatedList';
+            $returnType = 'object';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3150,12 +3401,12 @@ class DataConsentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\IndividualDataConsentDetailsPaginatedList',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
-                case 500:
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -3208,7 +3459,7 @@ class DataConsentsApi
      */
     public function getConsentsAsyncWithHttpInfo($status = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
-        $returnType = '\MyDataMyConsent\Model\IndividualDataConsentDetailsPaginatedList';
+        $returnType = 'object';
         $request = $this->getConsentsRequest($status, $from_date_time, $to_date_time, $page_no, $page_size);
 
         return $this->client
@@ -3391,7 +3642,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\IndividualDataConsentDocument[]|object
+     * @return object|object|object
      */
     public function getIndividualConsentedDocuments($consent_id)
     {
@@ -3408,7 +3659,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\IndividualDataConsentDocument[]|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIndividualConsentedDocumentsWithHttpInfo($consent_id)
     {
@@ -3451,18 +3702,30 @@ class DataConsentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\IndividualDataConsentDocument[]' === '\SplFileObject') {
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\IndividualDataConsentDocument[]', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 500:
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -3476,7 +3739,7 @@ class DataConsentsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\IndividualDataConsentDocument[]';
+            $returnType = 'object';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3494,12 +3757,20 @@ class DataConsentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\IndividualDataConsentDocument[]',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
-                case 500:
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -3544,7 +3815,7 @@ class DataConsentsApi
      */
     public function getIndividualConsentedDocumentsAsyncWithHttpInfo($consent_id)
     {
-        $returnType = '\MyDataMyConsent\Model\IndividualDataConsentDocument[]';
+        $returnType = 'object';
         $request = $this->getIndividualConsentedDocumentsRequest($consent_id);
 
         return $this->client
@@ -3682,7 +3953,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return OneOfDataConsentIndividualDataConsentOrganizationDataConsent|object
+     * @return object|object|object
      */
     public function getIndividualDataConsentById($consent_id)
     {
@@ -3699,7 +3970,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of OneOfDataConsentIndividualDataConsentOrganizationDataConsent|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIndividualDataConsentByIdWithHttpInfo($consent_id)
     {
@@ -3742,18 +4013,30 @@ class DataConsentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('OneOfDataConsentIndividualDataConsentOrganizationDataConsent' === '\SplFileObject') {
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'OneOfDataConsentIndividualDataConsentOrganizationDataConsent', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 500:
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -3767,7 +4050,7 @@ class DataConsentsApi
                     ];
             }
 
-            $returnType = 'OneOfDataConsentIndividualDataConsentOrganizationDataConsent';
+            $returnType = 'object';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3785,12 +4068,20 @@ class DataConsentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'OneOfDataConsentIndividualDataConsentOrganizationDataConsent',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
-                case 500:
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -3835,7 +4126,7 @@ class DataConsentsApi
      */
     public function getIndividualDataConsentByIdAsyncWithHttpInfo($consent_id)
     {
-        $returnType = 'OneOfDataConsentIndividualDataConsentOrganizationDataConsent';
+        $returnType = 'object';
         $request = $this->getIndividualDataConsentByIdRequest($consent_id);
 
         return $this->client
@@ -4364,7 +4655,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\OrganizationDataConsentDocument|object
+     * @return object|object|object
      */
     public function getOrganizationConsentedDocumentById($consent_id, $document_id)
     {
@@ -4382,7 +4673,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\OrganizationDataConsentDocument|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrganizationConsentedDocumentByIdWithHttpInfo($consent_id, $document_id)
     {
@@ -4425,18 +4716,30 @@ class DataConsentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\OrganizationDataConsentDocument' === '\SplFileObject') {
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\OrganizationDataConsentDocument', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 500:
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -4450,7 +4753,7 @@ class DataConsentsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\OrganizationDataConsentDocument';
+            $returnType = 'object';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4468,12 +4771,20 @@ class DataConsentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\OrganizationDataConsentDocument',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
-                case 500:
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -4520,7 +4831,7 @@ class DataConsentsApi
      */
     public function getOrganizationConsentedDocumentByIdAsyncWithHttpInfo($consent_id, $document_id)
     {
-        $returnType = '\MyDataMyConsent\Model\OrganizationDataConsentDocument';
+        $returnType = 'object';
         $request = $this->getOrganizationConsentedDocumentByIdRequest($consent_id, $document_id);
 
         return $this->client
@@ -4673,7 +4984,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\OrganizationDataConsentDocument[]|object
+     * @return object|object|object
      */
     public function getOrganizationConsentedDocuments($consent_id)
     {
@@ -4690,7 +5001,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\OrganizationDataConsentDocument[]|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrganizationConsentedDocumentsWithHttpInfo($consent_id)
     {
@@ -4733,18 +5044,30 @@ class DataConsentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\OrganizationDataConsentDocument[]' === '\SplFileObject') {
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\OrganizationDataConsentDocument[]', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 500:
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -4758,7 +5081,7 @@ class DataConsentsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\OrganizationDataConsentDocument[]';
+            $returnType = 'object';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4776,12 +5099,20 @@ class DataConsentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\OrganizationDataConsentDocument[]',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
-                case 500:
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -4826,7 +5157,7 @@ class DataConsentsApi
      */
     public function getOrganizationConsentedDocumentsAsyncWithHttpInfo($consent_id)
     {
-        $returnType = '\MyDataMyConsent\Model\OrganizationDataConsentDocument[]';
+        $returnType = 'object';
         $request = $this->getOrganizationConsentedDocumentsRequest($consent_id);
 
         return $this->client
@@ -4964,7 +5295,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return OneOfDataConsentIndividualDataConsentOrganizationDataConsent|object|object
+     * @return object|object|object
      */
     public function getOrganizationDataConsentById($consent_id)
     {
@@ -4981,7 +5312,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of OneOfDataConsentIndividualDataConsentOrganizationDataConsent|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrganizationDataConsentByIdWithHttpInfo($consent_id)
     {
@@ -5024,18 +5355,6 @@ class DataConsentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('OneOfDataConsentIndividualDataConsentOrganizationDataConsent' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'OneOfDataConsentIndividualDataConsentOrganizationDataConsent', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -5059,9 +5378,21 @@ class DataConsentsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
-            $returnType = 'OneOfDataConsentIndividualDataConsentOrganizationDataConsent';
+            $returnType = 'object';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5079,12 +5410,12 @@ class DataConsentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'OneOfDataConsentIndividualDataConsentOrganizationDataConsent',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
-                case 500:
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -5092,7 +5423,7 @@ class DataConsentsApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 400:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -5137,7 +5468,7 @@ class DataConsentsApi
      */
     public function getOrganizationDataConsentByIdAsyncWithHttpInfo($consent_id)
     {
-        $returnType = 'OneOfDataConsentIndividualDataConsentOrganizationDataConsent';
+        $returnType = 'object';
         $request = $this->getOrganizationDataConsentByIdRequest($consent_id);
 
         return $this->client
@@ -5279,7 +5610,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\OrganizationDataConsentDetailsPaginatedList|object
+     * @return object|object
      */
     public function getOrganizationDataConsents($status = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
@@ -5300,7 +5631,7 @@ class DataConsentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\OrganizationDataConsentDetailsPaginatedList|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrganizationDataConsentsWithHttpInfo($status = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
@@ -5343,18 +5674,18 @@ class DataConsentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\OrganizationDataConsentDetailsPaginatedList' === '\SplFileObject') {
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\OrganizationDataConsentDetailsPaginatedList', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 500:
+                case 400:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -5368,7 +5699,7 @@ class DataConsentsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\OrganizationDataConsentDetailsPaginatedList';
+            $returnType = 'object';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5386,12 +5717,12 @@ class DataConsentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\OrganizationDataConsentDetailsPaginatedList',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
-                case 500:
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -5444,7 +5775,7 @@ class DataConsentsApi
      */
     public function getOrganizationDataConsentsAsyncWithHttpInfo($status = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
-        $returnType = '\MyDataMyConsent\Model\OrganizationDataConsentDetailsPaginatedList';
+        $returnType = 'object';
         $request = $this->getOrganizationDataConsentsRequest($status, $from_date_time, $to_date_time, $page_no, $page_size);
 
         return $this->client
