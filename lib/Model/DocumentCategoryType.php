@@ -51,7 +51,7 @@ class DocumentCategoryType
 
     const FINANCE = 'Finance';
 
-    const WORK_AND_AWARDS = 'WorkAndAwards';
+    const PROFESSIONAL = 'Professional';
 
     const LICENCES_AND_CERTIFICATES = 'LicencesAndCertificates';
 
@@ -68,7 +68,7 @@ class DocumentCategoryType
             self::EDUCATION,
             self::HEALTH,
             self::FINANCE,
-            self::WORK_AND_AWARDS,
+            self::PROFESSIONAL,
             self::LICENCES_AND_CERTIFICATES,
             self::OTHERS
         ];
