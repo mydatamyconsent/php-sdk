@@ -1,6 +1,6 @@
 <?php
 /**
- * IssuedDocumentPaginatedList
+ * DocumentDigitalSignature
  *
  * PHP version 7.3
  *
@@ -33,9 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * IssuedDocumentPaginatedList Class Doc Comment
+ * DocumentDigitalSignature Class Doc Comment
  *
  * @category Class
+ * @description Document digital signature.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonSerializable
+class DocumentDigitalSignature implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +53,7 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IssuedDocumentPaginatedList';
+    protected static $openAPIModelName = 'DocumentDigitalSignature';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,11 +61,11 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_index' => 'int',
-        'page_size' => 'int',
-        'total_pages' => 'int',
-        'total_items' => 'int',
-        'items' => 'OneOfIssuedDocumentIssuedDocumentDetails[]'
+        'name' => 'string',
+        'issued_by' => 'string',
+        'issuer_name' => 'string',
+        'valid_from_utc' => '\DateTime',
+        'valid_to_utc' => '\DateTime'
     ];
 
     /**
@@ -75,11 +76,11 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'page_index' => 'int32',
-        'page_size' => 'int32',
-        'total_pages' => 'int32',
-        'total_items' => 'int64',
-        'items' => null
+        'name' => null,
+        'issued_by' => null,
+        'issuer_name' => null,
+        'valid_from_utc' => 'date-time',
+        'valid_to_utc' => 'date-time'
     ];
 
     /**
@@ -109,11 +110,11 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_index' => 'pageIndex',
-        'page_size' => 'pageSize',
-        'total_pages' => 'totalPages',
-        'total_items' => 'totalItems',
-        'items' => 'items'
+        'name' => 'name',
+        'issued_by' => 'issuedBy',
+        'issuer_name' => 'issuerName',
+        'valid_from_utc' => 'validFromUtc',
+        'valid_to_utc' => 'validToUtc'
     ];
 
     /**
@@ -122,11 +123,11 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'page_index' => 'setPageIndex',
-        'page_size' => 'setPageSize',
-        'total_pages' => 'setTotalPages',
-        'total_items' => 'setTotalItems',
-        'items' => 'setItems'
+        'name' => 'setName',
+        'issued_by' => 'setIssuedBy',
+        'issuer_name' => 'setIssuerName',
+        'valid_from_utc' => 'setValidFromUtc',
+        'valid_to_utc' => 'setValidToUtc'
     ];
 
     /**
@@ -135,11 +136,11 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'page_index' => 'getPageIndex',
-        'page_size' => 'getPageSize',
-        'total_pages' => 'getTotalPages',
-        'total_items' => 'getTotalItems',
-        'items' => 'getItems'
+        'name' => 'getName',
+        'issued_by' => 'getIssuedBy',
+        'issuer_name' => 'getIssuerName',
+        'valid_from_utc' => 'getValidFromUtc',
+        'valid_to_utc' => 'getValidToUtc'
     ];
 
     /**
@@ -199,11 +200,11 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_index'] = $data['page_index'] ?? null;
-        $this->container['page_size'] = $data['page_size'] ?? null;
-        $this->container['total_pages'] = $data['total_pages'] ?? null;
-        $this->container['total_items'] = $data['total_items'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['issued_by'] = $data['issued_by'] ?? null;
+        $this->container['issuer_name'] = $data['issuer_name'] ?? null;
+        $this->container['valid_from_utc'] = $data['valid_from_utc'] ?? null;
+        $this->container['valid_to_utc'] = $data['valid_to_utc'] ?? null;
     }
 
     /**
@@ -215,6 +216,21 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['issued_by'] === null) {
+            $invalidProperties[] = "'issued_by' can't be null";
+        }
+        if ($this->container['issuer_name'] === null) {
+            $invalidProperties[] = "'issuer_name' can't be null";
+        }
+        if ($this->container['valid_from_utc'] === null) {
+            $invalidProperties[] = "'valid_from_utc' can't be null";
+        }
+        if ($this->container['valid_to_utc'] === null) {
+            $invalidProperties[] = "'valid_to_utc' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -231,121 +247,121 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets page_index
+     * Gets name
      *
-     * @return int|null
+     * @return string
      */
-    public function getPageIndex()
+    public function getName()
     {
-        return $this->container['page_index'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets page_index
+     * Sets name
      *
-     * @param int|null $page_index page_index
+     * @param string $name Name.
      *
      * @return self
      */
-    public function setPageIndex($page_index)
+    public function setName($name)
     {
-        $this->container['page_index'] = $page_index;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets page_size
+     * Gets issued_by
      *
-     * @return int|null
+     * @return string
      */
-    public function getPageSize()
+    public function getIssuedBy()
     {
-        return $this->container['page_size'];
+        return $this->container['issued_by'];
     }
 
     /**
-     * Sets page_size
+     * Sets issued_by
      *
-     * @param int|null $page_size page_size
+     * @param string $issued_by Signature issued by.
      *
      * @return self
      */
-    public function setPageSize($page_size)
+    public function setIssuedBy($issued_by)
     {
-        $this->container['page_size'] = $page_size;
+        $this->container['issued_by'] = $issued_by;
 
         return $this;
     }
 
     /**
-     * Gets total_pages
+     * Gets issuer_name
      *
-     * @return int|null
+     * @return string
      */
-    public function getTotalPages()
+    public function getIssuerName()
     {
-        return $this->container['total_pages'];
+        return $this->container['issuer_name'];
     }
 
     /**
-     * Sets total_pages
+     * Sets issuer_name
      *
-     * @param int|null $total_pages total_pages
+     * @param string $issuer_name Signature issuer name.
      *
      * @return self
      */
-    public function setTotalPages($total_pages)
+    public function setIssuerName($issuer_name)
     {
-        $this->container['total_pages'] = $total_pages;
+        $this->container['issuer_name'] = $issuer_name;
 
         return $this;
     }
 
     /**
-     * Gets total_items
+     * Gets valid_from_utc
      *
-     * @return int|null
+     * @return \DateTime
      */
-    public function getTotalItems()
+    public function getValidFromUtc()
     {
-        return $this->container['total_items'];
+        return $this->container['valid_from_utc'];
     }
 
     /**
-     * Sets total_items
+     * Sets valid_from_utc
      *
-     * @param int|null $total_items total_items
+     * @param \DateTime $valid_from_utc Signature valid from datatime in UTC timezone.
      *
      * @return self
      */
-    public function setTotalItems($total_items)
+    public function setValidFromUtc($valid_from_utc)
     {
-        $this->container['total_items'] = $total_items;
+        $this->container['valid_from_utc'] = $valid_from_utc;
 
         return $this;
     }
 
     /**
-     * Gets items
+     * Gets valid_to_utc
      *
-     * @return OneOfIssuedDocumentIssuedDocumentDetails[]|null
+     * @return \DateTime
      */
-    public function getItems()
+    public function getValidToUtc()
     {
-        return $this->container['items'];
+        return $this->container['valid_to_utc'];
     }
 
     /**
-     * Sets items
+     * Sets valid_to_utc
      *
-     * @param OneOfIssuedDocumentIssuedDocumentDetails[]|null $items items
+     * @param \DateTime $valid_to_utc Signature valid to datatime in UTC timezone.
      *
      * @return self
      */
-    public function setItems($items)
+    public function setValidToUtc($valid_to_utc)
     {
-        $this->container['items'] = $items;
+        $this->container['valid_to_utc'] = $valid_to_utc;
 
         return $this;
     }

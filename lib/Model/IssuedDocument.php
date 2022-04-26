@@ -65,7 +65,9 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'identifier' => 'string',
         'document_type' => 'string',
         'issued_to' => 'string',
-        'issued_at_utc' => '\DateTime'
+        'issued_at_utc' => '\DateTime',
+        'expires_at_utc' => '\DateTime',
+        'accepted_at_utc' => '\DateTime'
     ];
 
     /**
@@ -80,7 +82,9 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'identifier' => null,
         'document_type' => null,
         'issued_to' => null,
-        'issued_at_utc' => 'date-time'
+        'issued_at_utc' => 'date-time',
+        'expires_at_utc' => 'date-time',
+        'accepted_at_utc' => 'date-time'
     ];
 
     /**
@@ -114,7 +118,9 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'identifier' => 'identifier',
         'document_type' => 'documentType',
         'issued_to' => 'issuedTo',
-        'issued_at_utc' => 'issuedAtUtc'
+        'issued_at_utc' => 'issuedAtUtc',
+        'expires_at_utc' => 'expiresAtUtc',
+        'accepted_at_utc' => 'acceptedAtUtc'
     ];
 
     /**
@@ -127,7 +133,9 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'identifier' => 'setIdentifier',
         'document_type' => 'setDocumentType',
         'issued_to' => 'setIssuedTo',
-        'issued_at_utc' => 'setIssuedAtUtc'
+        'issued_at_utc' => 'setIssuedAtUtc',
+        'expires_at_utc' => 'setExpiresAtUtc',
+        'accepted_at_utc' => 'setAcceptedAtUtc'
     ];
 
     /**
@@ -140,7 +148,9 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         'identifier' => 'getIdentifier',
         'document_type' => 'getDocumentType',
         'issued_to' => 'getIssuedTo',
-        'issued_at_utc' => 'getIssuedAtUtc'
+        'issued_at_utc' => 'getIssuedAtUtc',
+        'expires_at_utc' => 'getExpiresAtUtc',
+        'accepted_at_utc' => 'getAcceptedAtUtc'
     ];
 
     /**
@@ -205,6 +215,8 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['document_type'] = $data['document_type'] ?? null;
         $this->container['issued_to'] = $data['issued_to'] ?? null;
         $this->container['issued_at_utc'] = $data['issued_at_utc'] ?? null;
+        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
+        $this->container['accepted_at_utc'] = $data['accepted_at_utc'] ?? null;
     }
 
     /**
@@ -362,6 +374,54 @@ class IssuedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIssuedAtUtc($issued_at_utc)
     {
         $this->container['issued_at_utc'] = $issued_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getExpiresAtUtc()
+    {
+        return $this->container['expires_at_utc'];
+    }
+
+    /**
+     * Sets expires_at_utc
+     *
+     * @param \DateTime|null $expires_at_utc Expires datetime in UTC timezone.
+     *
+     * @return self
+     */
+    public function setExpiresAtUtc($expires_at_utc)
+    {
+        $this->container['expires_at_utc'] = $expires_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets accepted_at_utc
+     *
+     * @return \DateTime|null
+     */
+    public function getAcceptedAtUtc()
+    {
+        return $this->container['accepted_at_utc'];
+    }
+
+    /**
+     * Sets accepted_at_utc
+     *
+     * @param \DateTime|null $accepted_at_utc Accepted datetime in UTC timezone.
+     *
+     * @return self
+     */
+    public function setAcceptedAtUtc($accepted_at_utc)
+    {
+        $this->container['accepted_at_utc'] = $accepted_at_utc;
 
         return $this;
     }

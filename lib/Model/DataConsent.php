@@ -1,6 +1,6 @@
 <?php
 /**
- * DataConsentRequest
+ * DataConsent
  *
  * PHP version 7.3
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DataConsentRequest Class Doc Comment
+ * DataConsent Class Doc Comment
  *
  * @category Class
- * @description Data consent request details.
+ * @description Data Consent details.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class DataConsent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DataConsentRequest';
+    protected static $openAPIModelName = 'DataConsent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,21 +62,19 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'request_id' => 'string',
         'template_id' => 'string',
-        'consent_id' => 'string',
         'title' => 'string',
         'description' => 'string',
         'purpose' => 'string',
-        'data_life' => '\MyDataMyConsent\Model\Life',
-        'collectables' => '\MyDataMyConsent\Model\CollectibleTypes[]',
-        'receiver' => '\MyDataMyConsent\Model\ConsentRequestReceiver',
         'status' => '\MyDataMyConsent\Model\DataConsentStatus',
-        'created_at_utc' => '\DateTime',
-        'expires_at_utc' => '\DateTime',
+        'transaction_id' => 'string',
         'approved_at_utc' => '\DateTime',
         'data_access_expires_at_utc' => '\DateTime',
-        'rejected_at_utc' => '\DateTime',
-        'revoked_at_utc' => '\DateTime'
+        'revoked_at_utc' => '\DateTime',
+        'collectables' => '\MyDataMyConsent\Model\CollectibleTypes[]',
+        'identifiers' => 'mixed',
+        'documents' => '\MyDataMyConsent\Model\DataConsentDocument[]'
     ];
 
     /**
@@ -88,21 +86,19 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'id' => 'uuid',
+        'request_id' => 'uuid',
         'template_id' => 'uuid',
-        'consent_id' => 'uuid',
         'title' => null,
         'description' => null,
         'purpose' => null,
-        'data_life' => null,
-        'collectables' => null,
-        'receiver' => null,
         'status' => null,
-        'created_at_utc' => 'date-time',
-        'expires_at_utc' => 'date-time',
+        'transaction_id' => null,
         'approved_at_utc' => 'date-time',
         'data_access_expires_at_utc' => 'date-time',
-        'rejected_at_utc' => 'date-time',
-        'revoked_at_utc' => 'date-time'
+        'revoked_at_utc' => 'date-time',
+        'collectables' => null,
+        'identifiers' => null,
+        'documents' => null
     ];
 
     /**
@@ -133,21 +129,19 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'request_id' => 'requestId',
         'template_id' => 'templateId',
-        'consent_id' => 'consentId',
         'title' => 'title',
         'description' => 'description',
         'purpose' => 'purpose',
-        'data_life' => 'dataLife',
-        'collectables' => 'collectables',
-        'receiver' => 'receiver',
         'status' => 'status',
-        'created_at_utc' => 'createdAtUtc',
-        'expires_at_utc' => 'expiresAtUtc',
+        'transaction_id' => 'transactionId',
         'approved_at_utc' => 'approvedAtUtc',
         'data_access_expires_at_utc' => 'dataAccessExpiresAtUtc',
-        'rejected_at_utc' => 'rejectedAtUtc',
-        'revoked_at_utc' => 'revokedAtUtc'
+        'revoked_at_utc' => 'revokedAtUtc',
+        'collectables' => 'collectables',
+        'identifiers' => 'identifiers',
+        'documents' => 'documents'
     ];
 
     /**
@@ -157,21 +151,19 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'id' => 'setId',
+        'request_id' => 'setRequestId',
         'template_id' => 'setTemplateId',
-        'consent_id' => 'setConsentId',
         'title' => 'setTitle',
         'description' => 'setDescription',
         'purpose' => 'setPurpose',
-        'data_life' => 'setDataLife',
-        'collectables' => 'setCollectables',
-        'receiver' => 'setReceiver',
         'status' => 'setStatus',
-        'created_at_utc' => 'setCreatedAtUtc',
-        'expires_at_utc' => 'setExpiresAtUtc',
+        'transaction_id' => 'setTransactionId',
         'approved_at_utc' => 'setApprovedAtUtc',
         'data_access_expires_at_utc' => 'setDataAccessExpiresAtUtc',
-        'rejected_at_utc' => 'setRejectedAtUtc',
-        'revoked_at_utc' => 'setRevokedAtUtc'
+        'revoked_at_utc' => 'setRevokedAtUtc',
+        'collectables' => 'setCollectables',
+        'identifiers' => 'setIdentifiers',
+        'documents' => 'setDocuments'
     ];
 
     /**
@@ -181,21 +173,19 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'id' => 'getId',
+        'request_id' => 'getRequestId',
         'template_id' => 'getTemplateId',
-        'consent_id' => 'getConsentId',
         'title' => 'getTitle',
         'description' => 'getDescription',
         'purpose' => 'getPurpose',
-        'data_life' => 'getDataLife',
-        'collectables' => 'getCollectables',
-        'receiver' => 'getReceiver',
         'status' => 'getStatus',
-        'created_at_utc' => 'getCreatedAtUtc',
-        'expires_at_utc' => 'getExpiresAtUtc',
+        'transaction_id' => 'getTransactionId',
         'approved_at_utc' => 'getApprovedAtUtc',
         'data_access_expires_at_utc' => 'getDataAccessExpiresAtUtc',
-        'rejected_at_utc' => 'getRejectedAtUtc',
-        'revoked_at_utc' => 'getRevokedAtUtc'
+        'revoked_at_utc' => 'getRevokedAtUtc',
+        'collectables' => 'getCollectables',
+        'identifiers' => 'getIdentifiers',
+        'documents' => 'getDocuments'
     ];
 
     /**
@@ -256,21 +246,19 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['request_id'] = $data['request_id'] ?? null;
         $this->container['template_id'] = $data['template_id'] ?? null;
-        $this->container['consent_id'] = $data['consent_id'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['purpose'] = $data['purpose'] ?? null;
-        $this->container['data_life'] = $data['data_life'] ?? null;
-        $this->container['collectables'] = $data['collectables'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['created_at_utc'] = $data['created_at_utc'] ?? null;
-        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
+        $this->container['transaction_id'] = $data['transaction_id'] ?? null;
         $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
         $this->container['data_access_expires_at_utc'] = $data['data_access_expires_at_utc'] ?? null;
-        $this->container['rejected_at_utc'] = $data['rejected_at_utc'] ?? null;
         $this->container['revoked_at_utc'] = $data['revoked_at_utc'] ?? null;
+        $this->container['collectables'] = $data['collectables'] ?? null;
+        $this->container['identifiers'] = $data['identifiers'] ?? null;
+        $this->container['documents'] = $data['documents'] ?? null;
     }
 
     /**
@@ -285,26 +273,26 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if ($this->container['request_id'] === null) {
+            $invalidProperties[] = "'request_id' can't be null";
+        }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
         }
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
         }
-        if ($this->container['collectables'] === null) {
-            $invalidProperties[] = "'collectables' can't be null";
-        }
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['created_at_utc'] === null) {
-            $invalidProperties[] = "'created_at_utc' can't be null";
+        if ($this->container['approved_at_utc'] === null) {
+            $invalidProperties[] = "'approved_at_utc' can't be null";
         }
-        if ($this->container['expires_at_utc'] === null) {
-            $invalidProperties[] = "'expires_at_utc' can't be null";
+        if ($this->container['data_access_expires_at_utc'] === null) {
+            $invalidProperties[] = "'data_access_expires_at_utc' can't be null";
+        }
+        if ($this->container['collectables'] === null) {
+            $invalidProperties[] = "'collectables' can't be null";
         }
         return $invalidProperties;
     }
@@ -334,13 +322,37 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets id
      *
-     * @param string $id Data consent request id.
+     * @param string $id Data consent id.
      *
      * @return self
      */
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_id
+     *
+     * @return string
+     */
+    public function getRequestId()
+    {
+        return $this->container['request_id'];
+    }
+
+    /**
+     * Sets request_id
+     *
+     * @param string $request_id Data consent request id.
+     *
+     * @return self
+     */
+    public function setRequestId($request_id)
+    {
+        $this->container['request_id'] = $request_id;
 
         return $this;
     }
@@ -358,37 +370,13 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets template_id
      *
-     * @param string|null $template_id Data consent template id.
+     * @param string|null $template_id Consent template id.
      *
      * @return self
      */
     public function setTemplateId($template_id)
     {
         $this->container['template_id'] = $template_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets consent_id
-     *
-     * @return string|null
-     */
-    public function getConsentId()
-    {
-        return $this->container['consent_id'];
-    }
-
-    /**
-     * Sets consent_id
-     *
-     * @param string|null $consent_id Data consent id.
-     *
-     * @return self
-     */
-    public function setConsentId($consent_id)
-    {
-        $this->container['consent_id'] = $consent_id;
 
         return $this;
     }
@@ -406,7 +394,7 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets title
      *
-     * @param string $title Data consent title.
+     * @param string $title Consent title.
      *
      * @return self
      */
@@ -430,7 +418,7 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets description
      *
-     * @param string $description Data consent description.
+     * @param string $description Consent description.
      *
      * @return self
      */
@@ -454,85 +442,13 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets purpose
      *
-     * @param string|null $purpose Data consent purpose.
+     * @param string|null $purpose Consent purpose.
      *
      * @return self
      */
     public function setPurpose($purpose)
     {
         $this->container['purpose'] = $purpose;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_life
-     *
-     * @return \MyDataMyConsent\Model\Life|null
-     */
-    public function getDataLife()
-    {
-        return $this->container['data_life'];
-    }
-
-    /**
-     * Sets data_life
-     *
-     * @param \MyDataMyConsent\Model\Life|null $data_life data_life
-     *
-     * @return self
-     */
-    public function setDataLife($data_life)
-    {
-        $this->container['data_life'] = $data_life;
-
-        return $this;
-    }
-
-    /**
-     * Gets collectables
-     *
-     * @return \MyDataMyConsent\Model\CollectibleTypes[]
-     */
-    public function getCollectables()
-    {
-        return $this->container['collectables'];
-    }
-
-    /**
-     * Sets collectables
-     *
-     * @param \MyDataMyConsent\Model\CollectibleTypes[] $collectables List of supported collectables.
-     *
-     * @return self
-     */
-    public function setCollectables($collectables)
-    {
-        $this->container['collectables'] = $collectables;
-
-        return $this;
-    }
-
-    /**
-     * Gets receiver
-     *
-     * @return \MyDataMyConsent\Model\ConsentRequestReceiver
-     */
-    public function getReceiver()
-    {
-        return $this->container['receiver'];
-    }
-
-    /**
-     * Sets receiver
-     *
-     * @param \MyDataMyConsent\Model\ConsentRequestReceiver $receiver receiver
-     *
-     * @return self
-     */
-    public function setReceiver($receiver)
-    {
-        $this->container['receiver'] = $receiver;
 
         return $this;
     }
@@ -562,49 +478,25 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets created_at_utc
+     * Gets transaction_id
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getCreatedAtUtc()
+    public function getTransactionId()
     {
-        return $this->container['created_at_utc'];
+        return $this->container['transaction_id'];
     }
 
     /**
-     * Sets created_at_utc
+     * Sets transaction_id
      *
-     * @param \DateTime $created_at_utc Request creation datetime in UTC timezone.
+     * @param string|null $transaction_id Transaction id.
      *
      * @return self
      */
-    public function setCreatedAtUtc($created_at_utc)
+    public function setTransactionId($transaction_id)
     {
-        $this->container['created_at_utc'] = $created_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at_utc
-     *
-     * @return \DateTime
-     */
-    public function getExpiresAtUtc()
-    {
-        return $this->container['expires_at_utc'];
-    }
-
-    /**
-     * Sets expires_at_utc
-     *
-     * @param \DateTime $expires_at_utc Request expiration datetime in UTC timezone.
-     *
-     * @return self
-     */
-    public function setExpiresAtUtc($expires_at_utc)
-    {
-        $this->container['expires_at_utc'] = $expires_at_utc;
+        $this->container['transaction_id'] = $transaction_id;
 
         return $this;
     }
@@ -612,7 +504,7 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets approved_at_utc
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getApprovedAtUtc()
     {
@@ -622,7 +514,7 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets approved_at_utc
      *
-     * @param \DateTime|null $approved_at_utc Request approval datetime in UTC timezone.
+     * @param \DateTime $approved_at_utc Consent approval datetime in UTC timezone.
      *
      * @return self
      */
@@ -636,7 +528,7 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data_access_expires_at_utc
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDataAccessExpiresAtUtc()
     {
@@ -646,37 +538,13 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data_access_expires_at_utc
      *
-     * @param \DateTime|null $data_access_expires_at_utc Data access expiration datetime in UTC timezone.
+     * @param \DateTime $data_access_expires_at_utc Data access expiration datetime in UTC timezone.
      *
      * @return self
      */
     public function setDataAccessExpiresAtUtc($data_access_expires_at_utc)
     {
         $this->container['data_access_expires_at_utc'] = $data_access_expires_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets rejected_at_utc
-     *
-     * @return \DateTime|null
-     */
-    public function getRejectedAtUtc()
-    {
-        return $this->container['rejected_at_utc'];
-    }
-
-    /**
-     * Sets rejected_at_utc
-     *
-     * @param \DateTime|null $rejected_at_utc Request rejection datetime in UTC timezone.
-     *
-     * @return self
-     */
-    public function setRejectedAtUtc($rejected_at_utc)
-    {
-        $this->container['rejected_at_utc'] = $rejected_at_utc;
 
         return $this;
     }
@@ -694,13 +562,85 @@ class DataConsentRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets revoked_at_utc
      *
-     * @param \DateTime|null $revoked_at_utc Request revocation datetime in UTC timezone.
+     * @param \DateTime|null $revoked_at_utc Consent revocation datetime in UTC timezone.
      *
      * @return self
      */
     public function setRevokedAtUtc($revoked_at_utc)
     {
         $this->container['revoked_at_utc'] = $revoked_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets collectables
+     *
+     * @return \MyDataMyConsent\Model\CollectibleTypes[]
+     */
+    public function getCollectables()
+    {
+        return $this->container['collectables'];
+    }
+
+    /**
+     * Sets collectables
+     *
+     * @param \MyDataMyConsent\Model\CollectibleTypes[] $collectables List of supported collectible types.
+     *
+     * @return self
+     */
+    public function setCollectables($collectables)
+    {
+        $this->container['collectables'] = $collectables;
+
+        return $this;
+    }
+
+    /**
+     * Gets identifiers
+     *
+     * @return mixed|null
+     */
+    public function getIdentifiers()
+    {
+        return $this->container['identifiers'];
+    }
+
+    /**
+     * Sets identifiers
+     *
+     * @param mixed|null $identifiers Consented identity details.
+     *
+     * @return self
+     */
+    public function setIdentifiers($identifiers)
+    {
+        $this->container['identifiers'] = $identifiers;
+
+        return $this;
+    }
+
+    /**
+     * Gets documents
+     *
+     * @return \MyDataMyConsent\Model\DataConsentDocument[]|null
+     */
+    public function getDocuments()
+    {
+        return $this->container['documents'];
+    }
+
+    /**
+     * Sets documents
+     *
+     * @param \MyDataMyConsent\Model\DataConsentDocument[]|null $documents List of consented documents.
+     *
+     * @return self
+     */
+    public function setDocuments($documents)
+    {
+        $this->container['documents'] = $documents;
 
         return $this;
     }

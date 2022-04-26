@@ -125,7 +125,7 @@ class DocumentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\IssuedDocument|object|object|object
+     * @return OneOfIssuedDocumentIssuedDocumentDetails|object|object|object
      */
     public function getIssuedDocumentById($document_id)
     {
@@ -142,7 +142,7 @@ class DocumentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\IssuedDocument|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of OneOfIssuedDocumentIssuedDocumentDetails|object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIssuedDocumentByIdWithHttpInfo($document_id)
     {
@@ -185,14 +185,14 @@ class DocumentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\MyDataMyConsent\Model\IssuedDocument' === '\SplFileObject') {
+                    if ('OneOfIssuedDocumentIssuedDocumentDetails' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\IssuedDocument', []),
+                        ObjectSerializer::deserialize($content, 'OneOfIssuedDocumentIssuedDocumentDetails', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -234,7 +234,7 @@ class DocumentsApi
                     ];
             }
 
-            $returnType = '\MyDataMyConsent\Model\IssuedDocument';
+            $returnType = 'OneOfIssuedDocumentIssuedDocumentDetails';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -252,7 +252,7 @@ class DocumentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\IssuedDocument',
+                        'OneOfIssuedDocumentIssuedDocumentDetails',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -318,7 +318,7 @@ class DocumentsApi
      */
     public function getIssuedDocumentByIdAsyncWithHttpInfo($document_id)
     {
-        $returnType = '\MyDataMyConsent\Model\IssuedDocument';
+        $returnType = 'OneOfIssuedDocumentIssuedDocumentDetails';
         $request = $this->getIssuedDocumentByIdRequest($document_id);
 
         return $this->client

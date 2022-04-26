@@ -15,6 +15,11 @@ docs/Model/CollectibleTypes.md
 docs/Model/ConsentRequestReceiver.md
 docs/Model/CreateDataConsentRequest.md
 docs/Model/CreateDataProcessingAgreement.md
+docs/Model/DataConsent.md
+docs/Model/DataConsentDetails.md
+docs/Model/DataConsentDetailsPaginatedList.md
+docs/Model/DataConsentDocument.md
+docs/Model/DataConsentDocumentIssuer.md
 docs/Model/DataConsentFinancialsDto.md
 docs/Model/DataConsentRequest.md
 docs/Model/DataConsentRequestDetails.md
@@ -27,6 +32,7 @@ docs/Model/DataProtectionOfficer.md
 docs/Model/DataProvider.md
 docs/Model/DataProviderPaginatedList.md
 docs/Model/DocumentCategoryType.md
+docs/Model/DocumentDigitalSignature.md
 docs/Model/DocumentIssueRequest.md
 docs/Model/DocumentIssueRequestDetails.md
 docs/Model/DocumentIssueRequestStatus.md
@@ -45,6 +51,7 @@ docs/Model/Identifier.md
 docs/Model/IndividualDataConsentRequestDetails.md
 docs/Model/IndividualDataConsentRequestDetailsPaginatedList.md
 docs/Model/IssuedDocument.md
+docs/Model/IssuedDocumentDetails.md
 docs/Model/IssuedDocumentPaginatedList.md
 docs/Model/Life.md
 docs/Model/OrganizationDataConsentRequestDetails.md
@@ -80,6 +87,11 @@ lib/Model/CollectibleTypes.php
 lib/Model/ConsentRequestReceiver.php
 lib/Model/CreateDataConsentRequest.php
 lib/Model/CreateDataProcessingAgreement.php
+lib/Model/DataConsent.php
+lib/Model/DataConsentDetails.php
+lib/Model/DataConsentDetailsPaginatedList.php
+lib/Model/DataConsentDocument.php
+lib/Model/DataConsentDocumentIssuer.php
 lib/Model/DataConsentFinancialsDto.php
 lib/Model/DataConsentRequest.php
 lib/Model/DataConsentRequestDetails.php
@@ -92,6 +104,7 @@ lib/Model/DataProtectionOfficer.php
 lib/Model/DataProvider.php
 lib/Model/DataProviderPaginatedList.php
 lib/Model/DocumentCategoryType.php
+lib/Model/DocumentDigitalSignature.php
 lib/Model/DocumentIssueRequest.php
 lib/Model/DocumentIssueRequestDetails.php
 lib/Model/DocumentIssueRequestStatus.php
@@ -110,6 +123,7 @@ lib/Model/Identifier.php
 lib/Model/IndividualDataConsentRequestDetails.php
 lib/Model/IndividualDataConsentRequestDetailsPaginatedList.php
 lib/Model/IssuedDocument.php
+lib/Model/IssuedDocumentDetails.php
 lib/Model/IssuedDocumentPaginatedList.php
 lib/Model/Life.php
 lib/Model/ModelInterface.php

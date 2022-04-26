@@ -1,4 +1,4 @@
-# # IssuedDocumentPaginatedList
+# # DataConsentDetailsPaginatedList
 
 ## Properties
 
@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **page_size** | **int** |  | [optional]
 **total_pages** | **int** |  | [optional] [readonly]
 **total_items** | **int** |  | [optional]
-**items** | [**OneOfIssuedDocumentIssuedDocumentDetails[]**](OneOfIssuedDocumentIssuedDocumentDetails.md) |  | [optional]
+**items** | [**\MyDataMyConsent\Model\DataConsentDetails[]**](DataConsentDetails.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

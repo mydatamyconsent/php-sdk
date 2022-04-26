@@ -63,12 +63,14 @@ class DataConsentRequestDetails implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'id' => 'string',
         'template_id' => 'string',
+        'consent_id' => 'string',
         'title' => 'string',
         'description' => 'string',
         'purpose' => 'string',
         'status' => '\MyDataMyConsent\Model\DataConsentStatus',
         'transaction_id' => 'string',
-        'created_at_utc' => '\DateTime'
+        'created_at_utc' => '\DateTime',
+        'expires_at_utc' => '\DateTime'
     ];
 
     /**
@@ -81,12 +83,14 @@ class DataConsentRequestDetails implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'id' => 'uuid',
         'template_id' => 'uuid',
+        'consent_id' => 'uuid',
         'title' => null,
         'description' => null,
         'purpose' => null,
         'status' => null,
         'transaction_id' => null,
-        'created_at_utc' => 'date-time'
+        'created_at_utc' => 'date-time',
+        'expires_at_utc' => 'date-time'
     ];
 
     /**
@@ -118,12 +122,14 @@ class DataConsentRequestDetails implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'id' => 'id',
         'template_id' => 'templateId',
+        'consent_id' => 'consentId',
         'title' => 'title',
         'description' => 'description',
         'purpose' => 'purpose',
         'status' => 'status',
         'transaction_id' => 'transactionId',
-        'created_at_utc' => 'createdAtUtc'
+        'created_at_utc' => 'createdAtUtc',
+        'expires_at_utc' => 'expiresAtUtc'
     ];
 
     /**
@@ -134,12 +140,14 @@ class DataConsentRequestDetails implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'id' => 'setId',
         'template_id' => 'setTemplateId',
+        'consent_id' => 'setConsentId',
         'title' => 'setTitle',
         'description' => 'setDescription',
         'purpose' => 'setPurpose',
         'status' => 'setStatus',
         'transaction_id' => 'setTransactionId',
-        'created_at_utc' => 'setCreatedAtUtc'
+        'created_at_utc' => 'setCreatedAtUtc',
+        'expires_at_utc' => 'setExpiresAtUtc'
     ];
 
     /**
@@ -150,12 +158,14 @@ class DataConsentRequestDetails implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'id' => 'getId',
         'template_id' => 'getTemplateId',
+        'consent_id' => 'getConsentId',
         'title' => 'getTitle',
         'description' => 'getDescription',
         'purpose' => 'getPurpose',
         'status' => 'getStatus',
         'transaction_id' => 'getTransactionId',
-        'created_at_utc' => 'getCreatedAtUtc'
+        'created_at_utc' => 'getCreatedAtUtc',
+        'expires_at_utc' => 'getExpiresAtUtc'
     ];
 
     /**
@@ -217,12 +227,14 @@ class DataConsentRequestDetails implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['template_id'] = $data['template_id'] ?? null;
+        $this->container['consent_id'] = $data['consent_id'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['purpose'] = $data['purpose'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['transaction_id'] = $data['transaction_id'] ?? null;
         $this->container['created_at_utc'] = $data['created_at_utc'] ?? null;
+        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
     }
 
     /**
@@ -248,6 +260,9 @@ class DataConsentRequestDetails implements ModelInterface, ArrayAccess, \JsonSer
         }
         if ($this->container['created_at_utc'] === null) {
             $invalidProperties[] = "'created_at_utc' can't be null";
+        }
+        if ($this->container['expires_at_utc'] === null) {
+            $invalidProperties[] = "'expires_at_utc' can't be null";
         }
         return $invalidProperties;
     }
@@ -308,6 +323,30 @@ class DataConsentRequestDetails implements ModelInterface, ArrayAccess, \JsonSer
     public function setTemplateId($template_id)
     {
         $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets consent_id
+     *
+     * @return string|null
+     */
+    public function getConsentId()
+    {
+        return $this->container['consent_id'];
+    }
+
+    /**
+     * Sets consent_id
+     *
+     * @param string|null $consent_id Data Consent id
+     *
+     * @return self
+     */
+    public function setConsentId($consent_id)
+    {
+        $this->container['consent_id'] = $consent_id;
 
         return $this;
     }
@@ -452,6 +491,30 @@ class DataConsentRequestDetails implements ModelInterface, ArrayAccess, \JsonSer
     public function setCreatedAtUtc($created_at_utc)
     {
         $this->container['created_at_utc'] = $created_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_at_utc
+     *
+     * @return \DateTime
+     */
+    public function getExpiresAtUtc()
+    {
+        return $this->container['expires_at_utc'];
+    }
+
+    /**
+     * Sets expires_at_utc
+     *
+     * @param \DateTime $expires_at_utc Request expiration datetime in UTC timezone
+     *
+     * @return self
+     */
+    public function setExpiresAtUtc($expires_at_utc)
+    {
+        $this->container['expires_at_utc'] = $expires_at_utc;
 
         return $this;
     }

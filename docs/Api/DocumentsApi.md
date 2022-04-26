@@ -16,7 +16,7 @@ Method | HTTP request | Description
 ## `getIssuedDocumentById()`
 
 ```php
-getIssuedDocumentById($document_id): \MyDataMyConsent\Model\IssuedDocument
+getIssuedDocumentById($document_id): OneOfIssuedDocumentIssuedDocumentDetails
 ```
 
 Get issued document.
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\MyDataMyConsent\Model\IssuedDocument**](../Model/IssuedDocument.md)
+[**OneOfIssuedDocumentIssuedDocumentDetails**](../Model/OneOfIssuedDocumentIssuedDocumentDetails.md)
 
 ### Authorization
 

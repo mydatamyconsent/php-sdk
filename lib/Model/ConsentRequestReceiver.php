@@ -36,7 +36,6 @@ use \MyDataMyConsent\ObjectSerializer;
  * ConsentRequestReceiver Class Doc Comment
  *
  * @category Class
- * @description Consent request receiver details
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -249,7 +248,7 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets country_iso2_code
      *
-     * @param string $country_iso2_code Consent request receiver country ISO 2 code
+     * @param string $country_iso2_code country_iso2_code
      *
      * @return self
      */
@@ -280,7 +279,7 @@ class ConsentRequestReceiver implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets identifiers
      *
-     * @param \MyDataMyConsent\Model\StringStringKeyValuePair[] $identifiers Consent request receiver identifiers
+     * @param \MyDataMyConsent\Model\StringStringKeyValuePair[] $identifiers identifiers
      *
      * @return self
      */

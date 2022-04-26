@@ -27,7 +27,7 @@ Method | HTTP request | Description
 ## `downloadConsentedDocumentAnalysis()`
 
 ```php
-downloadConsentedDocumentAnalysis($consent_id, $document_id): object
+downloadConsentedDocumentAnalysis($consent_id, $document_id)
 ```
 
 Get analysis of a consented document.
@@ -49,8 +49,7 @@ $consent_id = 'consent_id_example'; // string | Data consent id.
 $document_id = 'document_id_example'; // string | Consented document Id.
 
 try {
-    $result = $apiInstance->downloadConsentedDocumentAnalysis($consent_id, $document_id);
-    print_r($result);
+    $apiInstance->downloadConsentedDocumentAnalysis($consent_id, $document_id);
 } catch (Exception $e) {
     echo 'Exception when calling DataConsentsApi->downloadConsentedDocumentAnalysis: ', $e->getMessage(), PHP_EOL;
 }
@@ -65,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 
@@ -83,7 +82,7 @@ No authorization required
 ## `downloadIndividualConsentedDocumentById()`
 
 ```php
-downloadIndividualConsentedDocumentById($consent_id, $document_id): object
+downloadIndividualConsentedDocumentById($consent_id, $document_id)
 ```
 
 Download individual consented document by document id.
@@ -105,8 +104,7 @@ $consent_id = 'consent_id_example'; // string | Individual data consent id.
 $document_id = 'document_id_example'; // string | Consented document id.
 
 try {
-    $result = $apiInstance->downloadIndividualConsentedDocumentById($consent_id, $document_id);
-    print_r($result);
+    $apiInstance->downloadIndividualConsentedDocumentById($consent_id, $document_id);
 } catch (Exception $e) {
     echo 'Exception when calling DataConsentsApi->downloadIndividualConsentedDocumentById: ', $e->getMessage(), PHP_EOL;
 }
@@ -121,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 
@@ -139,7 +137,7 @@ No authorization required
 ## `downloadOrganizationConsentedDocumentById()`
 
 ```php
-downloadOrganizationConsentedDocumentById($consent_id, $document_id): object
+downloadOrganizationConsentedDocumentById($consent_id, $document_id)
 ```
 
 Download organization consent document based on document id.
@@ -161,8 +159,7 @@ $consent_id = 'consent_id_example'; // string | Organization data consent id.
 $document_id = 'document_id_example'; // string | Organization consented document Id.
 
 try {
-    $result = $apiInstance->downloadOrganizationConsentedDocumentById($consent_id, $document_id);
-    print_r($result);
+    $apiInstance->downloadOrganizationConsentedDocumentById($consent_id, $document_id);
 } catch (Exception $e) {
     echo 'Exception when calling DataConsentsApi->downloadOrganizationConsentedDocumentById: ', $e->getMessage(), PHP_EOL;
 }
@@ -177,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 
@@ -359,7 +356,7 @@ No authorization required
 ## `getConsentedDocumentById()`
 
 ```php
-getConsentedDocumentById($consent_id, $document_id): object
+getConsentedDocumentById($consent_id, $document_id): \MyDataMyConsent\Model\DataConsentDocument
 ```
 
 Get individual consented document by document id.
@@ -397,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\MyDataMyConsent\Model\DataConsentDocument**](../Model/DataConsentDocument.md)
 
 ### Authorization
 
@@ -592,7 +589,7 @@ No authorization required
 ## `getConsents()`
 
 ```php
-getConsents($status, $from_date_time, $to_date_time, $page_no, $page_size): object
+getConsents($status, $from_date_time, $to_date_time, $page_no, $page_size): \MyDataMyConsent\Model\DataConsentDetailsPaginatedList
 ```
 
 Get the paginated list of individual data consents.
@@ -612,7 +609,7 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus.
+$status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status.
 $from_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From datetime in UTC timezone.
 $to_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To datetime in UTC timezone.
 $page_no = 1; // int | Page number.
@@ -630,7 +627,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. | [optional]
+ **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
  **from_date_time** | **\DateTime**| From datetime in UTC timezone. | [optional]
  **to_date_time** | **\DateTime**| To datetime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
@@ -638,7 +635,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\MyDataMyConsent\Model\DataConsentDetailsPaginatedList**](../Model/DataConsentDetailsPaginatedList.md)
 
 ### Authorization
 
@@ -656,7 +653,7 @@ No authorization required
 ## `getIndividualConsentedDocuments()`
 
 ```php
-getIndividualConsentedDocuments($consent_id): object
+getIndividualConsentedDocuments($consent_id): \MyDataMyConsent\Model\DataConsentDocument[]
 ```
 
 Get individual consented documents by consent id.
@@ -692,7 +689,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\MyDataMyConsent\Model\DataConsentDocument[]**](../Model/DataConsentDocument.md)
 
 ### Authorization
 
@@ -710,7 +707,7 @@ No authorization required
 ## `getIndividualDataConsentById()`
 
 ```php
-getIndividualDataConsentById($consent_id): object
+getIndividualDataConsentById($consent_id): \MyDataMyConsent\Model\DataConsent
 ```
 
 Get individuals data consent details by consent id.
@@ -746,7 +743,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\MyDataMyConsent\Model\DataConsent**](../Model/DataConsent.md)
 
 ### Authorization
 
@@ -830,7 +827,7 @@ No authorization required
 ## `getOrganizationConsentedDocumentById()`
 
 ```php
-getOrganizationConsentedDocumentById($consent_id, $document_id): object
+getOrganizationConsentedDocumentById($consent_id, $document_id): \MyDataMyConsent\Model\DataConsentDocument
 ```
 
 Get organization consent document based on document id.
@@ -868,7 +865,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\MyDataMyConsent\Model\DataConsentDocument**](../Model/DataConsentDocument.md)
 
 ### Authorization
 
@@ -886,7 +883,7 @@ No authorization required
 ## `getOrganizationConsentedDocuments()`
 
 ```php
-getOrganizationConsentedDocuments($consent_id): object
+getOrganizationConsentedDocuments($consent_id): \MyDataMyConsent\Model\DataConsentDocument[]
 ```
 
 Get organization consented documents by consent id.
@@ -922,7 +919,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\MyDataMyConsent\Model\DataConsentDocument[]**](../Model/DataConsentDocument.md)
 
 ### Authorization
 
@@ -940,7 +937,7 @@ No authorization required
 ## `getOrganizationDataConsentById()`
 
 ```php
-getOrganizationDataConsentById($consent_id): object
+getOrganizationDataConsentById($consent_id): \MyDataMyConsent\Model\DataConsent
 ```
 
 Get organizations data consent details by consent id.
@@ -976,7 +973,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\MyDataMyConsent\Model\DataConsent**](../Model/DataConsent.md)
 
 ### Authorization
 
@@ -994,7 +991,7 @@ No authorization required
 ## `getOrganizationDataConsents()`
 
 ```php
-getOrganizationDataConsents($status, $from_date_time, $to_date_time, $page_no, $page_size): object
+getOrganizationDataConsents($status, $from_date_time, $to_date_time, $page_no, $page_size): \MyDataMyConsent\Model\DataConsentDetailsPaginatedList
 ```
 
 Get the paginated list of organization data consents.
@@ -1012,7 +1009,7 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus.
+$status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status.
 $from_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From datetime in UTC timezone.
 $to_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To datetime in UTC timezone.
 $page_no = 1; // int | Page number.
@@ -1030,7 +1027,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. | [optional]
+ **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
  **from_date_time** | **\DateTime**| From datetime in UTC timezone. | [optional]
  **to_date_time** | **\DateTime**| To datetime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
@@ -1038,7 +1035,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\MyDataMyConsent\Model\DataConsentDetailsPaginatedList**](../Model/DataConsentDetailsPaginatedList.md)
 
 ### Authorization
 

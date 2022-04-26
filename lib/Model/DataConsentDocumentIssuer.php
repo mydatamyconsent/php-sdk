@@ -1,6 +1,6 @@
 <?php
 /**
- * IssuedDocumentPaginatedList
+ * DataConsentDocumentIssuer
  *
  * PHP version 7.3
  *
@@ -33,9 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * IssuedDocumentPaginatedList Class Doc Comment
+ * DataConsentDocumentIssuer Class Doc Comment
  *
  * @category Class
+ * @description Data Consent document issuer details.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonSerializable
+class DataConsentDocumentIssuer implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +53,7 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IssuedDocumentPaginatedList';
+    protected static $openAPIModelName = 'DataConsentDocumentIssuer';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,11 +61,8 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_index' => 'int',
-        'page_size' => 'int',
-        'total_pages' => 'int',
-        'total_items' => 'int',
-        'items' => 'OneOfIssuedDocumentIssuedDocumentDetails[]'
+        'id' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -75,11 +73,8 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'page_index' => 'int32',
-        'page_size' => 'int32',
-        'total_pages' => 'int32',
-        'total_items' => 'int64',
-        'items' => null
+        'id' => 'uuid',
+        'name' => null
     ];
 
     /**
@@ -109,11 +104,8 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_index' => 'pageIndex',
-        'page_size' => 'pageSize',
-        'total_pages' => 'totalPages',
-        'total_items' => 'totalItems',
-        'items' => 'items'
+        'id' => 'id',
+        'name' => 'name'
     ];
 
     /**
@@ -122,11 +114,8 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'page_index' => 'setPageIndex',
-        'page_size' => 'setPageSize',
-        'total_pages' => 'setTotalPages',
-        'total_items' => 'setTotalItems',
-        'items' => 'setItems'
+        'id' => 'setId',
+        'name' => 'setName'
     ];
 
     /**
@@ -135,11 +124,8 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'page_index' => 'getPageIndex',
-        'page_size' => 'getPageSize',
-        'total_pages' => 'getTotalPages',
-        'total_items' => 'getTotalItems',
-        'items' => 'getItems'
+        'id' => 'getId',
+        'name' => 'getName'
     ];
 
     /**
@@ -199,11 +185,8 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_index'] = $data['page_index'] ?? null;
-        $this->container['page_size'] = $data['page_size'] ?? null;
-        $this->container['total_pages'] = $data['total_pages'] ?? null;
-        $this->container['total_items'] = $data['total_items'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -215,6 +198,12 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -231,121 +220,49 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets page_index
+     * Gets id
      *
-     * @return int|null
+     * @return string
      */
-    public function getPageIndex()
+    public function getId()
     {
-        return $this->container['page_index'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets page_index
+     * Sets id
      *
-     * @param int|null $page_index page_index
+     * @param string $id Document issuer id.
      *
      * @return self
      */
-    public function setPageIndex($page_index)
+    public function setId($id)
     {
-        $this->container['page_index'] = $page_index;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets page_size
+     * Gets name
      *
-     * @return int|null
+     * @return string
      */
-    public function getPageSize()
+    public function getName()
     {
-        return $this->container['page_size'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets page_size
+     * Sets name
      *
-     * @param int|null $page_size page_size
+     * @param string $name Document issuer name.
      *
      * @return self
      */
-    public function setPageSize($page_size)
+    public function setName($name)
     {
-        $this->container['page_size'] = $page_size;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_pages
-     *
-     * @return int|null
-     */
-    public function getTotalPages()
-    {
-        return $this->container['total_pages'];
-    }
-
-    /**
-     * Sets total_pages
-     *
-     * @param int|null $total_pages total_pages
-     *
-     * @return self
-     */
-    public function setTotalPages($total_pages)
-    {
-        $this->container['total_pages'] = $total_pages;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_items
-     *
-     * @return int|null
-     */
-    public function getTotalItems()
-    {
-        return $this->container['total_items'];
-    }
-
-    /**
-     * Sets total_items
-     *
-     * @param int|null $total_items total_items
-     *
-     * @return self
-     */
-    public function setTotalItems($total_items)
-    {
-        $this->container['total_items'] = $total_items;
-
-        return $this;
-    }
-
-    /**
-     * Gets items
-     *
-     * @return OneOfIssuedDocumentIssuedDocumentDetails[]|null
-     */
-    public function getItems()
-    {
-        return $this->container['items'];
-    }
-
-    /**
-     * Sets items
-     *
-     * @param OneOfIssuedDocumentIssuedDocumentDetails[]|null $items items
-     *
-     * @return self
-     */
-    public function setItems($items)
-    {
-        $this->container['items'] = $items;
+        $this->container['name'] = $name;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * OrganizationDataConsentRequestDetails
+ * DataConsentDocument
  *
  * PHP version 7.3
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * OrganizationDataConsentRequestDetails Class Doc Comment
+ * DataConsentDocument Class Doc Comment
  *
  * @category Class
- * @description DataConsentRequestResponse
+ * @description Data Consent document details.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAccess, \JsonSerializable
+class DataConsentDocument implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $openAPIModelName = 'OrganizationDataConsentRequestDetails';
+    protected static $openAPIModelName = 'DataConsentDocument';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,17 +61,16 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'receiver' => 'string',
         'id' => 'string',
-        'template_id' => 'string',
-        'consent_id' => 'string',
-        'title' => 'string',
-        'description' => 'string',
-        'purpose' => 'string',
-        'status' => '\MyDataMyConsent\Model\DataConsentStatus',
-        'transaction_id' => 'string',
-        'created_at_utc' => '\DateTime',
-        'expires_at_utc' => '\DateTime'
+        'name' => 'string',
+        'category' => 'string',
+        'identifier' => 'string',
+        'field_title' => 'string',
+        'field_slug' => 'string',
+        'issued_at_utc' => '\DateTime',
+        'expires_at_utc' => '\DateTime',
+        'issuer' => '\MyDataMyConsent\Model\DataConsentDocumentIssuer',
+        'digital_signatures' => '\MyDataMyConsent\Model\DocumentDigitalSignature[]'
     ];
 
     /**
@@ -82,17 +81,16 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'receiver' => null,
-        'id' => 'uuid',
-        'template_id' => 'uuid',
-        'consent_id' => 'uuid',
-        'title' => null,
-        'description' => null,
-        'purpose' => null,
-        'status' => null,
-        'transaction_id' => null,
-        'created_at_utc' => 'date-time',
-        'expires_at_utc' => 'date-time'
+        'id' => null,
+        'name' => null,
+        'category' => null,
+        'identifier' => null,
+        'field_title' => null,
+        'field_slug' => null,
+        'issued_at_utc' => 'date-time',
+        'expires_at_utc' => 'date-time',
+        'issuer' => null,
+        'digital_signatures' => null
     ];
 
     /**
@@ -122,17 +120,16 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'receiver' => 'receiver',
         'id' => 'id',
-        'template_id' => 'templateId',
-        'consent_id' => 'consentId',
-        'title' => 'title',
-        'description' => 'description',
-        'purpose' => 'purpose',
-        'status' => 'status',
-        'transaction_id' => 'transactionId',
-        'created_at_utc' => 'createdAtUtc',
-        'expires_at_utc' => 'expiresAtUtc'
+        'name' => 'name',
+        'category' => 'category',
+        'identifier' => 'identifier',
+        'field_title' => 'fieldTitle',
+        'field_slug' => 'fieldSlug',
+        'issued_at_utc' => 'issuedAtUtc',
+        'expires_at_utc' => 'expiresAtUtc',
+        'issuer' => 'issuer',
+        'digital_signatures' => 'digitalSignatures'
     ];
 
     /**
@@ -141,17 +138,16 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'receiver' => 'setReceiver',
         'id' => 'setId',
-        'template_id' => 'setTemplateId',
-        'consent_id' => 'setConsentId',
-        'title' => 'setTitle',
-        'description' => 'setDescription',
-        'purpose' => 'setPurpose',
-        'status' => 'setStatus',
-        'transaction_id' => 'setTransactionId',
-        'created_at_utc' => 'setCreatedAtUtc',
-        'expires_at_utc' => 'setExpiresAtUtc'
+        'name' => 'setName',
+        'category' => 'setCategory',
+        'identifier' => 'setIdentifier',
+        'field_title' => 'setFieldTitle',
+        'field_slug' => 'setFieldSlug',
+        'issued_at_utc' => 'setIssuedAtUtc',
+        'expires_at_utc' => 'setExpiresAtUtc',
+        'issuer' => 'setIssuer',
+        'digital_signatures' => 'setDigitalSignatures'
     ];
 
     /**
@@ -160,17 +156,16 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'receiver' => 'getReceiver',
         'id' => 'getId',
-        'template_id' => 'getTemplateId',
-        'consent_id' => 'getConsentId',
-        'title' => 'getTitle',
-        'description' => 'getDescription',
-        'purpose' => 'getPurpose',
-        'status' => 'getStatus',
-        'transaction_id' => 'getTransactionId',
-        'created_at_utc' => 'getCreatedAtUtc',
-        'expires_at_utc' => 'getExpiresAtUtc'
+        'name' => 'getName',
+        'category' => 'getCategory',
+        'identifier' => 'getIdentifier',
+        'field_title' => 'getFieldTitle',
+        'field_slug' => 'getFieldSlug',
+        'issued_at_utc' => 'getIssuedAtUtc',
+        'expires_at_utc' => 'getExpiresAtUtc',
+        'issuer' => 'getIssuer',
+        'digital_signatures' => 'getDigitalSignatures'
     ];
 
     /**
@@ -230,17 +225,16 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
-        $this->container['receiver'] = $data['receiver'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['template_id'] = $data['template_id'] ?? null;
-        $this->container['consent_id'] = $data['consent_id'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['purpose'] = $data['purpose'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['transaction_id'] = $data['transaction_id'] ?? null;
-        $this->container['created_at_utc'] = $data['created_at_utc'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['category'] = $data['category'] ?? null;
+        $this->container['identifier'] = $data['identifier'] ?? null;
+        $this->container['field_title'] = $data['field_title'] ?? null;
+        $this->container['field_slug'] = $data['field_slug'] ?? null;
+        $this->container['issued_at_utc'] = $data['issued_at_utc'] ?? null;
         $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
+        $this->container['issuer'] = $data['issuer'] ?? null;
+        $this->container['digital_signatures'] = $data['digital_signatures'] ?? null;
     }
 
     /**
@@ -252,26 +246,32 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
+        if ($this->container['category'] === null) {
+            $invalidProperties[] = "'category' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['identifier'] === null) {
+            $invalidProperties[] = "'identifier' can't be null";
         }
-        if ($this->container['created_at_utc'] === null) {
-            $invalidProperties[] = "'created_at_utc' can't be null";
+        if ($this->container['field_title'] === null) {
+            $invalidProperties[] = "'field_title' can't be null";
         }
-        if ($this->container['expires_at_utc'] === null) {
-            $invalidProperties[] = "'expires_at_utc' can't be null";
+        if ($this->container['field_slug'] === null) {
+            $invalidProperties[] = "'field_slug' can't be null";
+        }
+        if ($this->container['issued_at_utc'] === null) {
+            $invalidProperties[] = "'issued_at_utc' can't be null";
+        }
+        if ($this->container['issuer'] === null) {
+            $invalidProperties[] = "'issuer' can't be null";
+        }
+        if ($this->container['digital_signatures'] === null) {
+            $invalidProperties[] = "'digital_signatures' can't be null";
         }
         return $invalidProperties;
     }
@@ -289,30 +289,6 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
 
 
     /**
-     * Gets receiver
-     *
-     * @return string
-     */
-    public function getReceiver()
-    {
-        return $this->container['receiver'];
-    }
-
-    /**
-     * Sets receiver
-     *
-     * @param string $receiver Name of request receiver organization.
-     *
-     * @return self
-     */
-    public function setReceiver($receiver)
-    {
-        $this->container['receiver'] = $receiver;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string
@@ -325,7 +301,7 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
     /**
      * Sets id
      *
-     * @param string $id Consent request id
+     * @param string $id Document id.
      *
      * @return self
      */
@@ -337,193 +313,145 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
     }
 
     /**
-     * Gets template_id
-     *
-     * @return string|null
-     */
-    public function getTemplateId()
-    {
-        return $this->container['template_id'];
-    }
-
-    /**
-     * Sets template_id
-     *
-     * @param string|null $template_id Consent request template id
-     *
-     * @return self
-     */
-    public function setTemplateId($template_id)
-    {
-        $this->container['template_id'] = $template_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets consent_id
-     *
-     * @return string|null
-     */
-    public function getConsentId()
-    {
-        return $this->container['consent_id'];
-    }
-
-    /**
-     * Sets consent_id
-     *
-     * @param string|null $consent_id Data Consent id
-     *
-     * @return self
-     */
-    public function setConsentId($consent_id)
-    {
-        $this->container['consent_id'] = $consent_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
+     * Gets name
      *
      * @return string
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->container['title'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets title
+     * Sets name
      *
-     * @param string $title Consent request title.
+     * @param string $name Document name.
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->container['title'] = $title;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets category
      *
      * @return string
      */
-    public function getDescription()
+    public function getCategory()
     {
-        return $this->container['description'];
+        return $this->container['category'];
     }
 
     /**
-     * Sets description
+     * Sets category
      *
-     * @param string $description Consent request description.
+     * @param string $category Document category.
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setCategory($category)
     {
-        $this->container['description'] = $description;
+        $this->container['category'] = $category;
 
         return $this;
     }
 
     /**
-     * Gets purpose
+     * Gets identifier
      *
-     * @return string|null
+     * @return string
      */
-    public function getPurpose()
+    public function getIdentifier()
     {
-        return $this->container['purpose'];
+        return $this->container['identifier'];
     }
 
     /**
-     * Sets purpose
+     * Sets identifier
      *
-     * @param string|null $purpose Consent request purpose.
+     * @param string $identifier Document identifier.
      *
      * @return self
      */
-    public function setPurpose($purpose)
+    public function setIdentifier($identifier)
     {
-        $this->container['purpose'] = $purpose;
+        $this->container['identifier'] = $identifier;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets field_title
      *
-     * @return \MyDataMyConsent\Model\DataConsentStatus
+     * @return string
      */
-    public function getStatus()
+    public function getFieldTitle()
     {
-        return $this->container['status'];
+        return $this->container['field_title'];
     }
 
     /**
-     * Sets status
+     * Sets field_title
      *
-     * @param \MyDataMyConsent\Model\DataConsentStatus $status status
+     * @param string $field_title Document field title.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setFieldTitle($field_title)
     {
-        $this->container['status'] = $status;
+        $this->container['field_title'] = $field_title;
 
         return $this;
     }
 
     /**
-     * Gets transaction_id
+     * Gets field_slug
      *
-     * @return string|null
+     * @return string
      */
-    public function getTransactionId()
+    public function getFieldSlug()
     {
-        return $this->container['transaction_id'];
+        return $this->container['field_slug'];
     }
 
     /**
-     * Sets transaction_id
+     * Sets field_slug
      *
-     * @param string|null $transaction_id Transaction id
+     * @param string $field_slug Document field slug.
      *
      * @return self
      */
-    public function setTransactionId($transaction_id)
+    public function setFieldSlug($field_slug)
     {
-        $this->container['transaction_id'] = $transaction_id;
+        $this->container['field_slug'] = $field_slug;
 
         return $this;
     }
 
     /**
-     * Gets created_at_utc
+     * Gets issued_at_utc
      *
      * @return \DateTime
      */
-    public function getCreatedAtUtc()
+    public function getIssuedAtUtc()
     {
-        return $this->container['created_at_utc'];
+        return $this->container['issued_at_utc'];
     }
 
     /**
-     * Sets created_at_utc
+     * Sets issued_at_utc
      *
-     * @param \DateTime $created_at_utc Request creation datetime in UTC timezone
+     * @param \DateTime $issued_at_utc Document issued at datetime in UTC timezone.
      *
      * @return self
      */
-    public function setCreatedAtUtc($created_at_utc)
+    public function setIssuedAtUtc($issued_at_utc)
     {
-        $this->container['created_at_utc'] = $created_at_utc;
+        $this->container['issued_at_utc'] = $issued_at_utc;
 
         return $this;
     }
@@ -531,7 +459,7 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
     /**
      * Gets expires_at_utc
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getExpiresAtUtc()
     {
@@ -541,13 +469,61 @@ class OrganizationDataConsentRequestDetails implements ModelInterface, ArrayAcce
     /**
      * Sets expires_at_utc
      *
-     * @param \DateTime $expires_at_utc Request expiration datetime in UTC timezone
+     * @param \DateTime|null $expires_at_utc Document expires at datetime in UTC timezone.
      *
      * @return self
      */
     public function setExpiresAtUtc($expires_at_utc)
     {
         $this->container['expires_at_utc'] = $expires_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets issuer
+     *
+     * @return \MyDataMyConsent\Model\DataConsentDocumentIssuer
+     */
+    public function getIssuer()
+    {
+        return $this->container['issuer'];
+    }
+
+    /**
+     * Sets issuer
+     *
+     * @param \MyDataMyConsent\Model\DataConsentDocumentIssuer $issuer issuer
+     *
+     * @return self
+     */
+    public function setIssuer($issuer)
+    {
+        $this->container['issuer'] = $issuer;
+
+        return $this;
+    }
+
+    /**
+     * Gets digital_signatures
+     *
+     * @return \MyDataMyConsent\Model\DocumentDigitalSignature[]
+     */
+    public function getDigitalSignatures()
+    {
+        return $this->container['digital_signatures'];
+    }
+
+    /**
+     * Sets digital_signatures
+     *
+     * @param \MyDataMyConsent\Model\DocumentDigitalSignature[] $digital_signatures Digital signatures.
+     *
+     * @return self
+     */
+    public function setDigitalSignatures($digital_signatures)
+    {
+        $this->container['digital_signatures'] = $digital_signatures;
 
         return $this;
     }

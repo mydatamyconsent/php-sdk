@@ -1,9 +1,12 @@
-# # IssuedDocument
+# # IssuedDocumentDetails
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**receiver** | [**\MyDataMyConsent\Model\DocumentReceiver**](DocumentReceiver.md) |  |
+**metadata** | **array<string,string>** | Metadata. | [optional]
+**digital_signatures** | [**\MyDataMyConsent\Model\DocumentDigitalSignature[]**](DocumentDigitalSignature.md) | Digital signatures. |
 **id** | **string** | Document Id. |
 **identifier** | **string** | Document Identifier. |
 **document_type** | **string** | Document type name. |

@@ -74,8 +74,7 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
         'added_by' => 'string',
         'payable_amount' => 'double',
         'payable_amount_currency' => 'string',
-        'approved_at_utc' => '\DateTime',
-        'approved' => 'bool'
+        'approved_at_utc' => '\DateTime'
     ];
 
     /**
@@ -99,8 +98,7 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
         'added_by' => null,
         'payable_amount' => 'double',
         'payable_amount_currency' => null,
-        'approved_at_utc' => 'date-time',
-        'approved' => null
+        'approved_at_utc' => 'date-time'
     ];
 
     /**
@@ -143,8 +141,7 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
         'added_by' => 'addedBy',
         'payable_amount' => 'payableAmount',
         'payable_amount_currency' => 'payableAmountCurrency',
-        'approved_at_utc' => 'approvedAtUtc',
-        'approved' => 'approved'
+        'approved_at_utc' => 'approvedAtUtc'
     ];
 
     /**
@@ -166,8 +163,7 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
         'added_by' => 'setAddedBy',
         'payable_amount' => 'setPayableAmount',
         'payable_amount_currency' => 'setPayableAmountCurrency',
-        'approved_at_utc' => 'setApprovedAtUtc',
-        'approved' => 'setApproved'
+        'approved_at_utc' => 'setApprovedAtUtc'
     ];
 
     /**
@@ -189,8 +185,7 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
         'added_by' => 'getAddedBy',
         'payable_amount' => 'getPayableAmount',
         'payable_amount_currency' => 'getPayableAmountCurrency',
-        'approved_at_utc' => 'getApprovedAtUtc',
-        'approved' => 'getApproved'
+        'approved_at_utc' => 'getApprovedAtUtc'
     ];
 
     /**
@@ -264,7 +259,6 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['payable_amount'] = $data['payable_amount'] ?? null;
         $this->container['payable_amount_currency'] = $data['payable_amount_currency'] ?? null;
         $this->container['approved_at_utc'] = $data['approved_at_utc'] ?? null;
-        $this->container['approved'] = $data['approved'] ?? null;
     }
 
     /**
@@ -299,9 +293,6 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['added_by'] === null) {
             $invalidProperties[] = "'added_by' can't be null";
-        }
-        if ($this->container['approved'] === null) {
-            $invalidProperties[] = "'approved' can't be null";
         }
         return $invalidProperties;
     }
@@ -650,30 +641,6 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setApprovedAtUtc($approved_at_utc)
     {
         $this->container['approved_at_utc'] = $approved_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets approved
-     *
-     * @return bool
-     */
-    public function getApproved()
-    {
-        return $this->container['approved'];
-    }
-
-    /**
-     * Sets approved
-     *
-     * @param bool $approved Document type approval status.
-     *
-     * @return self
-     */
-    public function setApproved($approved)
-    {
-        $this->container['approved'] = $approved;
 
         return $this;
     }
