@@ -64,7 +64,7 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
         'page_size' => 'int',
         'total_pages' => 'int',
         'total_items' => 'int',
-        'items' => 'OneOfIssuedDocumentIssuedDocumentDetails[]'
+        'items' => '\MyDataMyConsent\Model\IssuedDocument[]'
     ];
 
     /**
@@ -329,7 +329,7 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets items
      *
-     * @return OneOfIssuedDocumentIssuedDocumentDetails[]|null
+     * @return \MyDataMyConsent\Model\IssuedDocument[]|null
      */
     public function getItems()
     {
@@ -339,7 +339,7 @@ class IssuedDocumentPaginatedList implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets items
      *
-     * @param OneOfIssuedDocumentIssuedDocumentDetails[]|null $items items
+     * @param \MyDataMyConsent\Model\IssuedDocument[]|null $items items
      *
      * @return self
      */

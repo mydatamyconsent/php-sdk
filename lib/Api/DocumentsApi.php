@@ -125,7 +125,7 @@ class DocumentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return OneOfIssuedDocumentIssuedDocumentDetails|object|object|object
+     * @return \MyDataMyConsent\Model\IssuedDocumentDetails|object|object|object
      */
     public function getIssuedDocumentById($document_id)
     {
@@ -142,7 +142,7 @@ class DocumentsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of OneOfIssuedDocumentIssuedDocumentDetails|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\IssuedDocumentDetails|object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIssuedDocumentByIdWithHttpInfo($document_id)
     {
@@ -185,14 +185,14 @@ class DocumentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('OneOfIssuedDocumentIssuedDocumentDetails' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\IssuedDocumentDetails' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'OneOfIssuedDocumentIssuedDocumentDetails', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\IssuedDocumentDetails', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -234,7 +234,7 @@ class DocumentsApi
                     ];
             }
 
-            $returnType = 'OneOfIssuedDocumentIssuedDocumentDetails';
+            $returnType = '\MyDataMyConsent\Model\IssuedDocumentDetails';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -252,7 +252,7 @@ class DocumentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'OneOfIssuedDocumentIssuedDocumentDetails',
+                        '\MyDataMyConsent\Model\IssuedDocumentDetails',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -318,7 +318,7 @@ class DocumentsApi
      */
     public function getIssuedDocumentByIdAsyncWithHttpInfo($document_id)
     {
-        $returnType = 'OneOfIssuedDocumentIssuedDocumentDetails';
+        $returnType = '\MyDataMyConsent\Model\IssuedDocumentDetails';
         $request = $this->getIssuedDocumentByIdRequest($document_id);
 
         return $this->client
@@ -452,7 +452,7 @@ class DocumentsApi
      *
      * Get paginated list of issued documents of given document type.
      *
-     * @param  string $document_type_id Document type id. (required)
+     * @param  string $document_type_id Document type id. (optional)
      * @param  \DateTime $from_date_time From DateTime in UTC timezone. (optional)
      * @param  \DateTime $to_date_time To DateTime in UTC timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
@@ -462,7 +462,7 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \MyDataMyConsent\Model\IssuedDocumentPaginatedList|object|object
      */
-    public function getIssuedDocuments($document_type_id, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
+    public function getIssuedDocuments($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
         list($response) = $this->getIssuedDocumentsWithHttpInfo($document_type_id, $from_date_time, $to_date_time, $page_no, $page_size);
         return $response;
@@ -473,7 +473,7 @@ class DocumentsApi
      *
      * Get paginated list of issued documents of given document type.
      *
-     * @param  string $document_type_id Document type id. (required)
+     * @param  string $document_type_id Document type id. (optional)
      * @param  \DateTime $from_date_time From DateTime in UTC timezone. (optional)
      * @param  \DateTime $to_date_time To DateTime in UTC timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
@@ -483,7 +483,7 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return array of \MyDataMyConsent\Model\IssuedDocumentPaginatedList|object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getIssuedDocumentsWithHttpInfo($document_type_id, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
+    public function getIssuedDocumentsWithHttpInfo($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
         $request = $this->getIssuedDocumentsRequest($document_type_id, $from_date_time, $to_date_time, $page_no, $page_size);
 
@@ -610,7 +610,7 @@ class DocumentsApi
      *
      * Get paginated list of issued documents of given document type.
      *
-     * @param  string $document_type_id Document type id. (required)
+     * @param  string $document_type_id Document type id. (optional)
      * @param  \DateTime $from_date_time From DateTime in UTC timezone. (optional)
      * @param  \DateTime $to_date_time To DateTime in UTC timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
@@ -619,7 +619,7 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getIssuedDocumentsAsync($document_type_id, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
+    public function getIssuedDocumentsAsync($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
         return $this->getIssuedDocumentsAsyncWithHttpInfo($document_type_id, $from_date_time, $to_date_time, $page_no, $page_size)
             ->then(
@@ -634,7 +634,7 @@ class DocumentsApi
      *
      * Get paginated list of issued documents of given document type.
      *
-     * @param  string $document_type_id Document type id. (required)
+     * @param  string $document_type_id Document type id. (optional)
      * @param  \DateTime $from_date_time From DateTime in UTC timezone. (optional)
      * @param  \DateTime $to_date_time To DateTime in UTC timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
@@ -643,7 +643,7 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getIssuedDocumentsAsyncWithHttpInfo($document_type_id, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
+    public function getIssuedDocumentsAsyncWithHttpInfo($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
         $returnType = '\MyDataMyConsent\Model\IssuedDocumentPaginatedList';
         $request = $this->getIssuedDocumentsRequest($document_type_id, $from_date_time, $to_date_time, $page_no, $page_size);
@@ -684,7 +684,7 @@ class DocumentsApi
     /**
      * Create request for operation 'getIssuedDocuments'
      *
-     * @param  string $document_type_id Document type id. (required)
+     * @param  string $document_type_id Document type id. (optional)
      * @param  \DateTime $from_date_time From DateTime in UTC timezone. (optional)
      * @param  \DateTime $to_date_time To DateTime in UTC timezone. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
@@ -693,22 +693,27 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getIssuedDocumentsRequest($document_type_id, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
+    public function getIssuedDocumentsRequest($document_type_id = null, $from_date_time = null, $to_date_time = null, $page_no = 1, $page_size = 25)
     {
-        // verify the required parameter 'document_type_id' is set
-        if ($document_type_id === null || (is_array($document_type_id) && count($document_type_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $document_type_id when calling getIssuedDocuments'
-            );
-        }
 
-        $resourcePath = '/v1/documents/issued/{documentTypeId}';
+        $resourcePath = '/v1/documents/issued';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($document_type_id !== null) {
+            if('form' === 'form' && is_array($document_type_id)) {
+                foreach($document_type_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['documentTypeId'] = $document_type_id;
+            }
+        }
         // query params
         if ($from_date_time !== null) {
             if('form' === 'form' && is_array($from_date_time)) {
@@ -755,14 +760,6 @@ class DocumentsApi
         }
 
 
-        // path params
-        if ($document_type_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'documentTypeId' . '}',
-                ObjectSerializer::toPathValue($document_type_id),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -827,6 +824,7 @@ class DocumentsApi
      *
      * Get paginated list of registered document types.
      *
+     * @param  \MyDataMyConsent\Model\SupportedEntityType $supported_entity_type Supported entity type. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
      *
@@ -834,9 +832,9 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return \MyDataMyConsent\Model\DocumentTypePaginatedList|object|object
      */
-    public function getRegisteredDocumentTypes($page_no = 1, $page_size = 25)
+    public function getRegisteredDocumentTypes($supported_entity_type = null, $page_no = 1, $page_size = 25)
     {
-        list($response) = $this->getRegisteredDocumentTypesWithHttpInfo($page_no, $page_size);
+        list($response) = $this->getRegisteredDocumentTypesWithHttpInfo($supported_entity_type, $page_no, $page_size);
         return $response;
     }
 
@@ -845,6 +843,7 @@ class DocumentsApi
      *
      * Get paginated list of registered document types.
      *
+     * @param  \MyDataMyConsent\Model\SupportedEntityType $supported_entity_type Supported entity type. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
      *
@@ -852,9 +851,9 @@ class DocumentsApi
      * @throws \InvalidArgumentException
      * @return array of \MyDataMyConsent\Model\DocumentTypePaginatedList|object|object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRegisteredDocumentTypesWithHttpInfo($page_no = 1, $page_size = 25)
+    public function getRegisteredDocumentTypesWithHttpInfo($supported_entity_type = null, $page_no = 1, $page_size = 25)
     {
-        $request = $this->getRegisteredDocumentTypesRequest($page_no, $page_size);
+        $request = $this->getRegisteredDocumentTypesRequest($supported_entity_type, $page_no, $page_size);
 
         try {
             $options = $this->createHttpClientOption();
@@ -979,15 +978,16 @@ class DocumentsApi
      *
      * Get paginated list of registered document types.
      *
+     * @param  \MyDataMyConsent\Model\SupportedEntityType $supported_entity_type Supported entity type. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRegisteredDocumentTypesAsync($page_no = 1, $page_size = 25)
+    public function getRegisteredDocumentTypesAsync($supported_entity_type = null, $page_no = 1, $page_size = 25)
     {
-        return $this->getRegisteredDocumentTypesAsyncWithHttpInfo($page_no, $page_size)
+        return $this->getRegisteredDocumentTypesAsyncWithHttpInfo($supported_entity_type, $page_no, $page_size)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1000,16 +1000,17 @@ class DocumentsApi
      *
      * Get paginated list of registered document types.
      *
+     * @param  \MyDataMyConsent\Model\SupportedEntityType $supported_entity_type Supported entity type. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRegisteredDocumentTypesAsyncWithHttpInfo($page_no = 1, $page_size = 25)
+    public function getRegisteredDocumentTypesAsyncWithHttpInfo($supported_entity_type = null, $page_no = 1, $page_size = 25)
     {
         $returnType = '\MyDataMyConsent\Model\DocumentTypePaginatedList';
-        $request = $this->getRegisteredDocumentTypesRequest($page_no, $page_size);
+        $request = $this->getRegisteredDocumentTypesRequest($supported_entity_type, $page_no, $page_size);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1047,13 +1048,14 @@ class DocumentsApi
     /**
      * Create request for operation 'getRegisteredDocumentTypes'
      *
+     * @param  \MyDataMyConsent\Model\SupportedEntityType $supported_entity_type Supported entity type. (optional)
      * @param  int $page_no Page number. (optional, default to 1)
      * @param  int $page_size Number of items to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRegisteredDocumentTypesRequest($page_no = 1, $page_size = 25)
+    public function getRegisteredDocumentTypesRequest($supported_entity_type = null, $page_no = 1, $page_size = 25)
     {
 
         $resourcePath = '/v1/documents/types';
@@ -1063,6 +1065,17 @@ class DocumentsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($supported_entity_type !== null) {
+            if('form' === 'form' && is_array($supported_entity_type)) {
+                foreach($supported_entity_type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['supportedEntityType'] = $supported_entity_type;
+            }
+        }
         // query params
         if ($page_no !== null) {
             if('form' === 'form' && is_array($page_no)) {

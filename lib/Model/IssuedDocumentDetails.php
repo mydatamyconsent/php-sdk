@@ -60,16 +60,16 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'receiver' => '\MyDataMyConsent\Model\DocumentReceiver',
-        'metadata' => 'array<string,string>',
-        'digital_signatures' => '\MyDataMyConsent\Model\DocumentDigitalSignature[]',
         'id' => 'string',
         'identifier' => 'string',
         'document_type' => 'string',
         'issued_to' => 'string',
         'issued_at_utc' => '\DateTime',
         'expires_at_utc' => '\DateTime',
-        'accepted_at_utc' => '\DateTime'
+        'accepted_at_utc' => '\DateTime',
+        'receiver' => '\MyDataMyConsent\Model\DocumentReceiver',
+        'metadata' => 'array<string,string>',
+        'digital_signatures' => '\MyDataMyConsent\Model\DocumentDigitalSignature[]'
     ];
 
     /**
@@ -80,16 +80,16 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'receiver' => null,
-        'metadata' => null,
-        'digital_signatures' => null,
         'id' => 'uuid',
         'identifier' => null,
         'document_type' => null,
         'issued_to' => null,
         'issued_at_utc' => 'date-time',
         'expires_at_utc' => 'date-time',
-        'accepted_at_utc' => 'date-time'
+        'accepted_at_utc' => 'date-time',
+        'receiver' => null,
+        'metadata' => null,
+        'digital_signatures' => null
     ];
 
     /**
@@ -119,16 +119,16 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'receiver' => 'receiver',
-        'metadata' => 'metadata',
-        'digital_signatures' => 'digitalSignatures',
         'id' => 'id',
         'identifier' => 'identifier',
         'document_type' => 'documentType',
         'issued_to' => 'issuedTo',
         'issued_at_utc' => 'issuedAtUtc',
         'expires_at_utc' => 'expiresAtUtc',
-        'accepted_at_utc' => 'acceptedAtUtc'
+        'accepted_at_utc' => 'acceptedAtUtc',
+        'receiver' => 'receiver',
+        'metadata' => 'metadata',
+        'digital_signatures' => 'digitalSignatures'
     ];
 
     /**
@@ -137,16 +137,16 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'receiver' => 'setReceiver',
-        'metadata' => 'setMetadata',
-        'digital_signatures' => 'setDigitalSignatures',
         'id' => 'setId',
         'identifier' => 'setIdentifier',
         'document_type' => 'setDocumentType',
         'issued_to' => 'setIssuedTo',
         'issued_at_utc' => 'setIssuedAtUtc',
         'expires_at_utc' => 'setExpiresAtUtc',
-        'accepted_at_utc' => 'setAcceptedAtUtc'
+        'accepted_at_utc' => 'setAcceptedAtUtc',
+        'receiver' => 'setReceiver',
+        'metadata' => 'setMetadata',
+        'digital_signatures' => 'setDigitalSignatures'
     ];
 
     /**
@@ -155,16 +155,16 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'receiver' => 'getReceiver',
-        'metadata' => 'getMetadata',
-        'digital_signatures' => 'getDigitalSignatures',
         'id' => 'getId',
         'identifier' => 'getIdentifier',
         'document_type' => 'getDocumentType',
         'issued_to' => 'getIssuedTo',
         'issued_at_utc' => 'getIssuedAtUtc',
         'expires_at_utc' => 'getExpiresAtUtc',
-        'accepted_at_utc' => 'getAcceptedAtUtc'
+        'accepted_at_utc' => 'getAcceptedAtUtc',
+        'receiver' => 'getReceiver',
+        'metadata' => 'getMetadata',
+        'digital_signatures' => 'getDigitalSignatures'
     ];
 
     /**
@@ -224,9 +224,6 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['receiver'] = $data['receiver'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
-        $this->container['digital_signatures'] = $data['digital_signatures'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['identifier'] = $data['identifier'] ?? null;
         $this->container['document_type'] = $data['document_type'] ?? null;
@@ -234,6 +231,9 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['issued_at_utc'] = $data['issued_at_utc'] ?? null;
         $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
         $this->container['accepted_at_utc'] = $data['accepted_at_utc'] ?? null;
+        $this->container['receiver'] = $data['receiver'] ?? null;
+        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['digital_signatures'] = $data['digital_signatures'] ?? null;
     }
 
     /**
@@ -245,12 +245,6 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
-        if ($this->container['digital_signatures'] === null) {
-            $invalidProperties[] = "'digital_signatures' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -266,6 +260,12 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['issued_at_utc'] === null) {
             $invalidProperties[] = "'issued_at_utc' can't be null";
         }
+        if ($this->container['receiver'] === null) {
+            $invalidProperties[] = "'receiver' can't be null";
+        }
+        if ($this->container['digital_signatures'] === null) {
+            $invalidProperties[] = "'digital_signatures' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -280,78 +280,6 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets receiver
-     *
-     * @return \MyDataMyConsent\Model\DocumentReceiver
-     */
-    public function getReceiver()
-    {
-        return $this->container['receiver'];
-    }
-
-    /**
-     * Sets receiver
-     *
-     * @param \MyDataMyConsent\Model\DocumentReceiver $receiver receiver
-     *
-     * @return self
-     */
-    public function setReceiver($receiver)
-    {
-        $this->container['receiver'] = $receiver;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return array<string,string>|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param array<string,string>|null $metadata Metadata.
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets digital_signatures
-     *
-     * @return \MyDataMyConsent\Model\DocumentDigitalSignature[]
-     */
-    public function getDigitalSignatures()
-    {
-        return $this->container['digital_signatures'];
-    }
-
-    /**
-     * Sets digital_signatures
-     *
-     * @param \MyDataMyConsent\Model\DocumentDigitalSignature[] $digital_signatures Digital signatures.
-     *
-     * @return self
-     */
-    public function setDigitalSignatures($digital_signatures)
-    {
-        $this->container['digital_signatures'] = $digital_signatures;
-
-        return $this;
-    }
 
     /**
      * Gets id
@@ -517,6 +445,78 @@ class IssuedDocumentDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setAcceptedAtUtc($accepted_at_utc)
     {
         $this->container['accepted_at_utc'] = $accepted_at_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets receiver
+     *
+     * @return \MyDataMyConsent\Model\DocumentReceiver
+     */
+    public function getReceiver()
+    {
+        return $this->container['receiver'];
+    }
+
+    /**
+     * Sets receiver
+     *
+     * @param \MyDataMyConsent\Model\DocumentReceiver $receiver receiver
+     *
+     * @return self
+     */
+    public function setReceiver($receiver)
+    {
+        $this->container['receiver'] = $receiver;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string>|null $metadata Metadata.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets digital_signatures
+     *
+     * @return \MyDataMyConsent\Model\DocumentDigitalSignature[]
+     */
+    public function getDigitalSignatures()
+    {
+        return $this->container['digital_signatures'];
+    }
+
+    /**
+     * Sets digital_signatures
+     *
+     * @param \MyDataMyConsent\Model\DocumentDigitalSignature[] $digital_signatures Digital signatures.
+     *
+     * @return self
+     */
+    public function setDigitalSignatures($digital_signatures)
+    {
+        $this->container['digital_signatures'] = $digital_signatures;
 
         return $this;
     }

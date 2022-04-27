@@ -5,7 +5,7 @@ All URIs are relative to https://api.mydatamyconsent.com.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getIssuedDocumentById()**](DocumentsApi.md#getIssuedDocumentById) | **GET** /v1/documents/issued/{documentId} | Get issued document.
-[**getIssuedDocuments()**](DocumentsApi.md#getIssuedDocuments) | **GET** /v1/documents/issued/{documentTypeId} | Get paginated list of issued documents of given document type.
+[**getIssuedDocuments()**](DocumentsApi.md#getIssuedDocuments) | **GET** /v1/documents/issued | Get paginated list of issued documents of given document type.
 [**getRegisteredDocumentTypes()**](DocumentsApi.md#getRegisteredDocumentTypes) | **GET** /v1/documents/types | Get paginated list of registered document types.
 [**issueDocumentToIndividual()**](DocumentsApi.md#issueDocumentToIndividual) | **POST** /v1/documents/issue/individual | Issue a new document to an individual user.
 [**issueDocumentToOrganization()**](DocumentsApi.md#issueDocumentToOrganization) | **POST** /v1/documents/issue/organization | Issue a new document to an organization.
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 ## `getIssuedDocumentById()`
 
 ```php
-getIssuedDocumentById($document_id): OneOfIssuedDocumentIssuedDocumentDetails
+getIssuedDocumentById($document_id): \MyDataMyConsent\Model\IssuedDocumentDetails
 ```
 
 Get issued document.
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OneOfIssuedDocumentIssuedDocumentDetails**](../Model/OneOfIssuedDocumentIssuedDocumentDetails.md)
+[**\MyDataMyConsent\Model\IssuedDocumentDetails**](../Model/IssuedDocumentDetails.md)
 
 ### Authorization
 
@@ -106,7 +106,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **document_type_id** | **string**| Document type id. |
+ **document_type_id** | **string**| Document type id. | [optional]
  **from_date_time** | **\DateTime**| From DateTime in UTC timezone. | [optional]
  **to_date_time** | **\DateTime**| To DateTime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
@@ -132,7 +132,7 @@ No authorization required
 ## `getRegisteredDocumentTypes()`
 
 ```php
-getRegisteredDocumentTypes($page_no, $page_size): \MyDataMyConsent\Model\DocumentTypePaginatedList
+getRegisteredDocumentTypes($supported_entity_type, $page_no, $page_size): \MyDataMyConsent\Model\DocumentTypePaginatedList
 ```
 
 Get paginated list of registered document types.
@@ -150,11 +150,12 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$supported_entity_type = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\SupportedEntityType(); // \MyDataMyConsent\Model\SupportedEntityType | Supported entity type.
 $page_no = 1; // int | Page number.
 $page_size = 25; // int | Number of items to return.
 
 try {
-    $result = $apiInstance->getRegisteredDocumentTypes($page_no, $page_size);
+    $result = $apiInstance->getRegisteredDocumentTypes($supported_entity_type, $page_no, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentsApi->getRegisteredDocumentTypes: ', $e->getMessage(), PHP_EOL;
@@ -165,6 +166,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **supported_entity_type** | [**\MyDataMyConsent\Model\SupportedEntityType**](../Model/.md)| Supported entity type. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
  **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 
