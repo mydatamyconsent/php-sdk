@@ -169,6 +169,7 @@ Class | Method | HTTP request | Description
 - [OrganizationFinancialAccountDto](docs/Model/OrganizationFinancialAccountDto.md)
 - [OrganizationFinancialTransactionsDto](docs/Model/OrganizationFinancialTransactionsDto.md)
 - [OrganizationFinancialTransactionsDtoPaginatedList](docs/Model/OrganizationFinancialTransactionsDtoPaginatedList.md)
+- [PaymentRequest](docs/Model/PaymentRequest.md)
 - [ProblemDetails](docs/Model/ProblemDetails.md)
 - [PushUriRequest](docs/Model/PushUriRequest.md)
 - [PushUriResponse](docs/Model/PushUriResponse.md)

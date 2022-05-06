@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentIssueRequest
+ * PaymentRequest
  *
  * PHP version 7.3
  *
@@ -33,10 +33,9 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * DocumentIssueRequest Class Doc Comment
+ * PaymentRequest Class Doc Comment
  *
  * @category Class
- * @description Document Issue Request.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +52,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DocumentIssueRequest';
+    protected static $openAPIModelName = 'PaymentRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,15 +60,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'document_type_id' => 'string',
         'identifier' => 'string',
+        'amount' => 'string',
+        'currency_code' => 'string',
+        'payment_url' => 'string',
         'description' => 'string',
-        'receiver' => '\MyDataMyConsent\Model\DocumentReceiver',
-        'issued_at_utc' => '\DateTime',
-        'valid_from_utc' => '\DateTime',
-        'expires_at_utc' => '\DateTime',
-        'payment_request' => '\MyDataMyConsent\Model\PaymentRequest',
-        'metadata' => 'array<string,string>'
+        'due_by_utc' => '\DateTime'
     ];
 
     /**
@@ -80,15 +76,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'document_type_id' => 'uuid',
         'identifier' => null,
+        'amount' => null,
+        'currency_code' => null,
+        'payment_url' => null,
         'description' => null,
-        'receiver' => null,
-        'issued_at_utc' => 'date-time',
-        'valid_from_utc' => 'date-time',
-        'expires_at_utc' => 'date-time',
-        'payment_request' => null,
-        'metadata' => null
+        'due_by_utc' => 'date-time'
     ];
 
     /**
@@ -118,15 +111,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'document_type_id' => 'documentTypeId',
         'identifier' => 'identifier',
+        'amount' => 'amount',
+        'currency_code' => 'currencyCode',
+        'payment_url' => 'paymentUrl',
         'description' => 'description',
-        'receiver' => 'receiver',
-        'issued_at_utc' => 'issuedAtUtc',
-        'valid_from_utc' => 'validFromUtc',
-        'expires_at_utc' => 'expiresAtUtc',
-        'payment_request' => 'paymentRequest',
-        'metadata' => 'metadata'
+        'due_by_utc' => 'dueByUtc'
     ];
 
     /**
@@ -135,15 +125,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'document_type_id' => 'setDocumentTypeId',
         'identifier' => 'setIdentifier',
+        'amount' => 'setAmount',
+        'currency_code' => 'setCurrencyCode',
+        'payment_url' => 'setPaymentUrl',
         'description' => 'setDescription',
-        'receiver' => 'setReceiver',
-        'issued_at_utc' => 'setIssuedAtUtc',
-        'valid_from_utc' => 'setValidFromUtc',
-        'expires_at_utc' => 'setExpiresAtUtc',
-        'payment_request' => 'setPaymentRequest',
-        'metadata' => 'setMetadata'
+        'due_by_utc' => 'setDueByUtc'
     ];
 
     /**
@@ -152,15 +139,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'document_type_id' => 'getDocumentTypeId',
         'identifier' => 'getIdentifier',
+        'amount' => 'getAmount',
+        'currency_code' => 'getCurrencyCode',
+        'payment_url' => 'getPaymentUrl',
         'description' => 'getDescription',
-        'receiver' => 'getReceiver',
-        'issued_at_utc' => 'getIssuedAtUtc',
-        'valid_from_utc' => 'getValidFromUtc',
-        'expires_at_utc' => 'getExpiresAtUtc',
-        'payment_request' => 'getPaymentRequest',
-        'metadata' => 'getMetadata'
+        'due_by_utc' => 'getDueByUtc'
     ];
 
     /**
@@ -220,15 +204,12 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['document_type_id'] = $data['document_type_id'] ?? null;
         $this->container['identifier'] = $data['identifier'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['currency_code'] = $data['currency_code'] ?? null;
+        $this->container['payment_url'] = $data['payment_url'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
-        $this->container['receiver'] = $data['receiver'] ?? null;
-        $this->container['issued_at_utc'] = $data['issued_at_utc'] ?? null;
-        $this->container['valid_from_utc'] = $data['valid_from_utc'] ?? null;
-        $this->container['expires_at_utc'] = $data['expires_at_utc'] ?? null;
-        $this->container['payment_request'] = $data['payment_request'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['due_by_utc'] = $data['due_by_utc'] ?? null;
     }
 
     /**
@@ -240,24 +221,6 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['document_type_id'] === null) {
-            $invalidProperties[] = "'document_type_id' can't be null";
-        }
-        if ($this->container['identifier'] === null) {
-            $invalidProperties[] = "'identifier' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['receiver'] === null) {
-            $invalidProperties[] = "'receiver' can't be null";
-        }
-        if ($this->container['issued_at_utc'] === null) {
-            $invalidProperties[] = "'issued_at_utc' can't be null";
-        }
-        if ($this->container['valid_from_utc'] === null) {
-            $invalidProperties[] = "'valid_from_utc' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -274,33 +237,9 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets document_type_id
-     *
-     * @return string
-     */
-    public function getDocumentTypeId()
-    {
-        return $this->container['document_type_id'];
-    }
-
-    /**
-     * Sets document_type_id
-     *
-     * @param string $document_type_id Document type id.
-     *
-     * @return self
-     */
-    public function setDocumentTypeId($document_type_id)
-    {
-        $this->container['document_type_id'] = $document_type_id;
-
-        return $this;
-    }
-
-    /**
      * Gets identifier
      *
-     * @return string
+     * @return string|null
      */
     public function getIdentifier()
     {
@@ -310,7 +249,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets identifier
      *
-     * @param string $identifier Document identifier.
+     * @param string|null $identifier identifier
      *
      * @return self
      */
@@ -322,9 +261,81 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets amount
+     *
+     * @return string|null
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount
+     *
+     * @param string|null $amount amount
+     *
+     * @return self
+     */
+    public function setAmount($amount)
+    {
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency_code
+     *
+     * @return string|null
+     */
+    public function getCurrencyCode()
+    {
+        return $this->container['currency_code'];
+    }
+
+    /**
+     * Sets currency_code
+     *
+     * @param string|null $currency_code currency_code
+     *
+     * @return self
+     */
+    public function setCurrencyCode($currency_code)
+    {
+        $this->container['currency_code'] = $currency_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_url
+     *
+     * @return string|null
+     */
+    public function getPaymentUrl()
+    {
+        return $this->container['payment_url'];
+    }
+
+    /**
+     * Sets payment_url
+     *
+     * @param string|null $payment_url payment_url
+     *
+     * @return self
+     */
+    public function setPaymentUrl($payment_url)
+    {
+        $this->container['payment_url'] = $payment_url;
+
+        return $this;
+    }
+
+    /**
      * Gets description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -334,7 +345,7 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets description
      *
-     * @param string $description Document description.
+     * @param string|null $description description
      *
      * @return self
      */
@@ -346,145 +357,25 @@ class DocumentIssueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets receiver
-     *
-     * @return \MyDataMyConsent\Model\DocumentReceiver
-     */
-    public function getReceiver()
-    {
-        return $this->container['receiver'];
-    }
-
-    /**
-     * Sets receiver
-     *
-     * @param \MyDataMyConsent\Model\DocumentReceiver $receiver receiver
-     *
-     * @return self
-     */
-    public function setReceiver($receiver)
-    {
-        $this->container['receiver'] = $receiver;
-
-        return $this;
-    }
-
-    /**
-     * Gets issued_at_utc
-     *
-     * @return \DateTime
-     */
-    public function getIssuedAtUtc()
-    {
-        return $this->container['issued_at_utc'];
-    }
-
-    /**
-     * Sets issued_at_utc
-     *
-     * @param \DateTime $issued_at_utc Datetime of issue in UTC timezone.
-     *
-     * @return self
-     */
-    public function setIssuedAtUtc($issued_at_utc)
-    {
-        $this->container['issued_at_utc'] = $issued_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets valid_from_utc
-     *
-     * @return \DateTime
-     */
-    public function getValidFromUtc()
-    {
-        return $this->container['valid_from_utc'];
-    }
-
-    /**
-     * Sets valid_from_utc
-     *
-     * @param \DateTime $valid_from_utc Valid from datetime in UTC timezone.
-     *
-     * @return self
-     */
-    public function setValidFromUtc($valid_from_utc)
-    {
-        $this->container['valid_from_utc'] = $valid_from_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at_utc
+     * Gets due_by_utc
      *
      * @return \DateTime|null
      */
-    public function getExpiresAtUtc()
+    public function getDueByUtc()
     {
-        return $this->container['expires_at_utc'];
+        return $this->container['due_by_utc'];
     }
 
     /**
-     * Sets expires_at_utc
+     * Sets due_by_utc
      *
-     * @param \DateTime|null $expires_at_utc Datetime of expiry in UTC timezone.
+     * @param \DateTime|null $due_by_utc due_by_utc
      *
      * @return self
      */
-    public function setExpiresAtUtc($expires_at_utc)
+    public function setDueByUtc($due_by_utc)
     {
-        $this->container['expires_at_utc'] = $expires_at_utc;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_request
-     *
-     * @return \MyDataMyConsent\Model\PaymentRequest|null
-     */
-    public function getPaymentRequest()
-    {
-        return $this->container['payment_request'];
-    }
-
-    /**
-     * Sets payment_request
-     *
-     * @param \MyDataMyConsent\Model\PaymentRequest|null $payment_request payment_request
-     *
-     * @return self
-     */
-    public function setPaymentRequest($payment_request)
-    {
-        $this->container['payment_request'] = $payment_request;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return array<string,string>|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param array<string,string>|null $metadata Metadata.
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        $this->container['metadata'] = $metadata;
+        $this->container['due_by_utc'] = $due_by_utc;
 
         return $this;
     }

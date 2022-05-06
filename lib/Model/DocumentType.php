@@ -294,6 +294,9 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['added_by'] === null) {
             $invalidProperties[] = "'added_by' can't be null";
         }
+        if ($this->container['payable_amount'] === null) {
+            $invalidProperties[] = "'payable_amount' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -576,7 +579,7 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payable_amount
      *
-     * @return double|null
+     * @return double
      */
     public function getPayableAmount()
     {
@@ -586,7 +589,7 @@ class DocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payable_amount
      *
-     * @param double|null $payable_amount Payable amount if document is chargeable. eg: 10.25.
+     * @param double $payable_amount Payable amount if document is chargeable. eg: 10.25.
      *
      * @return self
      */

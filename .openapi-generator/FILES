@@ -59,6 +59,7 @@ docs/Model/OrganizationDataConsentRequestDetailsPaginatedList.md
 docs/Model/OrganizationFinancialAccountDto.md
 docs/Model/OrganizationFinancialTransactionsDto.md
 docs/Model/OrganizationFinancialTransactionsDtoPaginatedList.md
+docs/Model/PaymentRequest.md
 docs/Model/ProblemDetails.md
 docs/Model/PushUriRequest.md
 docs/Model/PushUriResponse.md
@@ -132,6 +133,7 @@ lib/Model/OrganizationDataConsentRequestDetailsPaginatedList.php
 lib/Model/OrganizationFinancialAccountDto.php
 lib/Model/OrganizationFinancialTransactionsDto.php
 lib/Model/OrganizationFinancialTransactionsDtoPaginatedList.php
+lib/Model/PaymentRequest.php
 lib/Model/ProblemDetails.php
 lib/Model/PushUriRequest.php
 lib/Model/PushUriResponse.php
