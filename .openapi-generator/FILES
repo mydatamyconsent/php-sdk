@@ -11,6 +11,7 @@ docs/Api/SupportedIdentifiersApi.md
 docs/Model/Activity.md
 docs/Model/ApprovedConsentRequest.md
 docs/Model/BankAccountType.md
+docs/Model/BillPaymentOrderItem.md
 docs/Model/CollectibleTypes.md
 docs/Model/ConsentRequestReceiver.md
 docs/Model/CreateDataConsentRequest.md
@@ -84,6 +85,7 @@ lib/HeaderSelector.php
 lib/Model/Activity.php
 lib/Model/ApprovedConsentRequest.php
 lib/Model/BankAccountType.php
+lib/Model/BillPaymentOrderItem.php
 lib/Model/CollectibleTypes.php
 lib/Model/ConsentRequestReceiver.php
 lib/Model/CreateDataConsentRequest.php

@@ -121,6 +121,7 @@ Class | Method | HTTP request | Description
 - [Activity](docs/Model/Activity.md)
 - [ApprovedConsentRequest](docs/Model/ApprovedConsentRequest.md)
 - [BankAccountType](docs/Model/BankAccountType.md)
+- [BillPaymentOrderItem](docs/Model/BillPaymentOrderItem.md)
 - [CollectibleTypes](docs/Model/CollectibleTypes.md)
 - [ConsentRequestReceiver](docs/Model/ConsentRequestReceiver.md)
 - [CreateDataConsentRequest](docs/Model/CreateDataConsentRequest.md)

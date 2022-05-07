@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentRequest
+ * BillPaymentOrderItem
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * PaymentRequest Class Doc Comment
+ * BillPaymentOrderItem Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -43,7 +43,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PaymentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class BillPaymentOrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class PaymentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PaymentRequest';
+    protected static $openAPIModelName = 'BillPaymentOrderItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,12 +60,8 @@ class PaymentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'identifier' => 'string',
-        'items' => '\MyDataMyConsent\Model\BillPaymentOrderItem[]',
-        'currency_code' => 'string',
-        'payment_url' => 'string',
-        'description' => 'string',
-        'due_by_utc' => '\DateTime'
+        'name' => 'string',
+        'amount' => 'double'
     ];
 
     /**
@@ -76,12 +72,8 @@ class PaymentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'identifier' => null,
-        'items' => null,
-        'currency_code' => null,
-        'payment_url' => null,
-        'description' => null,
-        'due_by_utc' => 'date-time'
+        'name' => null,
+        'amount' => 'double'
     ];
 
     /**
@@ -111,12 +103,8 @@ class PaymentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'identifier' => 'identifier',
-        'items' => 'items',
-        'currency_code' => 'currencyCode',
-        'payment_url' => 'paymentUrl',
-        'description' => 'description',
-        'due_by_utc' => 'dueByUtc'
+        'name' => 'name',
+        'amount' => 'amount'
     ];
 
     /**
@@ -125,12 +113,8 @@ class PaymentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'identifier' => 'setIdentifier',
-        'items' => 'setItems',
-        'currency_code' => 'setCurrencyCode',
-        'payment_url' => 'setPaymentUrl',
-        'description' => 'setDescription',
-        'due_by_utc' => 'setDueByUtc'
+        'name' => 'setName',
+        'amount' => 'setAmount'
     ];
 
     /**
@@ -139,12 +123,8 @@ class PaymentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'identifier' => 'getIdentifier',
-        'items' => 'getItems',
-        'currency_code' => 'getCurrencyCode',
-        'payment_url' => 'getPaymentUrl',
-        'description' => 'getDescription',
-        'due_by_utc' => 'getDueByUtc'
+        'name' => 'getName',
+        'amount' => 'getAmount'
     ];
 
     /**
@@ -204,12 +184,8 @@ class PaymentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['identifier'] = $data['identifier'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
-        $this->container['currency_code'] = $data['currency_code'] ?? null;
-        $this->container['payment_url'] = $data['payment_url'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['due_by_utc'] = $data['due_by_utc'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
     }
 
     /**
@@ -237,145 +213,49 @@ class PaymentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets identifier
+     * Gets name
      *
      * @return string|null
      */
-    public function getIdentifier()
+    public function getName()
     {
-        return $this->container['identifier'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets identifier
+     * Sets name
      *
-     * @param string|null $identifier identifier
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setIdentifier($identifier)
+    public function setName($name)
     {
-        $this->container['identifier'] = $identifier;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets items
+     * Gets amount
      *
-     * @return \MyDataMyConsent\Model\BillPaymentOrderItem[]|null
+     * @return double|null
      */
-    public function getItems()
+    public function getAmount()
     {
-        return $this->container['items'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets items
+     * Sets amount
      *
-     * @param \MyDataMyConsent\Model\BillPaymentOrderItem[]|null $items items
+     * @param double|null $amount amount
      *
      * @return self
      */
-    public function setItems($items)
+    public function setAmount($amount)
     {
-        $this->container['items'] = $items;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency_code
-     *
-     * @return string|null
-     */
-    public function getCurrencyCode()
-    {
-        return $this->container['currency_code'];
-    }
-
-    /**
-     * Sets currency_code
-     *
-     * @param string|null $currency_code currency_code
-     *
-     * @return self
-     */
-    public function setCurrencyCode($currency_code)
-    {
-        $this->container['currency_code'] = $currency_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_url
-     *
-     * @return string|null
-     */
-    public function getPaymentUrl()
-    {
-        return $this->container['payment_url'];
-    }
-
-    /**
-     * Sets payment_url
-     *
-     * @param string|null $payment_url payment_url
-     *
-     * @return self
-     */
-    public function setPaymentUrl($payment_url)
-    {
-        $this->container['payment_url'] = $payment_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets due_by_utc
-     *
-     * @return \DateTime|null
-     */
-    public function getDueByUtc()
-    {
-        return $this->container['due_by_utc'];
-    }
-
-    /**
-     * Sets due_by_utc
-     *
-     * @param \DateTime|null $due_by_utc due_by_utc
-     *
-     * @return self
-     */
-    public function setDueByUtc($due_by_utc)
-    {
-        $this->container['due_by_utc'] = $due_by_utc;
+        $this->container['amount'] = $amount;
 
         return $this;
     }

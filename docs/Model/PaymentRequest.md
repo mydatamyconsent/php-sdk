@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identifier** | **string** |  | [optional]
-**amount** | **string** |  | [optional]
+**items** | [**\MyDataMyConsent\Model\BillPaymentOrderItem[]**](BillPaymentOrderItem.md) |  | [optional]
 **currency_code** | **string** |  | [optional]
 **payment_url** | **string** |  | [optional]
 **description** | **string** |  | [optional]
