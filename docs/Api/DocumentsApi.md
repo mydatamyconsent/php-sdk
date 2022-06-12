@@ -150,7 +150,7 @@ $apiInstance = new MyDataMyConsent\Api\DocumentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$supported_entity_type = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\SupportedEntityType(); // \MyDataMyConsent\Model\SupportedEntityType | Supported entity type.
+$supported_entity_type = new \MyDataMyConsent\Model\SupportedEntityType(); // SupportedEntityType | Supported entity type.
 $page_no = 1; // int | Page number.
 $page_size = 25; // int | Number of items to return.
 
@@ -166,7 +166,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **supported_entity_type** | [**\MyDataMyConsent\Model\SupportedEntityType**](../Model/.md)| Supported entity type. | [optional]
+ **supported_entity_type** | [**SupportedEntityType**](../Model/.md)| Supported entity type. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
  **page_size** | **int**| Number of items to return. | [optional] [default to 25]
 

@@ -486,8 +486,8 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$consent_id = 'consent_id_example'; // string
-$account_id = 'account_id_example'; // string
+$consent_id = 'consent_id_example'; // string | 
+$account_id = 'account_id_example'; // string | 
 
 try {
     $apiInstance->getConsentedFinancialAccountInsights($consent_id, $account_id);
@@ -609,7 +609,7 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status.
+$status = new \MyDataMyConsent\Model\DataConsentStatus(); // DataConsentStatus | Data consent status.
 $from_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From datetime in UTC timezone.
 $to_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To datetime in UTC timezone.
 $page_no = 1; // int | Page number.
@@ -627,7 +627,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
+ **status** | [**DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
  **from_date_time** | **\DateTime**| From datetime in UTC timezone. | [optional]
  **to_date_time** | **\DateTime**| To datetime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
@@ -1009,7 +1009,7 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status.
+$status = new \MyDataMyConsent\Model\DataConsentStatus(); // DataConsentStatus | Data consent status.
 $from_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From datetime in UTC timezone.
 $to_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To datetime in UTC timezone.
 $page_no = 1; // int | Page number.
@@ -1027,7 +1027,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
+ **status** | [**DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
  **from_date_time** | **\DateTime**| From datetime in UTC timezone. | [optional]
  **to_date_time** | **\DateTime**| To datetime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]

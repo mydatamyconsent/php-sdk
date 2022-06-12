@@ -253,7 +253,7 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status.
+$status = new \MyDataMyConsent\Model\DataConsentStatus(); // DataConsentStatus | Data consent status.
 $start_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start datetime in UTC timezone.
 $end_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End datetime in UTC timezone.
 $page_no = 1; // int | Page number.
@@ -271,7 +271,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
+ **status** | [**DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
  **start_date_time** | **\DateTime**| Start datetime in UTC timezone. | [optional]
  **end_date_time** | **\DateTime**| End datetime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
@@ -315,7 +315,7 @@ $apiInstance = new MyDataMyConsent\Api\DataConsentRequestsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$status = new \MyDataMyConsent\Model\\MyDataMyConsent\Model\DataConsentStatus(); // \MyDataMyConsent\Model\DataConsentStatus | Data consent status.
+$status = new \MyDataMyConsent\Model\DataConsentStatus(); // DataConsentStatus | Data consent status.
 $start_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start datetime in UTC timezone.
 $end_date_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End datetime in UTC timezone.
 $page_no = 1; // int | Page number.
@@ -333,7 +333,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | [**\MyDataMyConsent\Model\DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
+ **status** | [**DataConsentStatus**](../Model/.md)| Data consent status. | [optional]
  **start_date_time** | **\DateTime**| Start datetime in UTC timezone. | [optional]
  **end_date_time** | **\DateTime**| End datetime in UTC timezone. | [optional]
  **page_no** | **int**| Page number. | [optional] [default to 1]
