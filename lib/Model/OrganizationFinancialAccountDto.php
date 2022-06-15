@@ -71,8 +71,7 @@ class OrganizationFinancialAccountDto implements ModelInterface, ArrayAccess, \J
         'logo_url' => 'string',
         'bank_name' => 'string',
         'bank_account_type' => '\MyDataMyConsent\Model\BankAccountType',
-        'bank_account_proof_url' => 'string',
-        'file_type' => '\MyDataMyConsent\Model\FileType'
+        'bank_account_proof_url' => 'string'
     ];
 
     /**
@@ -94,8 +93,7 @@ class OrganizationFinancialAccountDto implements ModelInterface, ArrayAccess, \J
         'logo_url' => null,
         'bank_name' => null,
         'bank_account_type' => null,
-        'bank_account_proof_url' => null,
-        'file_type' => null
+        'bank_account_proof_url' => null
     ];
 
     /**
@@ -136,8 +134,7 @@ class OrganizationFinancialAccountDto implements ModelInterface, ArrayAccess, \J
         'logo_url' => 'logoUrl',
         'bank_name' => 'bankName',
         'bank_account_type' => 'bankAccountType',
-        'bank_account_proof_url' => 'bankAccountProofUrl',
-        'file_type' => 'fileType'
+        'bank_account_proof_url' => 'bankAccountProofUrl'
     ];
 
     /**
@@ -157,8 +154,7 @@ class OrganizationFinancialAccountDto implements ModelInterface, ArrayAccess, \J
         'logo_url' => 'setLogoUrl',
         'bank_name' => 'setBankName',
         'bank_account_type' => 'setBankAccountType',
-        'bank_account_proof_url' => 'setBankAccountProofUrl',
-        'file_type' => 'setFileType'
+        'bank_account_proof_url' => 'setBankAccountProofUrl'
     ];
 
     /**
@@ -178,8 +174,7 @@ class OrganizationFinancialAccountDto implements ModelInterface, ArrayAccess, \J
         'logo_url' => 'getLogoUrl',
         'bank_name' => 'getBankName',
         'bank_account_type' => 'getBankAccountType',
-        'bank_account_proof_url' => 'getBankAccountProofUrl',
-        'file_type' => 'getFileType'
+        'bank_account_proof_url' => 'getBankAccountProofUrl'
     ];
 
     /**
@@ -251,7 +246,6 @@ class OrganizationFinancialAccountDto implements ModelInterface, ArrayAccess, \J
         $this->container['bank_name'] = $data['bank_name'] ?? null;
         $this->container['bank_account_type'] = $data['bank_account_type'] ?? null;
         $this->container['bank_account_proof_url'] = $data['bank_account_proof_url'] ?? null;
-        $this->container['file_type'] = $data['file_type'] ?? null;
     }
 
     /**
@@ -562,30 +556,6 @@ class OrganizationFinancialAccountDto implements ModelInterface, ArrayAccess, \J
     public function setBankAccountProofUrl($bank_account_proof_url)
     {
         $this->container['bank_account_proof_url'] = $bank_account_proof_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets file_type
-     *
-     * @return \MyDataMyConsent\Model\FileType|null
-     */
-    public function getFileType()
-    {
-        return $this->container['file_type'];
-    }
-
-    /**
-     * Sets file_type
-     *
-     * @param \MyDataMyConsent\Model\FileType|null $file_type file_type
-     *
-     * @return self
-     */
-    public function setFileType($file_type)
-    {
-        $this->container['file_type'] = $file_type;
 
         return $this;
     }

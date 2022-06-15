@@ -16,6 +16,5 @@ Name | Type | Description | Notes
 **bank_name** | **string** |  | [optional]
 **bank_account_type** | [**\MyDataMyConsent\Model\BankAccountType**](BankAccountType.md) |  | [optional]
 **bank_account_proof_url** | **string** |  | [optional]
-**file_type** | [**\MyDataMyConsent\Model\FileType**](FileType.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

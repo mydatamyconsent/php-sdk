@@ -189,7 +189,7 @@ class DataConsentRequestsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -197,7 +197,7 @@ class DataConsentRequestsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,7 +439,7 @@ class DataConsentRequestsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -447,7 +447,7 @@ class DataConsentRequestsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -625,7 +625,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\IndividualDataConsentRequestDetails|object|object
+     * @return \MyDataMyConsent\Model\IndividualDataConsentRequestDetails|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error
      */
     public function createIndividualDataConsentRequest($create_data_consent_request)
     {
@@ -642,7 +642,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\IndividualDataConsentRequestDetails|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\IndividualDataConsentRequestDetails|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createIndividualDataConsentRequestWithHttpInfo($create_data_consent_request)
     {
@@ -700,32 +700,32 @@ class DataConsentRequestsApi
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('object' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\MyDataMyConsent\Model\Error' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('object' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\MyDataMyConsent\Model\Error' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -760,7 +760,7 @@ class DataConsentRequestsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -768,7 +768,7 @@ class DataConsentRequestsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -949,7 +949,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\OrganizationDataConsentRequestDetails|object|object
+     * @return \MyDataMyConsent\Model\OrganizationDataConsentRequestDetails|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error
      */
     public function createOrganizationDataConsentRequest($create_data_consent_request)
     {
@@ -966,7 +966,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\OrganizationDataConsentRequestDetails|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\OrganizationDataConsentRequestDetails|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOrganizationDataConsentRequestWithHttpInfo($create_data_consent_request)
     {
@@ -1024,32 +1024,32 @@ class DataConsentRequestsApi
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('object' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\MyDataMyConsent\Model\Error' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('object' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\MyDataMyConsent\Model\Error' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1084,7 +1084,7 @@ class DataConsentRequestsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1092,7 +1092,7 @@ class DataConsentRequestsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1277,7 +1277,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\IndividualDataConsentRequestDetailsPaginatedList|object|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\IndividualDataConsentRequestDetailsPaginatedList|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\ProblemDetails
      */
     public function getAllConsentRequestsToIndividuals($status = null, $start_date_time = null, $end_date_time = null, $page_no = 1, $page_size = 25)
     {
@@ -1298,7 +1298,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\IndividualDataConsentRequestDetailsPaginatedList|object|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\IndividualDataConsentRequestDetailsPaginatedList|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllConsentRequestsToIndividualsWithHttpInfo($status = null, $start_date_time = null, $end_date_time = null, $page_no = 1, $page_size = 25)
     {
@@ -1356,17 +1356,17 @@ class DataConsentRequestsApi
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('object' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\MyDataMyConsent\Model\Error' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1416,7 +1416,7 @@ class DataConsentRequestsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1654,7 +1654,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\OrganizationDataConsentRequestDetailsPaginatedList|object|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\OrganizationDataConsentRequestDetailsPaginatedList|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\ProblemDetails
      */
     public function getAllConsentRequestsToOrganizations($status = null, $start_date_time = null, $end_date_time = null, $page_no = 1, $page_size = 25)
     {
@@ -1675,7 +1675,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\OrganizationDataConsentRequestDetailsPaginatedList|object|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\OrganizationDataConsentRequestDetailsPaginatedList|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllConsentRequestsToOrganizationsWithHttpInfo($status = null, $start_date_time = null, $end_date_time = null, $page_no = 1, $page_size = 25)
     {
@@ -1733,17 +1733,17 @@ class DataConsentRequestsApi
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('object' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\MyDataMyConsent\Model\Error' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1793,7 +1793,7 @@ class DataConsentRequestsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2027,7 +2027,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataConsentRequest|object|object|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\DataConsentRequest|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\ProblemDetails
      */
     public function getIndividualConsentRequestById($request_id)
     {
@@ -2044,7 +2044,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataConsentRequest|object|object|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\DataConsentRequest|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIndividualConsentRequestByIdWithHttpInfo($request_id)
     {
@@ -2102,32 +2102,32 @@ class DataConsentRequestsApi
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('object' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\MyDataMyConsent\Model\Error' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('object' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\MyDataMyConsent\Model\Error' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2177,7 +2177,7 @@ class DataConsentRequestsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2185,7 +2185,7 @@ class DataConsentRequestsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2376,7 +2376,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\DataConsentRequest|object|object|\MyDataMyConsent\Model\ProblemDetails
+     * @return \MyDataMyConsent\Model\DataConsentRequest|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\ProblemDetails
      */
     public function getOrganizationConsentRequestById($request_id)
     {
@@ -2393,7 +2393,7 @@ class DataConsentRequestsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\DataConsentRequest|object|object|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \MyDataMyConsent\Model\DataConsentRequest|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrganizationConsentRequestByIdWithHttpInfo($request_id)
     {
@@ -2451,32 +2451,32 @@ class DataConsentRequestsApi
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('object' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\MyDataMyConsent\Model\Error' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('object' === '\SplFileObject') {
+                    if ('\MyDataMyConsent\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\MyDataMyConsent\Model\Error' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2526,7 +2526,7 @@ class DataConsentRequestsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2534,7 +2534,7 @@ class DataConsentRequestsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\MyDataMyConsent\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

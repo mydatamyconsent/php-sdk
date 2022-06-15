@@ -1,6 +1,6 @@
 <?php
 /**
- * FileType
+ * ErrorType
  *
  * PHP version 7.4
  *
@@ -31,21 +31,33 @@ namespace MyDataMyConsent\Model;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * FileType Class Doc Comment
+ * ErrorType Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class FileType
+class ErrorType
 {
     /**
      * Possible values of this enum
      */
-    public const PDF = 'Pdf';
+    public const INVALID_ACCESS_TOKEN = 'InvalidAccessToken';
 
-    public const IMAGE = 'Image';
+    public const INVALID_REFRESH_TOKEN = 'InvalidRefreshToken';
+
+    public const INSUFFICIENT_PERMISSION = 'InsufficientPermission';
+
+    public const INTERNAL_SERVER_ERROR = 'InternalServerError';
+
+    public const BAD_REQUEST = 'BadRequest';
+
+    public const NOT_FOUND = 'NotFound';
+
+    public const INVALID_ORGANIZATION = 'InvalidOrganization';
+
+    public const INVALID_FILE_UPLOAD_TYPE = 'InvalidFileUploadType';
 
     /**
      * Gets allowable values of the enum
@@ -54,8 +66,14 @@ class FileType
     public static function getAllowableEnumValues()
     {
         return [
-            self::PDF,
-            self::IMAGE
+            self::INVALID_ACCESS_TOKEN,
+            self::INVALID_REFRESH_TOKEN,
+            self::INSUFFICIENT_PERMISSION,
+            self::INTERNAL_SERVER_ERROR,
+            self::BAD_REQUEST,
+            self::NOT_FOUND,
+            self::INVALID_ORGANIZATION,
+            self::INVALID_FILE_UPLOAD_TYPE
         ];
     }
 }

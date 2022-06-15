@@ -43,7 +43,8 @@ docs/Model/DocumentSubCategoryType.md
 docs/Model/DocumentType.md
 docs/Model/DocumentTypePaginatedList.md
 docs/Model/DocumentsRequired.md
-docs/Model/FileType.md
+docs/Model/Error.md
+docs/Model/ErrorType.md
 docs/Model/Financial.md
 docs/Model/FinancialAccount.md
 docs/Model/FinancialAccountDetailsRequired.md
@@ -117,7 +118,8 @@ lib/Model/DocumentSubCategoryType.php
 lib/Model/DocumentType.php
 lib/Model/DocumentTypePaginatedList.php
 lib/Model/DocumentsRequired.php
-lib/Model/FileType.php
+lib/Model/Error.php
+lib/Model/ErrorType.php
 lib/Model/Financial.php
 lib/Model/FinancialAccount.php
 lib/Model/FinancialAccountDetailsRequired.php

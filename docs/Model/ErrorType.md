@@ -1,4 +1,4 @@
-# # FileType
+# # ErrorType
 
 ## Properties
 
