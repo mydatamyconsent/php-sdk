@@ -53,7 +53,13 @@ class DocumentCategoryType
 
     public const PROFESSIONAL = 'Professional';
 
-    public const LICENCES_AND_CERTIFICATES = 'LicencesAndCertificates';
+    public const LICENSES = 'Licenses';
+
+    public const PERMITS = 'Permits';
+
+    public const CERTIFICATES = 'Certificates';
+
+    public const LEGAL = 'Legal';
 
     public const OTHERS = 'Others';
 
@@ -69,7 +75,10 @@ class DocumentCategoryType
             self::HEALTH,
             self::FINANCE,
             self::PROFESSIONAL,
-            self::LICENCES_AND_CERTIFICATES,
+            self::LICENSES,
+            self::PERMITS,
+            self::CERTIFICATES,
+            self::LEGAL,
             self::OTHERS
         ];
     }

@@ -73,8 +73,6 @@ class DocumentSubCategoryType
 
     public const TAXES = 'Taxes';
 
-    public const LICENCES_AND_CERTIFICATES = 'LicencesAndCertificates';
-
     public const CORPORATES = 'Corporates';
 
     public const COMPETITIONS = 'Competitions';
@@ -88,6 +86,10 @@ class DocumentSubCategoryType
     public const LICENSES = 'Licenses';
 
     public const ORGANIZATION_IDS = 'OrganizationIds';
+
+    public const PERMITS = 'Permits';
+
+    public const LEGAL = 'Legal';
 
     /**
      * Gets allowable values of the enum
@@ -111,14 +113,15 @@ class DocumentSubCategoryType
             self::INSURANCE,
             self::RECEIPTS_AND_SUBSCRIPTIONS,
             self::TAXES,
-            self::LICENCES_AND_CERTIFICATES,
             self::CORPORATES,
             self::COMPETITIONS,
             self::INTELLECTUAL_PROPERTIES,
             self::OTHERS,
             self::APPLICATIONS_AND_CERTIFICATES,
             self::LICENSES,
-            self::ORGANIZATION_IDS
+            self::ORGANIZATION_IDS,
+            self::PERMITS,
+            self::LEGAL
         ];
     }
 }
