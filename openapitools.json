@@ -2,7 +2,7 @@
   "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
   "spaces": 2,
   "generator-cli": {
-    "version": "6.0.0",
+    "version": "6.2.0",
     "generators": {
       "php": {
         "generatorName": "php",
@@ -14,7 +14,8 @@
         "gitHost": "github.com",
         "gitRepoId": "php-sdk",
         "gitUserId": "mydatamyconsent",
-        "inputSpec": "https://api.mydatamyconsent.com/swagger/v1/swagger.json",
+        "skipValidateSpec": true,
+        "inputSpec": "./openapi-spec.json",
         "removeOperationIdPrefix": true,
         "additionalProperties": {
             "invokerPackage": "MyDataMyConsent",
