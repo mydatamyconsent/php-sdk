@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identifier** | **string** |  | [optional]
-**items** | [**\MyDataMyConsent\Model\BillPaymentOrderItem[]**](BillPaymentOrderItem.md) |  | [optional]
-**currency_code** | **string** |  | [optional]
+**identifier** | **string** |  |
+**items** | [**\MyDataMyConsent\Model\PaymentOrderItem[]**](PaymentOrderItem.md) |  |
+**currency_code** | **string** |  |
 **payment_url** | **string** |  | [optional]
-**description** | **string** |  | [optional]
-**due_by_utc** | **\DateTime** |  | [optional]
+**description** | **string** |  |
+**due_by_utc** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

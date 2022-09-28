@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **identifier** | **string** | Document identifier. |
 **status** | [**\MyDataMyConsent\Model\DocumentIssueRequestStatus**](DocumentIssueRequestStatus.md) |  |
 **description** | **string** | Document description. |
-**receiver** | **mixed** | Document receiver details. |
+**receiver** | [**\MyDataMyConsent\Model\DocumentIssueRequestDetailsReceiver**](DocumentIssueRequestDetailsReceiver.md) |  |
+**payment_request** | [**\MyDataMyConsent\Model\PaymentRequest**](PaymentRequest.md) |  | [optional]
 **issued_at_utc** | **\DateTime** | Datetime of issue in UTC timezone. |
 **valid_from_utc** | **\DateTime** | Valid from datetime in UTC timezone. |
 **expires_at_utc** | **\DateTime** | Datetime of expiry in UTC timezone. | [optional]

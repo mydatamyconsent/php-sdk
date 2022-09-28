@@ -1,19 +1,17 @@
 # MyDataMyConsent\SupportedIdentifiersApi
 
-All URIs are relative to https://api.mydatamyconsent.com.
+All URIs are relative to https://api.mydatamyconsent.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getAllSupportedIdentifiers()**](SupportedIdentifiersApi.md#getAllSupportedIdentifiers) | **GET** /v1/supported-identifiers/{countryIso2Code} | Get all supported identifiers by country.
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**v1SupportedIdentifiersCountryIso2CodeGet()**](SupportedIdentifiersApi.md#v1SupportedIdentifiersCountryIso2CodeGet) | **GET** /v1/supported-identifiers/{country_iso2_code} | Get all supported identifiers by country. |
 
 
-## `getAllSupportedIdentifiers()`
+## `v1SupportedIdentifiersCountryIso2CodeGet()`
 
 ```php
-getAllSupportedIdentifiers($country_iso2_code): \MyDataMyConsent\Model\SupportedIdentifier
+v1SupportedIdentifiersCountryIso2CodeGet($country_iso2_code): \MyDataMyConsent\Model\SupportedIdentifier
 ```
-
-Get all supported identifiers by country.
 
 Get all supported identifiers by country.
 
@@ -24,27 +22,31 @@ Get all supported identifiers by country.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: OAuth2ClientCredentials
+$config = MyDataMyConsent\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new MyDataMyConsent\Api\SupportedIdentifiersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$country_iso2_code = 'country_iso2_code_example'; // string | Country ISO 2 code.
+$country_iso2_code = 'country_iso2_code_example'; // string
 
 try {
-    $result = $apiInstance->getAllSupportedIdentifiers($country_iso2_code);
+    $result = $apiInstance->v1SupportedIdentifiersCountryIso2CodeGet($country_iso2_code);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SupportedIdentifiersApi->getAllSupportedIdentifiers: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SupportedIdentifiersApi->v1SupportedIdentifiersCountryIso2CodeGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **country_iso2_code** | **string**| Country ISO 2 code. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **country_iso2_code** | **string**|  | |
 
 ### Return type
 
@@ -52,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[OAuth2ClientCredentials](../../README.md#OAuth2ClientCredentials)
 
 ### HTTP request headers
 

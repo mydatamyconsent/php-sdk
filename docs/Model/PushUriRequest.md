@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **ts** | **string** |  | [optional]
 **txn** | **string** |  | [optional]
 **org_id** | **string** |  | [optional]
-**keyhash** | **string** |  | [optional]
+**key_hash** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

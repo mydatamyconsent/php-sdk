@@ -4,20 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional]
-**issuer** | **string** |  | [optional]
-**logo_url** | **string** |  | [optional]
-**category_id** | **string** |  | [optional]
-**category_name** | **string** |  | [optional]
-**account_name** | **string** |  | [optional]
-**account_logo_url** | **string** |  | [optional]
-**balance** | **string** |  | [optional]
-**balance_type** | **string** |  | [optional]
-**is_shared** | **bool** |  | [optional]
-**shared_with** | [**\MyDataMyConsent\Model\SharedWith[]**](SharedWith.md) |  | [optional]
-**is_received** | **bool** |  | [optional]
-**expires_at_utc** | **\DateTime** |  | [optional]
-**activities** | [**\MyDataMyConsent\Model\Activity[]**](Activity.md) |  | [optional]
-**approved_consent_requests** | [**\MyDataMyConsent\Model\ApprovedConsentRequest[]**](ApprovedConsentRequest.md) |  | [optional]
+**type** | **string** |  |
+**id** | **string** |  |
+**name** | **string** |  |
+**identifier** | **string** |  |
+**balance** | **float** |  |
+**profile** | [**\MyDataMyConsent\Model\Profile**](Profile.md) |  |
+**summary** | [**\MyDataMyConsent\Model\EquitySummary**](EquitySummary.md) |  |
+**masked_account_number** | **string** |  |
+**linked_account_ref** | **string** |  |
+**version** | **float** |  |
+**amount** | **float** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
