@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **id** | **string** | Health id. | [optional]
 **field_title** | **string** | Health field title. |
 **field_slug** | **string** | Health field slug. |
+**issuer_id** | **string** | Issuer id. |
+**issuer_name** | **string** | Issuer name. |
 **category** | **string** | health category type. |
 **to_date** | **\DateTime** | To Date | [optional]
 **from_date** | **\DateTime** | From Date | [optional]

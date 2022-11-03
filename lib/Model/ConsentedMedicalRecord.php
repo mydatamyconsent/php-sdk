@@ -62,6 +62,8 @@ class ConsentedMedicalRecord implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'string',
         'field_title' => 'string',
         'field_slug' => 'string',
+        'issuer_id' => 'string',
+        'issuer_name' => 'string',
         'category' => 'string',
         'to_date' => '\DateTime',
         'from_date' => '\DateTime'
@@ -78,6 +80,8 @@ class ConsentedMedicalRecord implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => null,
         'field_title' => null,
         'field_slug' => null,
+        'issuer_id' => null,
+        'issuer_name' => null,
         'category' => null,
         'to_date' => 'date-time',
         'from_date' => 'date-time'
@@ -92,6 +96,8 @@ class ConsentedMedicalRecord implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => false,
 		'field_title' => false,
 		'field_slug' => false,
+		'issuer_id' => false,
+		'issuer_name' => false,
 		'category' => false,
 		'to_date' => false,
 		'from_date' => false
@@ -176,6 +182,8 @@ class ConsentedMedicalRecord implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'id',
         'field_title' => 'fieldTitle',
         'field_slug' => 'fieldSlug',
+        'issuer_id' => 'issuerId',
+        'issuer_name' => 'issuerName',
         'category' => 'category',
         'to_date' => 'toDate',
         'from_date' => 'fromDate'
@@ -190,6 +198,8 @@ class ConsentedMedicalRecord implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'setId',
         'field_title' => 'setFieldTitle',
         'field_slug' => 'setFieldSlug',
+        'issuer_id' => 'setIssuerId',
+        'issuer_name' => 'setIssuerName',
         'category' => 'setCategory',
         'to_date' => 'setToDate',
         'from_date' => 'setFromDate'
@@ -204,6 +214,8 @@ class ConsentedMedicalRecord implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'getId',
         'field_title' => 'getFieldTitle',
         'field_slug' => 'getFieldSlug',
+        'issuer_id' => 'getIssuerId',
+        'issuer_name' => 'getIssuerName',
         'category' => 'getCategory',
         'to_date' => 'getToDate',
         'from_date' => 'getFromDate'
@@ -269,6 +281,8 @@ class ConsentedMedicalRecord implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('field_title', $data ?? [], null);
         $this->setIfExists('field_slug', $data ?? [], null);
+        $this->setIfExists('issuer_id', $data ?? [], null);
+        $this->setIfExists('issuer_name', $data ?? [], null);
         $this->setIfExists('category', $data ?? [], null);
         $this->setIfExists('to_date', $data ?? [], null);
         $this->setIfExists('from_date', $data ?? [], null);
@@ -306,6 +320,12 @@ class ConsentedMedicalRecord implements ModelInterface, ArrayAccess, \JsonSerial
         }
         if ($this->container['field_slug'] === null) {
             $invalidProperties[] = "'field_slug' can't be null";
+        }
+        if ($this->container['issuer_id'] === null) {
+            $invalidProperties[] = "'issuer_id' can't be null";
+        }
+        if ($this->container['issuer_name'] === null) {
+            $invalidProperties[] = "'issuer_name' can't be null";
         }
         if ($this->container['category'] === null) {
             $invalidProperties[] = "'category' can't be null";
@@ -408,6 +428,64 @@ class ConsentedMedicalRecord implements ModelInterface, ArrayAccess, \JsonSerial
         }
 
         $this->container['field_slug'] = $field_slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets issuer_id
+     *
+     * @return string
+     */
+    public function getIssuerId()
+    {
+        return $this->container['issuer_id'];
+    }
+
+    /**
+     * Sets issuer_id
+     *
+     * @param string $issuer_id Issuer id.
+     *
+     * @return self
+     */
+    public function setIssuerId($issuer_id)
+    {
+
+        if (is_null($issuer_id)) {
+            throw new \InvalidArgumentException('non-nullable issuer_id cannot be null');
+        }
+
+        $this->container['issuer_id'] = $issuer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets issuer_name
+     *
+     * @return string
+     */
+    public function getIssuerName()
+    {
+        return $this->container['issuer_name'];
+    }
+
+    /**
+     * Sets issuer_name
+     *
+     * @param string $issuer_name Issuer name.
+     *
+     * @return self
+     */
+    public function setIssuerName($issuer_name)
+    {
+
+        if (is_null($issuer_name)) {
+            throw new \InvalidArgumentException('non-nullable issuer_name cannot be null');
+        }
+
+        $this->container['issuer_name'] = $issuer_name;
 
         return $this;
     }

@@ -60,14 +60,6 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'type' => 'string',
         'id' => 'string',
-        'txn_type' => '\MyDataMyConsent\Model\CreditCardTransactionType',
-        'txn_date' => '\DateTime',
-        'amount' => 'string',
-        'value_date' => '\DateTime',
-        'narration' => 'string',
-        'statement_date' => '\DateTime',
-        'mcc' => 'string',
-        'masked_card_number' => 'string',
         'amc' => 'string',
         'registrar' => 'string',
         'scheme_code' => 'string',
@@ -79,6 +71,7 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         'scheme_types' => '\MyDataMyConsent\Model\MutualFundSchemeType',
         'scheme_category' => '\MyDataMyConsent\Model\MutualFundSchemeCategory',
         'ucc' => 'string',
+        'amount' => 'string',
         'closing_units' => 'string',
         'lien_units' => 'string',
         'nav' => 'string',
@@ -87,7 +80,8 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         'execution_date' => '\DateTime',
         'lockin_flag' => 'string',
         'lockin_days' => 'string',
-        'mode' => '\MyDataMyConsent\Model\MutualFundHoldingMode'
+        'mode' => '\MyDataMyConsent\Model\MutualFundHoldingMode',
+        'narration' => 'string'
     ];
 
     /**
@@ -100,14 +94,6 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPIFormats = [
         'type' => null,
         'id' => null,
-        'txn_type' => null,
-        'txn_date' => 'date-time',
-        'amount' => null,
-        'value_date' => 'date-time',
-        'narration' => null,
-        'statement_date' => 'date-time',
-        'mcc' => null,
-        'masked_card_number' => null,
         'amc' => null,
         'registrar' => null,
         'scheme_code' => null,
@@ -119,6 +105,7 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         'scheme_types' => null,
         'scheme_category' => null,
         'ucc' => null,
+        'amount' => null,
         'closing_units' => null,
         'lien_units' => null,
         'nav' => null,
@@ -127,7 +114,8 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         'execution_date' => 'date-time',
         'lockin_flag' => null,
         'lockin_days' => null,
-        'mode' => null
+        'mode' => null,
+        'narration' => null
     ];
 
     /**
@@ -138,14 +126,6 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'type' => false,
 		'id' => false,
-		'txn_type' => false,
-		'txn_date' => false,
-		'amount' => false,
-		'value_date' => false,
-		'narration' => false,
-		'statement_date' => false,
-		'mcc' => false,
-		'masked_card_number' => false,
 		'amc' => false,
 		'registrar' => false,
 		'scheme_code' => false,
@@ -157,6 +137,7 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
 		'scheme_types' => false,
 		'scheme_category' => false,
 		'ucc' => false,
+		'amount' => false,
 		'closing_units' => false,
 		'lien_units' => false,
 		'nav' => false,
@@ -165,7 +146,8 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
 		'execution_date' => false,
 		'lockin_flag' => false,
 		'lockin_days' => false,
-		'mode' => false
+		'mode' => false,
+		'narration' => false
     ];
 
     /**
@@ -246,14 +228,6 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
     protected static $attributeMap = [
         'type' => 'type',
         'id' => 'id',
-        'txn_type' => 'txn_type',
-        'txn_date' => 'txn_date',
-        'amount' => 'amount',
-        'value_date' => 'value_date',
-        'narration' => 'narration',
-        'statement_date' => 'statement_date',
-        'mcc' => 'mcc',
-        'masked_card_number' => 'masked_card_number',
         'amc' => 'amc',
         'registrar' => 'registrar',
         'scheme_code' => 'scheme_code',
@@ -265,6 +239,7 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         'scheme_types' => 'scheme_types',
         'scheme_category' => 'scheme_category',
         'ucc' => 'ucc',
+        'amount' => 'amount',
         'closing_units' => 'closing_units',
         'lien_units' => 'lien_units',
         'nav' => 'nav',
@@ -273,7 +248,8 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         'execution_date' => 'execution_date',
         'lockin_flag' => 'lockin_flag',
         'lockin_days' => 'lockin_days',
-        'mode' => 'mode'
+        'mode' => 'mode',
+        'narration' => 'narration'
     ];
 
     /**
@@ -284,14 +260,6 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
     protected static $setters = [
         'type' => 'setType',
         'id' => 'setId',
-        'txn_type' => 'setTxnType',
-        'txn_date' => 'setTxnDate',
-        'amount' => 'setAmount',
-        'value_date' => 'setValueDate',
-        'narration' => 'setNarration',
-        'statement_date' => 'setStatementDate',
-        'mcc' => 'setMcc',
-        'masked_card_number' => 'setMaskedCardNumber',
         'amc' => 'setAmc',
         'registrar' => 'setRegistrar',
         'scheme_code' => 'setSchemeCode',
@@ -303,6 +271,7 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         'scheme_types' => 'setSchemeTypes',
         'scheme_category' => 'setSchemeCategory',
         'ucc' => 'setUcc',
+        'amount' => 'setAmount',
         'closing_units' => 'setClosingUnits',
         'lien_units' => 'setLienUnits',
         'nav' => 'setNav',
@@ -311,7 +280,8 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         'execution_date' => 'setExecutionDate',
         'lockin_flag' => 'setLockinFlag',
         'lockin_days' => 'setLockinDays',
-        'mode' => 'setMode'
+        'mode' => 'setMode',
+        'narration' => 'setNarration'
     ];
 
     /**
@@ -322,14 +292,6 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
     protected static $getters = [
         'type' => 'getType',
         'id' => 'getId',
-        'txn_type' => 'getTxnType',
-        'txn_date' => 'getTxnDate',
-        'amount' => 'getAmount',
-        'value_date' => 'getValueDate',
-        'narration' => 'getNarration',
-        'statement_date' => 'getStatementDate',
-        'mcc' => 'getMcc',
-        'masked_card_number' => 'getMaskedCardNumber',
         'amc' => 'getAmc',
         'registrar' => 'getRegistrar',
         'scheme_code' => 'getSchemeCode',
@@ -341,6 +303,7 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         'scheme_types' => 'getSchemeTypes',
         'scheme_category' => 'getSchemeCategory',
         'ucc' => 'getUcc',
+        'amount' => 'getAmount',
         'closing_units' => 'getClosingUnits',
         'lien_units' => 'getLienUnits',
         'nav' => 'getNav',
@@ -349,7 +312,8 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         'execution_date' => 'getExecutionDate',
         'lockin_flag' => 'getLockinFlag',
         'lockin_days' => 'getLockinDays',
-        'mode' => 'getMode'
+        'mode' => 'getMode',
+        'narration' => 'getNarration'
     ];
 
     /**
@@ -411,14 +375,6 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
     {
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('txn_type', $data ?? [], null);
-        $this->setIfExists('txn_date', $data ?? [], null);
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('value_date', $data ?? [], null);
-        $this->setIfExists('narration', $data ?? [], null);
-        $this->setIfExists('statement_date', $data ?? [], null);
-        $this->setIfExists('mcc', $data ?? [], null);
-        $this->setIfExists('masked_card_number', $data ?? [], null);
         $this->setIfExists('amc', $data ?? [], null);
         $this->setIfExists('registrar', $data ?? [], null);
         $this->setIfExists('scheme_code', $data ?? [], null);
@@ -430,6 +386,7 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('scheme_types', $data ?? [], null);
         $this->setIfExists('scheme_category', $data ?? [], null);
         $this->setIfExists('ucc', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('closing_units', $data ?? [], null);
         $this->setIfExists('lien_units', $data ?? [], null);
         $this->setIfExists('nav', $data ?? [], null);
@@ -439,6 +396,7 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('lockin_flag', $data ?? [], null);
         $this->setIfExists('lockin_days', $data ?? [], null);
         $this->setIfExists('mode', $data ?? [], null);
+        $this->setIfExists('narration', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['type'] = static::$openAPIModelName;
@@ -477,30 +435,6 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['txn_type'] === null) {
-            $invalidProperties[] = "'txn_type' can't be null";
-        }
-        if ($this->container['txn_date'] === null) {
-            $invalidProperties[] = "'txn_date' can't be null";
-        }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['value_date'] === null) {
-            $invalidProperties[] = "'value_date' can't be null";
-        }
-        if ($this->container['narration'] === null) {
-            $invalidProperties[] = "'narration' can't be null";
-        }
-        if ($this->container['statement_date'] === null) {
-            $invalidProperties[] = "'statement_date' can't be null";
-        }
-        if ($this->container['mcc'] === null) {
-            $invalidProperties[] = "'mcc' can't be null";
-        }
-        if ($this->container['masked_card_number'] === null) {
-            $invalidProperties[] = "'masked_card_number' can't be null";
-        }
         if ($this->container['amc'] === null) {
             $invalidProperties[] = "'amc' can't be null";
         }
@@ -534,6 +468,9 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['ucc'] === null) {
             $invalidProperties[] = "'ucc' can't be null";
         }
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
         if ($this->container['closing_units'] === null) {
             $invalidProperties[] = "'closing_units' can't be null";
         }
@@ -560,6 +497,9 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         }
         if ($this->container['mode'] === null) {
             $invalidProperties[] = "'mode' can't be null";
+        }
+        if ($this->container['narration'] === null) {
+            $invalidProperties[] = "'narration' can't be null";
         }
         return $invalidProperties;
     }
@@ -630,238 +570,6 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         }
 
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets txn_type
-     *
-     * @return \MyDataMyConsent\Model\CreditCardTransactionType
-     */
-    public function getTxnType()
-    {
-        return $this->container['txn_type'];
-    }
-
-    /**
-     * Sets txn_type
-     *
-     * @param \MyDataMyConsent\Model\CreditCardTransactionType $txn_type txn_type
-     *
-     * @return self
-     */
-    public function setTxnType($txn_type)
-    {
-
-        if (is_null($txn_type)) {
-            throw new \InvalidArgumentException('non-nullable txn_type cannot be null');
-        }
-
-        $this->container['txn_type'] = $txn_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets txn_date
-     *
-     * @return \DateTime
-     */
-    public function getTxnDate()
-    {
-        return $this->container['txn_date'];
-    }
-
-    /**
-     * Sets txn_date
-     *
-     * @param \DateTime $txn_date txn_date
-     *
-     * @return self
-     */
-    public function setTxnDate($txn_date)
-    {
-
-        if (is_null($txn_date)) {
-            throw new \InvalidArgumentException('non-nullable txn_date cannot be null');
-        }
-
-        $this->container['txn_date'] = $txn_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return string
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param string $amount amount
-     *
-     * @return self
-     */
-    public function setAmount($amount)
-    {
-
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
-        }
-
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets value_date
-     *
-     * @return \DateTime
-     */
-    public function getValueDate()
-    {
-        return $this->container['value_date'];
-    }
-
-    /**
-     * Sets value_date
-     *
-     * @param \DateTime $value_date value_date
-     *
-     * @return self
-     */
-    public function setValueDate($value_date)
-    {
-
-        if (is_null($value_date)) {
-            throw new \InvalidArgumentException('non-nullable value_date cannot be null');
-        }
-
-        $this->container['value_date'] = $value_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets narration
-     *
-     * @return string
-     */
-    public function getNarration()
-    {
-        return $this->container['narration'];
-    }
-
-    /**
-     * Sets narration
-     *
-     * @param string $narration narration
-     *
-     * @return self
-     */
-    public function setNarration($narration)
-    {
-
-        if (is_null($narration)) {
-            throw new \InvalidArgumentException('non-nullable narration cannot be null');
-        }
-
-        $this->container['narration'] = $narration;
-
-        return $this;
-    }
-
-    /**
-     * Gets statement_date
-     *
-     * @return \DateTime
-     */
-    public function getStatementDate()
-    {
-        return $this->container['statement_date'];
-    }
-
-    /**
-     * Sets statement_date
-     *
-     * @param \DateTime $statement_date statement_date
-     *
-     * @return self
-     */
-    public function setStatementDate($statement_date)
-    {
-
-        if (is_null($statement_date)) {
-            throw new \InvalidArgumentException('non-nullable statement_date cannot be null');
-        }
-
-        $this->container['statement_date'] = $statement_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets mcc
-     *
-     * @return string
-     */
-    public function getMcc()
-    {
-        return $this->container['mcc'];
-    }
-
-    /**
-     * Sets mcc
-     *
-     * @param string $mcc mcc
-     *
-     * @return self
-     */
-    public function setMcc($mcc)
-    {
-
-        if (is_null($mcc)) {
-            throw new \InvalidArgumentException('non-nullable mcc cannot be null');
-        }
-
-        $this->container['mcc'] = $mcc;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_card_number
-     *
-     * @return string
-     */
-    public function getMaskedCardNumber()
-    {
-        return $this->container['masked_card_number'];
-    }
-
-    /**
-     * Sets masked_card_number
-     *
-     * @param string $masked_card_number masked_card_number
-     *
-     * @return self
-     */
-    public function setMaskedCardNumber($masked_card_number)
-    {
-
-        if (is_null($masked_card_number)) {
-            throw new \InvalidArgumentException('non-nullable masked_card_number cannot be null');
-        }
-
-        $this->container['masked_card_number'] = $masked_card_number;
 
         return $this;
     }
@@ -1186,6 +894,35 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets amount
+     *
+     * @return string
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount
+     *
+     * @param string $amount amount
+     *
+     * @return self
+     */
+    public function setAmount($amount)
+    {
+
+        if (is_null($amount)) {
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        }
+
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
      * Gets closing_units
      *
      * @return string
@@ -1442,6 +1179,35 @@ class FinancialAccountTransaction implements ModelInterface, ArrayAccess, \JsonS
         }
 
         $this->container['mode'] = $mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets narration
+     *
+     * @return string
+     */
+    public function getNarration()
+    {
+        return $this->container['narration'];
+    }
+
+    /**
+     * Sets narration
+     *
+     * @param string $narration narration
+     *
+     * @return self
+     */
+    public function setNarration($narration)
+    {
+
+        if (is_null($narration)) {
+            throw new \InvalidArgumentException('non-nullable narration cannot be null');
+        }
+
+        $this->container['narration'] = $narration;
 
         return $this;
     }

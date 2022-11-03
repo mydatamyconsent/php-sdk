@@ -60,8 +60,13 @@ class Sip implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'identifier' => 'string',
-        'amount' => 'float'
+        'investment_value' => 'float',
+        'current_value' => 'float',
+        'currency_code' => 'string',
+        'plan_info' => '\MyDataMyConsent\Model\SipPlanInformation',
+        'investment_info' => '\MyDataMyConsent\Model\SipInvestmentInformation',
+        'holder' => '\MyDataMyConsent\Model\Holder',
+        'transactions' => 'bool'
     ];
 
     /**
@@ -74,8 +79,13 @@ class Sip implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
-        'identifier' => null,
-        'amount' => 'double'
+        'investment_value' => 'double',
+        'current_value' => 'double',
+        'currency_code' => null,
+        'plan_info' => null,
+        'investment_info' => null,
+        'holder' => null,
+        'transactions' => null
     ];
 
     /**
@@ -86,8 +96,13 @@ class Sip implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'id' => false,
 		'name' => false,
-		'identifier' => false,
-		'amount' => false
+		'investment_value' => false,
+		'current_value' => false,
+		'currency_code' => false,
+		'plan_info' => false,
+		'investment_info' => false,
+		'holder' => false,
+		'transactions' => false
     ];
 
     /**
@@ -168,8 +183,13 @@ class Sip implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'identifier' => 'identifier',
-        'amount' => 'amount'
+        'investment_value' => 'investment_value',
+        'current_value' => 'current_value',
+        'currency_code' => 'currency_code',
+        'plan_info' => 'plan_info',
+        'investment_info' => 'investment_info',
+        'holder' => 'holder',
+        'transactions' => 'transactions'
     ];
 
     /**
@@ -180,8 +200,13 @@ class Sip implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'identifier' => 'setIdentifier',
-        'amount' => 'setAmount'
+        'investment_value' => 'setInvestmentValue',
+        'current_value' => 'setCurrentValue',
+        'currency_code' => 'setCurrencyCode',
+        'plan_info' => 'setPlanInfo',
+        'investment_info' => 'setInvestmentInfo',
+        'holder' => 'setHolder',
+        'transactions' => 'setTransactions'
     ];
 
     /**
@@ -192,8 +217,13 @@ class Sip implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'identifier' => 'getIdentifier',
-        'amount' => 'getAmount'
+        'investment_value' => 'getInvestmentValue',
+        'current_value' => 'getCurrentValue',
+        'currency_code' => 'getCurrencyCode',
+        'plan_info' => 'getPlanInfo',
+        'investment_info' => 'getInvestmentInfo',
+        'holder' => 'getHolder',
+        'transactions' => 'getTransactions'
     ];
 
     /**
@@ -255,8 +285,13 @@ class Sip implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('identifier', $data ?? [], null);
-        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('investment_value', $data ?? [], null);
+        $this->setIfExists('current_value', $data ?? [], null);
+        $this->setIfExists('currency_code', $data ?? [], null);
+        $this->setIfExists('plan_info', $data ?? [], null);
+        $this->setIfExists('investment_info', $data ?? [], null);
+        $this->setIfExists('holder', $data ?? [], null);
+        $this->setIfExists('transactions', $data ?? [], null);
     }
 
     /**
@@ -292,11 +327,26 @@ class Sip implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['identifier'] === null) {
-            $invalidProperties[] = "'identifier' can't be null";
+        if ($this->container['investment_value'] === null) {
+            $invalidProperties[] = "'investment_value' can't be null";
         }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        if ($this->container['current_value'] === null) {
+            $invalidProperties[] = "'current_value' can't be null";
+        }
+        if ($this->container['currency_code'] === null) {
+            $invalidProperties[] = "'currency_code' can't be null";
+        }
+        if ($this->container['plan_info'] === null) {
+            $invalidProperties[] = "'plan_info' can't be null";
+        }
+        if ($this->container['investment_info'] === null) {
+            $invalidProperties[] = "'investment_info' can't be null";
+        }
+        if ($this->container['holder'] === null) {
+            $invalidProperties[] = "'holder' can't be null";
+        }
+        if ($this->container['transactions'] === null) {
+            $invalidProperties[] = "'transactions' can't be null";
         }
         return $invalidProperties;
     }
@@ -372,59 +422,204 @@ class Sip implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets identifier
+     * Gets investment_value
      *
-     * @return string
+     * @return float
      */
-    public function getIdentifier()
+    public function getInvestmentValue()
     {
-        return $this->container['identifier'];
+        return $this->container['investment_value'];
     }
 
     /**
-     * Sets identifier
+     * Sets investment_value
      *
-     * @param string $identifier identifier
+     * @param float $investment_value investment_value
      *
      * @return self
      */
-    public function setIdentifier($identifier)
+    public function setInvestmentValue($investment_value)
     {
 
-        if (is_null($identifier)) {
-            throw new \InvalidArgumentException('non-nullable identifier cannot be null');
+        if (is_null($investment_value)) {
+            throw new \InvalidArgumentException('non-nullable investment_value cannot be null');
         }
 
-        $this->container['identifier'] = $identifier;
+        $this->container['investment_value'] = $investment_value;
 
         return $this;
     }
 
     /**
-     * Gets amount
+     * Gets current_value
      *
      * @return float
      */
-    public function getAmount()
+    public function getCurrentValue()
     {
-        return $this->container['amount'];
+        return $this->container['current_value'];
     }
 
     /**
-     * Sets amount
+     * Sets current_value
      *
-     * @param float $amount amount
+     * @param float $current_value current_value
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setCurrentValue($current_value)
     {
 
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($current_value)) {
+            throw new \InvalidArgumentException('non-nullable current_value cannot be null');
         }
 
-        $this->container['amount'] = $amount;
+        $this->container['current_value'] = $current_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency_code
+     *
+     * @return string
+     */
+    public function getCurrencyCode()
+    {
+        return $this->container['currency_code'];
+    }
+
+    /**
+     * Sets currency_code
+     *
+     * @param string $currency_code currency_code
+     *
+     * @return self
+     */
+    public function setCurrencyCode($currency_code)
+    {
+
+        if (is_null($currency_code)) {
+            throw new \InvalidArgumentException('non-nullable currency_code cannot be null');
+        }
+
+        $this->container['currency_code'] = $currency_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets plan_info
+     *
+     * @return \MyDataMyConsent\Model\SipPlanInformation
+     */
+    public function getPlanInfo()
+    {
+        return $this->container['plan_info'];
+    }
+
+    /**
+     * Sets plan_info
+     *
+     * @param \MyDataMyConsent\Model\SipPlanInformation $plan_info plan_info
+     *
+     * @return self
+     */
+    public function setPlanInfo($plan_info)
+    {
+
+        if (is_null($plan_info)) {
+            throw new \InvalidArgumentException('non-nullable plan_info cannot be null');
+        }
+
+        $this->container['plan_info'] = $plan_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets investment_info
+     *
+     * @return \MyDataMyConsent\Model\SipInvestmentInformation
+     */
+    public function getInvestmentInfo()
+    {
+        return $this->container['investment_info'];
+    }
+
+    /**
+     * Sets investment_info
+     *
+     * @param \MyDataMyConsent\Model\SipInvestmentInformation $investment_info investment_info
+     *
+     * @return self
+     */
+    public function setInvestmentInfo($investment_info)
+    {
+
+        if (is_null($investment_info)) {
+            throw new \InvalidArgumentException('non-nullable investment_info cannot be null');
+        }
+
+        $this->container['investment_info'] = $investment_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets holder
+     *
+     * @return \MyDataMyConsent\Model\Holder
+     */
+    public function getHolder()
+    {
+        return $this->container['holder'];
+    }
+
+    /**
+     * Sets holder
+     *
+     * @param \MyDataMyConsent\Model\Holder $holder holder
+     *
+     * @return self
+     */
+    public function setHolder($holder)
+    {
+
+        if (is_null($holder)) {
+            throw new \InvalidArgumentException('non-nullable holder cannot be null');
+        }
+
+        $this->container['holder'] = $holder;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactions
+     *
+     * @return bool
+     */
+    public function getTransactions()
+    {
+        return $this->container['transactions'];
+    }
+
+    /**
+     * Sets transactions
+     *
+     * @param bool $transactions transactions
+     *
+     * @return self
+     */
+    public function setTransactions($transactions)
+    {
+
+        if (is_null($transactions)) {
+            throw new \InvalidArgumentException('non-nullable transactions cannot be null');
+        }
+
+        $this->container['transactions'] = $transactions;
 
         return $this;
     }

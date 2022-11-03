@@ -61,13 +61,15 @@ class FinancialAccountEquity implements ModelInterface, ArrayAccess, \JsonSerial
         'type' => 'string',
         'id' => 'string',
         'name' => 'string',
-        'identifier' => 'string',
-        'balance' => 'float',
-        'profile' => '\MyDataMyConsent\Model\Profile',
-        'summary' => '\MyDataMyConsent\Model\EquitySummary',
-        'masked_account_number' => 'string',
-        'linked_account_ref' => 'string',
-        'version' => 'float'
+        'issuer_name' => 'string',
+        'exchange' => 'string',
+        'isin' => 'string',
+        'units' => 'int',
+        'investment_value' => 'float',
+        'current_value' => 'float',
+        'currency_code' => 'string',
+        'holder' => '\MyDataMyConsent\Model\Holder',
+        'transactions' => 'bool'
     ];
 
     /**
@@ -81,13 +83,15 @@ class FinancialAccountEquity implements ModelInterface, ArrayAccess, \JsonSerial
         'type' => null,
         'id' => null,
         'name' => null,
-        'identifier' => null,
-        'balance' => 'double',
-        'profile' => null,
-        'summary' => null,
-        'masked_account_number' => null,
-        'linked_account_ref' => null,
-        'version' => 'float'
+        'issuer_name' => null,
+        'exchange' => null,
+        'isin' => null,
+        'units' => 'int64',
+        'investment_value' => 'double',
+        'current_value' => 'double',
+        'currency_code' => null,
+        'holder' => null,
+        'transactions' => null
     ];
 
     /**
@@ -99,13 +103,15 @@ class FinancialAccountEquity implements ModelInterface, ArrayAccess, \JsonSerial
         'type' => false,
 		'id' => false,
 		'name' => false,
-		'identifier' => false,
-		'balance' => false,
-		'profile' => false,
-		'summary' => false,
-		'masked_account_number' => false,
-		'linked_account_ref' => false,
-		'version' => false
+		'issuer_name' => false,
+		'exchange' => false,
+		'isin' => false,
+		'units' => false,
+		'investment_value' => false,
+		'current_value' => false,
+		'currency_code' => false,
+		'holder' => false,
+		'transactions' => false
     ];
 
     /**
@@ -187,13 +193,15 @@ class FinancialAccountEquity implements ModelInterface, ArrayAccess, \JsonSerial
         'type' => 'type',
         'id' => 'id',
         'name' => 'name',
-        'identifier' => 'identifier',
-        'balance' => 'balance',
-        'profile' => 'profile',
-        'summary' => 'summary',
-        'masked_account_number' => 'masked_account_number',
-        'linked_account_ref' => 'linked_account_ref',
-        'version' => 'version'
+        'issuer_name' => 'issuer_name',
+        'exchange' => 'exchange',
+        'isin' => 'isin',
+        'units' => 'units',
+        'investment_value' => 'investment_value',
+        'current_value' => 'current_value',
+        'currency_code' => 'currency_code',
+        'holder' => 'holder',
+        'transactions' => 'transactions'
     ];
 
     /**
@@ -205,13 +213,15 @@ class FinancialAccountEquity implements ModelInterface, ArrayAccess, \JsonSerial
         'type' => 'setType',
         'id' => 'setId',
         'name' => 'setName',
-        'identifier' => 'setIdentifier',
-        'balance' => 'setBalance',
-        'profile' => 'setProfile',
-        'summary' => 'setSummary',
-        'masked_account_number' => 'setMaskedAccountNumber',
-        'linked_account_ref' => 'setLinkedAccountRef',
-        'version' => 'setVersion'
+        'issuer_name' => 'setIssuerName',
+        'exchange' => 'setExchange',
+        'isin' => 'setIsin',
+        'units' => 'setUnits',
+        'investment_value' => 'setInvestmentValue',
+        'current_value' => 'setCurrentValue',
+        'currency_code' => 'setCurrencyCode',
+        'holder' => 'setHolder',
+        'transactions' => 'setTransactions'
     ];
 
     /**
@@ -223,13 +233,15 @@ class FinancialAccountEquity implements ModelInterface, ArrayAccess, \JsonSerial
         'type' => 'getType',
         'id' => 'getId',
         'name' => 'getName',
-        'identifier' => 'getIdentifier',
-        'balance' => 'getBalance',
-        'profile' => 'getProfile',
-        'summary' => 'getSummary',
-        'masked_account_number' => 'getMaskedAccountNumber',
-        'linked_account_ref' => 'getLinkedAccountRef',
-        'version' => 'getVersion'
+        'issuer_name' => 'getIssuerName',
+        'exchange' => 'getExchange',
+        'isin' => 'getIsin',
+        'units' => 'getUnits',
+        'investment_value' => 'getInvestmentValue',
+        'current_value' => 'getCurrentValue',
+        'currency_code' => 'getCurrencyCode',
+        'holder' => 'getHolder',
+        'transactions' => 'getTransactions'
     ];
 
     /**
@@ -292,13 +304,15 @@ class FinancialAccountEquity implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('identifier', $data ?? [], null);
-        $this->setIfExists('balance', $data ?? [], null);
-        $this->setIfExists('profile', $data ?? [], null);
-        $this->setIfExists('summary', $data ?? [], null);
-        $this->setIfExists('masked_account_number', $data ?? [], null);
-        $this->setIfExists('linked_account_ref', $data ?? [], null);
-        $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('issuer_name', $data ?? [], null);
+        $this->setIfExists('exchange', $data ?? [], null);
+        $this->setIfExists('isin', $data ?? [], null);
+        $this->setIfExists('units', $data ?? [], null);
+        $this->setIfExists('investment_value', $data ?? [], null);
+        $this->setIfExists('current_value', $data ?? [], null);
+        $this->setIfExists('currency_code', $data ?? [], null);
+        $this->setIfExists('holder', $data ?? [], null);
+        $this->setIfExists('transactions', $data ?? [], null);
     }
 
     /**
@@ -337,26 +351,32 @@ class FinancialAccountEquity implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['identifier'] === null) {
-            $invalidProperties[] = "'identifier' can't be null";
+        if ($this->container['issuer_name'] === null) {
+            $invalidProperties[] = "'issuer_name' can't be null";
         }
-        if ($this->container['balance'] === null) {
-            $invalidProperties[] = "'balance' can't be null";
+        if ($this->container['exchange'] === null) {
+            $invalidProperties[] = "'exchange' can't be null";
         }
-        if ($this->container['profile'] === null) {
-            $invalidProperties[] = "'profile' can't be null";
+        if ($this->container['isin'] === null) {
+            $invalidProperties[] = "'isin' can't be null";
         }
-        if ($this->container['summary'] === null) {
-            $invalidProperties[] = "'summary' can't be null";
+        if ($this->container['units'] === null) {
+            $invalidProperties[] = "'units' can't be null";
         }
-        if ($this->container['masked_account_number'] === null) {
-            $invalidProperties[] = "'masked_account_number' can't be null";
+        if ($this->container['investment_value'] === null) {
+            $invalidProperties[] = "'investment_value' can't be null";
         }
-        if ($this->container['linked_account_ref'] === null) {
-            $invalidProperties[] = "'linked_account_ref' can't be null";
+        if ($this->container['current_value'] === null) {
+            $invalidProperties[] = "'current_value' can't be null";
         }
-        if ($this->container['version'] === null) {
-            $invalidProperties[] = "'version' can't be null";
+        if ($this->container['currency_code'] === null) {
+            $invalidProperties[] = "'currency_code' can't be null";
+        }
+        if ($this->container['holder'] === null) {
+            $invalidProperties[] = "'holder' can't be null";
+        }
+        if ($this->container['transactions'] === null) {
+            $invalidProperties[] = "'transactions' can't be null";
         }
         return $invalidProperties;
     }
@@ -461,204 +481,262 @@ class FinancialAccountEquity implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets identifier
+     * Gets issuer_name
      *
      * @return string
      */
-    public function getIdentifier()
+    public function getIssuerName()
     {
-        return $this->container['identifier'];
+        return $this->container['issuer_name'];
     }
 
     /**
-     * Sets identifier
+     * Sets issuer_name
      *
-     * @param string $identifier identifier
+     * @param string $issuer_name issuer_name
      *
      * @return self
      */
-    public function setIdentifier($identifier)
+    public function setIssuerName($issuer_name)
     {
 
-        if (is_null($identifier)) {
-            throw new \InvalidArgumentException('non-nullable identifier cannot be null');
+        if (is_null($issuer_name)) {
+            throw new \InvalidArgumentException('non-nullable issuer_name cannot be null');
         }
 
-        $this->container['identifier'] = $identifier;
+        $this->container['issuer_name'] = $issuer_name;
 
         return $this;
     }
 
     /**
-     * Gets balance
+     * Gets exchange
+     *
+     * @return string
+     */
+    public function getExchange()
+    {
+        return $this->container['exchange'];
+    }
+
+    /**
+     * Sets exchange
+     *
+     * @param string $exchange exchange
+     *
+     * @return self
+     */
+    public function setExchange($exchange)
+    {
+
+        if (is_null($exchange)) {
+            throw new \InvalidArgumentException('non-nullable exchange cannot be null');
+        }
+
+        $this->container['exchange'] = $exchange;
+
+        return $this;
+    }
+
+    /**
+     * Gets isin
+     *
+     * @return string
+     */
+    public function getIsin()
+    {
+        return $this->container['isin'];
+    }
+
+    /**
+     * Sets isin
+     *
+     * @param string $isin isin
+     *
+     * @return self
+     */
+    public function setIsin($isin)
+    {
+
+        if (is_null($isin)) {
+            throw new \InvalidArgumentException('non-nullable isin cannot be null');
+        }
+
+        $this->container['isin'] = $isin;
+
+        return $this;
+    }
+
+    /**
+     * Gets units
+     *
+     * @return int
+     */
+    public function getUnits()
+    {
+        return $this->container['units'];
+    }
+
+    /**
+     * Sets units
+     *
+     * @param int $units units
+     *
+     * @return self
+     */
+    public function setUnits($units)
+    {
+
+        if (is_null($units)) {
+            throw new \InvalidArgumentException('non-nullable units cannot be null');
+        }
+
+        $this->container['units'] = $units;
+
+        return $this;
+    }
+
+    /**
+     * Gets investment_value
      *
      * @return float
      */
-    public function getBalance()
+    public function getInvestmentValue()
     {
-        return $this->container['balance'];
+        return $this->container['investment_value'];
     }
 
     /**
-     * Sets balance
+     * Sets investment_value
      *
-     * @param float $balance balance
+     * @param float $investment_value investment_value
      *
      * @return self
      */
-    public function setBalance($balance)
+    public function setInvestmentValue($investment_value)
     {
 
-        if (is_null($balance)) {
-            throw new \InvalidArgumentException('non-nullable balance cannot be null');
+        if (is_null($investment_value)) {
+            throw new \InvalidArgumentException('non-nullable investment_value cannot be null');
         }
 
-        $this->container['balance'] = $balance;
+        $this->container['investment_value'] = $investment_value;
 
         return $this;
     }
 
     /**
-     * Gets profile
-     *
-     * @return \MyDataMyConsent\Model\Profile
-     */
-    public function getProfile()
-    {
-        return $this->container['profile'];
-    }
-
-    /**
-     * Sets profile
-     *
-     * @param \MyDataMyConsent\Model\Profile $profile profile
-     *
-     * @return self
-     */
-    public function setProfile($profile)
-    {
-
-        if (is_null($profile)) {
-            throw new \InvalidArgumentException('non-nullable profile cannot be null');
-        }
-
-        $this->container['profile'] = $profile;
-
-        return $this;
-    }
-
-    /**
-     * Gets summary
-     *
-     * @return \MyDataMyConsent\Model\EquitySummary
-     */
-    public function getSummary()
-    {
-        return $this->container['summary'];
-    }
-
-    /**
-     * Sets summary
-     *
-     * @param \MyDataMyConsent\Model\EquitySummary $summary summary
-     *
-     * @return self
-     */
-    public function setSummary($summary)
-    {
-
-        if (is_null($summary)) {
-            throw new \InvalidArgumentException('non-nullable summary cannot be null');
-        }
-
-        $this->container['summary'] = $summary;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_account_number
-     *
-     * @return string
-     */
-    public function getMaskedAccountNumber()
-    {
-        return $this->container['masked_account_number'];
-    }
-
-    /**
-     * Sets masked_account_number
-     *
-     * @param string $masked_account_number masked_account_number
-     *
-     * @return self
-     */
-    public function setMaskedAccountNumber($masked_account_number)
-    {
-
-        if (is_null($masked_account_number)) {
-            throw new \InvalidArgumentException('non-nullable masked_account_number cannot be null');
-        }
-
-        $this->container['masked_account_number'] = $masked_account_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets linked_account_ref
-     *
-     * @return string
-     */
-    public function getLinkedAccountRef()
-    {
-        return $this->container['linked_account_ref'];
-    }
-
-    /**
-     * Sets linked_account_ref
-     *
-     * @param string $linked_account_ref linked_account_ref
-     *
-     * @return self
-     */
-    public function setLinkedAccountRef($linked_account_ref)
-    {
-
-        if (is_null($linked_account_ref)) {
-            throw new \InvalidArgumentException('non-nullable linked_account_ref cannot be null');
-        }
-
-        $this->container['linked_account_ref'] = $linked_account_ref;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
+     * Gets current_value
      *
      * @return float
      */
-    public function getVersion()
+    public function getCurrentValue()
     {
-        return $this->container['version'];
+        return $this->container['current_value'];
     }
 
     /**
-     * Sets version
+     * Sets current_value
      *
-     * @param float $version version
+     * @param float $current_value current_value
      *
      * @return self
      */
-    public function setVersion($version)
+    public function setCurrentValue($current_value)
     {
 
-        if (is_null($version)) {
-            throw new \InvalidArgumentException('non-nullable version cannot be null');
+        if (is_null($current_value)) {
+            throw new \InvalidArgumentException('non-nullable current_value cannot be null');
         }
 
-        $this->container['version'] = $version;
+        $this->container['current_value'] = $current_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency_code
+     *
+     * @return string
+     */
+    public function getCurrencyCode()
+    {
+        return $this->container['currency_code'];
+    }
+
+    /**
+     * Sets currency_code
+     *
+     * @param string $currency_code currency_code
+     *
+     * @return self
+     */
+    public function setCurrencyCode($currency_code)
+    {
+
+        if (is_null($currency_code)) {
+            throw new \InvalidArgumentException('non-nullable currency_code cannot be null');
+        }
+
+        $this->container['currency_code'] = $currency_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets holder
+     *
+     * @return \MyDataMyConsent\Model\Holder
+     */
+    public function getHolder()
+    {
+        return $this->container['holder'];
+    }
+
+    /**
+     * Sets holder
+     *
+     * @param \MyDataMyConsent\Model\Holder $holder holder
+     *
+     * @return self
+     */
+    public function setHolder($holder)
+    {
+
+        if (is_null($holder)) {
+            throw new \InvalidArgumentException('non-nullable holder cannot be null');
+        }
+
+        $this->container['holder'] = $holder;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactions
+     *
+     * @return bool
+     */
+    public function getTransactions()
+    {
+        return $this->container['transactions'];
+    }
+
+    /**
+     * Sets transactions
+     *
+     * @param bool $transactions transactions
+     *
+     * @return self
+     */
+    public function setTransactions($transactions)
+    {
+
+        if (is_null($transactions)) {
+            throw new \InvalidArgumentException('non-nullable transactions cannot be null');
+        }
+
+        $this->container['transactions'] = $transactions;
 
         return $this;
     }

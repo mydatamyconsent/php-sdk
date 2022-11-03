@@ -61,14 +61,26 @@ class FinancialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'string',
         'id' => 'string',
         'name' => 'string',
-        'identifier' => 'string',
-        'balance' => 'float',
-        'profile' => '\MyDataMyConsent\Model\Profile',
-        'summary' => '\MyDataMyConsent\Model\EquitySummary',
-        'masked_account_number' => 'string',
-        'linked_account_ref' => 'string',
-        'version' => 'float',
-        'amount' => 'float'
+        'issuer_name' => 'string',
+        'exchange' => 'string',
+        'isin' => 'string',
+        'units' => 'float',
+        'investment_value' => 'float',
+        'current_value' => 'float',
+        'currency_code' => 'string',
+        'holder' => '\MyDataMyConsent\Model\Holder',
+        'transactions' => 'bool',
+        'amc' => 'string',
+        'registrar' => 'string',
+        'fund_name' => 'string',
+        'folio_number' => 'string',
+        'scheme_code' => 'string',
+        'fund_type' => 'string',
+        'fund_category' => 'string',
+        'lien_units' => 'string',
+        'creation_date' => '\DateTime',
+        'plan_info' => '\MyDataMyConsent\Model\SipPlanInformation',
+        'investment_info' => '\MyDataMyConsent\Model\SipInvestmentInformation'
     ];
 
     /**
@@ -82,14 +94,26 @@ class FinancialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'id' => null,
         'name' => null,
-        'identifier' => null,
-        'balance' => 'double',
-        'profile' => null,
-        'summary' => null,
-        'masked_account_number' => null,
-        'linked_account_ref' => null,
-        'version' => 'float',
-        'amount' => 'double'
+        'issuer_name' => null,
+        'exchange' => null,
+        'isin' => null,
+        'units' => 'double',
+        'investment_value' => 'double',
+        'current_value' => 'double',
+        'currency_code' => null,
+        'holder' => null,
+        'transactions' => null,
+        'amc' => null,
+        'registrar' => null,
+        'fund_name' => null,
+        'folio_number' => null,
+        'scheme_code' => null,
+        'fund_type' => null,
+        'fund_category' => null,
+        'lien_units' => null,
+        'creation_date' => 'date-time',
+        'plan_info' => null,
+        'investment_info' => null
     ];
 
     /**
@@ -101,14 +125,26 @@ class FinancialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => false,
 		'id' => false,
 		'name' => false,
-		'identifier' => false,
-		'balance' => false,
-		'profile' => false,
-		'summary' => false,
-		'masked_account_number' => false,
-		'linked_account_ref' => false,
-		'version' => false,
-		'amount' => false
+		'issuer_name' => false,
+		'exchange' => false,
+		'isin' => false,
+		'units' => false,
+		'investment_value' => false,
+		'current_value' => false,
+		'currency_code' => false,
+		'holder' => false,
+		'transactions' => false,
+		'amc' => false,
+		'registrar' => false,
+		'fund_name' => false,
+		'folio_number' => false,
+		'scheme_code' => false,
+		'fund_type' => false,
+		'fund_category' => false,
+		'lien_units' => false,
+		'creation_date' => false,
+		'plan_info' => false,
+		'investment_info' => false
     ];
 
     /**
@@ -190,14 +226,26 @@ class FinancialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'type',
         'id' => 'id',
         'name' => 'name',
-        'identifier' => 'identifier',
-        'balance' => 'balance',
-        'profile' => 'profile',
-        'summary' => 'summary',
-        'masked_account_number' => 'masked_account_number',
-        'linked_account_ref' => 'linked_account_ref',
-        'version' => 'version',
-        'amount' => 'amount'
+        'issuer_name' => 'issuer_name',
+        'exchange' => 'exchange',
+        'isin' => 'isin',
+        'units' => 'units',
+        'investment_value' => 'investment_value',
+        'current_value' => 'current_value',
+        'currency_code' => 'currency_code',
+        'holder' => 'holder',
+        'transactions' => 'transactions',
+        'amc' => 'amc',
+        'registrar' => 'registrar',
+        'fund_name' => 'fund_name',
+        'folio_number' => 'folio_number',
+        'scheme_code' => 'scheme_code',
+        'fund_type' => 'fund_type',
+        'fund_category' => 'fund_category',
+        'lien_units' => 'lien_units',
+        'creation_date' => 'creation_date',
+        'plan_info' => 'plan_info',
+        'investment_info' => 'investment_info'
     ];
 
     /**
@@ -209,14 +257,26 @@ class FinancialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'id' => 'setId',
         'name' => 'setName',
-        'identifier' => 'setIdentifier',
-        'balance' => 'setBalance',
-        'profile' => 'setProfile',
-        'summary' => 'setSummary',
-        'masked_account_number' => 'setMaskedAccountNumber',
-        'linked_account_ref' => 'setLinkedAccountRef',
-        'version' => 'setVersion',
-        'amount' => 'setAmount'
+        'issuer_name' => 'setIssuerName',
+        'exchange' => 'setExchange',
+        'isin' => 'setIsin',
+        'units' => 'setUnits',
+        'investment_value' => 'setInvestmentValue',
+        'current_value' => 'setCurrentValue',
+        'currency_code' => 'setCurrencyCode',
+        'holder' => 'setHolder',
+        'transactions' => 'setTransactions',
+        'amc' => 'setAmc',
+        'registrar' => 'setRegistrar',
+        'fund_name' => 'setFundName',
+        'folio_number' => 'setFolioNumber',
+        'scheme_code' => 'setSchemeCode',
+        'fund_type' => 'setFundType',
+        'fund_category' => 'setFundCategory',
+        'lien_units' => 'setLienUnits',
+        'creation_date' => 'setCreationDate',
+        'plan_info' => 'setPlanInfo',
+        'investment_info' => 'setInvestmentInfo'
     ];
 
     /**
@@ -228,14 +288,26 @@ class FinancialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'id' => 'getId',
         'name' => 'getName',
-        'identifier' => 'getIdentifier',
-        'balance' => 'getBalance',
-        'profile' => 'getProfile',
-        'summary' => 'getSummary',
-        'masked_account_number' => 'getMaskedAccountNumber',
-        'linked_account_ref' => 'getLinkedAccountRef',
-        'version' => 'getVersion',
-        'amount' => 'getAmount'
+        'issuer_name' => 'getIssuerName',
+        'exchange' => 'getExchange',
+        'isin' => 'getIsin',
+        'units' => 'getUnits',
+        'investment_value' => 'getInvestmentValue',
+        'current_value' => 'getCurrentValue',
+        'currency_code' => 'getCurrencyCode',
+        'holder' => 'getHolder',
+        'transactions' => 'getTransactions',
+        'amc' => 'getAmc',
+        'registrar' => 'getRegistrar',
+        'fund_name' => 'getFundName',
+        'folio_number' => 'getFolioNumber',
+        'scheme_code' => 'getSchemeCode',
+        'fund_type' => 'getFundType',
+        'fund_category' => 'getFundCategory',
+        'lien_units' => 'getLienUnits',
+        'creation_date' => 'getCreationDate',
+        'plan_info' => 'getPlanInfo',
+        'investment_info' => 'getInvestmentInfo'
     ];
 
     /**
@@ -298,14 +370,26 @@ class FinancialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('identifier', $data ?? [], null);
-        $this->setIfExists('balance', $data ?? [], null);
-        $this->setIfExists('profile', $data ?? [], null);
-        $this->setIfExists('summary', $data ?? [], null);
-        $this->setIfExists('masked_account_number', $data ?? [], null);
-        $this->setIfExists('linked_account_ref', $data ?? [], null);
-        $this->setIfExists('version', $data ?? [], null);
-        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('issuer_name', $data ?? [], null);
+        $this->setIfExists('exchange', $data ?? [], null);
+        $this->setIfExists('isin', $data ?? [], null);
+        $this->setIfExists('units', $data ?? [], null);
+        $this->setIfExists('investment_value', $data ?? [], null);
+        $this->setIfExists('current_value', $data ?? [], null);
+        $this->setIfExists('currency_code', $data ?? [], null);
+        $this->setIfExists('holder', $data ?? [], null);
+        $this->setIfExists('transactions', $data ?? [], null);
+        $this->setIfExists('amc', $data ?? [], null);
+        $this->setIfExists('registrar', $data ?? [], null);
+        $this->setIfExists('fund_name', $data ?? [], null);
+        $this->setIfExists('folio_number', $data ?? [], null);
+        $this->setIfExists('scheme_code', $data ?? [], null);
+        $this->setIfExists('fund_type', $data ?? [], null);
+        $this->setIfExists('fund_category', $data ?? [], null);
+        $this->setIfExists('lien_units', $data ?? [], null);
+        $this->setIfExists('creation_date', $data ?? [], null);
+        $this->setIfExists('plan_info', $data ?? [], null);
+        $this->setIfExists('investment_info', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['type'] = static::$openAPIModelName;
@@ -347,29 +431,44 @@ class FinancialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['identifier'] === null) {
-            $invalidProperties[] = "'identifier' can't be null";
+        if ($this->container['issuer_name'] === null) {
+            $invalidProperties[] = "'issuer_name' can't be null";
         }
-        if ($this->container['balance'] === null) {
-            $invalidProperties[] = "'balance' can't be null";
+        if ($this->container['exchange'] === null) {
+            $invalidProperties[] = "'exchange' can't be null";
         }
-        if ($this->container['profile'] === null) {
-            $invalidProperties[] = "'profile' can't be null";
+        if ($this->container['isin'] === null) {
+            $invalidProperties[] = "'isin' can't be null";
         }
-        if ($this->container['summary'] === null) {
-            $invalidProperties[] = "'summary' can't be null";
+        if ($this->container['units'] === null) {
+            $invalidProperties[] = "'units' can't be null";
         }
-        if ($this->container['masked_account_number'] === null) {
-            $invalidProperties[] = "'masked_account_number' can't be null";
+        if ($this->container['investment_value'] === null) {
+            $invalidProperties[] = "'investment_value' can't be null";
         }
-        if ($this->container['linked_account_ref'] === null) {
-            $invalidProperties[] = "'linked_account_ref' can't be null";
+        if ($this->container['current_value'] === null) {
+            $invalidProperties[] = "'current_value' can't be null";
         }
-        if ($this->container['version'] === null) {
-            $invalidProperties[] = "'version' can't be null";
+        if ($this->container['currency_code'] === null) {
+            $invalidProperties[] = "'currency_code' can't be null";
         }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        if ($this->container['holder'] === null) {
+            $invalidProperties[] = "'holder' can't be null";
+        }
+        if ($this->container['transactions'] === null) {
+            $invalidProperties[] = "'transactions' can't be null";
+        }
+        if ($this->container['fund_name'] === null) {
+            $invalidProperties[] = "'fund_name' can't be null";
+        }
+        if ($this->container['folio_number'] === null) {
+            $invalidProperties[] = "'folio_number' can't be null";
+        }
+        if ($this->container['plan_info'] === null) {
+            $invalidProperties[] = "'plan_info' can't be null";
+        }
+        if ($this->container['investment_info'] === null) {
+            $invalidProperties[] = "'investment_info' can't be null";
         }
         return $invalidProperties;
     }
@@ -474,233 +573,581 @@ class FinancialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets identifier
+     * Gets issuer_name
      *
      * @return string
      */
-    public function getIdentifier()
+    public function getIssuerName()
     {
-        return $this->container['identifier'];
+        return $this->container['issuer_name'];
     }
 
     /**
-     * Sets identifier
+     * Sets issuer_name
      *
-     * @param string $identifier identifier
+     * @param string $issuer_name issuer_name
      *
      * @return self
      */
-    public function setIdentifier($identifier)
+    public function setIssuerName($issuer_name)
     {
 
-        if (is_null($identifier)) {
-            throw new \InvalidArgumentException('non-nullable identifier cannot be null');
+        if (is_null($issuer_name)) {
+            throw new \InvalidArgumentException('non-nullable issuer_name cannot be null');
         }
 
-        $this->container['identifier'] = $identifier;
+        $this->container['issuer_name'] = $issuer_name;
 
         return $this;
     }
 
     /**
-     * Gets balance
-     *
-     * @return float
-     */
-    public function getBalance()
-    {
-        return $this->container['balance'];
-    }
-
-    /**
-     * Sets balance
-     *
-     * @param float $balance balance
-     *
-     * @return self
-     */
-    public function setBalance($balance)
-    {
-
-        if (is_null($balance)) {
-            throw new \InvalidArgumentException('non-nullable balance cannot be null');
-        }
-
-        $this->container['balance'] = $balance;
-
-        return $this;
-    }
-
-    /**
-     * Gets profile
-     *
-     * @return \MyDataMyConsent\Model\Profile
-     */
-    public function getProfile()
-    {
-        return $this->container['profile'];
-    }
-
-    /**
-     * Sets profile
-     *
-     * @param \MyDataMyConsent\Model\Profile $profile profile
-     *
-     * @return self
-     */
-    public function setProfile($profile)
-    {
-
-        if (is_null($profile)) {
-            throw new \InvalidArgumentException('non-nullable profile cannot be null');
-        }
-
-        $this->container['profile'] = $profile;
-
-        return $this;
-    }
-
-    /**
-     * Gets summary
-     *
-     * @return \MyDataMyConsent\Model\EquitySummary
-     */
-    public function getSummary()
-    {
-        return $this->container['summary'];
-    }
-
-    /**
-     * Sets summary
-     *
-     * @param \MyDataMyConsent\Model\EquitySummary $summary summary
-     *
-     * @return self
-     */
-    public function setSummary($summary)
-    {
-
-        if (is_null($summary)) {
-            throw new \InvalidArgumentException('non-nullable summary cannot be null');
-        }
-
-        $this->container['summary'] = $summary;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_account_number
+     * Gets exchange
      *
      * @return string
      */
-    public function getMaskedAccountNumber()
+    public function getExchange()
     {
-        return $this->container['masked_account_number'];
+        return $this->container['exchange'];
     }
 
     /**
-     * Sets masked_account_number
+     * Sets exchange
      *
-     * @param string $masked_account_number masked_account_number
+     * @param string $exchange exchange
      *
      * @return self
      */
-    public function setMaskedAccountNumber($masked_account_number)
+    public function setExchange($exchange)
     {
 
-        if (is_null($masked_account_number)) {
-            throw new \InvalidArgumentException('non-nullable masked_account_number cannot be null');
+        if (is_null($exchange)) {
+            throw new \InvalidArgumentException('non-nullable exchange cannot be null');
         }
 
-        $this->container['masked_account_number'] = $masked_account_number;
+        $this->container['exchange'] = $exchange;
 
         return $this;
     }
 
     /**
-     * Gets linked_account_ref
+     * Gets isin
      *
      * @return string
      */
-    public function getLinkedAccountRef()
+    public function getIsin()
     {
-        return $this->container['linked_account_ref'];
+        return $this->container['isin'];
     }
 
     /**
-     * Sets linked_account_ref
+     * Sets isin
      *
-     * @param string $linked_account_ref linked_account_ref
+     * @param string $isin isin
      *
      * @return self
      */
-    public function setLinkedAccountRef($linked_account_ref)
+    public function setIsin($isin)
     {
 
-        if (is_null($linked_account_ref)) {
-            throw new \InvalidArgumentException('non-nullable linked_account_ref cannot be null');
+        if (is_null($isin)) {
+            throw new \InvalidArgumentException('non-nullable isin cannot be null');
         }
 
-        $this->container['linked_account_ref'] = $linked_account_ref;
+        $this->container['isin'] = $isin;
 
         return $this;
     }
 
     /**
-     * Gets version
+     * Gets units
      *
      * @return float
      */
-    public function getVersion()
+    public function getUnits()
     {
-        return $this->container['version'];
+        return $this->container['units'];
     }
 
     /**
-     * Sets version
+     * Sets units
      *
-     * @param float $version version
+     * @param float $units units
      *
      * @return self
      */
-    public function setVersion($version)
+    public function setUnits($units)
     {
 
-        if (is_null($version)) {
-            throw new \InvalidArgumentException('non-nullable version cannot be null');
+        if (is_null($units)) {
+            throw new \InvalidArgumentException('non-nullable units cannot be null');
         }
 
-        $this->container['version'] = $version;
+        $this->container['units'] = $units;
 
         return $this;
     }
 
     /**
-     * Gets amount
+     * Gets investment_value
      *
      * @return float
      */
-    public function getAmount()
+    public function getInvestmentValue()
     {
-        return $this->container['amount'];
+        return $this->container['investment_value'];
     }
 
     /**
-     * Sets amount
+     * Sets investment_value
      *
-     * @param float $amount amount
+     * @param float $investment_value investment_value
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setInvestmentValue($investment_value)
     {
 
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($investment_value)) {
+            throw new \InvalidArgumentException('non-nullable investment_value cannot be null');
         }
 
-        $this->container['amount'] = $amount;
+        $this->container['investment_value'] = $investment_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets current_value
+     *
+     * @return float
+     */
+    public function getCurrentValue()
+    {
+        return $this->container['current_value'];
+    }
+
+    /**
+     * Sets current_value
+     *
+     * @param float $current_value current_value
+     *
+     * @return self
+     */
+    public function setCurrentValue($current_value)
+    {
+
+        if (is_null($current_value)) {
+            throw new \InvalidArgumentException('non-nullable current_value cannot be null');
+        }
+
+        $this->container['current_value'] = $current_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency_code
+     *
+     * @return string
+     */
+    public function getCurrencyCode()
+    {
+        return $this->container['currency_code'];
+    }
+
+    /**
+     * Sets currency_code
+     *
+     * @param string $currency_code currency_code
+     *
+     * @return self
+     */
+    public function setCurrencyCode($currency_code)
+    {
+
+        if (is_null($currency_code)) {
+            throw new \InvalidArgumentException('non-nullable currency_code cannot be null');
+        }
+
+        $this->container['currency_code'] = $currency_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets holder
+     *
+     * @return \MyDataMyConsent\Model\Holder
+     */
+    public function getHolder()
+    {
+        return $this->container['holder'];
+    }
+
+    /**
+     * Sets holder
+     *
+     * @param \MyDataMyConsent\Model\Holder $holder holder
+     *
+     * @return self
+     */
+    public function setHolder($holder)
+    {
+
+        if (is_null($holder)) {
+            throw new \InvalidArgumentException('non-nullable holder cannot be null');
+        }
+
+        $this->container['holder'] = $holder;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactions
+     *
+     * @return bool
+     */
+    public function getTransactions()
+    {
+        return $this->container['transactions'];
+    }
+
+    /**
+     * Sets transactions
+     *
+     * @param bool $transactions transactions
+     *
+     * @return self
+     */
+    public function setTransactions($transactions)
+    {
+
+        if (is_null($transactions)) {
+            throw new \InvalidArgumentException('non-nullable transactions cannot be null');
+        }
+
+        $this->container['transactions'] = $transactions;
+
+        return $this;
+    }
+
+    /**
+     * Gets amc
+     *
+     * @return string|null
+     */
+    public function getAmc()
+    {
+        return $this->container['amc'];
+    }
+
+    /**
+     * Sets amc
+     *
+     * @param string|null $amc amc
+     *
+     * @return self
+     */
+    public function setAmc($amc)
+    {
+
+        if (is_null($amc)) {
+            throw new \InvalidArgumentException('non-nullable amc cannot be null');
+        }
+
+        $this->container['amc'] = $amc;
+
+        return $this;
+    }
+
+    /**
+     * Gets registrar
+     *
+     * @return string|null
+     */
+    public function getRegistrar()
+    {
+        return $this->container['registrar'];
+    }
+
+    /**
+     * Sets registrar
+     *
+     * @param string|null $registrar registrar
+     *
+     * @return self
+     */
+    public function setRegistrar($registrar)
+    {
+
+        if (is_null($registrar)) {
+            throw new \InvalidArgumentException('non-nullable registrar cannot be null');
+        }
+
+        $this->container['registrar'] = $registrar;
+
+        return $this;
+    }
+
+    /**
+     * Gets fund_name
+     *
+     * @return string
+     */
+    public function getFundName()
+    {
+        return $this->container['fund_name'];
+    }
+
+    /**
+     * Sets fund_name
+     *
+     * @param string $fund_name fund_name
+     *
+     * @return self
+     */
+    public function setFundName($fund_name)
+    {
+
+        if (is_null($fund_name)) {
+            throw new \InvalidArgumentException('non-nullable fund_name cannot be null');
+        }
+
+        $this->container['fund_name'] = $fund_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets folio_number
+     *
+     * @return string
+     */
+    public function getFolioNumber()
+    {
+        return $this->container['folio_number'];
+    }
+
+    /**
+     * Sets folio_number
+     *
+     * @param string $folio_number folio_number
+     *
+     * @return self
+     */
+    public function setFolioNumber($folio_number)
+    {
+
+        if (is_null($folio_number)) {
+            throw new \InvalidArgumentException('non-nullable folio_number cannot be null');
+        }
+
+        $this->container['folio_number'] = $folio_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets scheme_code
+     *
+     * @return string|null
+     */
+    public function getSchemeCode()
+    {
+        return $this->container['scheme_code'];
+    }
+
+    /**
+     * Sets scheme_code
+     *
+     * @param string|null $scheme_code scheme_code
+     *
+     * @return self
+     */
+    public function setSchemeCode($scheme_code)
+    {
+
+        if (is_null($scheme_code)) {
+            throw new \InvalidArgumentException('non-nullable scheme_code cannot be null');
+        }
+
+        $this->container['scheme_code'] = $scheme_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets fund_type
+     *
+     * @return string|null
+     */
+    public function getFundType()
+    {
+        return $this->container['fund_type'];
+    }
+
+    /**
+     * Sets fund_type
+     *
+     * @param string|null $fund_type fund_type
+     *
+     * @return self
+     */
+    public function setFundType($fund_type)
+    {
+
+        if (is_null($fund_type)) {
+            throw new \InvalidArgumentException('non-nullable fund_type cannot be null');
+        }
+
+        $this->container['fund_type'] = $fund_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets fund_category
+     *
+     * @return string|null
+     */
+    public function getFundCategory()
+    {
+        return $this->container['fund_category'];
+    }
+
+    /**
+     * Sets fund_category
+     *
+     * @param string|null $fund_category fund_category
+     *
+     * @return self
+     */
+    public function setFundCategory($fund_category)
+    {
+
+        if (is_null($fund_category)) {
+            throw new \InvalidArgumentException('non-nullable fund_category cannot be null');
+        }
+
+        $this->container['fund_category'] = $fund_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets lien_units
+     *
+     * @return string|null
+     */
+    public function getLienUnits()
+    {
+        return $this->container['lien_units'];
+    }
+
+    /**
+     * Sets lien_units
+     *
+     * @param string|null $lien_units lien_units
+     *
+     * @return self
+     */
+    public function setLienUnits($lien_units)
+    {
+
+        if (is_null($lien_units)) {
+            throw new \InvalidArgumentException('non-nullable lien_units cannot be null');
+        }
+
+        $this->container['lien_units'] = $lien_units;
+
+        return $this;
+    }
+
+    /**
+     * Gets creation_date
+     *
+     * @return \DateTime|null
+     */
+    public function getCreationDate()
+    {
+        return $this->container['creation_date'];
+    }
+
+    /**
+     * Sets creation_date
+     *
+     * @param \DateTime|null $creation_date creation_date
+     *
+     * @return self
+     */
+    public function setCreationDate($creation_date)
+    {
+
+        if (is_null($creation_date)) {
+            throw new \InvalidArgumentException('non-nullable creation_date cannot be null');
+        }
+
+        $this->container['creation_date'] = $creation_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets plan_info
+     *
+     * @return \MyDataMyConsent\Model\SipPlanInformation
+     */
+    public function getPlanInfo()
+    {
+        return $this->container['plan_info'];
+    }
+
+    /**
+     * Sets plan_info
+     *
+     * @param \MyDataMyConsent\Model\SipPlanInformation $plan_info plan_info
+     *
+     * @return self
+     */
+    public function setPlanInfo($plan_info)
+    {
+
+        if (is_null($plan_info)) {
+            throw new \InvalidArgumentException('non-nullable plan_info cannot be null');
+        }
+
+        $this->container['plan_info'] = $plan_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets investment_info
+     *
+     * @return \MyDataMyConsent\Model\SipInvestmentInformation
+     */
+    public function getInvestmentInfo()
+    {
+        return $this->container['investment_info'];
+    }
+
+    /**
+     * Sets investment_info
+     *
+     * @param \MyDataMyConsent\Model\SipInvestmentInformation $investment_info investment_info
+     *
+     * @return self
+     */
+    public function setInvestmentInfo($investment_info)
+    {
+
+        if (is_null($investment_info)) {
+            throw new \InvalidArgumentException('non-nullable investment_info cannot be null');
+        }
+
+        $this->container['investment_info'] = $investment_info;
 
         return $this;
     }

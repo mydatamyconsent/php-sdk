@@ -1,6 +1,6 @@
 <?php
 /**
- * Holder
+ * SipInvestmentInformation
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * Holder Class Doc Comment
+ * SipInvestmentInformation Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -41,7 +41,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
+class SipInvestmentInformation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Holder';
+    protected static $openAPIModelName = 'SipInvestmentInformation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,12 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'date_of_birth' => '\DateTime',
-        'mobile' => 'string',
-        'demat_id' => 'string',
-        'email' => 'string',
-        'pan' => 'string'
+        'instalment_amount' => 'float',
+        'frequency' => 'string',
+        'completed_instalments' => 'float',
+        'investment_value' => 'float',
+        'last_instalment_date' => '\DateTime',
+        'next_instalment_date' => '\DateTime'
     ];
 
     /**
@@ -74,12 +74,12 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'date_of_birth' => 'date-time',
-        'mobile' => null,
-        'demat_id' => null,
-        'email' => null,
-        'pan' => null
+        'instalment_amount' => 'double',
+        'frequency' => null,
+        'completed_instalments' => 'double',
+        'investment_value' => 'double',
+        'last_instalment_date' => 'date-time',
+        'next_instalment_date' => 'date-time'
     ];
 
     /**
@@ -88,12 +88,12 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'date_of_birth' => false,
-		'mobile' => false,
-		'demat_id' => false,
-		'email' => false,
-		'pan' => false
+        'instalment_amount' => false,
+		'frequency' => false,
+		'completed_instalments' => false,
+		'investment_value' => false,
+		'last_instalment_date' => false,
+		'next_instalment_date' => false
     ];
 
     /**
@@ -172,12 +172,12 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'date_of_birth' => 'date_of_birth',
-        'mobile' => 'mobile',
-        'demat_id' => 'demat_id',
-        'email' => 'email',
-        'pan' => 'pan'
+        'instalment_amount' => 'instalment_amount',
+        'frequency' => 'frequency',
+        'completed_instalments' => 'completed_instalments',
+        'investment_value' => 'investment_value',
+        'last_instalment_date' => 'last_instalment_date',
+        'next_instalment_date' => 'next_instalment_date'
     ];
 
     /**
@@ -186,12 +186,12 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'date_of_birth' => 'setDateOfBirth',
-        'mobile' => 'setMobile',
-        'demat_id' => 'setDematId',
-        'email' => 'setEmail',
-        'pan' => 'setPan'
+        'instalment_amount' => 'setInstalmentAmount',
+        'frequency' => 'setFrequency',
+        'completed_instalments' => 'setCompletedInstalments',
+        'investment_value' => 'setInvestmentValue',
+        'last_instalment_date' => 'setLastInstalmentDate',
+        'next_instalment_date' => 'setNextInstalmentDate'
     ];
 
     /**
@@ -200,12 +200,12 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'date_of_birth' => 'getDateOfBirth',
-        'mobile' => 'getMobile',
-        'demat_id' => 'getDematId',
-        'email' => 'getEmail',
-        'pan' => 'getPan'
+        'instalment_amount' => 'getInstalmentAmount',
+        'frequency' => 'getFrequency',
+        'completed_instalments' => 'getCompletedInstalments',
+        'investment_value' => 'getInvestmentValue',
+        'last_instalment_date' => 'getLastInstalmentDate',
+        'next_instalment_date' => 'getNextInstalmentDate'
     ];
 
     /**
@@ -265,12 +265,12 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('date_of_birth', $data ?? [], null);
-        $this->setIfExists('mobile', $data ?? [], null);
-        $this->setIfExists('demat_id', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('pan', $data ?? [], null);
+        $this->setIfExists('instalment_amount', $data ?? [], null);
+        $this->setIfExists('frequency', $data ?? [], null);
+        $this->setIfExists('completed_instalments', $data ?? [], null);
+        $this->setIfExists('investment_value', $data ?? [], null);
+        $this->setIfExists('last_instalment_date', $data ?? [], null);
+        $this->setIfExists('next_instalment_date', $data ?? [], null);
     }
 
     /**
@@ -300,14 +300,17 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['instalment_amount'] === null) {
+            $invalidProperties[] = "'instalment_amount' can't be null";
         }
-        if ($this->container['demat_id'] === null) {
-            $invalidProperties[] = "'demat_id' can't be null";
+        if ($this->container['frequency'] === null) {
+            $invalidProperties[] = "'frequency' can't be null";
         }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
+        if ($this->container['completed_instalments'] === null) {
+            $invalidProperties[] = "'completed_instalments' can't be null";
+        }
+        if ($this->container['investment_value'] === null) {
+            $invalidProperties[] = "'investment_value' can't be null";
         }
         return $invalidProperties;
     }
@@ -325,175 +328,175 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets instalment_amount
      *
-     * @return string
+     * @return float
      */
-    public function getName()
+    public function getInstalmentAmount()
     {
-        return $this->container['name'];
+        return $this->container['instalment_amount'];
     }
 
     /**
-     * Sets name
+     * Sets instalment_amount
      *
-     * @param string $name name
+     * @param float $instalment_amount instalment_amount
      *
      * @return self
      */
-    public function setName($name)
+    public function setInstalmentAmount($instalment_amount)
     {
 
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($instalment_amount)) {
+            throw new \InvalidArgumentException('non-nullable instalment_amount cannot be null');
         }
 
-        $this->container['name'] = $name;
+        $this->container['instalment_amount'] = $instalment_amount;
 
         return $this;
     }
 
     /**
-     * Gets date_of_birth
+     * Gets frequency
+     *
+     * @return string
+     */
+    public function getFrequency()
+    {
+        return $this->container['frequency'];
+    }
+
+    /**
+     * Sets frequency
+     *
+     * @param string $frequency frequency
+     *
+     * @return self
+     */
+    public function setFrequency($frequency)
+    {
+
+        if (is_null($frequency)) {
+            throw new \InvalidArgumentException('non-nullable frequency cannot be null');
+        }
+
+        $this->container['frequency'] = $frequency;
+
+        return $this;
+    }
+
+    /**
+     * Gets completed_instalments
+     *
+     * @return float
+     */
+    public function getCompletedInstalments()
+    {
+        return $this->container['completed_instalments'];
+    }
+
+    /**
+     * Sets completed_instalments
+     *
+     * @param float $completed_instalments completed_instalments
+     *
+     * @return self
+     */
+    public function setCompletedInstalments($completed_instalments)
+    {
+
+        if (is_null($completed_instalments)) {
+            throw new \InvalidArgumentException('non-nullable completed_instalments cannot be null');
+        }
+
+        $this->container['completed_instalments'] = $completed_instalments;
+
+        return $this;
+    }
+
+    /**
+     * Gets investment_value
+     *
+     * @return float
+     */
+    public function getInvestmentValue()
+    {
+        return $this->container['investment_value'];
+    }
+
+    /**
+     * Sets investment_value
+     *
+     * @param float $investment_value investment_value
+     *
+     * @return self
+     */
+    public function setInvestmentValue($investment_value)
+    {
+
+        if (is_null($investment_value)) {
+            throw new \InvalidArgumentException('non-nullable investment_value cannot be null');
+        }
+
+        $this->container['investment_value'] = $investment_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_instalment_date
      *
      * @return \DateTime|null
      */
-    public function getDateOfBirth()
+    public function getLastInstalmentDate()
     {
-        return $this->container['date_of_birth'];
+        return $this->container['last_instalment_date'];
     }
 
     /**
-     * Sets date_of_birth
+     * Sets last_instalment_date
      *
-     * @param \DateTime|null $date_of_birth date_of_birth
+     * @param \DateTime|null $last_instalment_date last_instalment_date
      *
      * @return self
      */
-    public function setDateOfBirth($date_of_birth)
+    public function setLastInstalmentDate($last_instalment_date)
     {
 
-        if (is_null($date_of_birth)) {
-            throw new \InvalidArgumentException('non-nullable date_of_birth cannot be null');
+        if (is_null($last_instalment_date)) {
+            throw new \InvalidArgumentException('non-nullable last_instalment_date cannot be null');
         }
 
-        $this->container['date_of_birth'] = $date_of_birth;
+        $this->container['last_instalment_date'] = $last_instalment_date;
 
         return $this;
     }
 
     /**
-     * Gets mobile
+     * Gets next_instalment_date
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getMobile()
+    public function getNextInstalmentDate()
     {
-        return $this->container['mobile'];
+        return $this->container['next_instalment_date'];
     }
 
     /**
-     * Sets mobile
+     * Sets next_instalment_date
      *
-     * @param string|null $mobile mobile
+     * @param \DateTime|null $next_instalment_date next_instalment_date
      *
      * @return self
      */
-    public function setMobile($mobile)
+    public function setNextInstalmentDate($next_instalment_date)
     {
 
-        if (is_null($mobile)) {
-            throw new \InvalidArgumentException('non-nullable mobile cannot be null');
+        if (is_null($next_instalment_date)) {
+            throw new \InvalidArgumentException('non-nullable next_instalment_date cannot be null');
         }
 
-        $this->container['mobile'] = $mobile;
-
-        return $this;
-    }
-
-    /**
-     * Gets demat_id
-     *
-     * @return string
-     */
-    public function getDematId()
-    {
-        return $this->container['demat_id'];
-    }
-
-    /**
-     * Sets demat_id
-     *
-     * @param string $demat_id demat_id
-     *
-     * @return self
-     */
-    public function setDematId($demat_id)
-    {
-
-        if (is_null($demat_id)) {
-            throw new \InvalidArgumentException('non-nullable demat_id cannot be null');
-        }
-
-        $this->container['demat_id'] = $demat_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string $email email
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
-        }
-
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets pan
-     *
-     * @return string|null
-     */
-    public function getPan()
-    {
-        return $this->container['pan'];
-    }
-
-    /**
-     * Sets pan
-     *
-     * @param string|null $pan pan
-     *
-     * @return self
-     */
-    public function setPan($pan)
-    {
-
-        if (is_null($pan)) {
-            throw new \InvalidArgumentException('non-nullable pan cannot be null');
-        }
-
-        $this->container['pan'] = $pan;
+        $this->container['next_instalment_date'] = $next_instalment_date;
 
         return $this;
     }

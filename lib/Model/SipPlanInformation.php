@@ -1,6 +1,6 @@
 <?php
 /**
- * Holder
+ * SipPlanInformation
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * Holder Class Doc Comment
+ * SipPlanInformation Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -41,7 +41,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
+class SipPlanInformation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Holder';
+    protected static $openAPIModelName = 'SipPlanInformation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,14 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'date_of_birth' => '\DateTime',
-        'mobile' => 'string',
-        'demat_id' => 'string',
-        'email' => 'string',
-        'pan' => 'string'
+        'amc' => 'string',
+        'registrar' => 'string',
+        'scheme' => 'string',
+        'isin' => 'string',
+        'folio_number' => 'string',
+        'nav' => 'string',
+        'dividend_type' => 'string',
+        'creation_date' => '\DateTime'
     ];
 
     /**
@@ -74,12 +76,14 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'date_of_birth' => 'date-time',
-        'mobile' => null,
-        'demat_id' => null,
-        'email' => null,
-        'pan' => null
+        'amc' => null,
+        'registrar' => null,
+        'scheme' => null,
+        'isin' => null,
+        'folio_number' => null,
+        'nav' => null,
+        'dividend_type' => null,
+        'creation_date' => 'date-time'
     ];
 
     /**
@@ -88,12 +92,14 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'date_of_birth' => false,
-		'mobile' => false,
-		'demat_id' => false,
-		'email' => false,
-		'pan' => false
+        'amc' => false,
+		'registrar' => false,
+		'scheme' => false,
+		'isin' => false,
+		'folio_number' => false,
+		'nav' => false,
+		'dividend_type' => false,
+		'creation_date' => false
     ];
 
     /**
@@ -172,12 +178,14 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'date_of_birth' => 'date_of_birth',
-        'mobile' => 'mobile',
-        'demat_id' => 'demat_id',
-        'email' => 'email',
-        'pan' => 'pan'
+        'amc' => 'amc',
+        'registrar' => 'registrar',
+        'scheme' => 'scheme',
+        'isin' => 'isin',
+        'folio_number' => 'folio_number',
+        'nav' => 'nav',
+        'dividend_type' => 'dividend_type',
+        'creation_date' => 'creation_date'
     ];
 
     /**
@@ -186,12 +194,14 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'date_of_birth' => 'setDateOfBirth',
-        'mobile' => 'setMobile',
-        'demat_id' => 'setDematId',
-        'email' => 'setEmail',
-        'pan' => 'setPan'
+        'amc' => 'setAmc',
+        'registrar' => 'setRegistrar',
+        'scheme' => 'setScheme',
+        'isin' => 'setIsin',
+        'folio_number' => 'setFolioNumber',
+        'nav' => 'setNav',
+        'dividend_type' => 'setDividendType',
+        'creation_date' => 'setCreationDate'
     ];
 
     /**
@@ -200,12 +210,14 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'date_of_birth' => 'getDateOfBirth',
-        'mobile' => 'getMobile',
-        'demat_id' => 'getDematId',
-        'email' => 'getEmail',
-        'pan' => 'getPan'
+        'amc' => 'getAmc',
+        'registrar' => 'getRegistrar',
+        'scheme' => 'getScheme',
+        'isin' => 'getIsin',
+        'folio_number' => 'getFolioNumber',
+        'nav' => 'getNav',
+        'dividend_type' => 'getDividendType',
+        'creation_date' => 'getCreationDate'
     ];
 
     /**
@@ -265,12 +277,14 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('date_of_birth', $data ?? [], null);
-        $this->setIfExists('mobile', $data ?? [], null);
-        $this->setIfExists('demat_id', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('pan', $data ?? [], null);
+        $this->setIfExists('amc', $data ?? [], null);
+        $this->setIfExists('registrar', $data ?? [], null);
+        $this->setIfExists('scheme', $data ?? [], null);
+        $this->setIfExists('isin', $data ?? [], null);
+        $this->setIfExists('folio_number', $data ?? [], null);
+        $this->setIfExists('nav', $data ?? [], null);
+        $this->setIfExists('dividend_type', $data ?? [], null);
+        $this->setIfExists('creation_date', $data ?? [], null);
     }
 
     /**
@@ -300,14 +314,14 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['scheme'] === null) {
+            $invalidProperties[] = "'scheme' can't be null";
         }
-        if ($this->container['demat_id'] === null) {
-            $invalidProperties[] = "'demat_id' can't be null";
+        if ($this->container['isin'] === null) {
+            $invalidProperties[] = "'isin' can't be null";
         }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
+        if ($this->container['dividend_type'] === null) {
+            $invalidProperties[] = "'dividend_type' can't be null";
         }
         return $invalidProperties;
     }
@@ -325,175 +339,233 @@ class Holder implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets amc
      *
-     * @return string
+     * @return string|null
      */
-    public function getName()
+    public function getAmc()
     {
-        return $this->container['name'];
+        return $this->container['amc'];
     }
 
     /**
-     * Sets name
+     * Sets amc
      *
-     * @param string $name name
+     * @param string|null $amc amc
      *
      * @return self
      */
-    public function setName($name)
+    public function setAmc($amc)
     {
 
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($amc)) {
+            throw new \InvalidArgumentException('non-nullable amc cannot be null');
         }
 
-        $this->container['name'] = $name;
+        $this->container['amc'] = $amc;
 
         return $this;
     }
 
     /**
-     * Gets date_of_birth
+     * Gets registrar
+     *
+     * @return string|null
+     */
+    public function getRegistrar()
+    {
+        return $this->container['registrar'];
+    }
+
+    /**
+     * Sets registrar
+     *
+     * @param string|null $registrar registrar
+     *
+     * @return self
+     */
+    public function setRegistrar($registrar)
+    {
+
+        if (is_null($registrar)) {
+            throw new \InvalidArgumentException('non-nullable registrar cannot be null');
+        }
+
+        $this->container['registrar'] = $registrar;
+
+        return $this;
+    }
+
+    /**
+     * Gets scheme
+     *
+     * @return string
+     */
+    public function getScheme()
+    {
+        return $this->container['scheme'];
+    }
+
+    /**
+     * Sets scheme
+     *
+     * @param string $scheme scheme
+     *
+     * @return self
+     */
+    public function setScheme($scheme)
+    {
+
+        if (is_null($scheme)) {
+            throw new \InvalidArgumentException('non-nullable scheme cannot be null');
+        }
+
+        $this->container['scheme'] = $scheme;
+
+        return $this;
+    }
+
+    /**
+     * Gets isin
+     *
+     * @return string
+     */
+    public function getIsin()
+    {
+        return $this->container['isin'];
+    }
+
+    /**
+     * Sets isin
+     *
+     * @param string $isin isin
+     *
+     * @return self
+     */
+    public function setIsin($isin)
+    {
+
+        if (is_null($isin)) {
+            throw new \InvalidArgumentException('non-nullable isin cannot be null');
+        }
+
+        $this->container['isin'] = $isin;
+
+        return $this;
+    }
+
+    /**
+     * Gets folio_number
+     *
+     * @return string|null
+     */
+    public function getFolioNumber()
+    {
+        return $this->container['folio_number'];
+    }
+
+    /**
+     * Sets folio_number
+     *
+     * @param string|null $folio_number folio_number
+     *
+     * @return self
+     */
+    public function setFolioNumber($folio_number)
+    {
+
+        if (is_null($folio_number)) {
+            throw new \InvalidArgumentException('non-nullable folio_number cannot be null');
+        }
+
+        $this->container['folio_number'] = $folio_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets nav
+     *
+     * @return string|null
+     */
+    public function getNav()
+    {
+        return $this->container['nav'];
+    }
+
+    /**
+     * Sets nav
+     *
+     * @param string|null $nav nav
+     *
+     * @return self
+     */
+    public function setNav($nav)
+    {
+
+        if (is_null($nav)) {
+            throw new \InvalidArgumentException('non-nullable nav cannot be null');
+        }
+
+        $this->container['nav'] = $nav;
+
+        return $this;
+    }
+
+    /**
+     * Gets dividend_type
+     *
+     * @return string
+     */
+    public function getDividendType()
+    {
+        return $this->container['dividend_type'];
+    }
+
+    /**
+     * Sets dividend_type
+     *
+     * @param string $dividend_type dividend_type
+     *
+     * @return self
+     */
+    public function setDividendType($dividend_type)
+    {
+
+        if (is_null($dividend_type)) {
+            throw new \InvalidArgumentException('non-nullable dividend_type cannot be null');
+        }
+
+        $this->container['dividend_type'] = $dividend_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets creation_date
      *
      * @return \DateTime|null
      */
-    public function getDateOfBirth()
+    public function getCreationDate()
     {
-        return $this->container['date_of_birth'];
+        return $this->container['creation_date'];
     }
 
     /**
-     * Sets date_of_birth
+     * Sets creation_date
      *
-     * @param \DateTime|null $date_of_birth date_of_birth
+     * @param \DateTime|null $creation_date creation_date
      *
      * @return self
      */
-    public function setDateOfBirth($date_of_birth)
+    public function setCreationDate($creation_date)
     {
 
-        if (is_null($date_of_birth)) {
-            throw new \InvalidArgumentException('non-nullable date_of_birth cannot be null');
+        if (is_null($creation_date)) {
+            throw new \InvalidArgumentException('non-nullable creation_date cannot be null');
         }
 
-        $this->container['date_of_birth'] = $date_of_birth;
-
-        return $this;
-    }
-
-    /**
-     * Gets mobile
-     *
-     * @return string|null
-     */
-    public function getMobile()
-    {
-        return $this->container['mobile'];
-    }
-
-    /**
-     * Sets mobile
-     *
-     * @param string|null $mobile mobile
-     *
-     * @return self
-     */
-    public function setMobile($mobile)
-    {
-
-        if (is_null($mobile)) {
-            throw new \InvalidArgumentException('non-nullable mobile cannot be null');
-        }
-
-        $this->container['mobile'] = $mobile;
-
-        return $this;
-    }
-
-    /**
-     * Gets demat_id
-     *
-     * @return string
-     */
-    public function getDematId()
-    {
-        return $this->container['demat_id'];
-    }
-
-    /**
-     * Sets demat_id
-     *
-     * @param string $demat_id demat_id
-     *
-     * @return self
-     */
-    public function setDematId($demat_id)
-    {
-
-        if (is_null($demat_id)) {
-            throw new \InvalidArgumentException('non-nullable demat_id cannot be null');
-        }
-
-        $this->container['demat_id'] = $demat_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string $email email
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
-        }
-
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets pan
-     *
-     * @return string|null
-     */
-    public function getPan()
-    {
-        return $this->container['pan'];
-    }
-
-    /**
-     * Sets pan
-     *
-     * @param string|null $pan pan
-     *
-     * @return self
-     */
-    public function setPan($pan)
-    {
-
-        if (is_null($pan)) {
-            throw new \InvalidArgumentException('non-nullable pan cannot be null');
-        }
-
-        $this->container['pan'] = $pan;
+        $this->container['creation_date'] = $creation_date;
 
         return $this;
     }
