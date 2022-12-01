@@ -1,4 +1,4 @@
-# # FinancialAccountMutualFundTransaction
+# # FinancialAccountTransactionMutualFundTransaction
 
 ## Properties
 

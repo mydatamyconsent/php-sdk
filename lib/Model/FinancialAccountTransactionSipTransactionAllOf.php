@@ -1,6 +1,6 @@
 <?php
 /**
- * FinancialAccountSipTransaction
+ * FinancialAccountTransactionSipTransactionAllOf
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * FinancialAccountSipTransaction Class Doc Comment
+ * FinancialAccountTransactionSipTransactionAllOf Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -41,7 +41,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \JsonSerializable
+class FinancialAccountTransactionSipTransactionAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FinancialAccountSipTransaction';
+    protected static $openAPIModelName = 'FinancialAccountTransaction_SipTransaction_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'id' => 'string'
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +69,7 @@ class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'id' => null
+        'type' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-		'id' => false
+        'type' => false
     ];
 
     /**
@@ -160,8 +157,7 @@ class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'id' => 'id'
+        'type' => 'type'
     ];
 
     /**
@@ -170,8 +166,7 @@ class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'id' => 'setId'
+        'type' => 'setType'
     ];
 
     /**
@@ -180,8 +175,7 @@ class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'id' => 'getId'
+        'type' => 'getType'
     ];
 
     /**
@@ -242,7 +236,6 @@ class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \Js
     public function __construct(array $data = null)
     {
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -274,9 +267,6 @@ class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \Js
 
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -318,35 +308,6 @@ class FinancialAccountSipTransaction implements ModelInterface, ArrayAccess, \Js
         }
 
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-
-        $this->container['id'] = $id;
 
         return $this;
     }

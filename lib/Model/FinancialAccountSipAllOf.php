@@ -50,7 +50,7 @@ class FinancialAccountSipAllOf implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FinancialAccountSip_allOf';
+    protected static $openAPIModelName = 'FinancialAccount_Sip_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

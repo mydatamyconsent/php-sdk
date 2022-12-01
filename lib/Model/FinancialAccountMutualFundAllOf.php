@@ -50,7 +50,7 @@ class FinancialAccountMutualFundAllOf implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FinancialAccountMutualFund_allOf';
+    protected static $openAPIModelName = 'FinancialAccount_MutualFund_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

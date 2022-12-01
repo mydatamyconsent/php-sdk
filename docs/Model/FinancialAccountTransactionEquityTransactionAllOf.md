@@ -1,4 +1,4 @@
-# # FinancialAccountSipTransactionAllOf
+# # FinancialAccountTransactionEquityTransactionAllOf
 
 ## Properties
 

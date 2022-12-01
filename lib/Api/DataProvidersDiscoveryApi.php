@@ -485,11 +485,11 @@ class DataProvidersDiscoveryApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -883,11 +883,11 @@ class DataProvidersDiscoveryApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }

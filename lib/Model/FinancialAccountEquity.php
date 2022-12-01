@@ -50,7 +50,7 @@ class FinancialAccountEquity implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FinancialAccountEquity';
+    protected static $openAPIModelName = 'FinancialAccount_Equity';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

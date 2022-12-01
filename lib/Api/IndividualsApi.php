@@ -446,12 +446,12 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
+                ['application/json; charset=utf-8'],
+                ['application/json; charset=utf-8']
             );
         }
 
@@ -905,11 +905,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -1295,12 +1295,12 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
+                ['application/json; charset=utf-8'],
+                ['application/json; charset=utf-8']
             );
         }
 
@@ -1699,11 +1699,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -2097,11 +2097,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -2505,11 +2505,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -2903,11 +2903,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -3321,11 +3321,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/octet-stream', 'application/json']
+                ['application/octet-stream', 'application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/octet-stream', 'application/json'],
+                ['application/octet-stream', 'application/json; charset=utf-8'],
                 []
             );
         }
@@ -3739,11 +3739,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -4137,11 +4137,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -4555,11 +4555,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -5048,11 +5048,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -5446,11 +5446,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -5844,11 +5844,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -6242,11 +6242,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -6695,11 +6695,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -7117,11 +7117,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 ['multipart/form-data']
             );
         }
@@ -7507,12 +7507,12 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
+                ['application/json; charset=utf-8'],
+                ['application/json; charset=utf-8']
             );
         }
 
@@ -7911,11 +7911,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -8370,11 +8370,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }
@@ -8778,11 +8778,11 @@ class IndividualsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json; charset=utf-8']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json; charset=utf-8'],
                 []
             );
         }

@@ -1,6 +1,6 @@
 <?php
 /**
- * FinancialAccountMutualFundTransactionAllOf
+ * FinancialAccountTransactionMutualFundTransactionAllOf
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * FinancialAccountMutualFundTransactionAllOf Class Doc Comment
+ * FinancialAccountTransactionMutualFundTransactionAllOf Class Doc Comment
  *
  * @category Class
  * @package  MyDataMyConsent
@@ -41,7 +41,7 @@ use \MyDataMyConsent\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FinancialAccountMutualFundTransactionAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class FinancialAccountTransactionMutualFundTransactionAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class FinancialAccountMutualFundTransactionAllOf implements ModelInterface, Arra
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FinancialAccountMutualFundTransaction_allOf';
+    protected static $openAPIModelName = 'FinancialAccountTransaction_MutualFundTransaction_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
