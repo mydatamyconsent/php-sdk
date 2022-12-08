@@ -7,7 +7,11 @@ docs/Api/DataProvidersDiscoveryApi.md
 docs/Api/IndividualsApi.md
 docs/Api/OrganizationsApi.md
 docs/Api/SupportedIdentifiersApi.md
+docs/Model/AllergyDetails.md
+docs/Model/AllergyIntoleranceReaction.md
 docs/Model/ApiErrorType.md
+docs/Model/CodeableConcept.md
+docs/Model/Coding.md
 docs/Model/CollectibleTypes.md
 docs/Model/Consent.md
 docs/Model/ConsentDetails.md
@@ -62,6 +66,9 @@ docs/Model/FinancialAccountTransactionMutualFundTransactionAllOf.md
 docs/Model/FinancialAccountTransactionPeriod.md
 docs/Model/FinancialAccountTransactionSipTransaction.md
 docs/Model/FinancialAccountTransactionSipTransactionAllOf.md
+docs/Model/HealthRecord.md
+docs/Model/HealthRecordAllergyDetails.md
+docs/Model/HealthRecordAllergyDetailsAllOf.md
 docs/Model/Holder.md
 docs/Model/IdentificationStrategy.md
 docs/Model/Identifier.md
@@ -118,7 +125,11 @@ lib/Api/SupportedIdentifiersApi.php
 lib/ApiException.php
 lib/Configuration.php
 lib/HeaderSelector.php
+lib/Model/AllergyDetails.php
+lib/Model/AllergyIntoleranceReaction.php
 lib/Model/ApiErrorType.php
+lib/Model/CodeableConcept.php
+lib/Model/Coding.php
 lib/Model/CollectibleTypes.php
 lib/Model/Consent.php
 lib/Model/ConsentDetails.php
@@ -173,6 +184,9 @@ lib/Model/FinancialAccountTransactionMutualFundTransactionAllOf.php
 lib/Model/FinancialAccountTransactionPeriod.php
 lib/Model/FinancialAccountTransactionSipTransaction.php
 lib/Model/FinancialAccountTransactionSipTransactionAllOf.php
+lib/Model/HealthRecord.php
+lib/Model/HealthRecordAllergyDetails.php
+lib/Model/HealthRecordAllergyDetailsAllOf.php
 lib/Model/Holder.php
 lib/Model/IdentificationStrategy.php
 lib/Model/Identifier.php

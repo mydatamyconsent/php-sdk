@@ -8,7 +8,7 @@ All URIs are relative to https://api.mydatamyconsent.com, except if the operatio
 | [**v1IndividualsConsentRequestsGet()**](IndividualsApi.md#v1IndividualsConsentRequestsGet) | **GET** /v1/individuals/consent-requests | Get all consent requests sent to Individuals. |
 | [**v1IndividualsConsentRequestsPost()**](IndividualsApi.md#v1IndividualsConsentRequestsPost) | **POST** /v1/individuals/consent-requests | Create individual consent request. |
 | [**v1IndividualsConsentRequestsRequestIdCancelPut()**](IndividualsApi.md#v1IndividualsConsentRequestsRequestIdCancelPut) | **PUT** /v1/individuals/consent-requests/{request_id}/cancel | Cancel the Individual data request by id. |
-| [**v1IndividualsConsentRequestsRequestIdGet()**](IndividualsApi.md#v1IndividualsConsentRequestsRequestIdGet) | **GET** /v1/individuals/consent-requests/{request_id} | Get Individual data request by id. |
+| [**v1IndividualsConsentRequestsRequestIdGet()**](IndividualsApi.md#v1IndividualsConsentRequestsRequestIdGet) | **GET** /v1/individuals/consent-requests/{request_id} | Get Individual data consent request by id. |
 | [**v1IndividualsConsentTemplatesGet()**](IndividualsApi.md#v1IndividualsConsentTemplatesGet) | **GET** /v1/individuals/consent-templates | Get the paginated list of individual consent templates. |
 | [**v1IndividualsConsentTemplatesTemplateIdGet()**](IndividualsApi.md#v1IndividualsConsentTemplatesTemplateIdGet) | **GET** /v1/individuals/consent-templates/{template_id} | Get Individual consent template details by consent id. |
 | [**v1IndividualsConsentsConsentIdDocumentsDocumentIdDownloadGet()**](IndividualsApi.md#v1IndividualsConsentsConsentIdDocumentsDocumentIdDownloadGet) | **GET** /v1/individuals/consents/{consent_id}/documents/{document_id}/download | Download Individual consented document by document id. |
@@ -18,7 +18,7 @@ All URIs are relative to https://api.mydatamyconsent.com, except if the operatio
 | [**v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet()**](IndividualsApi.md#v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet) | **GET** /v1/individuals/consents/{consent_id}/financial-accounts/{account_id}/transactions | Get individual consented financial account transactions. |
 | [**v1IndividualsConsentsConsentIdFinancialAccountsGet()**](IndividualsApi.md#v1IndividualsConsentsConsentIdFinancialAccountsGet) | **GET** /v1/individuals/consents/{consent_id}/financial-accounts | Get all individual consented financial accounts. |
 | [**v1IndividualsConsentsConsentIdGet()**](IndividualsApi.md#v1IndividualsConsentsConsentIdGet) | **GET** /v1/individuals/consents/{consent_id} | Get Individuals consent details by consent id. |
-| [**v1IndividualsConsentsConsentIdHealthFhirBundleGet()**](IndividualsApi.md#v1IndividualsConsentsConsentIdHealthFhirBundleGet) | **GET** /v1/individuals/consents/{consent_id}/health/fhir/bundle | Get Individual consented document by consent id. |
+| [**v1IndividualsConsentsConsentIdHealthFhirBundleGet()**](IndividualsApi.md#v1IndividualsConsentsConsentIdHealthFhirBundleGet) | **GET** /v1/individuals/consents/{consent_id}/health/fhir/bundle | Get Individual consented Health Records by consent id. |
 | [**v1IndividualsConsentsGet()**](IndividualsApi.md#v1IndividualsConsentsGet) | **GET** /v1/individuals/consents | Get the paginated list of Individual consents. |
 | [**v1IndividualsDocumentsIssueIssueRequestIdUploadPost()**](IndividualsApi.md#v1IndividualsDocumentsIssueIssueRequestIdUploadPost) | **POST** /v1/individuals/documents/issue/{issue_request_id}/upload | Upload a document for issuance request of individual. |
 | [**v1IndividualsDocumentsIssuePost()**](IndividualsApi.md#v1IndividualsDocumentsIssuePost) | **POST** /v1/individuals/documents/issue | Issue a new document to an individual user. |
@@ -273,7 +273,7 @@ try {
 v1IndividualsConsentRequestsRequestIdGet($request_id): \MyDataMyConsent\Model\ConsentRequest
 ```
 
-Get Individual data request by id.
+Get Individual data consent request by id.
 
 ### Example
 
@@ -870,10 +870,10 @@ try {
 ## `v1IndividualsConsentsConsentIdHealthFhirBundleGet()`
 
 ```php
-v1IndividualsConsentsConsentIdHealthFhirBundleGet($consent_id): mixed
+v1IndividualsConsentsConsentIdHealthFhirBundleGet($consent_id): \MyDataMyConsent\Model\HealthRecord[]
 ```
 
-Get Individual consented document by consent id.
+Get Individual consented Health Records by consent id.
 
 ### Example
 
@@ -910,7 +910,7 @@ try {
 
 ### Return type
 
-**mixed**
+[**\MyDataMyConsent\Model\HealthRecord[]**](../Model/HealthRecord.md)
 
 ### Authorization
 
