@@ -5913,7 +5913,7 @@ class IndividualsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \MyDataMyConsent\Model\HealthRecord[]|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error
+     * @return mixed|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error
      */
     public function v1IndividualsConsentsConsentIdHealthFhirBundleGet($consent_id)
     {
@@ -5930,7 +5930,7 @@ class IndividualsApi
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \MyDataMyConsent\Model\HealthRecord[]|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of mixed|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1IndividualsConsentsConsentIdHealthFhirBundleGetWithHttpInfo($consent_id)
     {
@@ -5974,17 +5974,17 @@ class IndividualsApi
             switch($statusCode) {
             
                 case 200:
-                    if ('\MyDataMyConsent\Model\HealthRecord[]' === '\SplFileObject') {
+                    if ('mixed' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\MyDataMyConsent\Model\HealthRecord[]' !== 'string') {
+                        if ('mixed' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\MyDataMyConsent\Model\HealthRecord[]', []),
+                        ObjectSerializer::deserialize($content, 'mixed', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6059,7 +6059,7 @@ class IndividualsApi
             
             }
 
-            $returnType = '\MyDataMyConsent\Model\HealthRecord[]';
+            $returnType = 'mixed';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6081,7 +6081,7 @@ class IndividualsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\MyDataMyConsent\Model\HealthRecord[]',
+                        'mixed',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6164,7 +6164,7 @@ class IndividualsApi
      */
     public function v1IndividualsConsentsConsentIdHealthFhirBundleGetAsyncWithHttpInfo($consent_id)
     {
-        $returnType = '\MyDataMyConsent\Model\HealthRecord[]';
+        $returnType = 'mixed';
         $request = $this->v1IndividualsConsentsConsentIdHealthFhirBundleGetRequest($consent_id);
 
         return $this->client

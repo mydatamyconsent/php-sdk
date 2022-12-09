@@ -130,11 +130,7 @@ Class | Method | HTTP request | Description
 
 ## Models
 
-- [AllergyDetails](docs/Model/AllergyDetails.md)
-- [AllergyIntoleranceReaction](docs/Model/AllergyIntoleranceReaction.md)
 - [ApiErrorType](docs/Model/ApiErrorType.md)
-- [CodeableConcept](docs/Model/CodeableConcept.md)
-- [Coding](docs/Model/Coding.md)
 - [CollectibleTypes](docs/Model/CollectibleTypes.md)
 - [Consent](docs/Model/Consent.md)
 - [ConsentDetails](docs/Model/ConsentDetails.md)
@@ -189,9 +185,6 @@ Class | Method | HTTP request | Description
 - [FinancialAccountTransactionPeriod](docs/Model/FinancialAccountTransactionPeriod.md)
 - [FinancialAccountTransactionSipTransaction](docs/Model/FinancialAccountTransactionSipTransaction.md)
 - [FinancialAccountTransactionSipTransactionAllOf](docs/Model/FinancialAccountTransactionSipTransactionAllOf.md)
-- [HealthRecord](docs/Model/HealthRecord.md)
-- [HealthRecordAllergyDetails](docs/Model/HealthRecordAllergyDetails.md)
-- [HealthRecordAllergyDetailsAllOf](docs/Model/HealthRecordAllergyDetailsAllOf.md)
 - [Holder](docs/Model/Holder.md)
 - [IdentificationStrategy](docs/Model/IdentificationStrategy.md)
 - [Identifier](docs/Model/Identifier.md)
