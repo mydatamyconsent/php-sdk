@@ -166,6 +166,7 @@ Class | Method | HTTP request | Description
 - [Equity](docs/Model/Equity.md)
 - [EquityTransaction](docs/Model/EquityTransaction.md)
 - [Error](docs/Model/Error.md)
+- [FhirBundleAny](docs/Model/FhirBundleAny.md)
 - [FinancialAccount](docs/Model/FinancialAccount.md)
 - [FinancialAccountCategoryType](docs/Model/FinancialAccountCategoryType.md)
 - [FinancialAccountDetailsRequired](docs/Model/FinancialAccountDetailsRequired.md)

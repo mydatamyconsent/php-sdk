@@ -870,7 +870,7 @@ try {
 ## `v1IndividualsConsentsConsentIdHealthFhirBundleGet()`
 
 ```php
-v1IndividualsConsentsConsentIdHealthFhirBundleGet($consent_id): mixed
+v1IndividualsConsentsConsentIdHealthFhirBundleGet($consent_id): \MyDataMyConsent\Model\FhirBundleAny
 ```
 
 Get Individual consented Health Records by consent id.
@@ -910,7 +910,7 @@ try {
 
 ### Return type
 
-**mixed**
+[**\MyDataMyConsent\Model\FhirBundleAny**](../Model/FhirBundleAny.md)
 
 ### Authorization
 

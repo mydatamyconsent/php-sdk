@@ -43,6 +43,7 @@ docs/Model/DocumentType.md
 docs/Model/Equity.md
 docs/Model/EquityTransaction.md
 docs/Model/Error.md
+docs/Model/FhirBundleAny.md
 docs/Model/FinancialAccount.md
 docs/Model/FinancialAccountCategoryType.md
 docs/Model/FinancialAccountDetailsRequired.md
@@ -154,6 +155,7 @@ lib/Model/DocumentType.php
 lib/Model/Equity.php
 lib/Model/EquityTransaction.php
 lib/Model/Error.php
+lib/Model/FhirBundleAny.php
 lib/Model/FinancialAccount.php
 lib/Model/FinancialAccountCategoryType.php
 lib/Model/FinancialAccountDetailsRequired.php
