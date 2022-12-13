@@ -74,7 +74,7 @@ class ConsentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'identifiers' => '\MyDataMyConsent\Model\ConsentedIdentifier[]',
         'documents' => '\MyDataMyConsent\Model\ConsentedDocument[]',
         'medical_records' => '\MyDataMyConsent\Model\ConsentedMedicalRecord[]',
-        'financial_accounts' => '\MyDataMyConsent\Model\ConsentedFinancialAccount[]'
+        'financial_accounts' => '\MyDataMyConsent\Model\ConsentedFinancialAccountField[]'
     ];
 
     /**
@@ -848,7 +848,7 @@ class ConsentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets financial_accounts
      *
-     * @return \MyDataMyConsent\Model\ConsentedFinancialAccount[]|null
+     * @return \MyDataMyConsent\Model\ConsentedFinancialAccountField[]|null
      */
     public function getFinancialAccounts()
     {
@@ -858,7 +858,7 @@ class ConsentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets financial_accounts
      *
-     * @param \MyDataMyConsent\Model\ConsentedFinancialAccount[]|null $financial_accounts List of consented financial accounts.
+     * @param \MyDataMyConsent\Model\ConsentedFinancialAccountField[]|null $financial_accounts List of consented financial accounts.
      *
      * @return self
      */

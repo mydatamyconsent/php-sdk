@@ -1,6 +1,6 @@
 <?php
 /**
- * SelectedFinancialAccountType
+ * ConsentedFinancialAccountFieldTransactionPeriod
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * SelectedFinancialAccountType Class Doc Comment
+ * ConsentedFinancialAccountFieldTransactionPeriod Class Doc Comment
  *
  * @category Class
- * @description SelectedFinancialAccountType : Selected financial account type of financial account field of consent request template.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConsentedFinancialAccountFieldTransactionPeriod implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SelectedFinancialAccountType';
+    protected static $openAPIModelName = 'ConsentedFinancialAccountField_transactionPeriod';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,8 @@ class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sub_category' => 'FinancialAccountSubCategoryType',
-        'drns' => 'string[]'
+        'from' => '\DateTime',
+        'to' => '\DateTime'
     ];
 
     /**
@@ -71,8 +70,8 @@ class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sub_category' => null,
-        'drns' => null
+        'from' => 'date-time',
+        'to' => 'date-time'
     ];
 
     /**
@@ -81,8 +80,8 @@ class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sub_category' => false,
-		'drns' => false
+        'from' => false,
+		'to' => false
     ];
 
     /**
@@ -161,8 +160,8 @@ class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'sub_category' => 'subCategory',
-        'drns' => 'drns'
+        'from' => 'from',
+        'to' => 'to'
     ];
 
     /**
@@ -171,8 +170,8 @@ class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'sub_category' => 'setSubCategory',
-        'drns' => 'setDrns'
+        'from' => 'setFrom',
+        'to' => 'setTo'
     ];
 
     /**
@@ -181,8 +180,8 @@ class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'sub_category' => 'getSubCategory',
-        'drns' => 'getDrns'
+        'from' => 'getFrom',
+        'to' => 'getTo'
     ];
 
     /**
@@ -242,8 +241,8 @@ class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sub_category', $data ?? [], null);
-        $this->setIfExists('drns', $data ?? [], null);
+        $this->setIfExists('from', $data ?? [], null);
+        $this->setIfExists('to', $data ?? [], null);
     }
 
     /**
@@ -273,8 +272,11 @@ class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['drns'] === null) {
-            $invalidProperties[] = "'drns' can't be null";
+        if ($this->container['from'] === null) {
+            $invalidProperties[] = "'from' can't be null";
+        }
+        if ($this->container['to'] === null) {
+            $invalidProperties[] = "'to' can't be null";
         }
         return $invalidProperties;
     }
@@ -292,59 +294,59 @@ class SelectedFinancialAccountType implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets sub_category
+     * Gets from
      *
-     * @return FinancialAccountSubCategoryType|null
+     * @return \DateTime
      */
-    public function getSubCategory()
+    public function getFrom()
     {
-        return $this->container['sub_category'];
+        return $this->container['from'];
     }
 
     /**
-     * Sets sub_category
+     * Sets from
      *
-     * @param FinancialAccountSubCategoryType|null $sub_category sub_category
+     * @param \DateTime $from from
      *
      * @return self
      */
-    public function setSubCategory($sub_category)
+    public function setFrom($from)
     {
 
-        if (is_null($sub_category)) {
-            throw new \InvalidArgumentException('non-nullable sub_category cannot be null');
+        if (is_null($from)) {
+            throw new \InvalidArgumentException('non-nullable from cannot be null');
         }
 
-        $this->container['sub_category'] = $sub_category;
+        $this->container['from'] = $from;
 
         return $this;
     }
 
     /**
-     * Gets drns
+     * Gets to
      *
-     * @return string[]
+     * @return \DateTime
      */
-    public function getDrns()
+    public function getTo()
     {
-        return $this->container['drns'];
+        return $this->container['to'];
     }
 
     /**
-     * Sets drns
+     * Sets to
      *
-     * @param string[] $drns DRNs.
+     * @param \DateTime $to to
      *
      * @return self
      */
-    public function setDrns($drns)
+    public function setTo($to)
     {
 
-        if (is_null($drns)) {
-            throw new \InvalidArgumentException('non-nullable drns cannot be null');
+        if (is_null($to)) {
+            throw new \InvalidArgumentException('non-nullable to cannot be null');
         }
 
-        $this->container['drns'] = $drns;
+        $this->container['to'] = $to;
 
         return $this;
     }

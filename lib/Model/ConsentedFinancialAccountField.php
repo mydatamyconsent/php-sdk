@@ -1,6 +1,6 @@
 <?php
 /**
- * ConsentedFinancialAccountTransactionPeriod
+ * ConsentedFinancialAccountField
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \MyDataMyConsent\ObjectSerializer;
 
 /**
- * ConsentedFinancialAccountTransactionPeriod Class Doc Comment
+ * ConsentedFinancialAccountField Class Doc Comment
  *
  * @category Class
+ * @description ConsentedFinancialAccountField : Consented financial account field details.
  * @package  MyDataMyConsent
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConsentedFinancialAccountField implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, Arra
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ConsentedFinancialAccount_transactionPeriod';
+    protected static $openAPIModelName = 'ConsentedFinancialAccountField';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,11 @@ class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'from' => '\DateTime',
-        'to' => '\DateTime'
+        'field_title' => 'string',
+        'field_slug' => 'string',
+        'requested_details' => '\MyDataMyConsent\Model\FinancialAccountDetailsRequired[]',
+        'transaction_period' => '\MyDataMyConsent\Model\ConsentedFinancialAccountFieldTransactionPeriod',
+        'consented_accounts' => '\MyDataMyConsent\Model\ConsentedFinancialAccount[]'
     ];
 
     /**
@@ -70,8 +74,11 @@ class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, Arra
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'from' => 'date-time',
-        'to' => 'date-time'
+        'field_title' => null,
+        'field_slug' => null,
+        'requested_details' => null,
+        'transaction_period' => null,
+        'consented_accounts' => null
     ];
 
     /**
@@ -80,8 +87,11 @@ class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, Arra
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'from' => false,
-		'to' => false
+        'field_title' => false,
+		'field_slug' => false,
+		'requested_details' => false,
+		'transaction_period' => false,
+		'consented_accounts' => false
     ];
 
     /**
@@ -160,8 +170,11 @@ class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'from' => 'from',
-        'to' => 'to'
+        'field_title' => 'fieldTitle',
+        'field_slug' => 'fieldSlug',
+        'requested_details' => 'requestedDetails',
+        'transaction_period' => 'transactionPeriod',
+        'consented_accounts' => 'consentedAccounts'
     ];
 
     /**
@@ -170,8 +183,11 @@ class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'from' => 'setFrom',
-        'to' => 'setTo'
+        'field_title' => 'setFieldTitle',
+        'field_slug' => 'setFieldSlug',
+        'requested_details' => 'setRequestedDetails',
+        'transaction_period' => 'setTransactionPeriod',
+        'consented_accounts' => 'setConsentedAccounts'
     ];
 
     /**
@@ -180,8 +196,11 @@ class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'from' => 'getFrom',
-        'to' => 'getTo'
+        'field_title' => 'getFieldTitle',
+        'field_slug' => 'getFieldSlug',
+        'requested_details' => 'getRequestedDetails',
+        'transaction_period' => 'getTransactionPeriod',
+        'consented_accounts' => 'getConsentedAccounts'
     ];
 
     /**
@@ -241,8 +260,11 @@ class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, Arra
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('from', $data ?? [], null);
-        $this->setIfExists('to', $data ?? [], null);
+        $this->setIfExists('field_title', $data ?? [], null);
+        $this->setIfExists('field_slug', $data ?? [], null);
+        $this->setIfExists('requested_details', $data ?? [], null);
+        $this->setIfExists('transaction_period', $data ?? [], null);
+        $this->setIfExists('consented_accounts', $data ?? [], null);
     }
 
     /**
@@ -272,11 +294,17 @@ class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['from'] === null) {
-            $invalidProperties[] = "'from' can't be null";
+        if ($this->container['field_title'] === null) {
+            $invalidProperties[] = "'field_title' can't be null";
         }
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
+        if ($this->container['field_slug'] === null) {
+            $invalidProperties[] = "'field_slug' can't be null";
+        }
+        if ($this->container['requested_details'] === null) {
+            $invalidProperties[] = "'requested_details' can't be null";
+        }
+        if ($this->container['consented_accounts'] === null) {
+            $invalidProperties[] = "'consented_accounts' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,59 +322,146 @@ class ConsentedFinancialAccountTransactionPeriod implements ModelInterface, Arra
 
 
     /**
-     * Gets from
+     * Gets field_title
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getFrom()
+    public function getFieldTitle()
     {
-        return $this->container['from'];
+        return $this->container['field_title'];
     }
 
     /**
-     * Sets from
+     * Sets field_title
      *
-     * @param \DateTime $from from
+     * @param string $field_title Financial account field title.
      *
      * @return self
      */
-    public function setFrom($from)
+    public function setFieldTitle($field_title)
     {
 
-        if (is_null($from)) {
-            throw new \InvalidArgumentException('non-nullable from cannot be null');
+        if (is_null($field_title)) {
+            throw new \InvalidArgumentException('non-nullable field_title cannot be null');
         }
 
-        $this->container['from'] = $from;
+        $this->container['field_title'] = $field_title;
 
         return $this;
     }
 
     /**
-     * Gets to
+     * Gets field_slug
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getTo()
+    public function getFieldSlug()
     {
-        return $this->container['to'];
+        return $this->container['field_slug'];
     }
 
     /**
-     * Sets to
+     * Sets field_slug
      *
-     * @param \DateTime $to to
+     * @param string $field_slug Financial account field slug.
      *
      * @return self
      */
-    public function setTo($to)
+    public function setFieldSlug($field_slug)
     {
 
-        if (is_null($to)) {
-            throw new \InvalidArgumentException('non-nullable to cannot be null');
+        if (is_null($field_slug)) {
+            throw new \InvalidArgumentException('non-nullable field_slug cannot be null');
         }
 
-        $this->container['to'] = $to;
+        $this->container['field_slug'] = $field_slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets requested_details
+     *
+     * @return \MyDataMyConsent\Model\FinancialAccountDetailsRequired[]
+     */
+    public function getRequestedDetails()
+    {
+        return $this->container['requested_details'];
+    }
+
+    /**
+     * Sets requested_details
+     *
+     * @param \MyDataMyConsent\Model\FinancialAccountDetailsRequired[] $requested_details Requested financial account details.
+     *
+     * @return self
+     */
+    public function setRequestedDetails($requested_details)
+    {
+
+        if (is_null($requested_details)) {
+            throw new \InvalidArgumentException('non-nullable requested_details cannot be null');
+        }
+
+        $this->container['requested_details'] = $requested_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets transaction_period
+     *
+     * @return \MyDataMyConsent\Model\ConsentedFinancialAccountFieldTransactionPeriod|null
+     */
+    public function getTransactionPeriod()
+    {
+        return $this->container['transaction_period'];
+    }
+
+    /**
+     * Sets transaction_period
+     *
+     * @param \MyDataMyConsent\Model\ConsentedFinancialAccountFieldTransactionPeriod|null $transaction_period transaction_period
+     *
+     * @return self
+     */
+    public function setTransactionPeriod($transaction_period)
+    {
+
+        if (is_null($transaction_period)) {
+            throw new \InvalidArgumentException('non-nullable transaction_period cannot be null');
+        }
+
+        $this->container['transaction_period'] = $transaction_period;
+
+        return $this;
+    }
+
+    /**
+     * Gets consented_accounts
+     *
+     * @return \MyDataMyConsent\Model\ConsentedFinancialAccount[]
+     */
+    public function getConsentedAccounts()
+    {
+        return $this->container['consented_accounts'];
+    }
+
+    /**
+     * Sets consented_accounts
+     *
+     * @param \MyDataMyConsent\Model\ConsentedFinancialAccount[] $consented_accounts Consented financial accounts.
+     *
+     * @return self
+     */
+    public function setConsentedAccounts($consented_accounts)
+    {
+
+        if (is_null($consented_accounts)) {
+            throw new \InvalidArgumentException('non-nullable consented_accounts cannot be null');
+        }
+
+        $this->container['consented_accounts'] = $consented_accounts;
 
         return $this;
     }

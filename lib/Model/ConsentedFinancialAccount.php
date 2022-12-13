@@ -64,10 +64,6 @@ class ConsentedFinancialAccount implements ModelInterface, ArrayAccess, \JsonSer
         'category' => 'FinancialAccountCategoryType',
         'sub_category' => 'FinancialAccountSubCategoryType',
         'identifier' => 'string',
-        'field_title' => 'string',
-        'field_slug' => 'string',
-        'requested_details' => '\MyDataMyConsent\Model\FinancialAccountDetailsRequired[]',
-        'transaction_period' => '\MyDataMyConsent\Model\ConsentedFinancialAccountTransactionPeriod',
         'issuer_id' => 'string',
         'issuer_name' => 'string'
     ];
@@ -85,10 +81,6 @@ class ConsentedFinancialAccount implements ModelInterface, ArrayAccess, \JsonSer
         'category' => null,
         'sub_category' => null,
         'identifier' => null,
-        'field_title' => null,
-        'field_slug' => null,
-        'requested_details' => null,
-        'transaction_period' => null,
         'issuer_id' => null,
         'issuer_name' => null
     ];
@@ -104,10 +96,6 @@ class ConsentedFinancialAccount implements ModelInterface, ArrayAccess, \JsonSer
 		'category' => false,
 		'sub_category' => false,
 		'identifier' => false,
-		'field_title' => false,
-		'field_slug' => false,
-		'requested_details' => false,
-		'transaction_period' => false,
 		'issuer_id' => false,
 		'issuer_name' => false
     ];
@@ -193,10 +181,6 @@ class ConsentedFinancialAccount implements ModelInterface, ArrayAccess, \JsonSer
         'category' => 'category',
         'sub_category' => 'subCategory',
         'identifier' => 'identifier',
-        'field_title' => 'fieldTitle',
-        'field_slug' => 'fieldSlug',
-        'requested_details' => 'requestedDetails',
-        'transaction_period' => 'transactionPeriod',
         'issuer_id' => 'issuerId',
         'issuer_name' => 'issuerName'
     ];
@@ -212,10 +196,6 @@ class ConsentedFinancialAccount implements ModelInterface, ArrayAccess, \JsonSer
         'category' => 'setCategory',
         'sub_category' => 'setSubCategory',
         'identifier' => 'setIdentifier',
-        'field_title' => 'setFieldTitle',
-        'field_slug' => 'setFieldSlug',
-        'requested_details' => 'setRequestedDetails',
-        'transaction_period' => 'setTransactionPeriod',
         'issuer_id' => 'setIssuerId',
         'issuer_name' => 'setIssuerName'
     ];
@@ -231,10 +211,6 @@ class ConsentedFinancialAccount implements ModelInterface, ArrayAccess, \JsonSer
         'category' => 'getCategory',
         'sub_category' => 'getSubCategory',
         'identifier' => 'getIdentifier',
-        'field_title' => 'getFieldTitle',
-        'field_slug' => 'getFieldSlug',
-        'requested_details' => 'getRequestedDetails',
-        'transaction_period' => 'getTransactionPeriod',
         'issuer_id' => 'getIssuerId',
         'issuer_name' => 'getIssuerName'
     ];
@@ -301,10 +277,6 @@ class ConsentedFinancialAccount implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('category', $data ?? [], null);
         $this->setIfExists('sub_category', $data ?? [], null);
         $this->setIfExists('identifier', $data ?? [], null);
-        $this->setIfExists('field_title', $data ?? [], null);
-        $this->setIfExists('field_slug', $data ?? [], null);
-        $this->setIfExists('requested_details', $data ?? [], null);
-        $this->setIfExists('transaction_period', $data ?? [], null);
         $this->setIfExists('issuer_id', $data ?? [], null);
         $this->setIfExists('issuer_name', $data ?? [], null);
     }
@@ -350,15 +322,6 @@ class ConsentedFinancialAccount implements ModelInterface, ArrayAccess, \JsonSer
         }
         if ($this->container['identifier'] === null) {
             $invalidProperties[] = "'identifier' can't be null";
-        }
-        if ($this->container['field_title'] === null) {
-            $invalidProperties[] = "'field_title' can't be null";
-        }
-        if ($this->container['field_slug'] === null) {
-            $invalidProperties[] = "'field_slug' can't be null";
-        }
-        if ($this->container['requested_details'] === null) {
-            $invalidProperties[] = "'requested_details' can't be null";
         }
         if ($this->container['issuer_id'] === null) {
             $invalidProperties[] = "'issuer_id' can't be null";
@@ -522,122 +485,6 @@ class ConsentedFinancialAccount implements ModelInterface, ArrayAccess, \JsonSer
         }
 
         $this->container['identifier'] = $identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets field_title
-     *
-     * @return string
-     */
-    public function getFieldTitle()
-    {
-        return $this->container['field_title'];
-    }
-
-    /**
-     * Sets field_title
-     *
-     * @param string $field_title Financial account field title.
-     *
-     * @return self
-     */
-    public function setFieldTitle($field_title)
-    {
-
-        if (is_null($field_title)) {
-            throw new \InvalidArgumentException('non-nullable field_title cannot be null');
-        }
-
-        $this->container['field_title'] = $field_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets field_slug
-     *
-     * @return string
-     */
-    public function getFieldSlug()
-    {
-        return $this->container['field_slug'];
-    }
-
-    /**
-     * Sets field_slug
-     *
-     * @param string $field_slug Financial account field slug.
-     *
-     * @return self
-     */
-    public function setFieldSlug($field_slug)
-    {
-
-        if (is_null($field_slug)) {
-            throw new \InvalidArgumentException('non-nullable field_slug cannot be null');
-        }
-
-        $this->container['field_slug'] = $field_slug;
-
-        return $this;
-    }
-
-    /**
-     * Gets requested_details
-     *
-     * @return \MyDataMyConsent\Model\FinancialAccountDetailsRequired[]
-     */
-    public function getRequestedDetails()
-    {
-        return $this->container['requested_details'];
-    }
-
-    /**
-     * Sets requested_details
-     *
-     * @param \MyDataMyConsent\Model\FinancialAccountDetailsRequired[] $requested_details Requested financial account details.
-     *
-     * @return self
-     */
-    public function setRequestedDetails($requested_details)
-    {
-
-        if (is_null($requested_details)) {
-            throw new \InvalidArgumentException('non-nullable requested_details cannot be null');
-        }
-
-        $this->container['requested_details'] = $requested_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_period
-     *
-     * @return \MyDataMyConsent\Model\ConsentedFinancialAccountTransactionPeriod|null
-     */
-    public function getTransactionPeriod()
-    {
-        return $this->container['transaction_period'];
-    }
-
-    /**
-     * Sets transaction_period
-     *
-     * @param \MyDataMyConsent\Model\ConsentedFinancialAccountTransactionPeriod|null $transaction_period transaction_period
-     *
-     * @return self
-     */
-    public function setTransactionPeriod($transaction_period)
-    {
-
-        if (is_null($transaction_period)) {
-            throw new \InvalidArgumentException('non-nullable transaction_period cannot be null');
-        }
-
-        $this->container['transaction_period'] = $transaction_period;
 
         return $this;
     }

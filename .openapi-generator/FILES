@@ -18,7 +18,8 @@ docs/Model/ConsentRequestTemplate.md
 docs/Model/ConsentRequestTemplateStatus.md
 docs/Model/ConsentedDocument.md
 docs/Model/ConsentedFinancialAccount.md
-docs/Model/ConsentedFinancialAccountTransactionPeriod.md
+docs/Model/ConsentedFinancialAccountField.md
+docs/Model/ConsentedFinancialAccountFieldTransactionPeriod.md
 docs/Model/ConsentedIdentifier.md
 docs/Model/ConsentedMedicalRecord.md
 docs/Model/CreateConsentRequest.md
@@ -130,7 +131,8 @@ lib/Model/ConsentRequestTemplate.php
 lib/Model/ConsentRequestTemplateStatus.php
 lib/Model/ConsentedDocument.php
 lib/Model/ConsentedFinancialAccount.php
-lib/Model/ConsentedFinancialAccountTransactionPeriod.php
+lib/Model/ConsentedFinancialAccountField.php
+lib/Model/ConsentedFinancialAccountFieldTransactionPeriod.php
 lib/Model/ConsentedIdentifier.php
 lib/Model/ConsentedMedicalRecord.php
 lib/Model/CreateConsentRequest.php

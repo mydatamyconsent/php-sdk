@@ -19,6 +19,6 @@ Name | Type | Description | Notes
 **identifiers** | [**\MyDataMyConsent\Model\ConsentedIdentifier[]**](ConsentedIdentifier.md) | Consented identity details. | [optional]
 **documents** | [**\MyDataMyConsent\Model\ConsentedDocument[]**](ConsentedDocument.md) | List of consented documents. | [optional]
 **medical_records** | [**\MyDataMyConsent\Model\ConsentedMedicalRecord[]**](ConsentedMedicalRecord.md) | List of consented medical records. | [optional]
-**financial_accounts** | [**\MyDataMyConsent\Model\ConsentedFinancialAccount[]**](ConsentedFinancialAccount.md) | List of consented financial accounts. | [optional]
+**financial_accounts** | [**\MyDataMyConsent\Model\ConsentedFinancialAccountField[]**](ConsentedFinancialAccountField.md) | List of consented financial accounts. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
