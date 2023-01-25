@@ -4622,19 +4622,19 @@ class IndividualsApi
      *
      * @param  string $consent_id consent_id (required)
      * @param  string $account_id account_id (required)
-     * @param  string $filters filters (optional)
-     * @param  string $from_date_time from_date_time (optional)
-     * @param  string $to_date_time to_date_time (optional)
-     * @param  int $page_no page_no (optional)
-     * @param  int $page_size page_size (optional)
+     * @param  string $_filters _filters (optional)
+     * @param  string $_from_date_time _from_date_time (optional)
+     * @param  string $_to_date_time _to_date_time (optional)
+     * @param  int $_page_no _page_no (optional)
+     * @param  int $_page_size _page_size (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \MyDataMyConsent\Model\PaginatedListOfFinancialAccountTransactions|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error
      */
-    public function v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet($consent_id, $account_id, $filters = null, $from_date_time = null, $to_date_time = null, $page_no = null, $page_size = null)
+    public function v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet($consent_id, $account_id, $_filters = null, $_from_date_time = null, $_to_date_time = null, $_page_no = null, $_page_size = null)
     {
-        list($response) = $this->v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetWithHttpInfo($consent_id, $account_id, $filters, $from_date_time, $to_date_time, $page_no, $page_size);
+        list($response) = $this->v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetWithHttpInfo($consent_id, $account_id, $_filters, $_from_date_time, $_to_date_time, $_page_no, $_page_size);
         return $response;
     }
 
@@ -4645,19 +4645,19 @@ class IndividualsApi
      *
      * @param  string $consent_id (required)
      * @param  string $account_id (required)
-     * @param  string $filters (optional)
-     * @param  string $from_date_time (optional)
-     * @param  string $to_date_time (optional)
-     * @param  int $page_no (optional)
-     * @param  int $page_size (optional)
+     * @param  string $_filters (optional)
+     * @param  string $_from_date_time (optional)
+     * @param  string $_to_date_time (optional)
+     * @param  int $_page_no (optional)
+     * @param  int $_page_size (optional)
      *
      * @throws \MyDataMyConsent\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \MyDataMyConsent\Model\PaginatedListOfFinancialAccountTransactions|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error|\MyDataMyConsent\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetWithHttpInfo($consent_id, $account_id, $filters = null, $from_date_time = null, $to_date_time = null, $page_no = null, $page_size = null)
+    public function v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetWithHttpInfo($consent_id, $account_id, $_filters = null, $_from_date_time = null, $_to_date_time = null, $_page_no = null, $_page_size = null)
     {
-        $request = $this->v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetRequest($consent_id, $account_id, $filters, $from_date_time, $to_date_time, $page_no, $page_size);
+        $request = $this->v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetRequest($consent_id, $account_id, $_filters, $_from_date_time, $_to_date_time, $_page_no, $_page_size);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4862,18 +4862,18 @@ class IndividualsApi
      *
      * @param  string $consent_id (required)
      * @param  string $account_id (required)
-     * @param  string $filters (optional)
-     * @param  string $from_date_time (optional)
-     * @param  string $to_date_time (optional)
-     * @param  int $page_no (optional)
-     * @param  int $page_size (optional)
+     * @param  string $_filters (optional)
+     * @param  string $_from_date_time (optional)
+     * @param  string $_to_date_time (optional)
+     * @param  int $_page_no (optional)
+     * @param  int $_page_size (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetAsync($consent_id, $account_id, $filters = null, $from_date_time = null, $to_date_time = null, $page_no = null, $page_size = null)
+    public function v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetAsync($consent_id, $account_id, $_filters = null, $_from_date_time = null, $_to_date_time = null, $_page_no = null, $_page_size = null)
     {
-        return $this->v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetAsyncWithHttpInfo($consent_id, $account_id, $filters, $from_date_time, $to_date_time, $page_no, $page_size)
+        return $this->v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetAsyncWithHttpInfo($consent_id, $account_id, $_filters, $_from_date_time, $_to_date_time, $_page_no, $_page_size)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4888,19 +4888,19 @@ class IndividualsApi
      *
      * @param  string $consent_id (required)
      * @param  string $account_id (required)
-     * @param  string $filters (optional)
-     * @param  string $from_date_time (optional)
-     * @param  string $to_date_time (optional)
-     * @param  int $page_no (optional)
-     * @param  int $page_size (optional)
+     * @param  string $_filters (optional)
+     * @param  string $_from_date_time (optional)
+     * @param  string $_to_date_time (optional)
+     * @param  int $_page_no (optional)
+     * @param  int $_page_size (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetAsyncWithHttpInfo($consent_id, $account_id, $filters = null, $from_date_time = null, $to_date_time = null, $page_no = null, $page_size = null)
+    public function v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetAsyncWithHttpInfo($consent_id, $account_id, $_filters = null, $_from_date_time = null, $_to_date_time = null, $_page_no = null, $_page_size = null)
     {
         $returnType = '\MyDataMyConsent\Model\PaginatedListOfFinancialAccountTransactions';
-        $request = $this->v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetRequest($consent_id, $account_id, $filters, $from_date_time, $to_date_time, $page_no, $page_size);
+        $request = $this->v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetRequest($consent_id, $account_id, $_filters, $_from_date_time, $_to_date_time, $_page_no, $_page_size);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4943,16 +4943,16 @@ class IndividualsApi
      *
      * @param  string $consent_id (required)
      * @param  string $account_id (required)
-     * @param  string $filters (optional)
-     * @param  string $from_date_time (optional)
-     * @param  string $to_date_time (optional)
-     * @param  int $page_no (optional)
-     * @param  int $page_size (optional)
+     * @param  string $_filters (optional)
+     * @param  string $_from_date_time (optional)
+     * @param  string $_to_date_time (optional)
+     * @param  int $_page_no (optional)
+     * @param  int $_page_size (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetRequest($consent_id, $account_id, $filters = null, $from_date_time = null, $to_date_time = null, $page_no = null, $page_size = null)
+    public function v1IndividualsConsentsConsentIdFinancialAccountsAccountIdTransactionsGetRequest($consent_id, $account_id, $_filters = null, $_from_date_time = null, $_to_date_time = null, $_page_no = null, $_page_size = null)
     {
 
         // verify the required parameter 'consent_id' is set
@@ -4983,8 +4983,8 @@ class IndividualsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $filters,
-            'filters', // param base name
+            $_filters,
+            '_filters', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -4992,8 +4992,8 @@ class IndividualsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $from_date_time,
-            'from_date_time', // param base name
+            $_from_date_time,
+            '_from_date_time', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -5001,8 +5001,8 @@ class IndividualsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $to_date_time,
-            'to_date_time', // param base name
+            $_to_date_time,
+            '_to_date_time', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -5010,8 +5010,8 @@ class IndividualsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_no,
-            'page_no', // param base name
+            $_page_no,
+            '_page_no', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -5019,8 +5019,8 @@ class IndividualsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'page_size', // param base name
+            $_page_size,
+            '_page_size', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode

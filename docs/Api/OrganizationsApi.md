@@ -624,7 +624,7 @@ try {
 ## `v1OrganizationsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet()`
 
 ```php
-v1OrganizationsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet($consent_id, $account_id, $filters, $from_date_time, $to_date_time, $page_no, $page_size): \MyDataMyConsent\Model\PaginatedListOfFinancialAccountTransactions
+v1OrganizationsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet($consent_id, $account_id, $_filters, $_from_date_time, $_to_date_time, $_page_no, $_page_size): \MyDataMyConsent\Model\PaginatedListOfFinancialAccountTransactions
 ```
 
 Get organization consented financial account transactions.
@@ -648,14 +648,14 @@ $apiInstance = new MyDataMyConsent\Api\OrganizationsApi(
 );
 $consent_id = 'consent_id_example'; // string
 $account_id = 'account_id_example'; // string
-$filters = 'filters_example'; // string
-$from_date_time = 'from_date_time_example'; // string
-$to_date_time = 'to_date_time_example'; // string
-$page_no = 56; // int
-$page_size = 56; // int
+$_filters = '_filters_example'; // string
+$_from_date_time = '_from_date_time_example'; // string
+$_to_date_time = '_to_date_time_example'; // string
+$_page_no = 56; // int
+$_page_size = 56; // int
 
 try {
-    $result = $apiInstance->v1OrganizationsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet($consent_id, $account_id, $filters, $from_date_time, $to_date_time, $page_no, $page_size);
+    $result = $apiInstance->v1OrganizationsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet($consent_id, $account_id, $_filters, $_from_date_time, $_to_date_time, $_page_no, $_page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrganizationsApi->v1OrganizationsConsentsConsentIdFinancialAccountsAccountIdTransactionsGet: ', $e->getMessage(), PHP_EOL;
@@ -668,11 +668,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **consent_id** | **string**|  | |
 | **account_id** | **string**|  | |
-| **filters** | **string**|  | [optional] |
-| **from_date_time** | **string**|  | [optional] |
-| **to_date_time** | **string**|  | [optional] |
-| **page_no** | **int**|  | [optional] |
-| **page_size** | **int**|  | [optional] |
+| **_filters** | **string**|  | [optional] |
+| **_from_date_time** | **string**|  | [optional] |
+| **_to_date_time** | **string**|  | [optional] |
+| **_page_no** | **int**|  | [optional] |
+| **_page_size** | **int**|  | [optional] |
 
 ### Return type
 
