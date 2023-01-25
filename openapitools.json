@@ -14,23 +14,22 @@
         "gitHost": "github.com",
         "gitRepoId": "php-sdk",
         "gitUserId": "mydatamyconsent",
-        "skipValidateSpec": true,
-        "inputSpec": "./openapi-spec.json",
+        "inputSpec": "https://api.mydatamyconsent.com/openapi-spec.json",
         "removeOperationIdPrefix": true,
         "additionalProperties": {
-            "invokerPackage": "MyDataMyConsent",
-            "developerEmail": "developers@mydatamyconsent.com",
-            "developerName": "Balamurali Pandranki",
-            "basePath": "https://api.mydatamyconsent.com",
-            "developerOrganization": "DataConsent, Inc.",
-            "developerOrganizationUrl": "https://mydatamyconsent.com",
-            "artifactDescription": "My Data My Consent PHP API SDK",
-            "artifactUrl": "https://github.com/mydatamyconsent/php-sdk",
-            "artifactVersion": "0.0.1",
-            "licenseUrl": "https://mydatamyconsent.com/en-us/legal/terms-of-service",
-            "licenseName": "DataConsent, Inc. ToS",
-            "scmUrl": "https://github.com/mydatamyconsent/php-sdk",
-            "scmDeveloperConnection": "scm:git:git@github.com:mydatamyconsent/php-sdk.git"
+          "invokerPackage": "MyDataMyConsent",
+          "developerEmail": "developers@mydatamyconsent.com",
+          "developerName": "Balamurali Pandranki",
+          "basePath": "https://api.mydatamyconsent.com",
+          "developerOrganization": "DataConsent, Inc.",
+          "developerOrganizationUrl": "https://mydatamyconsent.com",
+          "artifactDescription": "My Data My Consent PHP API SDK",
+          "artifactUrl": "https://github.com/mydatamyconsent/php-sdk",
+          "artifactVersion": "0.0.1",
+          "licenseUrl": "https://mydatamyconsent.com/en-us/legal/terms-of-service",
+          "licenseName": "DataConsent, Inc. ToS",
+          "scmUrl": "https://github.com/mydatamyconsent/php-sdk",
+          "scmDeveloperConnection": "scm:git:git@github.com:mydatamyconsent/php-sdk.git"
         }
       }
     }
